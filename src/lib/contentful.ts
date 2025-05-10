@@ -1,5 +1,18 @@
 // src/lib/contentful.ts
 import { createClient } from 'contentful'
+import type { HeroEntry } from '@/types/contentful'
+import type { MenuEntry } from '@/types/contentful'
+
+export async function getMenuByName(name: string): Promise<MenuEntry | null> {
+  const res = await client.getEntries({
+    content_type: 'menu',
+    'fields.menuName': name,
+    include: 2,
+  })
+
+  return (res.items[0] as MenuEntry) || null
+}
+
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
@@ -34,4 +47,14 @@ export async function getBlogPost(slug: string) {
 export async function getAllBlogSlugs() {
   const res = await client.getEntries({ content_type: 'blogPost' })
   return res.items.map((entry) => entry.fields.slug)
+}
+
+
+export async function getHero(): Promise<HeroEntry> {
+  const res = await client.getEntries({
+    content_type: 'hero',
+    limit: 1,
+  })
+
+  return res.items[0] as HeroEntry
 }

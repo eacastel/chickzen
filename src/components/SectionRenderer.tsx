@@ -1,18 +1,37 @@
-'use client'
+import Image from "next/image";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import type { Document } from "@contentful/rich-text-types";
+import type { Asset } from 'contentful'
+import type { SectionEntry } from "@/types/contentful";
 
-import Image from 'next/image'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import type { Document } from '@contentful/rich-text-types'
-
-type Props = {
-  section: any
+// ✅ Type guard for Contentful Asset
+function isAsset(img: unknown): img is Asset {
+  return (
+    typeof img === 'object' &&
+    img !== null &&
+    'fields' in img &&
+    'file' in (img as Asset).fields
+  )
 }
 
-export default function SectionRenderer({ section }: Props) {
-  const { title, byline, body, image } = section.fields
+type Props = {
+  section: SectionEntry;
+};
 
-  // Generate ID for anchor links
-  const anchorId = title?.toLowerCase().replace(/\s+/g, '-')
+export default function SectionRenderer({ section }: Props) {
+  const { body, image } = section.fields;
+
+  const title: string = String(section.fields.title ?? "");
+  const byline: string = String(section.fields.byline ?? "");
+
+  const anchorId =
+    typeof title === "string"
+      ? title
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .trim()
+          .replace(/\s+/g, "-")
+      : undefined;
 
   return (
     <section
@@ -21,7 +40,9 @@ export default function SectionRenderer({ section }: Props) {
     >
       <div className="max-w-3xl mx-auto">
         {title && (
-          <h2 className="text-[2rem] font-serif tracking-tight mb-1">{title}</h2>
+          <h2 className="text-[2rem] font-serif tracking-tight mb-1">
+            {title}
+          </h2>
         )}
         {byline && (
           <p className="text-sm text-gray-600 italic font-serif mb-6">
@@ -33,11 +54,11 @@ export default function SectionRenderer({ section }: Props) {
             {documentToReactComponents(body as Document)}
           </div>
         )}
-        {image?.fields?.file?.url && (
+         {isAsset(image) && image.fields.file?.url && (
           <div className="relative w-full h-64 mt-10 rounded overflow-hidden">
             <Image
               src={`https:${image.fields.file.url}`}
-              alt={image.fields.title || 'Section image'}
+              alt={String(image.fields.title ?? 'Section image')}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 768px"
@@ -47,5 +68,5 @@ export default function SectionRenderer({ section }: Props) {
         )}
       </div>
     </section>
-  )
+  );
 }
