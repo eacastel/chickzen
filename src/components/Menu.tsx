@@ -28,3 +28,4 @@ export default async function Menu({ menuName, className = '' }: Props) {
     </nav>
   )
 }
+

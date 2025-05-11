@@ -1,22 +1,62 @@
-import Menu from './Menu'
+import Menu from "./Menu";
+import { getHeaderImage } from "@/lib/contentful";
+import type { HeaderImageEntry } from "@/types/contentful";
+import type { Asset } from "contentful";
+import Image from "next/image";
 
-export default function Footer() {
+function isAsset(img: unknown): img is Asset {
   return (
-    <footer className="bg-background text-foreground px-6 py-12 border-t">
+    typeof img === "object" &&
+    img !== null &&
+    "fields" in img &&
+    "file" in (img as Asset).fields
+  );
+}
+
+export default async function Footer() {
+  const headerImage = (await getHeaderImage()) as HeaderImageEntry;
+  const image = headerImage.fields.image;
+
+  const imageUrl =
+    isAsset(image) && image.fields.file?.url
+      ? `https:${image.fields.file.url}`
+      : "";
+
+  const imageAlt = isAsset(image)
+    ? String(image.fields.title ?? "Footer Logo")
+    : "Footer Logo";
+
+  return (
+    <footer className="bg-[#faf7ef] text-foreground px-6 py-12">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start text-sm">
         {/* Left: Footer Menu */}
-        <Menu menuName="Footer" className="space-y-2 text-left" />
+        <Menu
+          menuName="Footer"
+          className="flex flex-wrap justify-center md:flex-col md:items-start md:space-y-2 gap-x-4 gap-y-2 text-sm"
+        />
 
         {/* Center: Logo */}
-        <div className="flex justify-center font-serif text-xl">chickzen™</div>
+        <div className="flex justify-center">
+          {imageUrl && (
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              width={150}
+              height={150}
+              className="h-auto w-[150px]"
+              priority
+            />
+          )}
+        </div>
 
         {/* Right: Contact Info */}
-        <div className="text-right text-xs text-gray-600 space-y-1">
-          <div>hello@chickzen.com</div>
-          <div>Valencia, Spain</div>
-          <div>© {new Date().getFullYear()} chickzen. All rights reserved.</div>
+        <div className="text-center md:text-right text-xs text-gray-600 space-y-1">
+          <div className="mb-4">hello@chickzen.com</div>
+          <div className="italic">
+            © {new Date().getFullYear()} chickzen. All rights reserved.
+          </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

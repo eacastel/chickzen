@@ -19,8 +19,10 @@ export interface SectionFields {
   byline?: EntryFieldTypes.Text
   body?: EntryFieldTypes.RichText
   image?: Asset
+  imageAlt?: EntryFieldTypes.Text
+  imagePosition?: EntryFieldTypes.Text
+  showTitle?: boolean
 }
-
 export type SectionSkeleton = EntrySkeletonType<SectionFields>
 export type SectionEntry = Entry<SectionSkeleton>
 
@@ -37,3 +39,11 @@ export interface MenuFields {
 }
 export type MenuSkeleton = EntrySkeletonType<MenuFields>
 export type MenuEntry = Entry<MenuSkeleton>
+
+export interface HeaderImageFields {
+  title: string;
+  image: Asset;
+}
+export type HeaderImageSkeleton = EntrySkeletonType<HeaderImageFields>
+export type HeaderImageEntry = Entry<HeaderImageSkeleton>
+

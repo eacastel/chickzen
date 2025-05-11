@@ -11,6 +11,8 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^16.0.1",
     "@contentful/rich-text-types": "^17.0.0",
+    "@fontsource/inter": "^5.2.5",
+    "@fontsource/playfair-display": "^5.2.5",
     "contentful": "^11.5.20",
     "next": "15.3.2",
     "react": "^19.0.0",
@@ -25,7 +27,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
-    "tailwindcss": "^4",
+    "tailwindcss": "^4.1.6",
     "typescript": "^5.8.3"
   }
 }
