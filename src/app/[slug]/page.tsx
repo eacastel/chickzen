@@ -1,19 +1,15 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionRenderer from "@/components/SectionRenderer";
+import ReviewBlockRenderer from "@/components/ReviewBlockRenderer";
+import LogoCarousel from "@/components/LogoCarousel";
 import { getPage, getAllPageSlugs } from "@/lib/contentful";
-import type { SectionEntry } from "@/types/contentful";
-import type { BaseEntry } from "contentful";
 
-function isSectionEntry(entry: unknown): entry is SectionEntry {
-  return (
-    typeof entry === "object" &&
-    entry !== null &&
-    "sys" in entry &&
-    "fields" in entry &&
-    (entry as unknown as BaseEntry).sys?.contentType?.sys?.id === "section"
-  );
-}
+import type {
+  SectionEntry,
+  ReviewBlockGroupEntry,
+  LogoCarouselEntry,
+} from "@/types/contentful";
 
 type Props = {
   params: {
@@ -21,42 +17,104 @@ type Props = {
   };
 };
 
-// ✅ Metadata generator (for SEO)
+// ✅ SEO metadata
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const page = await getPage(slug);
-  const title = page?.fields?.title || "Chickzen";
-  return { title };
+  return { title: page?.fields?.title ?? "Chickzen" };
 }
 
-// ✅ Static params for SSG
+// ✅ Static params
 export async function generateStaticParams() {
   const slugs = await getAllPageSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
-// ✅ Static page component with awaited `params`
+// ✅ Content type extraction helper (no `any`)
+function getContentTypeId(entry: unknown): string | null {
+  if (
+    typeof entry === "object" &&
+    entry !== null &&
+    "sys" in entry &&
+    "fields" in entry &&
+    typeof (entry as { sys: { contentType?: { sys?: { id?: unknown } } } }).sys
+      ?.contentType?.sys?.id === "string"
+  ) {
+    return (entry as { sys: { contentType: { sys: { id: string } } } }).sys
+      .contentType.sys.id;
+  }
+
+  return null;
+}
+
+// ✅ Main page component
 export default async function Page({ params }: Props) {
   const { slug } = await params;
   const page = await getPage(slug);
 
   if (!page) return <div>Page not found</div>;
 
-  const raw = page.fields.section;
-  const section = Array.isArray(raw)
-    ? (raw.filter(isSectionEntry) as unknown as SectionEntry[])
-    : isSectionEntry(raw)
-    ? [raw as SectionEntry]
-    : [];
-
+  const content = Array.isArray(page.fields.section)
+    ? page.fields.section
+    : [page.fields.section];
 
   return (
     <>
       <Header />
       <main>
-        {section.map((section, i) => (
-          <SectionRenderer key={section.sys?.id || i} section={section} />
-        ))}
+        {content.map((entry, i) => {
+          if (
+            typeof entry !== "object" ||
+            entry === null ||
+            !("sys" in entry)
+          ) {
+            return null;
+          }
+
+          const typeId = getContentTypeId(entry);
+          const key = (entry as { sys: { id?: string } }).sys.id ?? i;
+
+          if (typeId === "section") {
+            const sectionEntry = entry as unknown as SectionEntry;
+            return <SectionRenderer key={key} section={sectionEntry} />;
+          }
+
+          if (typeId === "reviewBlockGroup") {
+            const reviewGroupEntry = entry as unknown as ReviewBlockGroupEntry;
+            const blocks = reviewGroupEntry.fields.reviewBlocks;
+            const groupTitle: string = String(
+              reviewGroupEntry.fields.title ?? ""
+            );
+
+            if (Array.isArray(blocks)) {
+              return (
+                <div key={key} className="text-center my-12">
+                  {groupTitle && (
+                    <h2 className="text-6xl text-gray-600 font-serif tracking-tighter text-center">
+                      {groupTitle}
+                    </h2>
+                  )}
+                  <ReviewBlockRenderer key={key} reviews={blocks} />
+                </div>
+              );
+            }
+
+            return null;
+          }
+
+          if (typeId === "logoCarousel") {
+            const logoEntry = entry as unknown as LogoCarouselEntry;
+            const logos = logoEntry.fields.logos;
+
+            if (Array.isArray(logos)) {
+              return <LogoCarousel key={key} logos={logos} />;
+            }
+
+            return null;
+          }
+
+          return null;
+        })}
       </main>
       <Footer />
     </>

@@ -1,6 +1,7 @@
 import type {
   Entry,
   Asset,
+  ChainModifiers,
   EntrySkeletonType,
   EntryFieldTypes,
 } from 'contentful'
@@ -46,4 +47,28 @@ export interface HeaderImageFields {
 }
 export type HeaderImageSkeleton = EntrySkeletonType<HeaderImageFields>
 export type HeaderImageEntry = Entry<HeaderImageSkeleton>
+
+export interface ReviewBlockFields {
+  title?: EntryFieldTypes.Text;
+  showTitle?: EntryFieldTypes.Boolean;
+  body: EntryFieldTypes.RichText;
+  rating?: EntryFieldTypes.Number;
+  label?: EntryFieldTypes.Text;
+}
+export type ReviewBlockSkeleton = EntrySkeletonType<ReviewBlockFields>;
+export type ReviewBlockEntry = Entry<ReviewBlockSkeleton>;
+
+export interface ReviewBlockGroupFields {
+  title?: EntryFieldTypes.Text;
+  reviewBlocks: Entry<ReviewBlockSkeleton>[];
+}
+export type ReviewBlockGroupSkeleton = EntrySkeletonType<ReviewBlockGroupFields>;
+export type ReviewBlockGroupEntry = Entry<ReviewBlockGroupSkeleton>;
+
+export interface LogoCarouselFields {
+  title?: EntryFieldTypes.Text;
+  logos: Asset<ChainModifiers, string>[];
+}
+export type LogoCarouselSkeleton = EntrySkeletonType<LogoCarouselFields>;
+export type LogoCarouselEntry = Entry<LogoCarouselSkeleton>;
 

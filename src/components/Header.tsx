@@ -27,8 +27,9 @@ export default async function Header() {
     : "Header Logo";
 
   return (
-    <header className="max-w-6xl mx-auto py-4 px-6 flex justify-between items-center bg-white text-black">
-      <div className="font-serif text-lg">
+    <header className="bg-[#faf7ef] text-black">
+      <div className="max-w-6xl mx-auto py-4 px-6 flex justify-between items-center">
+      <div className="font-serif text-lg ">
         <span className="sr-only">{title}</span>
         {imageUrl && (
           <div className="mb-0 justify-left">
@@ -50,6 +51,7 @@ export default async function Header() {
         menuName="Main Navigation"
         className="flex space-x-4 text-sm text-gray-500"
       />
+      </div>
     </header>
   );
 }

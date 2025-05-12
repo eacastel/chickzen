@@ -3,6 +3,7 @@ import { getHeaderImage } from "@/lib/contentful";
 import type { HeaderImageEntry } from "@/types/contentful";
 import type { Asset } from "contentful";
 import Image from "next/image";
+import Link from "next/link";
 
 function isAsset(img: unknown): img is Asset {
   return (
@@ -28,7 +29,7 @@ export default async function Footer() {
 
   return (
     <footer className="bg-[#faf7ef] text-foreground px-6 py-12">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start text-sm">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start text-sm">
         {/* Left: Footer Menu */}
         <Menu
           menuName="Footer"
@@ -38,6 +39,7 @@ export default async function Footer() {
         {/* Center: Logo */}
         <div className="flex justify-center">
           {imageUrl && (
+            <Link href="/">
             <Image
               src={imageUrl}
               alt={imageAlt}
@@ -46,6 +48,7 @@ export default async function Footer() {
               className="h-auto w-[150px]"
               priority
             />
+            </Link>
           )}
         </div>
 
