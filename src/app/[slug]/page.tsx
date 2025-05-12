@@ -43,8 +43,20 @@ function getContentTypeId(entry: unknown): string | null {
 }
 
 // ✅ Main page component
-export default async function Page({ params }: { params: { slug: string } }) {
-  const page = await getPage(params.slug);
+type Params = { params: { slug: string } }
+
+export default async function Page(props: unknown) {
+  if (
+    typeof props !== "object" ||
+    props === null ||
+    !("params" in props)
+  ) {
+    throw new Error("Invalid route parameters");
+  }
+
+  const { slug } = (props as Params).params;
+  const page = await getPage(slug);
+
 
 
 if (!page) notFound();
