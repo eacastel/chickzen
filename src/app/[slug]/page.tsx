@@ -10,15 +10,13 @@ import type {
   LogoCarouselEntry,
 } from "@/types/contentful";
 
-type PageProps = {
-  params: { slug: string };
-};
 
 // ✅ SEO metadata
-export async function generateMetadata({ params }: PageProps) {
-  const { slug } =  params;
-  const page = await getPage(slug);
-  return { title: page?.fields?.title ?? "Chickzen" };
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const page = await getPage(params.slug);
+  return {
+    title: page?.fields?.title ?? "Chickzen",
+  };
 }
 
 // ✅ Static params
@@ -45,8 +43,8 @@ function getContentTypeId(entry: unknown): string | null {
 }
 
 // ✅ Main page component
-export default async function Page({ params }: PageProps) {
-  const { slug } =  params;
+export default async function Page({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const page = await getPage(slug);
 
 
