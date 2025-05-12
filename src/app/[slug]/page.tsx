@@ -12,12 +12,12 @@ import type {
 
 
 // ✅ SEO metadata
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const page = await getPage(params.slug);
-  return {
-    title: page?.fields?.title ?? "Chickzen",
-  };
-}
+// export async function generateMetadata({ params }: { params: { slug: string } }) {
+//   const page = await getPage(params.slug);
+//   return {
+//     title: page?.fields?.title ?? "Chickzen",
+//   };
+// }
 
 // ✅ Static params
 export async function generateStaticParams() {
@@ -44,8 +44,7 @@ function getContentTypeId(entry: unknown): string | null {
 
 // ✅ Main page component
 export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  const page = await getPage(slug);
+  const page = await getPage(params.slug);
 
 
 if (!page) notFound();
