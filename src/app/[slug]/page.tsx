@@ -10,15 +10,13 @@ import type {
   LogoCarouselEntry,
 } from "@/types/contentful";
 
-type Props = {
-  params: {
-    slug: string;
-  };
+type PageProps = {
+  params: { slug: string };
 };
 
 // ✅ SEO metadata
-export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } =  params;
   const page = await getPage(slug);
   return { title: page?.fields?.title ?? "Chickzen" };
 }
@@ -47,8 +45,8 @@ function getContentTypeId(entry: unknown): string | null {
 }
 
 // ✅ Main page component
-export default async function Page({ params }: Props) {
-  const { slug } = await params;
+export default async function Page({ params }: PageProps) {
+  const { slug } =  params;
   const page = await getPage(slug);
 
 
@@ -93,7 +91,7 @@ if (!page) notFound();
                       {groupTitle}
                     </h2>
                   )}
-                  <ReviewBlockRenderer key={key} reviews={blocks} />
+                  <ReviewBlockRenderer reviews={blocks} />
                 </div>
               );
             }
