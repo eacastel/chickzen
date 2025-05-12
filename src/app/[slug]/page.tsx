@@ -1,9 +1,8 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import SectionRenderer from "@/components/SectionRenderer";
 import ReviewBlockRenderer from "@/components/ReviewBlockRenderer";
 import LogoCarousel from "@/components/LogoCarousel";
 import { getPage, getAllPageSlugs } from "@/lib/contentful";
+import { notFound } from "next/navigation";
 
 import type {
   SectionEntry,
@@ -52,7 +51,8 @@ export default async function Page({ params }: Props) {
   const { slug } = await params;
   const page = await getPage(slug);
 
-  if (!page) return <div>Page not found</div>;
+
+if (!page) notFound();
 
   const content = Array.isArray(page.fields.section)
     ? page.fields.section
@@ -60,7 +60,6 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      <Header />
       <main>
         {content.map((entry, i) => {
           if (
@@ -116,7 +115,6 @@ export default async function Page({ params }: Props) {
           return null;
         })}
       </main>
-      <Footer />
     </>
   );
 }

@@ -1,5 +1,3 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import SectionRenderer from "@/components/SectionRenderer";
 import { getPage } from "@/lib/contentful";
@@ -28,14 +26,10 @@ export default async function HomePage() {
 
   return (
     <>
-      <Header />
       <Hero />
-      <main>
         {section.map((section, i) => (
           <SectionRenderer key={section.sys?.id || i} section={section} />
         ))}
-      </main>
-      <Footer />
     </>
   );
 }
