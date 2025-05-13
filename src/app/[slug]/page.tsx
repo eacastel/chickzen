@@ -1,11 +1,10 @@
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { getPage } from "@/lib/contentful";
 import SectionRenderer from "@/components/SectionRenderer";
+import HighlightBlockRenderer from "@/components/HighlightBlockRenderer";
 import ReviewBlockRenderer from "@/components/ReviewBlockRenderer";
 import LogoCarousel from "@/components/LogoCarousel";
-import { getPage, getAllPageSlugs } from "@/lib/contentful";
-import { notFound } from "next/navigation";
-import HighlightBlockRenderer from "@/components/HighlightBlockRenderer";
-import type { BaseEntry } from "contentful";
-
 import type {
   SectionEntry,
   ReviewBlockGroupEntry,
@@ -13,25 +12,25 @@ import type {
   HighlightBlockEntry,
 } from "@/types/contentful";
 
-export async function generateStaticParams() {
-  const slugs = await getAllPageSlugs();
-  return slugs.map((slug) => ({ slug }));
-}
-
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const page = await getPage(slug);
+  return {
+    title: String(page?.fields?.title ?? "Chickzen"),
+  };
+}
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
   const page = await getPage(slug);
-  return { title: page?.fields?.title ?? "Chickzen" };
-}
-
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = await params;
-  const page = await getPage(slug);
-
   if (!page) notFound();
 
   const content = Array.isArray(page.fields.section)
@@ -44,8 +43,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
       entry !== null &&
       "sys" in entry &&
       "fields" in entry &&
-      typeof (entry as { sys: { contentType?: { sys?: { id?: unknown } } } })
-        .sys?.contentType?.sys?.id === "string"
+      typeof (entry as { sys: { contentType?: { sys?: { id?: unknown } } } }).sys
+        ?.contentType?.sys?.id === "string"
     ) {
       return (entry as { sys: { contentType: { sys: { id: string } } } }).sys
         .contentType.sys.id;
@@ -59,8 +58,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
       entry !== null &&
       "sys" in entry &&
       "fields" in entry &&
-      (entry as unknown as BaseEntry).sys?.contentType?.sys?.id ===
-        "highlightBlock"
+      (entry as { sys: { contentType: { sys: { id: string } } } }).sys
+        .contentType.sys.id === "highlightBlock"
     );
   }
 
@@ -75,18 +74,22 @@ export default async function Page({ params }: { params: { slug: string } }) {
         const key = (entry as { sys: { id?: string } }).sys.id ?? i;
 
         if (typeId === "section") {
-          const sectionEntry = entry as unknown as SectionEntry;
-          return <SectionRenderer key={key} section={sectionEntry} />;
+          return (
+            <SectionRenderer
+              key={key}
+              section={entry as SectionEntry}
+            />
+          );
         }
 
         if (isHighlightBlockEntry(entry)) {
           return (
-            <HighlightBlockRenderer key={entry.sys.id ?? i} block={entry} />
+            <HighlightBlockRenderer key={key} block={entry} />
           );
         }
 
         if (typeId === "reviewBlockGroup") {
-          const reviewGroupEntry = entry as unknown as ReviewBlockGroupEntry;
+          const reviewGroupEntry = entry as ReviewBlockGroupEntry;
           const blocks = reviewGroupEntry.fields.reviewBlocks;
           const groupTitle: string = String(
             reviewGroupEntry.fields.title ?? ""
@@ -109,7 +112,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         }
 
         if (typeId === "logoCarousel") {
-          const logoEntry = entry as unknown as LogoCarouselEntry;
+          const logoEntry = entry as LogoCarouselEntry;
           const logos = logoEntry.fields.logos;
 
           if (Array.isArray(logos)) {
