@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
 import Stripe from "stripe";
+import { NextResponse } from "next/server";
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-04-30.basil",
 });
 
@@ -17,7 +17,7 @@ export async function POST(req: Request) {
   }
 
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: 32707, // €327.07 in cents
+    amount: 32707,
     currency: "eur",
     metadata: { name, email },
     receipt_email: email,

@@ -77,7 +77,7 @@ export default async function Page({
           return (
             <SectionRenderer
               key={key}
-              section={entry as SectionEntry}
+              section={entry as unknown as SectionEntry}
             />
           );
         }
