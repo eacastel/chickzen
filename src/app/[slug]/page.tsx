@@ -10,118 +10,97 @@ import type {
   LogoCarouselEntry,
 } from "@/types/contentful";
 
-
-// ✅ SEO metadata
-// export async function generateMetadata({ params }: { params: { slug: string } }) {
-//   const page = await getPage(params.slug);
-//   return {
-//     title: page?.fields?.title ?? "Chickzen",
-//   };
-// }
-
-// ✅ Static params
 export async function generateStaticParams() {
   const slugs = await getAllPageSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
-// ✅ Content type extraction helper (no `any`)
-function getContentTypeId(entry: unknown): string | null {
-  if (
-    typeof entry === "object" &&
-    entry !== null &&
-    "sys" in entry &&
-    "fields" in entry &&
-    typeof (entry as { sys: { contentType?: { sys?: { id?: unknown } } } }).sys
-      ?.contentType?.sys?.id === "string"
-  ) {
-    return (entry as { sys: { contentType: { sys: { id: string } } } }).sys
-      .contentType.sys.id;
-  }
-
-  return null;
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = await params;
+  const page = await getPage(slug);
+  return { title: page?.fields?.title ?? "Chickzen" };
 }
 
-// ✅ Main page component
-type Params = { params: { slug: string } }
-
-export default async function Page(props: unknown) {
-  if (
-    typeof props !== "object" ||
-    props === null ||
-    !("params" in props)
-  ) {
-    throw new Error("Invalid route parameters");
-  }
-
-  const { slug } = (props as Params).params;
+export default async function Page({ params }: { params: { slug: string } }) {
+  const { slug } = await params;
   const page = await getPage(slug);
 
-
-
-if (!page) notFound();
+  if (!page) notFound();
 
   const content = Array.isArray(page.fields.section)
     ? page.fields.section
     : [page.fields.section];
 
+  function getContentTypeId(entry: unknown): string | null {
+    if (
+      typeof entry === "object" &&
+      entry !== null &&
+      "sys" in entry &&
+      "fields" in entry &&
+      typeof (entry as { sys: { contentType?: { sys?: { id?: unknown } } } })
+        .sys?.contentType?.sys?.id === "string"
+    ) {
+      return (entry as { sys: { contentType: { sys: { id: string } } } }).sys
+        .contentType.sys.id;
+    }
+    return null;
+  }
+
   return (
-    <>
-      <main>
-        {content.map((entry, i) => {
-          if (
-            typeof entry !== "object" ||
-            entry === null ||
-            !("sys" in entry)
-          ) {
-            return null;
-          }
+    <main>
+      {content.map((entry, i) => {
+        if (typeof entry !== "object" || entry === null || !("sys" in entry)) {
+          return null;
+        }
 
-          const typeId = getContentTypeId(entry);
-          const key = (entry as { sys: { id?: string } }).sys.id ?? i;
+        const typeId = getContentTypeId(entry);
+        const key = (entry as { sys: { id?: string } }).sys.id ?? i;
 
-          if (typeId === "section") {
-            const sectionEntry = entry as unknown as SectionEntry;
-            return <SectionRenderer key={key} section={sectionEntry} />;
-          }
+        if (typeId === "section") {
+          const sectionEntry = entry as unknown as SectionEntry;
+          return <SectionRenderer key={key} section={sectionEntry} />;
+        }
 
-          if (typeId === "reviewBlockGroup") {
-            const reviewGroupEntry = entry as unknown as ReviewBlockGroupEntry;
-            const blocks = reviewGroupEntry.fields.reviewBlocks;
-            const groupTitle: string = String(
-              reviewGroupEntry.fields.title ?? ""
+        if (typeId === "reviewBlockGroup") {
+          const reviewGroupEntry = entry as unknown as ReviewBlockGroupEntry;
+          const blocks = reviewGroupEntry.fields.reviewBlocks;
+          const groupTitle: string = String(
+            reviewGroupEntry.fields.title ?? ""
+          );
+
+          if (Array.isArray(blocks)) {
+            return (
+              <div key={key} className="text-center my-12">
+                {groupTitle && (
+                  <h2 className="text-6xl text-gray-600 font-serif tracking-tighter text-center">
+                    {groupTitle}
+                  </h2>
+                )}
+                <ReviewBlockRenderer reviews={blocks} />
+              </div>
             );
-
-            if (Array.isArray(blocks)) {
-              return (
-                <div key={key} className="text-center my-12">
-                  {groupTitle && (
-                    <h2 className="text-6xl text-gray-600 font-serif tracking-tighter text-center">
-                      {groupTitle}
-                    </h2>
-                  )}
-                  <ReviewBlockRenderer reviews={blocks} />
-                </div>
-              );
-            }
-
-            return null;
-          }
-
-          if (typeId === "logoCarousel") {
-            const logoEntry = entry as unknown as LogoCarouselEntry;
-            const logos = logoEntry.fields.logos;
-
-            if (Array.isArray(logos)) {
-              return <LogoCarousel key={key} logos={logos} />;
-            }
-
-            return null;
           }
 
           return null;
-        })}
-      </main>
-    </>
+        }
+
+        if (typeId === "logoCarousel") {
+          const logoEntry = entry as unknown as LogoCarouselEntry;
+          const logos = logoEntry.fields.logos;
+
+          if (Array.isArray(logos)) {
+            return <LogoCarousel key={key} logos={logos} />;
+          }
+
+          return null;
+        }
+
+        return null;
+      })}
+    </main>
   );
 }

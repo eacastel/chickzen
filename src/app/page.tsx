@@ -1,7 +1,9 @@
 import Hero from "@/components/Hero";
 import SectionRenderer from "@/components/SectionRenderer";
+import HighlightBlockRenderer from "@/components/HighlightBlockRenderer";
 import { getPage } from "@/lib/contentful";
-import type { SectionEntry } from "@/types/contentful";
+
+import type { SectionEntry, HighlightBlockEntry } from "@/types/contentful";
 import type { BaseEntry } from "contentful";
 
 function isSectionEntry(entry: unknown): entry is SectionEntry {
@@ -14,22 +16,40 @@ function isSectionEntry(entry: unknown): entry is SectionEntry {
   );
 }
 
+function isHighlightBlockEntry(entry: unknown): entry is HighlightBlockEntry {
+  return (
+    typeof entry === "object" &&
+    entry !== null &&
+    "sys" in entry &&
+    "fields" in entry &&
+    (entry as unknown as BaseEntry).sys?.contentType?.sys?.id === "highlightBlock"
+  );
+}
+
 export default async function HomePage() {
   const page = await getPage("home");
 
   const raw = page?.fields?.section;
-  const section = Array.isArray(raw)
-    ? (raw.filter(isSectionEntry) as unknown as SectionEntry[])
-    : isSectionEntry(raw)
-    ? [raw]
-    : [];
+  const content = Array.isArray(raw) ? raw : [raw];
 
   return (
     <>
       <Hero />
-        {section.map((section, i) => (
-          <SectionRenderer key={section.sys?.id || i} section={section} />
-        ))}
+      {content.map((entry, i) => {
+        if (isSectionEntry(entry)) {
+          return (
+            <SectionRenderer key={entry.sys.id ?? i} section={entry} />
+          );
+        }
+
+        if (isHighlightBlockEntry(entry)) {
+          return (
+            <HighlightBlockRenderer key={entry.sys.id ?? i} block={entry} />
+          );
+        }
+
+        return null;
+      })}
     </>
   );
 }

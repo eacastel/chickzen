@@ -28,7 +28,7 @@ export default async function Footer() {
     : "Footer Logo";
 
   return (
-    <footer className="bg-[#faf7ef] text-foreground px-6 py-12">
+    <footer className="bg-pink-50 text-foreground px-6 py-12">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start text-sm">
         {/* Left: Footer Menu */}
         <Menu

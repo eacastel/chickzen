@@ -72,3 +72,25 @@ export interface LogoCarouselFields {
 export type LogoCarouselSkeleton = EntrySkeletonType<LogoCarouselFields>;
 export type LogoCarouselEntry = Entry<LogoCarouselSkeleton>;
 
+export interface HighlightBlockFields {
+  title?: EntryFieldTypes.Text;
+  items: (Entry<ImageBannerSkeleton> | Entry<CallToActionSkeleton>)[];
+}
+export type HighlightBlockSkeleton = EntrySkeletonType<HighlightBlockFields>;
+export type HighlightBlockEntry = Entry<HighlightBlockSkeleton>;
+
+export interface ImageBannerFields {
+  title?: EntryFieldTypes.Text;
+  image: Asset;
+}
+export type ImageBannerSkeleton = EntrySkeletonType<ImageBannerFields>;
+export type ImageBannerEntry = Entry<ImageBannerSkeleton>;
+
+export interface CallToActionFields {
+  backgroundImage?: Asset;
+  body: EntryFieldTypes.RichText;
+  buttonLabel?: EntryFieldTypes.Text;
+  buttonLink?: EntryFieldTypes.Text;
+}
+export type CallToActionSkeleton = EntrySkeletonType<CallToActionFields>;
+export type CallToActionEntry = Entry<CallToActionSkeleton>;

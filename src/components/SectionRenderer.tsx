@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import type { Document } from "@contentful/rich-text-types";
 import type { Asset } from "contentful";
@@ -22,11 +25,9 @@ export default function SectionRenderer({ section }: Props) {
   const fields = section.fields as SectionFields;
   const { body, showTitle, image, imageAlt, imagePosition = "float-right" } = fields;
 
-  const title: string = String(section.fields.title ?? "");
-  const byline: string = String(section.fields.byline ?? "");
-  const position = imagePosition as
-    | "float-left"
-    | "float-right";
+  const title: string = String(fields.title ?? "");
+  const byline: string = String(fields.byline ?? "");
+  const position = imagePosition as "float-left" | "float-right";
   const alt = typeof imageAlt === "string" ? imageAlt : "Section image";
 
   const imageBlock =
@@ -59,9 +60,13 @@ export default function SectionRenderer({ section }: Props) {
       : undefined;
 
   return (
-    <section
+    <motion.section
       id={anchorId}
       className="py-8 px-4 bg-background text-foreground text-center scroll-mt-8"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2 }}
     >
       <div className="max-w-4xl mx-auto text-gray-600 text-left clear-both">
 
@@ -89,6 +94,6 @@ export default function SectionRenderer({ section }: Props) {
           </div>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 }

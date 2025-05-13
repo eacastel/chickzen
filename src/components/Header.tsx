@@ -27,7 +27,7 @@ export default async function Header() {
     : "Header Logo";
 
   return (
-    <header className="bg-[#faf7ef] text-black">
+    <header className="bg-white text-black">
       <div className="max-w-6xl mx-auto py-4 px-6 flex justify-between items-center">
       <div className="font-serif text-lg ">
         <span className="sr-only">{title}</span>

@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import type { ReviewBlockEntry } from "@/types/contentful";
 import type { Document } from "@contentful/rich-text-types";
@@ -8,29 +11,37 @@ type Props = {
 
 export default function ReviewBlockRenderer({ reviews }: Props) {
   return (
-    <section className="pb-12 pt-10 text-center px-4 font-serif bg-white text-gray-800">
+    <motion.section
+      className="pb-0 pt-10 text-center px-4 font-serif bg-white text-gray-800"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.2, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2 }}
+    >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
         {reviews.map((review) => {
-          const title: string = String(review.fields.title ?? "");
-          const label: string = String(review.fields.label ?? "");
-          const showTitle: boolean = review.fields.showTitle !== false;
-          const rating: number = typeof review.fields.rating === "number" ? review.fields.rating : 0;
+          const title = String(review.fields.title ?? "");
+          const label = String(review.fields.label ?? "");
+          const showTitle = review.fields.showTitle !== false;
+          const rating =
+            typeof review.fields.rating === "number" ? review.fields.rating : 0;
           const body = review.fields.body;
 
           return (
             <div
               key={review.sys.id}
-              className="p-6  rounded shadow-sm bg-[#faf7ef]"
+              className="p-6 rounded shadow-sm bg-fuchsia-50"
             >
-
-
               {rating > 0 && (
-                <div className="flex items-center justify-center mb-2" aria-label={`Rating: ${rating} stars`}>
+                <div
+                  className="flex items-center justify-center mb-2"
+                  aria-label={`Rating: ${rating} stars`}
+                >
                   {Array.from({ length: 5 }).map((_, i) => (
                     <svg
                       key={i}
                       className={`w-5 h-5 ${
-                        i < rating ? "text-yellow-400" : "text-gray-300"
+                        i < rating ? "text-pink-600" : "text-gray-300"
                       }`}
                       fill="currentColor"
                       viewBox="0 0 20 20"
@@ -40,10 +51,9 @@ export default function ReviewBlockRenderer({ reviews }: Props) {
                   ))}
                 </div>
               )}
-                            {showTitle && !!title && (
-                <h3 className="text-xl mb-2 text-gray-700">
-                  {title}
-                </h3>
+
+              {showTitle && !!title && (
+                <h3 className="text-xl mb-2 text-gray-700">{title}</h3>
               )}
 
               {body && (
@@ -59,6 +69,6 @@ export default function ReviewBlockRenderer({ reviews }: Props) {
           );
         })}
       </div>
-    </section>
+    </motion.section>
   );
 }
