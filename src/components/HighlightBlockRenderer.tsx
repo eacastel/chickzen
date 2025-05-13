@@ -103,7 +103,7 @@ export default function HighlightBlockRenderer({ block }: Props) {
                 </div>
               )}
               <div className="max-w-4xl mx-auto flex flex-col items-center md:grid md:grid-cols-3 md:items-center md:gap-2">
-                <div className="w-full md:col-span-2 md:mr-8 text-center md:text-right">
+                <div className="w-full md:col-span-2  text-center md:text-right md:pr-12">
                   <div className="prose prose-xl font-serif [&_h2]:text-3xl [&_p]:text-lg [&_h2]:leading-10 text-gray-800">
                     {body && documentToReactComponents(body)}
                   </div>

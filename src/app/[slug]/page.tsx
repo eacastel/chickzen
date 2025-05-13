@@ -3,11 +3,14 @@ import ReviewBlockRenderer from "@/components/ReviewBlockRenderer";
 import LogoCarousel from "@/components/LogoCarousel";
 import { getPage, getAllPageSlugs } from "@/lib/contentful";
 import { notFound } from "next/navigation";
+import HighlightBlockRenderer from "@/components/HighlightBlockRenderer";
+import type { BaseEntry } from "contentful";
 
 import type {
   SectionEntry,
   ReviewBlockGroupEntry,
   LogoCarouselEntry,
+  HighlightBlockEntry,
 } from "@/types/contentful";
 
 export async function generateStaticParams() {
@@ -50,6 +53,17 @@ export default async function Page({ params }: { params: { slug: string } }) {
     return null;
   }
 
+  function isHighlightBlockEntry(entry: unknown): entry is HighlightBlockEntry {
+    return (
+      typeof entry === "object" &&
+      entry !== null &&
+      "sys" in entry &&
+      "fields" in entry &&
+      (entry as unknown as BaseEntry).sys?.contentType?.sys?.id ===
+        "highlightBlock"
+    );
+  }
+
   return (
     <main>
       {content.map((entry, i) => {
@@ -63,6 +77,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
         if (typeId === "section") {
           const sectionEntry = entry as unknown as SectionEntry;
           return <SectionRenderer key={key} section={sectionEntry} />;
+        }
+
+        if (isHighlightBlockEntry(entry)) {
+          return (
+            <HighlightBlockRenderer key={entry.sys.id ?? i} block={entry} />
+          );
         }
 
         if (typeId === "reviewBlockGroup") {
