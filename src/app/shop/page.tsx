@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import ShopClient from "./ShopClient";
 
 export const metadata = {
+  metadataBase: new URL("https://chickzen.com"),
   title: "StoryZen™ – Craft Your Pitch in 3 Powerful Steps | Chickzen",
   description:
     "Buy the StoryZen™ package — a guided process to clarify your startup’s audience, value, and story. Created for founders ready to pitch with confidence.",

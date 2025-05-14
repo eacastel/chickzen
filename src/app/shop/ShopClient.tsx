@@ -7,23 +7,25 @@ export default function ShopClient() {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("/api/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: "Guest",
-        email: "guest@example.com",
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.clientSecret) {
-          setClientSecret(data.clientSecret);
-        } else {
-          console.error("Stripe error:", data);
-        }
-      });
-  }, []);
+  if (typeof window === "undefined") return;
+
+  fetch("/api/create-payment-intent", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: "Guest",
+      email: "guest@example.com",
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.clientSecret) {
+        setClientSecret(data.clientSecret);
+      } else {
+        console.error("Stripe error:", data);
+      }
+    });
+}, []);
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
