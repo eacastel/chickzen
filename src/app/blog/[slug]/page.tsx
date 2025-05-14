@@ -10,11 +10,7 @@ import Link from "next/link";
 
 export const revalidate = 300;
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { getBlogPost } = await import("@/lib/contentful");
   const { slug } = await params;
   const post = await getBlogPost(slug);
@@ -24,9 +20,7 @@ export async function generateMetadata({
   const safeTitle = String(metaTitle ?? title ?? defaultMetadata.title);
   const safeDescription = String(metaSummary ?? defaultMetadata.description);
   const img = coverImage as Asset;
-  const imageUrl = img?.fields?.file?.url
-    ? `https:${img.fields.file.url}`
-    : null;
+  const imageUrl = img?.fields?.file?.url ? `https:${img.fields.file.url}` : null;
 
   return {
     title: safeTitle,
