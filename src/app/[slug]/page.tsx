@@ -1,9 +1,11 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPage } from "@/lib/contentful";
 import SectionRenderer from "@/components/SectionRenderer";
 import HighlightBlockRenderer from "@/components/HighlightBlockRenderer";
 import ReviewBlockRenderer from "@/components/ReviewBlockRenderer";
 import LogoCarousel from "@/components/LogoCarousel";
+import { defaultMetadata } from "@/lib/defaultMetadata";
 import type { Asset } from "contentful"
 import type {
   SectionEntry,
@@ -11,22 +13,31 @@ import type {
   LogoCarouselEntry,
   HighlightBlockEntry,
 } from "@/types/contentful";
-import { defaultMetadata } from "@/lib/defaultMetadata";
 
 
-export async function generateMetadata({ params }) {
-  const { slug } = await params;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const { slug } = params; 
   const page = await getPage(slug);
-
   const image = page?.fields?.previewImage as Asset;
 
   const imageUrl =
     typeof image?.fields?.file?.url === "string"
       ? `https:${image.fields.file.url}`
-      : defaultMetadata.openGraph?.images?.[0]?.url ?? "https://chickzen.com/og-default.png";
+      : (defaultMetadata.openGraph?.images as { url: string }[])?.[0]?.url ??
+        "https://chickzen.com/og-default.png";
 
-  const title = String(page?.fields?.metaTitle ?? page?.fields?.title ?? defaultMetadata.title);
-  const description = String(page?.fields?.metaSummary ?? defaultMetadata.description);
+  const title = String(
+    page?.fields?.metaTitle ?? page?.fields?.title ?? defaultMetadata.title
+  );
+
+  const description = String(
+    page?.fields?.metaSummary ?? defaultMetadata.description
+  );
 
   return {
     ...defaultMetadata,
@@ -50,7 +61,6 @@ export async function generateMetadata({ params }) {
     },
   };
 }
-
 
 
 
