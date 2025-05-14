@@ -6,6 +6,7 @@ import type { Asset } from "contentful";
 import type { Document } from "@contentful/rich-text-types";
 
 export const revalidate = 300;
+export const dynamicParams = true;
 
 function getReadTime(text: string): string {
   const words = text.trim().split(/\s+/).length;

@@ -9,6 +9,7 @@ import { documentToPlainTextString } from "@contentful/rich-text-plain-text-rend
 import Link from "next/link";
 
 export const revalidate = 300;
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { getBlogPost } = await import("@/lib/contentful");
