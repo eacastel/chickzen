@@ -54,11 +54,7 @@ function getReadTime(text: string): string {
   return `${minutes} min read`;
 }
 
-export default async function BlogPostPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { getBlogPost } = await import("@/lib/contentful");
   const { slug } = await params;
   const post = await getBlogPost(slug);
