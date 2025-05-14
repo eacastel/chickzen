@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import ShopClient from "./ShopClient";
+import ShopClient from "./ShopClient"; 
 
 export const metadata = {
   metadataBase: new URL("https://chickzen.com"),
@@ -16,7 +16,7 @@ export const metadata = {
     url: "https://chickzen.com/shop",
     siteName: "Chickzen",
     images: ["/og-default.png"],
-    type: "product",
+    type: "website", 
   },
   twitter: {
     card: "summary_large_image",
@@ -27,13 +27,11 @@ export const metadata = {
   },
 };
 
-
-export default async function ShopPage() {
-
+export default function ShopPage() {
   return (
     <>
       <Hero />
-      <ShopClient />
+      <ShopClient /> 
     </>
   );
 }
