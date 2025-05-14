@@ -5,6 +5,8 @@ import { documentToPlainTextString } from "@contentful/rich-text-plain-text-rend
 import type { Asset } from "contentful";
 import type { Document } from "@contentful/rich-text-types";
 
+export const revalidate = 300;
+
 function getReadTime(text: string): string {
   const words = text.trim().split(/\s+/).length;
   const minutes = Math.max(1, Math.ceil(words / 200));
@@ -72,7 +74,7 @@ export default async function BlogIndexPage() {
               {tags.length > 0 && (
                 <div className="flex gap-2 text-xs mt-1 flex-wrap">
                   {tags.map((tag) => (
-                    <span key={tag} className="bg-gray-100 text-gray-600 px-2 py-1 rounded">
+                    <span key={tag} className="bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-gray-200 transition">
                       #{tag}
                     </span>
                   ))}

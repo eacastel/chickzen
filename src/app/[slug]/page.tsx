@@ -14,7 +14,7 @@ import type {
   HighlightBlockEntry,
 } from "@/types/contentful";
 
-
+export const revalidate = 300;
 
 export async function generateMetadata({
   params,

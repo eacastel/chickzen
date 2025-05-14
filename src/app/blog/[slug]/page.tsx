@@ -2,10 +2,19 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { defaultMetadata } from "@/lib/defaultMetadata";
 import type { Metadata } from "next";
+import { getAllBlogPosts } from "@/lib/contentful";
 import type { Asset } from "contentful";
 import type { Document } from "@contentful/rich-text-types";
+import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer";
+import Link from "next/link";
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export const revalidate = 300;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const { getBlogPost } = await import("@/lib/contentful");
   const { slug } = await params;
   const post = await getBlogPost(slug);
@@ -15,7 +24,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const safeTitle = String(metaTitle ?? title ?? defaultMetadata.title);
   const safeDescription = String(metaSummary ?? defaultMetadata.description);
   const img = coverImage as Asset;
-  const imageUrl = img?.fields?.file?.url ? `https:${img.fields.file.url}` : null;
+  const imageUrl = img?.fields?.file?.url
+    ? `https:${img.fields.file.url}`
+    : null;
 
   return {
     title: safeTitle,
@@ -37,7 +48,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+function getReadTime(text: string): string {
+  const words = text.trim().split(/\s+/).length;
+  const minutes = Math.max(1, Math.ceil(words / 200));
+  return `${minutes} min read`;
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { getBlogPost } = await import("@/lib/contentful");
   const { slug } = await params;
   const post = await getBlogPost(slug);
@@ -47,7 +68,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const title = String(fields.title ?? "Untitled");
   const byline = typeof fields.byline === "string" ? fields.byline : null;
   const publishDate =
-    typeof fields.publishDate === "string" || typeof fields.publishDate === "number"
+    typeof fields.publishDate === "string" ||
+    typeof fields.publishDate === "number"
       ? new Date(fields.publishDate)
       : null;
 
@@ -56,7 +78,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     : [];
 
   const image = fields.coverImage as Asset;
-  const imageUrl = image?.fields?.file?.url ? `https:${image.fields.file.url}` : null;
+  const imageUrl = image?.fields?.file?.url
+    ? `https:${image.fields.file.url}`
+    : null;
 
   const imagePosition = fields.imagePosition;
   const floatClass =
@@ -67,8 +91,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       : "";
 
   const body = fields.body as Document;
+  const plainText = body ? documentToPlainTextString(body) : "";
+  const readTime = getReadTime(plainText);
 
-  const RichTextRenderer = (await import("@/components/RichTextRenderer")).default;
+  const RichTextRenderer = (await import("@/components/RichTextRenderer"))
+    .default;
+
+  const allPosts = await getAllBlogPosts();
+  const index = allPosts.findIndex((p) => p.fields.slug === slug);
+  const previousPost = allPosts[index - 1] || null;
+  const nextPost = allPosts[index + 1] || null;
 
   return (
     <article className="max-w-3xl mx-auto px-4 py-12 prose prose-lg text-gray-700">
@@ -77,7 +109,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {byline && <p className="text-sm text-gray-500">By {byline}</p>}
         {publishDate && (
           <p className="text-xs text-gray-400">
-            {publishDate.toLocaleDateString("en-US")}
+            {publishDate.toLocaleDateString("en-US")} • {readTime}
           </p>
         )}
         {tags.length > 0 && (
@@ -92,21 +124,40 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </header>
 
       {imageUrl && (
-  <div
-    className={`mb-6 ${floatClass} hhover:brightness-105 max-w-xs w-full rounded-lg overflow-hidden`}
-  >
-    <Image
-      src={imageUrl}
-      alt={typeof title === "string" ? title : "Blog cover"}
-      width={300}
-      height={0}
-      className="h-auto w-full object-cover rounded-lg"
-      priority
-    />
-  </div>
-)}
+        <div
+          className={`mb-6 ${floatClass} hhover:brightness-105 max-w-xs w-full rounded-lg overflow-hidden`}
+        >
+          <Image
+            src={imageUrl}
+            alt={typeof title === "string" ? title : "Blog cover"}
+            width={300}
+            height={0}
+            className="h-auto w-full object-cover rounded-lg"
+            priority
+          />
+        </div>
+      )}
 
       <RichTextRenderer document={body} />
+
+      <div className="mt-16 border-t pt-6 grid sm:grid-cols-1 md:grid-cols-2 gap-6">
+  {previousPost && (
+    <Link href={`/blog/${previousPost.fields.slug}`} className="block">
+      <p className="text-sm text-gray-400">← Previous</p>
+      <h3 className="text-md text-blue-600 hover:underline font-serif">
+        {String(previousPost.fields.title)}
+      </h3>
+    </Link>
+  )}
+  {nextPost && (
+    <Link href={`/blog/${nextPost.fields.slug}`} className="block text-right">
+      <p className="text-sm text-gray-400">Next →</p>
+      <h3 className="text-md text-blue-600 hover:underline font-serif">
+        {String(nextPost.fields.title)}
+      </h3>
+    </Link>
+  )}
+</div>
     </article>
   );
 }
