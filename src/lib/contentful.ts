@@ -57,6 +57,13 @@ export async function getAllBlogSlugs() {
   return res.items.map((entry) => entry.fields.slug)
 }
 
+export async function getAllBlogPosts() {
+  const res = await client.getEntries({
+    content_type: "blogPost",
+    order: ['-fields.publishDate'] as ['-fields.publishDate'],
+  });
+  return res.items;
+}
 
 export async function getHero(): Promise<HeroEntry> {
   const res = await client.getEntries({
@@ -66,3 +73,5 @@ export async function getHero(): Promise<HeroEntry> {
 
   return res.items[0] as HeroEntry
 }
+
+

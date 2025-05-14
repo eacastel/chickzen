@@ -1,28 +1,58 @@
 import { notFound } from "next/navigation";
-import type { Metadata } from "next";
 import { getPage } from "@/lib/contentful";
 import SectionRenderer from "@/components/SectionRenderer";
 import HighlightBlockRenderer from "@/components/HighlightBlockRenderer";
 import ReviewBlockRenderer from "@/components/ReviewBlockRenderer";
 import LogoCarousel from "@/components/LogoCarousel";
+import type { Asset } from "contentful"
 import type {
   SectionEntry,
   ReviewBlockGroupEntry,
   LogoCarouselEntry,
   HighlightBlockEntry,
 } from "@/types/contentful";
+import { defaultMetadata } from "@/lib/defaultMetadata";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+
+export async function generateMetadata({ params }) {
   const { slug } = await params;
   const page = await getPage(slug);
+
+  const image = page?.fields?.previewImage as Asset;
+
+  const imageUrl =
+    typeof image?.fields?.file?.url === "string"
+      ? `https:${image.fields.file.url}`
+      : defaultMetadata.openGraph?.images?.[0]?.url ?? "https://chickzen.com/og-default.png";
+
+  const title = String(page?.fields?.metaTitle ?? page?.fields?.title ?? defaultMetadata.title);
+  const description = String(page?.fields?.metaSummary ?? defaultMetadata.description);
+
   return {
-    title: String(page?.fields?.title ?? "Chickzen"),
+    ...defaultMetadata,
+    title,
+    description,
+    alternates: {
+      canonical: `https://chickzen.com/${slug}`,
+    },
+    openGraph: {
+      ...defaultMetadata.openGraph,
+      title,
+      description,
+      url: `https://chickzen.com/${slug}`,
+      images: [{ url: imageUrl }],
+    },
+    twitter: {
+      ...defaultMetadata.twitter,
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
+
+
+
 
 export default async function Page({
   params,
