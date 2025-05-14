@@ -11,7 +11,11 @@ import Link from "next/link";
 export const revalidate = 300;
 export const dynamicParams = true;
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { getBlogPost } = await import("@/lib/contentful");
   const { slug } = await params;
   const post = await getBlogPost(slug);
@@ -21,7 +25,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const safeTitle = String(metaTitle ?? title ?? defaultMetadata.title);
   const safeDescription = String(metaSummary ?? defaultMetadata.description);
   const img = coverImage as Asset;
-  const imageUrl = img?.fields?.file?.url ? `https:${img.fields.file.url}` : null;
+  const imageUrl = img?.fields?.file?.url
+    ? `https:${img.fields.file.url}`
+    : null;
 
   return {
     title: safeTitle,
@@ -49,7 +55,11 @@ function getReadTime(text: string): string {
   return `${minutes} min read`;
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { getBlogPost } = await import("@/lib/contentful");
   const { slug } = await params;
   const post = await getBlogPost(slug);
@@ -132,23 +142,26 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <RichTextRenderer document={body} />
 
       <div className="mt-16 border-t pt-6 grid sm:grid-cols-1 md:grid-cols-2 gap-6">
-  {previousPost && (
-    <Link href={`/blog/${previousPost.fields.slug}`} className="block">
-      <p className="text-sm text-gray-400">← Previous</p>
-      <h3 className="text-md text-blue-600 hover:underline font-serif">
-        {String(previousPost.fields.title)}
-      </h3>
-    </Link>
-  )}
-  {nextPost && (
-    <Link href={`/blog/${nextPost.fields.slug}`} className="block text-right">
-      <p className="text-sm text-gray-400">Next →</p>
-      <h3 className="text-md text-blue-600 hover:underline font-serif">
-        {String(nextPost.fields.title)}
-      </h3>
-    </Link>
-  )}
-</div>
+        {previousPost && (
+          <Link href={`/blog/${previousPost.fields.slug}`} className="block">
+            <p className="text-sm text-gray-400">← Previous</p>
+            <h3 className="text-md text-blue-600 hover:underline font-serif">
+              {String(previousPost.fields.title)}
+            </h3>
+          </Link>
+        )}
+        {nextPost && (
+          <Link
+            href={`/blog/${nextPost.fields.slug}`}
+            className="block text-right"
+          >
+            <p className="text-sm text-gray-400">Next →</p>
+            <h3 className="text-md text-blue-600 hover:underline font-serif">
+              {String(nextPost.fields.title)}
+            </h3>
+          </Link>
+        )}
+      </div>
     </article>
   );
 }
