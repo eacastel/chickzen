@@ -8,7 +8,7 @@ import type { Document } from "@contentful/rich-text-types";
 import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer";
 import Link from "next/link";
 
-export const revalidate = 300;
+export const revalidate = 60;
 export const dynamicParams = true;
 
 export async function generateMetadata({
@@ -95,16 +95,16 @@ export default async function BlogPostPage({
   const plainText = body ? documentToPlainTextString(body) : "";
   const readTime = getReadTime(plainText);
 
-  const RichTextRenderer = (await import("@/components/RichTextRenderer"))
-    .default;
-
   const allPosts = await getAllBlogPosts();
   const index = allPosts.findIndex((p) => p.fields.slug === slug);
   const previousPost = allPosts[index - 1] || null;
   const nextPost = allPosts[index + 1] || null;
 
+  const RichTextRenderer = (await import("@/components/RichTextRenderer")).default;
+
+
   return (
-    <article className="max-w-3xl mx-auto px-4 py-12 prose prose-lg text-gray-700">
+    <article className="max-w-3xl mx-auto px-4 py-12  text-gray-700">
       <header className="mb-6">
         <h1 className="text-4xl font-serif mb-1">{title}</h1>
         {byline && <p className="text-sm text-gray-500">By {byline}</p>}
@@ -113,24 +113,16 @@ export default async function BlogPostPage({
             {publishDate.toLocaleDateString("en-US")} • {readTime}
           </p>
         )}
-        {tags.length > 0 && (
-          <ul className="flex gap-2 mt-2 text-xs text-gray-500 flex-wrap">
-            {tags.map((tag) => (
-              <li key={tag} className="bg-gray-100 px-2 py-1 rounded">
-                #{tag}
-              </li>
-            ))}
-          </ul>
-        )}
+        
       </header>
 
       {imageUrl && (
         <div
-          className={`mb-6 ${floatClass} hhover:brightness-105 max-w-xs w-full rounded-lg overflow-hidden`}
+          className={`mb-6 ${floatClass} hover:brightness-105 max-w-xs w-full rounded-lg overflow-hidden`}
         >
           <Image
             src={imageUrl}
-            alt={typeof title === "string" ? title : "Blog cover"}
+            alt={title}
             width={300}
             height={0}
             className="h-auto w-full object-cover rounded-lg"
@@ -139,7 +131,9 @@ export default async function BlogPostPage({
         </div>
       )}
 
-      <RichTextRenderer document={body} />
+<div className=" max-w-none text-gray-700">
+  <RichTextRenderer document={body} />
+</div>
 
       <div className="mt-16 border-t pt-6 grid sm:grid-cols-1 md:grid-cols-2 gap-6">
         {previousPost && (
@@ -150,18 +144,30 @@ export default async function BlogPostPage({
             </h3>
           </Link>
         )}
-        {nextPost && (
-          <Link
-            href={`/blog/${nextPost.fields.slug}`}
-            className="block text-right"
-          >
-            <p className="text-sm text-gray-400">Next →</p>
-            <h3 className="text-md text-blue-600 hover:underline font-serif">
-              {String(nextPost.fields.title)}
-            </h3>
-          </Link>
-        )}
+{nextPost && (
+  <Link
+    href={`/blog/${nextPost.fields.slug}`}
+    className="block p-4 rounded-lg bg-gray-50 hover:border-gray-300 hover:shadow-sm transition text-right"
+  >
+    <p className="text-sm text-gray-500 mb-1">Next →</p>
+    <h3 className="text-xl text-gray-700 font-serif tracking-tight hover:none leading-snug">
+      {String(nextPost.fields.title)}
+    </h3>
+  </Link>
+)}
+
       </div>
+              <div className="flex flex-auto justify-center m-6 width-full max-w-5xl text-center">
+        {tags.length > 0 && (
+          <ul className="flex gap-8 mt-2 text-xs text-gray-500 flex-wrap">
+            {tags.map((tag) => (
+              <li key={tag} className="bg-gray-100 px-2 py-1 rounded">
+                #{tag}
+              </li>
+            ))}
+          </ul>
+        )}
+        </div>
     </article>
   );
 }

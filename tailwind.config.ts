@@ -3,8 +3,8 @@ import typography from '@tailwindcss/typography'
 
 const config: Config = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./app/**/*.{js,ts,jsx,tsx}",
+    './src/**/*.{js,ts,jsx,tsx}',
+    './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -16,13 +16,37 @@ const config: Config = {
         background: '#fdfdfc',
         foreground: '#171717',
       },
-      typography: () => ({
+      typography: {
         DEFAULT: {
           css: {
-            maxWidth: '100%',
+            h1: {
+              fontFamily: 'var(--font-playfair)',
+              fontWeight: '700',
+              color: '#171717',
+            },
+            h2: {
+              fontFamily: 'var(--font-playfair)',
+              fontWeight: '600',
+              marginTop: '2em',
+              marginBottom: '1em',
+              color: '#171717',
+            },
+            p: {
+              marginBottom: '1.25em',
+              color: '#444',
+            },
+            ul: {
+              marginBottom: '1.5em',
+              paddingLeft: '1.25em',
+              listStyleType: 'disc',
+            },
+            a: {
+              color: '#1d4ed8',
+              textDecoration: 'underline',
+            },
           },
         },
-      }),
+      },
     },
   },
   plugins: [typography],

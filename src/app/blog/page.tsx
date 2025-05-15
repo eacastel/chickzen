@@ -5,7 +5,7 @@ import { documentToPlainTextString } from "@contentful/rich-text-plain-text-rend
 import type { Asset } from "contentful";
 import type { Document } from "@contentful/rich-text-types";
 
-export const revalidate = 300;
+export const revalidate = 60;
 export const dynamicParams = true;
 
 function getReadTime(text: string): string {

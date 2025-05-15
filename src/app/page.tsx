@@ -9,7 +9,7 @@ import { getPage } from "@/lib/contentful";
 import type { SectionEntry, HighlightBlockEntry } from "@/types/contentful";
 import type { BaseEntry } from "contentful";
 
-export const revalidate = 300;
+export const revalidate = 60;
 export const dynamicParams = true;
 
 export async function generateMetadata(): Promise<Metadata> {
