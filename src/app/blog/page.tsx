@@ -29,12 +29,6 @@ export default async function BlogIndexPage() {
           const slug = String(fields.slug ?? "");
           const byline =
             typeof fields.byline === "string" ? fields.byline : null;
-          const publishDateRaw = fields.publishDate;
-          const publishDate =
-            typeof publishDateRaw === "string" ||
-            typeof publishDateRaw === "number"
-              ? new Date(publishDateRaw)
-              : null;
 
           const tags = Array.isArray(fields.tags)
             ? fields.tags.filter(
@@ -77,26 +71,23 @@ export default async function BlogIndexPage() {
                 {title}
               </h2>
               {byline && <p className="text-sm text-gray-500">By {byline}</p>}
-              {publishDate && (
-                <p className="text-xs text-gray-400 mb-1">
-                  {publishDate.toLocaleDateString("en-US")} • {readTime}
-                </p>
-              )}
+
+              <p className="mt-3 text-sm text-gray-700 line-clamp-3">
+                {summary}...
+              </p>
+              <p className="mt-4 text-sm text-gray-400 mb-1">{readTime}</p>
               {tags.length > 0 && (
-                <div className="flex gap-2 text-xs mt-1 flex-wrap">
+                <div className="mt-4 flex gap-2 text-xs flex-wrap">
                   {tags.map((tag) => (
                     <span
                       key={tag}
-                      className="bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-gray-200 transition"
+                      className=" bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-gray-200 transition"
                     >
                       #{tag}
                     </span>
                   ))}
                 </div>
               )}
-              <p className="mt-3 text-sm text-gray-700 line-clamp-3">
-                {summary}...
-              </p>
             </Link>
           );
         })}
