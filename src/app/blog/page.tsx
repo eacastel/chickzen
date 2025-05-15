@@ -20,7 +20,7 @@ export default async function BlogIndexPage() {
   return (
     <div className="max-w-6xl mx-auto py-12 px-4">
       <h1 className="text-center tracking-tighter text-5xl leading-tight font-serif mb-4 text-gray-700">
-        Ideas that Amplify
+        Words with Purpose
       </h1>
       <p className="flex justify-center max-w-4xl mx-auto my-12 ">Thoughtful stories, brand breakthroughs, and real-world strategy — all crafted to elevate your voice, amplify your message, and help you lead with clarity and intention.</p>
       <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
