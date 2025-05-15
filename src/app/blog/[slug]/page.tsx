@@ -106,10 +106,10 @@ export default async function BlogPostPage({
   return (
     <article className="max-w-3xl mx-auto px-4 py-12  text-gray-700">
       <header className="mb-6">
-        <h1 className="text-4xl font-serif mb-1">{title}</h1>
+        <h1 className="tracking-tighter text-5xl leading-tight font-serif mb-4">{title}</h1>
         {byline && <p className="text-sm text-gray-500">By {byline}</p>}
         {publishDate && (
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-gray-400 mb-8">
             {publishDate.toLocaleDateString("en-US")} • {readTime}
           </p>
         )}
@@ -131,7 +131,7 @@ export default async function BlogPostPage({
         </div>
       )}
 
-<div className=" max-w-none text-gray-700">
+<div className=" max-w-none text-gray-700 ">
   <RichTextRenderer document={body} />
 </div>
 

@@ -9,16 +9,16 @@ import {
 
 export default function RichTextRenderer({ document }: { document: Document }) {
   return (
-    <div className="max-w-none text-gray-700">
+    <div className="max-w-none text-gray-700 leading-relaxed">
       {documentToReactComponents(document, {
         renderNode: {
           [BLOCKS.HEADING_1]: (_, children) => (
-            <h1 className="text-4xl mb-6 font-serif tracking-tight">
+            <h1 className="text-5xl mb-6 font-serif tracking-tight">
               {children}
             </h1>
           ),
           [BLOCKS.HEADING_2]: (_, children) => (
-            <h2 className="text-3xl mb-5 font-serif text-gray-800">
+            <h2 className="text-3xl mb-5 pt-3 font-serif text-gray-800">
               {children}
             </h2>
           ),
