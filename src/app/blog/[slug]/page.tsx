@@ -116,20 +116,21 @@ export default async function BlogPostPage({
         
       </header>
 
-      {imageUrl && (
-        <div
-          className={`mb-6 ${floatClass} hover:brightness-105 max-w-xs w-full rounded-lg overflow-hidden`}
-        >
-          <Image
-            src={imageUrl}
-            alt={title}
-            width={300}
-            height={0}
-            className="h-auto w-full object-cover rounded-lg"
-            priority
-          />
-        </div>
-      )}
+{imageUrl && (
+  <div
+    className={`mb-6  mt-4 w-full max-w-xs overflow-hidden rounded-lg hover:brightness-105
+      ${floatClass} md:mx-0 mx-auto md:mb-4`}
+  >
+    <Image
+      src={imageUrl}
+      alt={title}
+      width={300}
+      height={0}
+      className="h-auto w-full object-cover rounded-lg"
+      priority
+    />
+  </div>
+)}
 
 <div className=" max-w-none text-gray-700 ">
   <RichTextRenderer document={body} />
@@ -137,9 +138,9 @@ export default async function BlogPostPage({
 
       <div className="mt-16 border-t pt-6 grid sm:grid-cols-1 md:grid-cols-2 gap-6">
         {previousPost && (
-          <Link href={`/blog/${previousPost.fields.slug}`} className="block">
-            <p className="text-sm text-gray-400">← Previous</p>
-            <h3 className="text-md text-blue-600 hover:underline font-serif">
+          <Link href={`/blog/${previousPost.fields.slug}`} className="block p-4 rounded-lg bg-gray-50 hover:border-gray-300 hover:shadow-sm transition text-right">
+            <p className="text-sm text-gray-500 mb-1">← Previous</p>
+            <h3 className="text-xl text-gray-700 font-serif tracking-tight hover:none leading-snug">
               {String(previousPost.fields.title)}
             </h3>
           </Link>
@@ -147,7 +148,7 @@ export default async function BlogPostPage({
 {nextPost && (
   <Link
     href={`/blog/${nextPost.fields.slug}`}
-    className="block p-4 rounded-lg bg-gray-50 hover:border-gray-300 hover:shadow-sm transition text-right"
+    className="block p-4 rounded-lg bg-gray-50 hover:border-gray-300 hover:shadow-sm transition text-left"
   >
     <p className="text-sm text-gray-500 mb-1">Next →</p>
     <h3 className="text-xl text-gray-700 font-serif tracking-tight hover:none leading-snug">

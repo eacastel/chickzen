@@ -19,9 +19,10 @@ export default async function BlogIndexPage() {
 
   return (
     <div className="max-w-6xl mx-auto py-12 px-4">
-      <h1 className="text-4xl font-serif mb-10 text-center">
-        The Chickzen Blog
+      <h1 className="text-center tracking-tighter text-5xl leading-tight font-serif mb-4 text-gray-700">
+        Ideas that Amplify
       </h1>
+      <p className="flex justify-center max-w-4xl mx-auto my-12 ">Thoughtful stories, brand breakthroughs, and real-world strategy — all crafted to elevate your voice, amplify your message, and help you lead with clarity and intention.</p>
       <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => {
           const fields = post.fields;
@@ -57,17 +58,19 @@ export default async function BlogIndexPage() {
               className="block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-4"
             >
               {imageUrl && (
-                <div className="relative w-full aspect-square mb-4 rounded-lg overflow-hidden">
-                  <Image
-                    src={imageUrl}
-                    alt={title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 300px"
-                  />
-                </div>
+                <div className="flex justify-center">
+ <div className="relative w-[200px] h-[200px] mb-4 rounded-lg overflow-hidden">
+  <Image
+    src={imageUrl}
+    alt={title}
+    fill
+    className="object-cover"
+    sizes="200px"
+  />
+</div>
+</div>
               )}
-              <h2 className="text-2xl font-semibold mb-1 font-serif">
+              <h2 className="text-2xl font-semibold mb-1 font-serif text-gray-700">
                 {title}
               </h2>
               {byline && <p className="text-sm text-gray-500">By {byline}</p>}
