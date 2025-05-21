@@ -12,14 +12,14 @@ type Props = {
 export default function ReviewBlockRenderer({ reviews }: Props) {
   return (
     <motion.section
-      className="pb-0 pt-10 text-center px-4 font-serif bg-white text-gray-800"
+      className="pb-0 pt-10 text-center px-4 font-serif bg-white text-gray-800 min-h-[200px]"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.01 }}
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
-        {reviews.map((review) => {
+        {reviews.map((review, index) => {
           const title = String(review.fields.title ?? "");
           const label = String(review.fields.label ?? "");
           const showTitle = review.fields.showTitle !== false;
@@ -28,9 +28,13 @@ export default function ReviewBlockRenderer({ reviews }: Props) {
           const body = review.fields.body;
 
           return (
-            <div
+            <motion.div
               key={review.sys.id}
-              className="p-6 rounded shadow-sm bg-fuchsia-50"
+              className="p-6 rounded shadow-sm bg-[#F4E9E6]"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              viewport={{ once: true, amount: 0.01 }}
             >
               {rating > 0 && (
                 <div
@@ -41,7 +45,7 @@ export default function ReviewBlockRenderer({ reviews }: Props) {
                     <svg
                       key={i}
                       className={`w-5 h-5 ${
-                        i < rating ? "text-pink-600" : "text-gray-300"
+                        i < rating ? "text-[#D4AF7F]" : "text-gray-300"
                       }`}
                       fill="currentColor"
                       viewBox="0 0 20 20"
@@ -65,7 +69,7 @@ export default function ReviewBlockRenderer({ reviews }: Props) {
               {label && (
                 <p className="text-sm text-gray-500 italic">— {label}</p>
               )}
-            </div>
+            </motion.div>
           );
         })}
       </div>

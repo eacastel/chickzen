@@ -32,12 +32,16 @@ export default function SectionRenderer({ section }: Props) {
 
   const imageBlock =
     isAsset(image) && image.fields.file?.url ? (
-      <div
+      <motion.div
         className={`${
           position === "float-left"
             ? "md:float-left md:mr-6"
             : "md:float-right md:ml-6"
         } w-full max-w-[300px] mx-auto md:mx-0 mb-6`}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, amount: 0.01 }}
       >
         <Image
           src={`https:${image.fields.file.url}`}
@@ -47,7 +51,7 @@ export default function SectionRenderer({ section }: Props) {
           className="w-full mt-4 h-auto md:rounded object-cover aspect-2/3"
           priority
         />
-      </div>
+      </motion.div>
     ) : null;
 
   const anchorId =
@@ -62,36 +66,59 @@ export default function SectionRenderer({ section }: Props) {
   return (
     <motion.section
       id={anchorId}
-      className="py-8 px-4 bg-background text-foreground text-center scroll-mt-8"
+      className="py-8 px-4 bg-background text-foreground text-center scroll-mt-8 min-h-[200px]"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.01 }}
     >
       <div className="max-w-4xl mx-auto text-gray-600 text-left clear-both">
-
         {showTitle !== false && !!title && (
-          <h2 className="text-6xl text-gray-600 font-serif tracking-tighter mb-8 text-center">
+          <motion.h2
+            className="text-6xl text-gray-600 font-serif tracking-tighter mb-8 text-center"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.01 }}
+          >
             {title}
-          </h2>
+          </motion.h2>
         )}
 
         {byline && (
-          <p className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-6 text-center">
+          <motion.p
+            className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-6 text-center"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true, amount: 0.01 }}
+          >
             {byline}
-          </p>
+          </motion.p>
         )}
 
         {position === "float-left" || position === "float-right" ? (
-          <div className="prose prose-lg max-w-none mx-auto text-justify clear-both">
+          <motion.div
+            className="prose prose-lg max-w-none mx-auto text-justify clear-both"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.01 }}
+          >
             {imageBlock}
             {documentToReactComponents(body as unknown as Document)}
             <div className="clear-both" />
-          </div>
+          </motion.div>
         ) : (
-          <div className="prose prose-lg max-w-none mx-auto text-justify">
+          <motion.div
+            className="prose prose-lg max-w-none mx-auto text-justify"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.01 }}
+          >
             {documentToReactComponents(body as unknown as Document)}
-          </div>
+          </motion.div>
         )}
       </div>
     </motion.section>
