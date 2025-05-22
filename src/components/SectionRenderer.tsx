@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import RichTextRenderer from "@/components/RichTextRenderer";
 import type { Document } from "@contentful/rich-text-types";
 import type { Asset } from "contentful";
 import type { SectionEntry, SectionFields } from "@/types/contentful";
@@ -106,7 +106,7 @@ export default function SectionRenderer({ section }: Props) {
             viewport={{ once: true, amount: 0.01 }}
           >
             {imageBlock}
-            {documentToReactComponents(body as unknown as Document)}
+            <RichTextRenderer document={body as unknown as Document} />
             <div className="clear-both" />
           </motion.div>
         ) : (
@@ -117,7 +117,7 @@ export default function SectionRenderer({ section }: Props) {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true, amount: 0.01 }}
           >
-            {documentToReactComponents(body as unknown as Document)}
+            <RichTextRenderer document={body as unknown as Document} />
           </motion.div>
         )}
       </div>

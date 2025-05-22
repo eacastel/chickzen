@@ -1,17 +1,23 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getPage } from "@/lib/contentful";
+import { defaultMetadata } from "@/lib/defaultMetadata";
+import type { Metadata } from "next";
+import type { Asset } from "contentful";
+
 import SectionRenderer from "@/components/SectionRenderer";
 import HighlightBlockRenderer from "@/components/HighlightBlockRenderer";
 import ReviewBlockRenderer from "@/components/ReviewBlockRenderer";
 import LogoCarousel from "@/components/LogoCarousel";
-import { defaultMetadata } from "@/lib/defaultMetadata";
-import type { Asset } from "contentful"
+import ServiceOverviewBlockRenderer from "@/components/ServiceOverviewBlockRenderer";
+import ServiceTypeRenderer from "@/components/ServiceTypeRenderer";
+
 import type {
   SectionEntry,
   ReviewBlockGroupEntry,
   LogoCarouselEntry,
   HighlightBlockEntry,
+  ServiceOverviewBlockEntry,
+  ServiceTypeEntry,
 } from "@/types/contentful";
 
 export const revalidate = 60;
@@ -21,7 +27,7 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params; 
+  const { slug } = await params;
   const page = await getPage(slug);
   const image = page?.fields?.previewImage as Asset;
 
@@ -62,7 +68,36 @@ export async function generateMetadata({
   };
 }
 
+// === Type guards ===
 
+function getContentTypeId(entry: unknown): string | null {
+  if (
+    typeof entry === "object" &&
+    entry !== null &&
+    "sys" in entry &&
+    "fields" in entry &&
+    typeof (entry as { sys: { contentType?: { sys?: { id?: unknown } } } }).sys
+      ?.contentType?.sys?.id === "string"
+  ) {
+    return (entry as { sys: { contentType: { sys: { id: string } } } }).sys
+      .contentType.sys.id;
+  }
+  return null;
+}
+
+function isHighlightBlockEntry(entry: unknown): entry is HighlightBlockEntry {
+  return getContentTypeId(entry) === "highlightBlock";
+}
+
+function isServiceOverviewBlockEntry(entry: unknown): entry is ServiceOverviewBlockEntry {
+  return getContentTypeId(entry) === "serviceOverviewBlock";
+}
+
+function isServiceTypeEntry(entry: unknown): entry is ServiceTypeEntry {
+  return getContentTypeId(entry) === "serviceType";
+}
+
+// === Main Page Component ===
 
 export default async function Page({
   params,
@@ -77,32 +112,6 @@ export default async function Page({
     ? page.fields.section
     : [page.fields.section];
 
-  function getContentTypeId(entry: unknown): string | null {
-    if (
-      typeof entry === "object" &&
-      entry !== null &&
-      "sys" in entry &&
-      "fields" in entry &&
-      typeof (entry as { sys: { contentType?: { sys?: { id?: unknown } } } }).sys
-        ?.contentType?.sys?.id === "string"
-    ) {
-      return (entry as { sys: { contentType: { sys: { id: string } } } }).sys
-        .contentType.sys.id;
-    }
-    return null;
-  }
-
-  function isHighlightBlockEntry(entry: unknown): entry is HighlightBlockEntry {
-    return (
-      typeof entry === "object" &&
-      entry !== null &&
-      "sys" in entry &&
-      "fields" in entry &&
-      (entry as { sys: { contentType: { sys: { id: string } } } }).sys
-        .contentType.sys.id === "highlightBlock"
-    );
-  }
-
   return (
     <main>
       {content.map((entry, i) => {
@@ -110,15 +119,11 @@ export default async function Page({
           return null;
         }
 
-        const typeId = getContentTypeId(entry);
         const key = (entry as { sys: { id?: string } }).sys.id ?? i;
 
-        if (typeId === "section") {
+        if (getContentTypeId(entry) === "section") {
           return (
-            <SectionRenderer
-              key={key}
-              section={entry as unknown as SectionEntry}
-            />
+            <SectionRenderer key={key} section={entry as unknown as SectionEntry} />
           );
         }
 
@@ -128,7 +133,7 @@ export default async function Page({
           );
         }
 
-        if (typeId === "reviewBlockGroup") {
+        if (getContentTypeId(entry) === "reviewBlockGroup") {
           const reviewGroupEntry = entry as ReviewBlockGroupEntry;
           const blocks = reviewGroupEntry.fields.reviewBlocks;
           const groupTitle: string = String(
@@ -151,7 +156,7 @@ export default async function Page({
           return null;
         }
 
-        if (typeId === "logoCarousel") {
+        if (getContentTypeId(entry) === "logoCarousel") {
           const logoEntry = entry as LogoCarouselEntry;
           const logos = logoEntry.fields.logos;
 
@@ -160,6 +165,32 @@ export default async function Page({
           }
 
           return null;
+        }
+
+        if (isServiceOverviewBlockEntry(entry)) {
+          return (
+            <ServiceOverviewBlockRenderer
+              key={key}
+              serviceTypes={
+                Array.isArray(entry.fields.serviceTypes)
+                  ? entry.fields.serviceTypes.filter(
+                      (type): type is ServiceTypeEntry =>
+                        type !== undefined &&
+                        typeof type === "object" &&
+                        "fields" in type &&
+                        "sys" in type &&
+                        "metadata" in type
+                    )
+                  : []
+              }
+            />
+          );
+        }
+
+        if (isServiceTypeEntry(entry)) {
+          return (
+            <ServiceTypeRenderer key={key} serviceType={entry} />
+          );
         }
 
         return null;

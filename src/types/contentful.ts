@@ -94,3 +94,43 @@ export interface CallToActionFields {
 }
 export type CallToActionSkeleton = EntrySkeletonType<CallToActionFields>;
 export type CallToActionEntry = Entry<CallToActionSkeleton>;
+
+export interface ServiceProductFields {
+  title: EntryFieldTypes.Text;
+  description: EntryFieldTypes.Text | EntryFieldTypes.RichText;
+  price: EntryFieldTypes.Number;
+}
+
+export type ServiceProductSkeleton = EntrySkeletonType<ServiceProductFields, "serviceProduct">;
+export type ServiceProductEntry = Entry<ServiceProductSkeleton>;
+
+export interface ServiceTypeFields {
+  title: EntryFieldTypes.Text;
+  byline: EntryFieldTypes.Text;
+  services: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<ServiceProductSkeleton>>;
+}
+
+export type ServiceTypeSkeleton = EntrySkeletonType<ServiceTypeFields, "serviceType">;
+export type ServiceTypeEntry = Entry<ServiceTypeSkeleton>;
+
+export interface ServiceOverviewBlockFields {
+  serviceTypes: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<ServiceTypeSkeleton>>;
+}
+
+export type ServiceOverviewBlockSkeleton = EntrySkeletonType<ServiceOverviewBlockFields, "serviceOverviewBlock">;
+export type ServiceOverviewBlockEntry = Entry<ServiceOverviewBlockSkeleton>;
+
+export interface BlogPostFields {
+  title?: EntryFieldTypes.Symbol;
+  slug?: EntryFieldTypes.Symbol;
+  byline?: EntryFieldTypes.Symbol;
+  metaSummary?: EntryFieldTypes.Symbol;
+  tags?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+  body: EntryFieldTypes.RichText;
+  coverImage: Asset;
+  imagePosition?: EntryFieldTypes.Text;
+  publishDate?: EntryFieldTypes.Date;
+}
+
+export type BlogPostSkeleton = EntrySkeletonType<BlogPostFields, "blogPost">;
+export type BlogPostEntry = Entry<BlogPostSkeleton>;

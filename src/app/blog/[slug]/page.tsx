@@ -1,4 +1,5 @@
 import Image from "next/image";
+const AnimatedBlogPost = (await import("@/components/AnimatedBlogPost")).default;
 import { notFound } from "next/navigation";
 import { defaultMetadata } from "@/lib/defaultMetadata";
 import type { Metadata } from "next";
@@ -104,7 +105,8 @@ export default async function BlogPostPage({
 
 
   return (
-    <article className="max-w-3xl mx-auto px-4 py-12  text-gray-700">
+    <AnimatedBlogPost>
+    <article className="max-w-3xl mx-auto px-4 py-2  text-gray-700">
       <header className="mb-6">
         <h1 className="tracking-tighter text-5xl leading-tight font-serif mb-4">{title}</h1>
         {byline && <p className="text-sm text-gray-500">By {byline}</p>}
@@ -170,5 +172,6 @@ export default async function BlogPostPage({
         )}
         </div>
     </article>
+    </AnimatedBlogPost>
   );
 }

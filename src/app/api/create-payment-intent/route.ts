@@ -1,6 +1,11 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 
+const secretKey = process.env.STRIPE_SECRET_KEY;
+if (!secretKey) {
+  throw new Error("STRIPE_SECRET_KEY is not defined");
+}
+
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-04-30.basil",
 });
