@@ -1,6 +1,12 @@
 // src/lib/contentful.ts
 import { createClient } from 'contentful'
-import type { HeroEntry, MenuEntry, HeaderImageEntry } from '@/types/contentful'
+import type { 
+  HeroEntry,
+  MenuEntry,
+  HeaderImageEntry,
+  BlogPostEntry,
+  BlogPostSkeleton
+ } from '@/types/contentful'
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
@@ -57,11 +63,12 @@ export async function getAllBlogSlugs() {
   return res.items.map((entry) => entry.fields.slug)
 }
 
-export async function getAllBlogPosts() {
-  const res = await client.getEntries({
+export async function getAllBlogPosts(): Promise<BlogPostEntry[]> {
+  const res = await client.getEntries<BlogPostSkeleton>({
     content_type: "blogPost",
-    order: ['-fields.publishDate'] as ['-fields.publishDate'],
+    order: ['-fields.publishDate'],
   });
+
   return res.items;
 }
 

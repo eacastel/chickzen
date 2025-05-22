@@ -124,11 +124,11 @@ export interface BlogPostFields {
   title?: EntryFieldTypes.Symbol;
   slug?: EntryFieldTypes.Symbol;
   byline?: EntryFieldTypes.Symbol;
-  metaSummary?: EntryFieldTypes.Symbol;
   tags?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+  metaSummary?: EntryFieldTypes.Symbol;
   body: EntryFieldTypes.RichText;
   coverImage: Asset;
-  imagePosition?: EntryFieldTypes.Text;
+  imagePosition?: EntryFieldTypes.Symbol;
   publishDate?: EntryFieldTypes.Date;
 }
 
