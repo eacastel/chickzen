@@ -17,7 +17,7 @@ export default function ServiceOverviewBlockRenderer({ serviceTypes }: Props) {
       transition={{ duration: 1.2, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.01 }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {serviceTypes.map((type) => {
           const rawTitle = type.fields.title;
           const rawByline = type.fields.byline;
