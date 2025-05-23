@@ -5,6 +5,7 @@ import type {
   MenuEntry,
   HeaderImageEntry,
   BlogPostEntry,
+  ServiceTypeEntry,
   BlogPostSkeleton
  } from '@/types/contentful'
 
@@ -81,4 +82,11 @@ export async function getHero(): Promise<HeroEntry> {
   return res.items[0] as HeroEntry
 }
 
+export async function getAllServiceTypes(): Promise<ServiceTypeEntry[]> {
+  const res = await client.getEntries({
+    content_type: "serviceType",
+    include: 2,
+  });
 
+  return res.items as ServiceTypeEntry[];
+}

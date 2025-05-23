@@ -108,6 +108,7 @@ export interface ServiceTypeFields {
   title: EntryFieldTypes.Text;
   byline: EntryFieldTypes.Text;
   services: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<ServiceProductSkeleton>>;
+  sortOrder: EntryFieldTypes.Integer; 
 }
 
 export type ServiceTypeSkeleton = EntrySkeletonType<ServiceTypeFields, "serviceType">;
