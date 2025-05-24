@@ -18,7 +18,10 @@ function CustomCheckbox({
 }) {
   return (
     <button
-      onClick={onChange}
+      onClick={(e) => {
+        e.stopPropagation(); 
+        onChange();          
+      }}
       className="text-[#D4AF7F] text-2xl focus:outline-none"
       aria-label="Toggle selection"
     >
