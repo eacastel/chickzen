@@ -4,7 +4,7 @@ export const DEFAULT_CURRENCY: Currency = "EUR";
 
 export function formatCurrency(value: number, currency: Currency): string {
   return new Intl.NumberFormat(
-    currency === "USD" ? "en-US" : "es-ES", // choose any EU locale you like
+    currency === "USD" ? "en-US" : "de-DE", // choose any EU locale you like
     { style: "currency", currency, minimumFractionDigits: 0 }
   ).format(value);
 }
