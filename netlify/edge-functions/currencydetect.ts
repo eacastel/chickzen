@@ -1,7 +1,7 @@
 import type { Context } from "https://edge.netlify.net";
 
 export default async function middleware(req: Request, ctx: Context) {
-  // Netlify GEO comes in ctx.geo
+
   const country = ctx.geo?.country?.toUpperCase() || "INTL";
 const currency =
   country === "US" ? "USD" : country === "UN" ? "EUR" : "EUR";
