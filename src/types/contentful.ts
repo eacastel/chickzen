@@ -142,7 +142,8 @@ export type HighlightBlockEntry    = Entry<HighlightBlockSkeleton>;
 export interface ServiceProductFields {
   title:       EntryFieldTypes.Text;
   description: EntryFieldTypes.Text | EntryFieldTypes.RichText;
-  price:       EntryFieldTypes.Number;
+  price: EntryFieldTypes.Number;      // ← EUR price (default)
+  usPrice?: EntryFieldTypes.Number;   // ← USD price
 }
 export type ServiceProductSkeleton = EntrySkeletonType<ServiceProductFields, "serviceProduct">;
 export type ServiceProductEntry    = Entry<ServiceProductSkeleton>;

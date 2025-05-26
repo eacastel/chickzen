@@ -1,29 +1,21 @@
+// src/app/api/create-payment-intent/route.ts
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
-
-const secretKey = process.env.STRIPE_SECRET_KEY;
-if (!secretKey) {
-  throw new Error("STRIPE_SECRET_KEY is not defined");
-}
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-04-30.basil",
 });
 
-function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
 export async function POST(req: Request) {
-  const { name, email } = await req.json();
+  const { name, email, amount, currency } = await req.json(); // ⬅︎ from frontend
 
-  if (!email || !isValidEmail(email)) {
-    return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
+  if (!amount || !currency) {
+    return NextResponse.json({ error: "Missing amount or currency" }, { status: 400 });
   }
 
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: 32707,
-    currency: "eur",
+    amount: Math.round(amount),            // already in cents from client
+    currency: (currency as string).toLowerCase(), // "usd" or "eur"
     metadata: { name, email },
     receipt_email: email,
   });
