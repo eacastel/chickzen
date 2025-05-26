@@ -9,6 +9,6 @@
   NEXT_PRIVATE_IGNORE_VERSION_ERRORS = "true"
   NEXT_DISABLE_CACHE = "true"
 
-[edge_functions]
-  path = "/"          
+[[edge_functions]]
+  path = "/*"          
   function = "edge-middleware"
