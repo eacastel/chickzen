@@ -73,7 +73,7 @@ export default function SectionRenderer({ section }: Props) {
       viewport={{ once: true, amount: 0.01 }}
     >
       <div className="max-w-4xl mx-auto text-gray-600 text-left clear-both">
-        {showTitle !== false && !!title && (
+        {(showTitle ?? true) && Boolean(title) && (
           <motion.h2
             className="text-6xl text-gray-600 font-serif tracking-tighter mb-8 text-center"
             initial={{ opacity: 0, y: 10 }}
