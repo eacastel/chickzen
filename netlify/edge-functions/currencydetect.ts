@@ -3,8 +3,7 @@ import type { Context } from "https://edge.netlify.net";
 export default async function middleware(req: Request, ctx: Context) {
 
   const country = ctx.geo?.country?.toUpperCase() || "INTL";
-const currency =
-  country === "US" ? "USD" : country === "UN" ? "EUR" : "EUR";
+  const currency = country === "US" ? "USD" : "EUR";
 
   const res = await ctx.next();
   res.headers.append(
