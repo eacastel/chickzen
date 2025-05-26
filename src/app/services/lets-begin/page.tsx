@@ -4,8 +4,6 @@ import { cookies } from "next/headers";
 import ClientWrapper from "./ClientWrapper";
 import type { Currency } from "@/lib/utils/currency";
 
-const currencyCookie = cookies().get("currency")?.value;
-console.log("🍪 Currency cookie:", currencyCookie);
 
 export const metadata = {
   title: "StoryZen Services Checkout | Chickzen",
