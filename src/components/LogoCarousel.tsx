@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import type { Asset, ChainModifiers } from "contentful";
 
@@ -10,63 +11,69 @@ type Props = {
 };
 
 export default function LogoCarousel({ logos }: Props) {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false }));
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+    autoplay.current,
+  ]);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    const interval = setInterval(() => {
-      const maxScrollLeft =
-        scrollContainer.scrollWidth - scrollContainer.clientWidth;
-
-      if (scrollContainer.scrollLeft >= maxScrollLeft - 5) {
-        scrollContainer.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        scrollContainer.scrollBy({ left: 150, behavior: "smooth" }); // ⏩ faster scroll
-      }
-    }, 2000); // ⏱ faster interval
-
-    return () => clearInterval(interval);
-  }, []);
+    if (emblaApi) autoplay.current?.play();
+  }, [emblaApi]);
 
   return (
-    <motion.section
-      className="pt-2 pb-8 px-4 bg-white overflow-hidden"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.2, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.5 }}
-    >
-      <div className="max-w-5xl mx-auto">
-  <div
-    ref={scrollRef}
-    className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar px-4 py-6"
-  >
-    {logos.map((logo, index) => {
-      const src = `https:${logo.fields.file?.url ?? ""}`;
-      const alt =
-        typeof logo.fields.title === "string"
-          ? logo.fields.title
-          : `Logo ${index + 1}`;
+    <section className="pt-20 px-4 bg-white">
+      <div className="max-w-4xl mx-auto relative">
+        {/* Carousel */}
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex">
+            {logos.map((logo, index) => {
+              const src = `https:${logo.fields.file?.url ?? ""}`;
+              const alt =
+                typeof logo.fields.title === "string"
+                  ? logo.fields.title
+                  : `Logo ${index + 1}`;
 
-      return (
-        <div
-          key={logo.sys.id ?? index}
-          className="flex-shrink-0 snap-start flex items-center justify-center w-[140px] h-[80px] md:w-[180px] md:h-[100px] px-2"
-        >
-          <Image
-            src={src}
-            alt={alt}
-            width={180}
-            height={100}
-            className="object-contain w-full h-full"
-          />
+              return (
+                <div
+                  key={logo.sys.id ?? index}
+                  className="min-w-[33.33%] sm:min-w-[25%] md:min-w-[20%] px-1 py-2 flex justify-center items-center"
+                >
+                  <div className="relative w-[140px] h-[80px] md:w-[160px] md:h-[100px] flex items-center justify-center">
+
+                    <Image
+                      src={src}
+                      alt={alt}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 100px, 120px"
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      );
-    })}
-  </div>
-</div>
-    </motion.section>
+
+        {/* Arrows */}
+        <button
+          onClick={scrollPrev}
+          aria-label="Previous"
+          className="absolute left-[-1rem] top-1/2 -translate-y-1/2 w-10 h-10 bg-[#F4E9E6] text-white rounded-full flex items-center justify-center shadow hover:opacity-80 transition-opacity"
+        >
+          ◀
+        </button>
+        <button
+          onClick={scrollNext}
+          aria-label="Next"
+          className="absolute right-[-1rem] top-1/2 -translate-y-1/2 w-10 h-10 bg-[#F4E9E6] text-white rounded-full flex items-center justify-center shadow hover:opacity-80 transition-opacity"
+        >
+          ▶
+        </button>
+      </div>
+    </section>
   );
 }

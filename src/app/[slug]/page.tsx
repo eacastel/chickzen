@@ -145,7 +145,7 @@ export default async function Page({
 
           if (Array.isArray(blocks)) {
             return (
-              <div key={key} className="text-center my-12">
+              <div key={key} className="text-center my-1">
                 {groupTitle && (
                   <h2 className="text-6xl text-gray-600 font-serif tracking-tighter text-center">
                     {groupTitle}

@@ -33,7 +33,7 @@ export default async function Footer() {
         {/* Left: Footer Menu */}
         <Menu
           menuName="Footer"
-          className="flex flex-wrap justify-center md:flex-col md:items-start md:space-y-2 gap-x-4 gap-y-2 text-sm"
+          className="flex flex-wrap justify-center md:flex-col md:items-start md:space-y-1 gap-x-4 gap-y-2 text-sm text-gray-600"
         />
 
         {/* Center: Logo */}
@@ -60,6 +60,13 @@ export default async function Footer() {
           </div>
         </div>
       </div>
+          {/* Legal Footer */}
+    <div className="mt-8 border-t border-gray-100 pt-6">
+      <Menu
+        menuName="Legal Footer"
+        className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs text-gray-500"
+      />
+    </div>
     </footer>
   );
 }
