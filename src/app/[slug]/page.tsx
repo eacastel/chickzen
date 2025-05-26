@@ -89,7 +89,9 @@ function isHighlightBlockEntry(entry: unknown): entry is HighlightBlockEntry {
   return getContentTypeId(entry) === "highlightBlock";
 }
 
-function isServiceOverviewBlockEntry(entry: unknown): entry is ServiceOverviewBlockEntry {
+function isServiceOverviewBlockEntry(
+  entry: unknown
+): entry is ServiceOverviewBlockEntry {
   return getContentTypeId(entry) === "serviceOverviewBlock";
 }
 
@@ -123,14 +125,15 @@ export default async function Page({
 
         if (getContentTypeId(entry) === "section") {
           return (
-            <SectionRenderer key={key} section={entry as unknown as SectionEntry} />
+            <SectionRenderer
+              key={key}
+              section={entry as unknown as SectionEntry}
+            />
           );
         }
 
         if (isHighlightBlockEntry(entry)) {
-          return (
-            <HighlightBlockRenderer key={key} block={entry} />
-          );
+          return <HighlightBlockRenderer key={key} block={entry} />;
         }
 
         if (getContentTypeId(entry) === "reviewBlockGroup") {
@@ -188,9 +191,7 @@ export default async function Page({
         }
 
         if (isServiceTypeEntry(entry)) {
-          return (
-            <ServiceTypeRenderer key={key} serviceType={entry} />
-          );
+          return <ServiceTypeRenderer key={key} serviceType={entry} />;
         }
 
         return null;

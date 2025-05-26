@@ -166,10 +166,11 @@ export type ServiceOverviewBlockEntry    = Entry<ServiceOverviewBlockSkeleton>;
 /*  BLOG                                                                      */
 /* -------------------------------------------------------------------------- */
 export interface BlogPostFields {
-  title?:        EntryFieldTypes.Symbol;
+  title?:        EntryFieldTypes.Text;
   slug?:         EntryFieldTypes.Symbol;
   byline?:       EntryFieldTypes.Symbol;
   tags?:         EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+  metaTitle?:    EntryFieldTypes.Text;
   metaSummary?:  EntryFieldTypes.Symbol;
   body:          EntryFieldTypes.RichText;
   coverImage:    Asset;

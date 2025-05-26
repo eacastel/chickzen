@@ -1,3 +1,5 @@
+
+
 export function getLocalized<T>(field: T | { [locale: string]: T } | undefined): T | undefined {
   if (field === undefined || field === null) return undefined;
 
@@ -21,3 +23,4 @@ export function filterResolvedEntries<T extends { sys?: unknown; fields?: unknow
     );
   });
 }
+

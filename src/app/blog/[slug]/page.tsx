@@ -25,7 +25,7 @@ export async function generateMetadata({
   const { metaTitle, title, metaSummary, coverImage } = post.fields;
   const safeTitle = String(metaTitle ?? title ?? defaultMetadata.title);
   const safeDescription = String(metaSummary ?? defaultMetadata.description);
-  const img = coverImage as Asset;
+  const img = coverImage as unknown as Asset;
   const imageUrl = img?.fields?.file?.url
     ? `https:${img.fields.file.url}`
     : null;
@@ -79,7 +79,7 @@ export default async function BlogPostPage({
     ? fields.tags.filter((tag): tag is string => typeof tag === "string")
     : [];
 
-  const image = fields.coverImage as Asset;
+  const image = fields.coverImage as unknown as Asset;
   const imageUrl = image?.fields?.file?.url
     ? `https:${image.fields.file.url}`
     : null;
