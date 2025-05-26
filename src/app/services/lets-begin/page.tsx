@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic"; 
+
 import { cookies } from "next/headers";
 import ClientWrapper from "./ClientWrapper";
 import type { Currency } from "@/lib/utils/currency";
