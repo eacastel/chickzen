@@ -1,4 +1,3 @@
-import Hero from "@/components/Hero";
 import ClientWrapper from "./ClientWrapper";
 
 export const metadata = {
@@ -26,7 +25,6 @@ export const metadata = {
 export default function ServicesCheckoutPage() {
   return (
     <>
-      <Hero />
       <ClientWrapper />
     </>
   );

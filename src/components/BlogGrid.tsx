@@ -43,24 +43,35 @@ export default function BlogGrid({ posts }: Props) {
   return (
     <div className="max-w-6xl mx-auto py-12 px-4">
       <motion.h1
-        className="text-center tracking-tighter text-5xl leading-tight font-serif mb-4 text-gray-700"
+        className="text-6xl text-gray-600 font-serif tracking-tighter mb-8 text-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
       >
-        Get Inspired
+        Deep Thoughts
       </motion.h1>
 
+            
+          <motion.p
+            className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-6 text-center"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        viewport={{ once: true }}
+          >
+            Insights on voice, strategy, and the bold work of building a brand that leads.
+          </motion.p>
+      
+
       <motion.p
-        className="flex justify-center max-w-4xl mx-auto my-12 text-center text-gray-600"
+        className="prose prose-lg max-w-none mx-auto text-justify pb-8"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true }}
       >
-        Thoughtful stories, brand breakthroughs, and real-world strategy —
-        crafted to elevate your voice and amplify your message.
+        Deep Thoughts is where brand leaders, founders, and creatives explore the voice-first strategies that move ideas forward. Inside, you’ll find insights on messaging, identity, growth, and the power of owning your narrative. Whether you&apos;re refining your brand or finding the words to lead it, this is where the bold work begins.
       </motion.p>
 
       <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

@@ -41,7 +41,7 @@ const config: Config = {
               listStyleType: 'disc',
             },
             a: {
-              color: '#1d4ed8',
+              color: '#5a7d88',
               textDecoration: 'underline',
             },
           },

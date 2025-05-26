@@ -109,7 +109,7 @@ export default async function BlogPostPage({
     <article className="max-w-3xl mx-auto px-4 py-2  text-gray-700">
       <header className="mb-6">
         <h1 className="tracking-tighter text-5xl leading-tight font-serif mb-4">{title}</h1>
-        {byline && <p className="text-sm text-gray-500">By {byline}</p>}
+        {byline && <p className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-4 text-left">{byline}</p>}
         {publishDate && (
           <p className="text-xs text-gray-400 mb-8">
             {publishDate.toLocaleDateString("en-US")} • {readTime}

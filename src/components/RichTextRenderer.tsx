@@ -110,7 +110,8 @@ export default function RichTextRenderer({ document }: Props) {
               href={node.data.uri}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-700 underline hover:text-blue-900 transition-colors"
+              style={{ color: "#5a7d88" }}
+              className="underline hover:opacity-80 transition-opacity"
             >
               {children}
             </a>
