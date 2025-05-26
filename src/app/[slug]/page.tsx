@@ -147,7 +147,7 @@ export default async function Page({
             return (
               <div key={key} className="text-center my-1">
                 {groupTitle && (
-                  <h2 className="text-6xl text-gray-600 font-serif tracking-tighter text-center">
+                  <h2 className="text-5xl text-gray-600 font-serif tracking-tighter text-center">
                     {groupTitle}
                   </h2>
                 )}

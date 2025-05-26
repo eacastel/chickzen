@@ -140,7 +140,7 @@ export default async function BlogPostPage({
 
       <div className="mt-16 border-t pt-6 grid sm:grid-cols-1 md:grid-cols-2 gap-6">
         {previousPost && (
-          <Link href={`/blog/${previousPost.fields.slug}`} className="block p-4 rounded-lg bg-gray-50 hover:border-gray-300 hover:shadow-sm transition text-right">
+          <Link href={`/blog/${previousPost.fields.slug}`} className="block p-4 rounded-lg bg-gray-100 hover:border-gray-300 hover:shadow-sm transition text-right">
             <p className="text-sm text-gray-500 mb-1">← Previous</p>
             <h3 className="text-xl text-gray-700 font-serif tracking-tight hover:none leading-snug">
               {String(previousPost.fields.title)}
@@ -150,7 +150,7 @@ export default async function BlogPostPage({
 {nextPost && (
   <Link
     href={`/blog/${nextPost.fields.slug}`}
-    className="block p-4 rounded-lg bg-gray-50 hover:border-gray-300 hover:shadow-sm transition text-left"
+    className="block p-4 rounded-lg bg-gray-100 hover:border-gray-300 hover:shadow-sm transition text-left"
   >
     <p className="text-sm text-gray-500 mb-1">Next →</p>
     <h3 className="text-xl text-gray-700 font-serif tracking-tight hover:none leading-snug">

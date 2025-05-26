@@ -99,7 +99,7 @@ export default function ServicesCheckoutClient() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
-      <h2 className="text-6xl text-gray-600 font-serif tracking-tighter mb-8 text-center">
+      <h2 className="text-5xl text-gray-600 font-serif tracking-tighter mb-8 text-center">
         Select Your Services
       </h2>
       <div className="space-y-8 relative">

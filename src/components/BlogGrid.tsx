@@ -41,9 +41,9 @@ function extractLocalizedString(value: unknown, locale = "en-US"): string {
 
 export default function BlogGrid({ posts }: Props) {
   return (
-    <div className="max-w-6xl mx-auto py-12 px-4">
+    <div className="max-w-5xl mx-auto py-12 px-4">
       <motion.h1
-        className="text-6xl text-gray-600 font-serif tracking-tighter mb-8 text-center"
+        className="text-5xl text-gray-600 font-serif tracking-tighter mb-8 text-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}

@@ -28,12 +28,12 @@ export default async function Footer() {
     : "Footer Logo";
 
   return (
-    <footer className="bg-pink-50 text-foreground px-6 py-12">
+    <footer className="bg-pink-50 text-foreground px-6 pt-12 pb-4">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start text-sm">
         {/* Left: Footer Menu */}
         <Menu
           menuName="Footer"
-          className="flex flex-wrap justify-center md:flex-col md:items-start md:space-y-1 gap-x-4 gap-y-2 text-sm text-gray-600"
+          className="flex flex-wrap justify-center md:flex-col md:items-start md:space-y-1 gap-x-4 gap-y-2 text-sm text-gray-500"
         />
 
         {/* Center: Logo */}
@@ -53,7 +53,7 @@ export default async function Footer() {
         </div>
 
         {/* Right: Contact Info */}
-        <div className="text-center md:text-right text-xs text-gray-600 space-y-1">
+        <div className="text-center md:text-right text-xs text-gray-500 space-y-1">
           <div className="mb-4">hello@chickzen.com</div>
           <div className="italic">
             © {new Date().getFullYear()} chickzen. All rights reserved.
@@ -61,7 +61,7 @@ export default async function Footer() {
         </div>
       </div>
           {/* Legal Footer */}
-    <div className="mt-8 border-t border-gray-100 pt-6">
+    <div className="mt-8 border-t border-gray-300 pt-4">
       <Menu
         menuName="Legal Footer"
         className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs text-gray-500"

@@ -28,7 +28,7 @@ export default async function Header() {
 
   return (
     <header className="bg-white text-black">
-      <div className="max-w-6xl mx-auto py-4 px-6 flex justify-between items-center">
+      <div className="max-w-5xl mx-auto py-4 px-6 flex justify-between items-center">
       <div className="font-serif text-lg ">
         <span className="sr-only">{title}</span>
         {imageUrl && (

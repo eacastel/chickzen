@@ -4,7 +4,7 @@ export default async function NotFound() {
 
   return (
 <main className="flex flex-col items-center justify-center text-center text-gray-700 px-6 py-20 grow">
-      <h1 className="text-6xl font-serif mb-6">404</h1>
+      <h1 className="text-5xl font-serif mb-6">404</h1>
       <p className="text-xl mb-4">Oops, that page doesn’t exist.</p>
       <Link
         href="/"

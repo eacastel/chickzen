@@ -45,7 +45,7 @@ export default function HeaderClient({ headerImage, menuItems }: Props) {
         show ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-4 py-0 flex items-center justify-between">
+      <nav className="max-w-5xl mx-auto px-4 py-0 flex items-center justify-between">
         {/* logo */}
         <Link href="/" aria-label="Home" className="z-50">
           <Image
