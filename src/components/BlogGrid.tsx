@@ -8,6 +8,7 @@ import type { Document } from "@contentful/rich-text-types";
 import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer";
 import RichTextRenderer from "./RichTextRenderer";
 
+
 interface BlogPostFields {
   title?: EntryFieldTypes.Symbol;
   slug?: EntryFieldTypes.Symbol;
@@ -88,11 +89,14 @@ export default function BlogGrid({ posts }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.1 }}
+              className="relative"
             >
               <Link
                 href={`/blog/${slug}`}
-                className="block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-4"
-              >
+                className="absolute inset-0 z-10"
+                aria-label={`Read ${title}`}
+              />
+              <article className="block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-4">
                 {imageUrl && (
                   <div className="flex justify-center">
                     <div className="relative w-[200px] h-[200px] mb-4 rounded-lg overflow-hidden">
@@ -110,13 +114,14 @@ export default function BlogGrid({ posts }: Props) {
                 <h2 className="text-3xl font-medium mb-1 font-serif text-gray-700">
                   {title}
                 </h2>
-                {byline && <p className="text-sm text-gray-500">By {byline}</p>}
+                {byline && <p className="text-sm text-gray-500">{byline}</p>}
 
                 <div className="mt-3 text-sm text-gray-700 line-clamp-3 prose prose-sm max-w-none">
-                  <RichTextRenderer document={body as unknown as Document} />
+                  <RichTextRenderer document={body as Document} />
                 </div>
 
                 <p className="mt-4 text-sm text-gray-400 mb-1">{readTime}</p>
+
                 {tags.length > 0 && (
                   <div className="mt-4 flex gap-2 text-xs flex-wrap">
                     {tags.map((tag) => (
@@ -129,7 +134,7 @@ export default function BlogGrid({ posts }: Props) {
                     ))}
                   </div>
                 )}
-              </Link>
+              </article>
             </motion.div>
           );
         })}
