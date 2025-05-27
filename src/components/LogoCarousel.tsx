@@ -24,6 +24,11 @@ export default function LogoCarousel({ logos }: Props) {
     if (emblaApi) autoplay.current?.play();
   }, [emblaApi]);
 
+  console.log("🎯 All logos from Contentful:", logos);
+
+
+
+
   return (
     <section className="pt-20 px-4 bg-white">
       <div className="max-w-4xl mx-auto relative">

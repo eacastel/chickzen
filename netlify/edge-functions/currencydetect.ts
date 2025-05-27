@@ -13,9 +13,6 @@ export default async function middleware(req: Request, ctx: Context) {
 
   const currency = countryCode === "US" ? "USD" : "EUR";
 
-  console.log("🌍 ctx.geo:", ctx.geo);
-  console.log("🌎 Detected country code:", countryCode, "→ currency:", currency);
-
   const res = await ctx.next();
   res.headers.append(
     "Set-Cookie",
