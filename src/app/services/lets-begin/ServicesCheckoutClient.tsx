@@ -124,12 +124,12 @@ export default function ServicesCheckoutClient({
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
       <h2 className="text-5xl text-gray-600 font-serif tracking-tighter mb-6 text-center">
-        Select Your Services
+        Let’s Begin
       </h2>
 
       <div className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-6 text-center">
         Insights on voice, strategy, and the bold work of building a brand that
-        leads.
+        leads
       </div>
 
       <div className="leading-relaxed text-gray-700 text-justified mb-8">
