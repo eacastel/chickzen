@@ -5,9 +5,13 @@ import HighlightBlockRenderer from "@/components/HighlightBlockRenderer";
 import type { Metadata } from "next";
 import type { Asset } from "contentful";
 import { getPage } from "@/lib/contentful";
-
-import type { SectionEntry, HighlightBlockEntry } from "@/types/contentful";
+import type {
+  SectionEntry,
+  HighlightBlockEntry,
+  LogoCarouselEntry,
+} from "@/types/contentful";
 import type { BaseEntry } from "contentful";
+import LogoCarousel from "@/components/LogoCarousel";
 
 export const revalidate = 60;
 export const dynamicParams = true;
@@ -69,7 +73,18 @@ function isHighlightBlockEntry(entry: unknown): entry is HighlightBlockEntry {
     entry !== null &&
     "sys" in entry &&
     "fields" in entry &&
-    (entry as unknown as BaseEntry).sys?.contentType?.sys?.id === "highlightBlock"
+    (entry as unknown as BaseEntry).sys?.contentType?.sys?.id ===
+      "highlightBlock"
+  );
+}
+
+function isLogoCarouselEntry(entry: unknown): entry is LogoCarouselEntry {
+  return (
+    typeof entry === "object" &&
+    entry !== null &&
+    "sys" in entry &&
+    "fields" in entry &&
+    (entry as unknown as BaseEntry).sys?.contentType?.sys?.id === "logoCarousel"
   );
 }
 
@@ -84,15 +99,19 @@ export default async function HomePage() {
       <Hero />
       {content.map((entry, i) => {
         if (isSectionEntry(entry)) {
-          return (
-            <SectionRenderer key={entry.sys.id ?? i} section={entry} />
-          );
+          return <SectionRenderer key={entry.sys.id ?? i} section={entry} />;
         }
 
         if (isHighlightBlockEntry(entry)) {
           return (
             <HighlightBlockRenderer key={entry.sys.id ?? i} block={entry} />
           );
+        }
+        if (isLogoCarouselEntry(entry)) {
+          const logos = entry.fields.logos;
+          if (Array.isArray(logos)) {
+            return <LogoCarousel key={entry.sys.id ?? i} logos={logos} />;
+          }
         }
 
         return null;

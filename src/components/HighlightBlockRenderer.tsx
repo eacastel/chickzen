@@ -40,7 +40,7 @@ export default function HighlightBlockRenderer({ block }: Props) {
   const items = Array.isArray(block.fields.items) ? block.fields.items : [];
 
   return (
-    <section className="max-w-5xl mx-auto px-4 py-12">
+    <section className="max-w-5xl mx-auto px-4 py-8">
       {items.map((item, index) => {
         // ✅ ImageBanner block
         if (isImageBanner(item)) {
@@ -58,7 +58,7 @@ export default function HighlightBlockRenderer({ block }: Props) {
             return (
               <div
                 key={item.sys.id ?? String(index)}
-                className="max-w-4 max-h-[400px] overflow-hidden mb-12"
+                className="max-w-4 max-h-[120px] overflow-hidden"
               >
                 <Image
                   src={`https:${fileUrl}`}
@@ -90,25 +90,27 @@ export default function HighlightBlockRenderer({ block }: Props) {
           return (
             <div
               key={item.sys.id ?? String(index)}
-              className="relative mb-12 px-6 py-12 rounded-lg overflow-hidden text-gray-800"
+              className="relative px-6 py-10 rounded-lg overflow-hidden text-gray-800 min-h-[120px]"
             >
               {bgUrl && (
-                <div className="absolute inset-0  -z-10">
+                <div className="absolute inset-0 -z-10">
                   <Image
                     src={bgUrl}
                     alt="CTA background"
                     fill
-                    className="object-cover"
+                    className="object-cover w-full h-full"
                   />
                 </div>
               )}
-              <div className="max-w-4xl mx-auto flex flex-col items-center md:grid md:grid-cols-3 md:items-center md:gap-2">
-                <div className="w-full md:col-span-2  text-center md:text-right md:pr-12">
-                  <div className="prose prose-xl font-serif [&_h2]:text-3xl [&_p]:text-lg [&_h2]:leading-10 text-gray-800">
+
+              <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-6">
+                <div className="md:col-span-2 text-center md:text-right md:pr-12">
+                  <div className="prose prose-xl font-serif text-gray-800 [&_h2]:text-3xl [&_h2]:leading-10 [&_p]:text-lg">
                     {body && documentToReactComponents(body)}
                   </div>
                 </div>
-                <div className="mt-6 md:mt-0 flex justify-center md:justify-start w-full">
+
+                <div className="flex justify-center md:justify-start w-full">
                   <a
                     href={buttonLink}
                     className="px-6 py-3 bg-fuchsia-100 text-black rounded-br-2xl rounded-tl-2xl hover:bg-violet-100 transition"
