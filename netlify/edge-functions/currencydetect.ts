@@ -1,14 +1,15 @@
 import type { Context } from "https://edge.netlify.net";
 
 export default async function middleware(req: Request, ctx: Context) {
-  const countryRaw = ctx.geo?.country;
+  console.log("🌍 ctx.geo:", ctx.geo);
 
+  const countryRaw = ctx.geo?.country;
   const country =
-    typeof countryRaw === "string"
-      ? countryRaw.toUpperCase()
-      : "INTL"; // fallback if undefined or malformed
+    typeof countryRaw === "string" ? countryRaw.toUpperCase() : "INTL";
 
   const currency = country === "US" ? "USD" : "EUR";
+
+  console.log("🌎 Detected country:", country, "→ currency:", currency);
 
   const res = await ctx.next();
   res.headers.append(
