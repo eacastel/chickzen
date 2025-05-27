@@ -1,18 +1,14 @@
 import type { Context } from "https://edge.netlify.net";
 
 export default async function middleware(req: Request, ctx: Context) {
-  const rawCountry = ctx.geo?.country;
+  const country = ctx.geo?.country as { code?: string } | string | undefined;
 
   let countryCode = "INTL";
 
-  if (typeof rawCountry === "string") {
-    countryCode = rawCountry.toUpperCase();
-  } else if (
-    rawCountry &&
-    typeof rawCountry === "object" &&
-    typeof rawCountry.code === "string"
-  ) {
-    countryCode = rawCountry.code.toUpperCase();
+  if (typeof country === "string") {
+    countryCode = country.toUpperCase();
+  } else if (country && typeof country.code === "string") {
+    countryCode = country.code.toUpperCase();
   }
 
   const currency = countryCode === "US" ? "USD" : "EUR";
