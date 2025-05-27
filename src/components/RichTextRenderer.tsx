@@ -12,6 +12,8 @@ type Props = {
   document: Document;
 };
 
+
+
 function stripMarks(children: React.ReactNode): React.ReactNode {
   if (Array.isArray(children)) {
     return children.map((child, i) =>
@@ -116,6 +118,7 @@ export default function RichTextRenderer({ document }: Props) {
               {children}
             </a>
           ),
+          
         },
         renderText: (text: string) => {
           return text
