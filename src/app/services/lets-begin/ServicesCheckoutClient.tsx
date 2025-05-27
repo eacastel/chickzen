@@ -123,9 +123,31 @@ export default function ServicesCheckoutClient({
   /* ================================================================= */
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
-      <h2 className="text-5xl text-gray-600 font-serif tracking-tighter mb-8 text-center">
+      <h2 className="text-5xl text-gray-600 font-serif tracking-tighter mb-6 text-center">
         Select Your Services
       </h2>
+
+      <div className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-6 text-center">
+        Insights on voice, strategy, and the bold work of building a brand that
+        leads.
+      </div>
+
+      <div className="leading-relaxed text-gray-700 text-justified mb-8">
+        <p>You’re ready. We’re delighted.
+          Unlock the power of your voice and shape a brand that’s clear,
+          confident, and built to grow. 
+          
+          We’re honored to be part of what’s next. Whether you’re stepping into
+          a new venture, refining your message, or expanding your reach, this is
+          where your momentum begins. Select the service—or combination of
+          offerings—that best supports your vision. 
+          
+          Once your selections are complete, you’ll receive an email with next
+          steps and everything you need to begin. 
+        
+          Welcome to the fold.
+        </p>
+      </div>
 
       {/* ---------- tiers -------------------------------------------- */}
       <div className="space-y-8">
@@ -142,7 +164,7 @@ export default function ServicesCheckoutClient({
               <h3 className="text-4xl mb-4 font-serif font-medium text-center text-gray-700">
                 {getLocalized(tier.fields.title)}
               </h3>
-              <p className="text-center text-lg text-gray-600 mb-6">
+              <p className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-6 text-center">
                 {getLocalized(tier.fields.byline)}
               </p>
 

@@ -3,7 +3,8 @@ import { getPage } from "@/lib/contentful";
 import { defaultMetadata } from "@/lib/defaultMetadata";
 import type { Metadata } from "next";
 import type { Asset } from "contentful";
-
+import type { Document } from "@contentful/rich-text-types";
+import RichTextRenderer from "@/components/RichTextRenderer";
 import SectionRenderer from "@/components/SectionRenderer";
 import HighlightBlockRenderer from "@/components/HighlightBlockRenderer";
 import ReviewBlockRenderer from "@/components/ReviewBlockRenderer";
@@ -142,14 +143,28 @@ export default async function Page({
           const groupTitle: string = String(
             reviewGroupEntry.fields.title ?? ""
           );
+          const byline: string = String(reviewGroupEntry.fields.byline ?? "");
+          const body = reviewGroupEntry.fields.body;
 
           if (Array.isArray(blocks)) {
             return (
-              <div key={key} className="text-center my-1">
+              
+              <div key={key} className="text-center my-1 max-w-4xl mx-auto text-gray-600 clear-both">
+                
                 {groupTitle && (
-                  <h2 className="text-5xl text-gray-600 font-serif tracking-tighter text-center">
+                  <h2 className="text-5xl text-gray-600 font-serif tracking-tighter mb-6 text-center">
                     {groupTitle}
                   </h2>
+                )}
+                {byline && (
+                  <p className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-6 text-center">
+                    {byline}
+                  </p>
+                )}
+                {body && typeof body !== "string" && (
+                  <div className="prose prose-lg max-w-none mx-auto text-center">
+                    <RichTextRenderer document={body as unknown as Document} />
+                  </div>
                 )}
                 <ReviewBlockRenderer reviews={blocks} />
               </div>

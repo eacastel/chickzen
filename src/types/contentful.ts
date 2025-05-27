@@ -94,6 +94,8 @@ export type ReviewBlockEntry    = Entry<ReviewBlockSkeleton>;
 
 export interface ReviewBlockGroupFields {
   title?:        EntryFieldTypes.Text;
+  byline:        EntryFieldTypes.Text;
+  body:          EntryFieldTypes.RichText;
   reviewBlocks:  Entry<ReviewBlockSkeleton>[];
 }
 export type ReviewBlockGroupSkeleton = EntrySkeletonType<ReviewBlockGroupFields, "reviewBlockGroup">;

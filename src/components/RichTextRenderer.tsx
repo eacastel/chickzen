@@ -57,7 +57,7 @@ export default function RichTextRenderer({ document }: Props) {
             </h3>
           ),
           [BLOCKS.PARAGRAPH]: (_, children) => (
-            <p className="mb-5 leading-relaxed text-gray-700">{children}</p>
+            <p className="mb-4 leading-relaxed text-gray-700">{children}</p>
           ),
           [BLOCKS.UL_LIST]: (_, children) => (
             <ul className="list-disc list-inside mb-6 space-y-2">{children}</ul>

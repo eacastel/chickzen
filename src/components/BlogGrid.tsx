@@ -43,7 +43,7 @@ export default function BlogGrid({ posts }: Props) {
   return (
     <div className="max-w-5xl mx-auto py-12 px-4">
       <motion.h1
-        className="text-5xl text-gray-600 font-serif tracking-tighter mb-8 text-center"
+        className="text-5xl text-gray-600 font-serif tracking-tighter mb-6 text-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
@@ -125,7 +125,7 @@ export default function BlogGrid({ posts }: Props) {
                 <h2 className="text-3xl font-medium mb-1 font-serif text-gray-700">
                   {title}
                 </h2>
-                {byline && <p className="text-sm text-gray-500">{byline}</p>}
+                {byline && <p className="tracking-tighter text-gray-500 font-serif italic mt-4 text-lg text-left">{byline}</p>}
 
                 <div className="mt-3 text-sm text-gray-700 line-clamp-3 prose prose-sm max-w-none">
                   <RichTextRenderer document={body as Document} />

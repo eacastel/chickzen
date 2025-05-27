@@ -33,7 +33,7 @@ export default function ServiceTypeRenderer({ serviceType }: Props) {
   return (
     <motion.section
       id={anchorId}
-      className="py-6 px-4 text-left scroll-mt-6 bg-white"
+      className="pt-6 pb-4 px-4 text-left scroll-mt-6 bg-white"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
@@ -44,7 +44,7 @@ export default function ServiceTypeRenderer({ serviceType }: Props) {
           {title}
         </h2>
         {byline && (
-          <p className="text-lg font-serif italic text-gray-500 mb-10 text-center">
+          <p className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-6 text-center">
             {byline}
           </p>
         )}
