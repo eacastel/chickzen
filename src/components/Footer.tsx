@@ -37,11 +37,11 @@ export default async function Footer() {
     region === "US"
       ? {
           phone: "+1 (323) 493-1991",
-          whatsapp: "https://wa.me/12125551234",
+          whatsapp: "https://wa.me/13234931991",
         }
       : {
           phone: "+34 606 989 881",
-          whatsapp: "https://wa.me/34612345678",
+          whatsapp: "https://wa.me/34606989881",
         };
 
   
