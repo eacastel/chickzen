@@ -30,19 +30,26 @@ export default async function Footer() {
     ? String(image.fields.title ?? "Footer Logo")
     : "Footer Logo";
 
-  const cookieStore = await cookies();
-  const region = cookieStore.get("phoneRegion")?.value ?? "EU";
+const currencyOverride = process.env.NEXT_PUBLIC_CURRENCY_OVERRIDE;
 
-  const contact =
-    region === "US"
-      ? {
-          phone: "+1 (323) 493-1991",
-          whatsapp: "https://wa.me/13234931991",
-        }
-      : {
-          phone: "+34 606 989 881",
-          whatsapp: "https://wa.me/34606989881",
-        };
+const cookieStore = await cookies();
+const region =
+  currencyOverride === "USD"
+    ? "US"
+    : currencyOverride === "EUR"
+      ? "EU"
+      : (cookieStore.get("phoneRegion")?.value ?? "EU");
+
+const contact =
+  region === "US"
+    ? {
+        phone: "+1 (323) 493-1991",
+        whatsapp: "https://wa.me/13234931991",
+      }
+    : {
+        phone: "+34 606 989 881",
+        whatsapp: "https://wa.me/34606989881",
+      };
 
   
 
