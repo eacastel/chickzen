@@ -133,20 +133,11 @@ export default function ServicesCheckoutClient({
       </div>
 
       <div className="leading-relaxed text-gray-700 text-justified mb-8">
-        <p>You’re ready. We’re delighted.
-          Unlock the power of your voice and shape a brand that’s clear,
-          confident, and built to grow. 
-          
-          We’re honored to be part of what’s next. Whether you’re stepping into
-          a new venture, refining your message, or expanding your reach, this is
-          where your momentum begins. Select the service—or combination of
-          offerings—that best supports your vision. 
-          
-          Once your selections are complete, you’ll receive an email with next
-          steps and everything you need to begin. 
-        
-          Welcome to the fold.
-        </p>
+        <p className="mb-4 leading-relaxed text-gray-700">You’re ready—and we’re honored to be part of what’s next. Unlock the power of your voice and shape a brand that’s clear, confident, and built to grow. Whether you’re stepping into something new, refining what’s already in motion, or expanding your reach with intention, this is where your momentum builds.</p>
+
+<p className="mb-4 leading-relaxed text-gray-700">Select the service—or combination of offerings—that best aligns with your vision. Once your selections are complete, you’ll receive an email with next steps and everything you need to begin.</p>
+
+<p className="mb-4 leading-relaxed text-gray-700 font-semibold">Welcome to the fold. Your voice. Your brand. Let’s go.</p>
       </div>
 
       {/* ---------- tiers -------------------------------------------- */}
