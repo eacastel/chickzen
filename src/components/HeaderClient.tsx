@@ -99,7 +99,7 @@ export default function HeaderClient({ headerImage, menuItems }: Props) {
         {/* mobile nav < md : width ≈ 80 % (max-w 5/6) */}
         {open && (
           <nav className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-50 shadow-xs">
-            <div className="w-5/6 max-w-xs mx-auto flex flex-col items-center gap-y-4 py-4">
+            <div className="w-5/6 max-w-xs mx-auto flex flex-col items-center gap-y-4 pt-4 pb-10">
               {menuItems.map((item) => {
                 const rawHref = getLocalized(item.fields.href) ?? "";
                 const href = rawHref.startsWith("http")
@@ -115,7 +115,7 @@ export default function HeaderClient({ headerImage, menuItems }: Props) {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="hover:underline"
+                    className="hover:underline my-2"
                     onClick={() => setOpen(false)}
                   >
                     {getLocalized(item.fields.title)}
