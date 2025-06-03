@@ -8,10 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['var(--font-inter)', 'sans-serif'],
-        serif: ['var(--font-playfair)', 'serif'],
-      },
+  fontFamily: {
+    sans: ['var(--font-inter)', 'Arial', 'Helvetica', 'sans-serif'],
+    serif: ['var(--font-playfair)', 'serif'],
+  },
       colors: {
         background: '#fdfdfc',
         foreground: '#171717',

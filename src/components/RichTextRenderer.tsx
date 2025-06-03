@@ -34,7 +34,7 @@ function stripMarks(children: React.ReactNode): React.ReactNode {
 
 export default function RichTextRenderer({ document }: Props) {
   return (
-    <div className="max-w-none text-foreground leading-relaxed font-sans">
+    <div className="max-w-none text-foreground leading-relaxed">
       {documentToReactComponents(document, {
         renderMark: {
           [MARKS.BOLD]: (text) => (

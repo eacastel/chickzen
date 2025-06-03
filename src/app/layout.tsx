@@ -17,8 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <head>
-        {/* ✅ Google Analytics */}
+       <body className="min-h-screen flex flex-col bg-[#fdfdfc] text-black font-sans">
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
           strategy="afterInteractive"
@@ -37,8 +36,6 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body className="min-h-screen flex flex-col bg-[#fdfdfc] text-black font-sans">
         <Header />
 
         <main className="flex-grow pt-[84px]">{children}</main>
