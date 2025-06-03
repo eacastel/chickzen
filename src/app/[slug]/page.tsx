@@ -162,7 +162,7 @@ export default async function Page({
                   </p>
                 )}
                 {body && typeof body !== "string" && (
-                  <div className="prose prose-lg max-w-none mx-auto text-center">
+                  <div className="prose prose-lg max-w-none mx-auto text-justify">
                     <RichTextRenderer document={body as unknown as Document} />
                   </div>
                 )}
