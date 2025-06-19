@@ -8,9 +8,9 @@ import type { Document } from "@contentful/rich-text-types";
 import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer";
 import RichTextRenderer from "./RichTextRenderer";
 
-
 interface BlogPostFields {
   title?: EntryFieldTypes.Symbol;
+  order?: EntryFieldTypes.Integer;
   slug?: EntryFieldTypes.Symbol;
   byline?: EntryFieldTypes.Symbol;
   tags?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
@@ -52,17 +52,16 @@ export default function BlogGrid({ posts }: Props) {
         Deep Thoughts
       </motion.h1>
 
-            
-          <motion.p
-            className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-6 text-center"
+      <motion.p
+        className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-6 text-center"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true }}
-          >
-            Insights on voice, strategy, and the bold work of building a brand that leads.
-          </motion.p>
-      
+      >
+        Insights on voice, strategy, and the bold work of building a brand that
+        leads.
+      </motion.p>
 
       <motion.p
         className="prose prose-lg max-w-none mx-auto text-justify pb-8"
@@ -71,84 +70,112 @@ export default function BlogGrid({ posts }: Props) {
         transition={{ duration: 0.6, delay: 0.1 }}
         viewport={{ once: true }}
       >
-        Deep Thoughts is where brand leaders, founders, and creatives explore the voice-first strategies that move ideas forward. Inside, you’ll find insights on messaging, identity, growth, and the power of owning your narrative. Whether you&apos;re refining your brand or finding the words to lead it, this is where the bold work begins.
+        Deep Thoughts is where brand leaders, founders, and creatives explore
+        the voice-first strategies that move ideas forward. Inside, you’ll find
+        insights on messaging, identity, growth, and the power of owning your
+        narrative. Whether you&apos;re refining your brand or finding the words
+        to lead it, this is where the bold work begins.
       </motion.p>
 
       <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => {
-          const title = String(post.fields.title ?? "Untitled");
-          const slug = String(post.fields.slug ?? "");
-          const tags = Array.isArray(post.fields.tags) ? post.fields.tags : [];
-          const image = post.fields.coverImage as unknown as Asset;
-          const imageUrl = image?.fields?.file?.url
-            ? `https:${image.fields.file.url}`
-            : null;
-          const rawBody = post.fields.body;
-          const body =
-            typeof rawBody === "object" && "nodeType" in rawBody
-              ? (rawBody as Document)
-              : undefined;
-          const plainText = body ? documentToPlainTextString(body) : "";
-          const readTime = getReadTime(plainText);
-          const byline = extractLocalizedString(post.fields.byline);
+        {posts
+          .slice() // to avoid mutating original
+          .sort((a, b) => {
+            const orderA =
+              typeof a.fields.order === "number"
+                ? a.fields.order
+                : typeof a.fields.order === "object" && a.fields.order !== null
+                ? (Object.values(a.fields.order)[0] as number)
+                : 9999;
 
+            const orderB =
+              typeof b.fields.order === "number"
+                ? b.fields.order
+                : typeof b.fields.order === "object" && b.fields.order !== null
+                ? (Object.values(b.fields.order)[0] as number)
+                : 9999;
 
-          return (
-            <motion.div
-              key={slug}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.1 }}
-              className="relative"
-            >
-              <Link
-                href={`/blog/${slug}`}
-                className="absolute inset-0 z-10"
-                aria-label={`Read ${title}`}
-              />
-              <article className="block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-4">
-                {imageUrl && (
-                  <div className="flex justify-center">
-                    <div className="relative w-[200px] h-[200px] mb-4 rounded-lg overflow-hidden">
-                      <Image
-                        src={imageUrl}
-                        alt={title}
-                        fill
-                        className="object-cover"
-                        sizes="200px"
-                      />
+            return orderA - orderB;
+          })
+          .map((post) => {
+            const title = String(post.fields.title ?? "Untitled");
+            const slug = String(post.fields.slug ?? "");
+            const tags = Array.isArray(post.fields.tags)
+              ? post.fields.tags
+              : [];
+            const image = post.fields.coverImage as unknown as Asset;
+            const imageUrl = image?.fields?.file?.url
+              ? `https:${image.fields.file.url}`
+              : null;
+            const rawBody = post.fields.body;
+            const body =
+              typeof rawBody === "object" && "nodeType" in rawBody
+                ? (rawBody as Document)
+                : undefined;
+            const plainText = body ? documentToPlainTextString(body) : "";
+            const readTime = getReadTime(plainText);
+            const byline = extractLocalizedString(post.fields.byline);
+
+            return (
+              <motion.div
+                key={slug}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.1 }}
+                className="relative"
+              >
+                <Link
+                  href={`/blog/${slug}`}
+                  className="absolute inset-0 z-10"
+                  aria-label={`Read ${title}`}
+                />
+                <article className="block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-4">
+                  {imageUrl && (
+                    <div className="flex justify-center">
+                      <div className="relative w-[200px] h-[200px] mb-4 rounded-lg overflow-hidden shadow-md border border-gray-100">
+                        <Image
+                          src={imageUrl}
+                          alt={title}
+                          fill
+                          className="object-cover object-center"
+                          sizes="200px"
+                        />
+                      </div>
                     </div>
+                  )}
+
+                  <h2 className="text-3xl font-medium mb-1 font-serif text-gray-700">
+                    {title}
+                  </h2>
+                  {byline && (
+                    <p className="tracking-tighter text-gray-500 font-serif italic mt-4 text-lg text-left">
+                      {byline}
+                    </p>
+                  )}
+
+                  <div className="mt-3 text-sm text-gray-700 line-clamp-3 prose prose-sm max-w-none">
+                    <RichTextRenderer document={body as Document} />
                   </div>
-                )}
 
-                <h2 className="text-3xl font-medium mb-1 font-serif text-gray-700">
-                  {title}
-                </h2>
-                {byline && <p className="tracking-tighter text-gray-500 font-serif italic mt-4 text-lg text-left">{byline}</p>}
+                  <p className="mt-4 text-sm text-gray-400 mb-1">{readTime}</p>
 
-                <div className="mt-3 text-sm text-gray-700 line-clamp-3 prose prose-sm max-w-none">
-                  <RichTextRenderer document={body as Document} />
-                </div>
-
-                <p className="mt-4 text-sm text-gray-400 mb-1">{readTime}</p>
-
-                {tags.length > 0 && (
-                  <div className="mt-4 flex gap-2 text-xs flex-wrap">
-                    {tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-gray-200 transition"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </article>
-            </motion.div>
-          );
-        })}
+                  {tags.length > 0 && (
+                    <div className="mt-4 flex gap-2 text-xs flex-wrap">
+                      {tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-gray-200 transition"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </article>
+              </motion.div>
+            );
+          })}
       </div>
     </div>
   );
