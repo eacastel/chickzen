@@ -13,7 +13,6 @@
     "@contentful/rich-text-react-renderer": "^16.0.1",
     "@contentful/rich-text-types": "^17.0.0",
     "@fontsource/inter": "^5.2.5",
-    "@fontsource/playfair-display": "^5.2.5",
     "@stripe/react-stripe-js": "^3.7.0",
     "@stripe/stripe-js": "^7.3.0",
     "contentful": "^11.5.20",

@@ -40,7 +40,7 @@ export default async function Hero() {
         </div>
       )}
       <h1 className="hidden"> {title} </h1>
-      <p className="mt-0 text-[23px] tracking-wider text-gray-500 font-sans"> {byline} </p>
+      <p className="mt-0 text-[23px] tracking-wider text-gray-500 font-sans mx-8"> {byline} </p>
     </section>
   );
 }
