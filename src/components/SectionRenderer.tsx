@@ -66,7 +66,7 @@ export default function SectionRenderer({ section }: Props) {
   return (
     <motion.section
       id={anchorId}
-      className="pt-6 pb-4 px-4 bg-background text-foreground text-center scroll-mt-8"
+      className="pt-6 pb-4 px-6 bg-background text-foreground text-center scroll-mt-8"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
@@ -99,7 +99,7 @@ export default function SectionRenderer({ section }: Props) {
 
         {position === "float-left" || position === "float-right" ? (
           <motion.div
-            className="prose prose-lg max-w-none mx-auto text-justify clear-both"
+            className="prose prose-lg max-w-none mx-auto text-left md:text-justify clear-both"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -111,7 +111,7 @@ export default function SectionRenderer({ section }: Props) {
           </motion.div>
         ) : (
           <motion.div
-            className="prose prose-lg max-w-none mx-auto text-justify"
+            className="prose prose-lg max-w-none mx-auto text-left md:text-justify"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}

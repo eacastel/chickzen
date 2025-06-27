@@ -133,7 +133,7 @@ export default function BlogGrid({ posts }: Props) {
                 <article className="block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-4">
                   {imageUrl && (
                     <div className="flex justify-center">
-                      <div className="relative w-[200px] h-[200px] mb-4 rounded-lg overflow-hidden shadow-md border border-gray-100">
+                      <div className="relative w-[200px] h-[200px] mb-4 rounded-4xl overflow-hidden shadow-md border border-gray-100">
                         <Image
                           src={imageUrl}
                           alt={title}
@@ -145,7 +145,7 @@ export default function BlogGrid({ posts }: Props) {
                     </div>
                   )}
 
-                  <h2 className="text-3xl font-medium mb-1 font-serif text-gray-700">
+                  <h2 className="text-3xl font-medium mb-1 font-serif text-center text-gray-700">
                     {title}
                   </h2>
                   {byline && (
