@@ -1,8 +1,4 @@
-import { cookies } from "next/headers";
 import ClientWrapper from "./ClientWrapper";
-import type { Currency } from "@/lib/utils/currency";
-
-export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Services Checkout | Chickzen",
@@ -29,15 +25,6 @@ export const metadata = {
   },
 };
 
-export default async function ServicesCheckoutPage() {
-  const cookieStore = await cookies(); 
-
-  const devOverride = process.env.NEXT_PUBLIC_CURRENCY_OVERRIDE as Currency | undefined;
-
-  const currency =
-    devOverride ??
-    (cookieStore.get("currency")?.value as Currency | undefined) ??
-    "EUR";
-
-  return <ClientWrapper currency={currency} />;
+export default function ServicesCheckoutPage() {
+  return <ClientWrapper />;
 }

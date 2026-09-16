@@ -23,5 +23,8 @@ export async function GET(request: Request) {
     geo = {};
   }
 
-  return NextResponse.json({ geo });
+  return NextResponse.json(
+    { geo },
+    { headers: { "Cache-Control": "private, max-age=3600" } }
+  );
 }

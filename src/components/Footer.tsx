@@ -4,7 +4,7 @@ import type { HeaderImageEntry } from "@/types/contentful";
 import type { Asset } from "contentful";
 import Image from "next/image";
 import Link from "next/link";
-import { cookies } from "next/headers";
+import ContactInfo from "./ContactInfo";
 
 function isAsset(img: unknown): img is Asset {
   return (
@@ -14,8 +14,6 @@ function isAsset(img: unknown): img is Asset {
     "file" in (img as Asset).fields
   );
 }
-
-
 
 export default async function Footer() {
   const headerImage = (await getHeaderImage()) as HeaderImageEntry;
@@ -29,29 +27,6 @@ export default async function Footer() {
   const imageAlt = isAsset(image)
     ? String(image.fields.title ?? "Footer Logo")
     : "Footer Logo";
-
-const currencyOverride = process.env.NEXT_PUBLIC_CURRENCY_OVERRIDE;
-
-const cookieStore = await cookies();
-const region =
-  currencyOverride === "USD"
-    ? "US"
-    : currencyOverride === "EUR"
-      ? "EU"
-      : (cookieStore.get("phoneRegion")?.value ?? "EU");
-
-const contact =
-  region === "US"
-    ? {
-        phone: "+1 (323) 493-1991",
-        whatsapp: "https://wa.me/13234931991",
-      }
-    : {
-        phone: "+34 606 989 881",
-        whatsapp: "https://wa.me/34606989881",
-      };
-
-  
 
   return (
     <footer className="bg-pink-50 text-foreground px-6 pt-12 pb-4">
@@ -80,35 +55,7 @@ const contact =
         
 
         {/* Right: Contact Info - aligned to bottom on md+ */}
-        <div className="flex flex-col justify-middle md:justify-center text-center md:text-right text-sm text-gray-500 space-y-1 h-full">
-          <div className="mb-2">
-            <a
-              href={`tel:${contact.phone.replace(/[^+\d]/g, "")}`}
-              className="hover:underline text-sm text-gray-500"
-            >
-              {contact.phone}
-            </a>
-          </div>
-
-          <div className="mb-2">
-            <a
-              href={contact.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-            >
-              WhatsApp
-            </a>
-          </div>
-          
-          <div className="mb-6 text-sm text-gray-500"><a id="email-link"
-  href="mailto:&#104;&#101;&#108;&#108;&#111;&#64;&#99;&#104;&#105;&#99;&#107;&#122;&#101;&#110;&#46;&#99;&#111;&#109;"
-  className="hover:underline"
->
-  Email
-</a></div>
-          
-        </div>
+        <ContactInfo />
       </div>
 
       {/* Legal Footer */}

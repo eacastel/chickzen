@@ -3,7 +3,7 @@ const AnimatedBlogPost = (await import("@/components/AnimatedBlogPost")).default
 import { notFound } from "next/navigation";
 import { defaultMetadata } from "@/lib/defaultMetadata";
 import type { Metadata } from "next";
-import { getAllBlogPosts } from "@/lib/contentful";
+import { getAllBlogPosts, getAllBlogSlugs } from "@/lib/contentful";
 import type { Asset } from "contentful";
 import type { Document } from "@contentful/rich-text-types";
 import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer";
@@ -12,6 +12,16 @@ import Link from "next/link";
 export const revalidate = 60;
 export const dynamicParams = true;
 
+export async function generateStaticParams() {
+  const slugs = await getAllBlogSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
+
+async function isKnownBlogSlug(slug: string) {
+  const slugs = await getAllBlogSlugs();
+  return slugs.includes(slug);
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -19,6 +29,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { getBlogPost } = await import("@/lib/contentful");
   const { slug } = await params;
+  if (!(await isKnownBlogSlug(slug))) return defaultMetadata;
+
   const post = await getBlogPost(slug);
   if (!post) return defaultMetadata;
 
@@ -63,6 +75,8 @@ export default async function BlogPostPage({
 }) {
   const { getBlogPost } = await import("@/lib/contentful");
   const { slug } = await params;
+  if (!(await isKnownBlogSlug(slug))) notFound();
+
   const post = await getBlogPost(slug);
   if (!post) notFound();
 

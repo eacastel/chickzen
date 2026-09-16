@@ -1,7 +1,7 @@
 // app/[slug]/page.tsx
 
 import { notFound } from "next/navigation";
-import { getPage } from "@/lib/contentful";
+import { getAllPageSlugs, getPage } from "@/lib/contentful";
 import { defaultMetadata } from "@/lib/defaultMetadata";
 import type { Metadata } from "next";
 import type { Asset } from "contentful";
@@ -24,6 +24,20 @@ import type {
 } from "@/types/contentful";
 
 export const revalidate = 60;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const slugs = await getAllPageSlugs();
+
+  return slugs
+    .filter((slug) => slug !== "home" && !slug.includes("/"))
+    .map((slug) => ({ slug }));
+}
+
+async function isKnownPageSlug(slug: string) {
+  const slugs = await getAllPageSlugs();
+  return slugs.includes(slug);
+}
 
 export async function generateMetadata({
   params,
@@ -31,6 +45,8 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+
+  if (!(await isKnownPageSlug(slug))) return defaultMetadata;
 
   const page = await getPage(slug);
   if (!page) return defaultMetadata;
@@ -129,6 +145,8 @@ export default async function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  if (!(await isKnownPageSlug(slug))) notFound();
+
   const page = await getPage(slug);
   if (!page) notFound();
 
