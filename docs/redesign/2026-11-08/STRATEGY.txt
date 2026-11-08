@@ -1,0 +1,231 @@
+CHICKZEN — EDITORIAL REDESIGN & FUNNEL STRATEGY
+8 November 2026 | Proposal and standalone design concept
+
+RECOMMENDATION
+
+Prioritize qualified inquiries for Jen's strategy and messaging work. Help
+visitors understand what they need, see why Jen is the right person, and take
+a useful next step. Keep the minimal, warm, editorial identity, with a visible
+opening CTA on desktop and mobile.
+
+This direction follows Emilio's request to choose the most urgent goal.
+Jen's revenue mix, margins and delivery capacity remain unverified; those
+should determine the final flagship offer, pricing and monthly targets.
+
+WHAT THE REVIEW FOUND
+
+- The same-day analytics report records 235 production-host sessions in
+  May–October 2026, about 39 per month. Only 14 were organic-search sessions.
+  Search Console reports 13 clicks: About 7, homepage 5, blog 1. Visible queries
+  include Jen's name. The sample supports a founder-led journey and targeted
+  acquisition, but cannot establish conversion lift or non-brand demand.
+- No purchase/inquiry outcomes were recorded. This does not mean no real
+  business happened. Direct traffic is not proof that visitors are referrals.
+- The homepage repeats a large logo before long sections of broad positioning.
+  Its main body CTA appears late; mobile visitors must scroll or open the menu.
+- The site presents 13 services, including overlapping clarity sessions and
+  audits. "Let's Begin" opens a service-selection checkout with EUR 300–7,500
+  prices in the Spain view. Mobile checkout lacks the desktop hover explanations.
+- Jen's About page describes 20+ years of experience, Beverly Hills Chamber of
+  Commerce leadership and teaching with Goldman Sachs 10,000 Small Businesses.
+  This useful credibility appears after a lengthy personal origin story.
+- The existing Find Your Flavor CTA leads to /the-strawberry-lemonade-effect.
+  That page returned 200 but rendered only the header/footer, without a guide
+  or signup form in the read-only browser audit.
+- The deployed checkout JavaScript sends payment returns to /success, which
+  returns 404. No payment was attempted: a broken return is established, not a
+  claim that every payment fails. The earlier audit also found an invalid
+  checkout canonical and sensitive query values in a blocked analytics test.
+
+DESIGN DIRECTION
+
+Preserve the dragonfly logo, slate-blue typography, white space, serif headings,
+blush/lavender/pale blue accents and warm voice. Add interest with composition:
+Jen's real portrait, asymmetric layouts, fine rules, small section numbers,
+selective italics and restrained color fields. Dark slate buttons provide a
+readable focal point within the existing palette.
+
+Use one visible descriptive H1, shorter left-aligned paragraphs, comfortable
+line lengths and useful details that do not depend on hover. Keep a contact CTA
+in the mobile header. Respect keyboard navigation and reduced-motion settings.
+Avoid invented testimonials, client metrics, stock imagery and false urgency.
+
+The included index.html is a clickable visual concept, not a replacement app.
+It uses local copies of existing public brand assets and regular links. It
+contains no analytics, newsletter capture, payment flow or simulated success.
+Email links open the visitor's mail app; no message is sent automatically.
+Native expandable service rows demonstrate a simpler decision structure.
+
+HOMEPAGE STRUCTURE
+
+1. Audience, outcome, primary contact CTA, secondary services link.
+2. Brief, accurately described experience and credentials.
+3. Three recognizable situations and ways to work with Jen.
+4. The work and outputs: positioning, language and practical priorities.
+5. Jen's working style, supported by actual recommendations.
+6. A useful editorial entry for visitors who are still exploring.
+7. A contact invitation explaining what to share.
+
+The concept repeats the next step after services and at the end, and keeps it
+visible in the header. Before production, confirm exact role wording/dates and
+add two genuine project stories: situation, Jen's contribution, deliverables and
+evidenced change. Obtain permission and distinguish career relationships from
+Chickzen client engagements. Do not present every logo as a current client.
+
+SIMPLER OFFERS
+
+Clarify your direction
+For a founder or leader needing a diagnosis and priorities. Select one scoped
+paid entry service from the current clarity offers after reviewing demand and
+delivery effort. Show duration, preparation, deliverables, price and scheduling.
+Enable direct booking once payment and fulfillment are verified.
+
+Shape your message
+For women whose business has evolved beyond their current positioning, bio or
+website. Proposed core project: messaging/website voice work. Explain scope,
+examples, starting investment and process. Use a short fit inquiry and a scoped
+proposal. Confirm this choice against margins and Jen's preferred work.
+
+Grow with a strategic partner
+For an established business needing continuing guidance. Explain scope,
+cadence, access and best-fit situations. Offer it through a conversation or as
+a continuation of successful project work.
+
+These three paths organize choices; they do not automatically remove products
+or change prices. Keep useful execution services as add-ons. Standardize names
+across blog, services and checkout. Explain On Brand Lab's billing period;
+checkout currently does not show a cadence. Consider it as an alumni offer
+before building a separate broad acquisition effort for a membership.
+
+FUNNEL
+
+Primary:
+Referral / LinkedIn / partner / relevant search
+  -> homepage, About or matching service page
+  -> fit, deliverables and real evidence
+  -> short inquiry
+  -> conversation, proposal and agreed payment
+  -> onboarding, delivery, follow-up and referral.
+
+Ready for a defined entry offer:
+Service detail -> paid booking -> verified confirmation -> preparation.
+Do not require a sales call for every small, well-defined purchase.
+
+Still exploring:
+Relevant article -> repaired Find Your Flavor guide -> consented email sequence
+  -> useful example -> invitation to the relevant service.
+
+Reuse the Strawberry Lemonade idea before creating another lead magnet. Make
+the practical output explicit: a short exercise to articulate what makes the
+reader's business different. Provide immediate delivery and a useful thank-you
+page. A four-email sequence can cover delivery/exercise, a messaging mistake,
+a real example and a relevant invitation. Email-platform integration, consent
+handling and actual delivery still need implementation and verification.
+
+A fit inquiry should ask only what Jen needs: name/email, business or website,
+what needs to change, timing and a broad investment range where useful.
+Confirm Jen's actual process before advertising a response time, call length
+or calendar availability. The concept uses the existing email contact.
+
+ACQUISITION AND POSITIONING
+
+Start with women founders, consultants and established experts at a transition:
+launch, repositioning or greater visibility. Treat this as a working focus;
+preserve an organizational path if that work contributes meaningful profit.
+
+Use Jen's experience and network: specific LinkedIn posts, permission-based
+partner introductions, business communities, workshops and client referrals.
+Turn real client questions into useful articles and service pages.
+
+Create three substantive service pages covering fit, deliverables, scope,
+pricing approach and next steps. Search topics such as website messaging audits
+and brand messaging for women consultants are hypotheses to validate, not
+verified high-volume keywords. Connect editorial content to a relevant offer.
+
+Paid traffic and frequent broad blogging are later investments. Current traffic
+is too small for confident A/B tests. Start with five observed prospect
+walkthroughs, conversations and manual follow-up.
+
+PRIORITIES
+
+P0 — Repair journeys and measurement.
+Fix the blank guide destination; verify payment returns, receipts and onboarding;
+correct checkout indexing; sanitize analytics URLs and gate tracking to
+production hosts while preserving the existing GA4 property and UTM attribution.
+Before scaling checkout, derive amounts from the server-side catalog and review
+order metadata and recurring-service billing. A success-page visit is not proof
+of payment.
+
+P1 — Implement the focused editorial journey.
+Review the concept and copy; map it into the existing Next.js/Contentful
+components. Update homepage, About entry path, service overview and contact
+journey. Add real project evidence. Preserve URLs or map explicit redirects,
+existing analytics history and the Contentful caching fix at 73c3992. Keep
+production content editable in the CMS.
+
+P2 — Build a repeatable acquisition loop.
+Complete guide/email delivery, publish service-led content, activate selected
+partners and Jen's channels, and review inquiries weekly. Refine from fit,
+close rate, margins and delivery capacity.
+
+Indicative sequence: first two weeks for offer decisions and broken-path repairs;
+next two to three weeks for the core journey; following month for distribution
+and review. Timing depends on content, evidence and integration access. This
+is sequencing guidance, not a delivery commitment.
+
+MEASUREMENT
+
+Primary: qualified inquiries, conversations held, proposals, clients won,
+collected revenue and gross margin. Track source and offer in a simple pipeline.
+Qualification means audience/problem fit, viable scope/investment and workable
+timing, confirmed by Jen rather than inferred from an analytics click.
+
+Secondary: service interest, accepted guide subscriptions, email engagement and
+checkout starts. Record accepted inquiries/bookings at the receiving system and
+payments from verified provider events. Email/phone/WhatsApp clicks remain
+intent signals. Do not send personal or secret values to analytics.
+
+Set goals from capacity: desired wins divided by observed qualified-inquiry
+close rate gives the inquiry requirement. Collect a baseline before promising
+conversion percentages or revenue gains.
+
+Before release, verify mobile/desktop, keyboard focus, readable contrast,
+first-screen CTA visibility, destinations, real lead delivery and confirmed
+payment returns. Use mock/test flows, not real charges or inflated events.
+
+REPOSITORY AND RELEASE
+
+Repository: https://github.com/eacastel/chickzen
+Base: main at 73c3992ca8087241b62dd51b64564ac0ce62476b.
+Branch: codex/chickzen-editorial-strategy
+Worktree: /home/eacastel/Avanti/worktrees/chickzen-editorial-strategy-20261108
+Proposal: docs/redesign/2026-11-08/
+
+The pre-existing postcss.config.mjs modification and untracked analytics
+documents in the main checkout were preserved. This proposal changes no app
+routes, CMS records, pricing, analytics settings or live deployment.
+
+The public site reports a Netlify server header. No local Vercel project link
+was present. Confirm the linked hosting project and preview process before
+release. The separate Aliigo runtime email does not establish Chickzen hosting.
+
+SOURCES AND LIMITS
+
+Live public review, 8 November 2026:
+https://chickzen.com/
+https://chickzen.com/about
+https://chickzen.com/services
+https://chickzen.com/services/lets-begin
+https://chickzen.com/blog
+https://chickzen.com/find-your-flavor
+https://chickzen.com/the-strawberry-lemonade-effect
+https://chickzen.com/success
+Deployed checkout return configuration:
+https://chickzen.com/_next/static/chunks/740.46328fd5d472294b.js
+
+Analytics source: existing same-day report in the main checkout:
+docs/analytics/2026-11-08-lifetime-report/REPORT.txt, with raw exports alongside.
+Fresh Google API requests were unavailable because authorization had expired;
+saved exports were used rather than described as a new successful refresh.
+Browser collectors and write requests were blocked. No inquiries, subscriptions
+or payments were submitted. Margins, conversion rates and capacity are unverified.

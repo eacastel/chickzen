@@ -1,0 +1,6 @@
+Brand assets reused from Chickzen public pages on 8 November 2026.
+{
+  "chickzen-logo.webp": "https://images.ctfassets.net/w36tuy329a8r/97OF8Pa1YLXpkM7SzPOQZ/cf7baef2bf0baf951b6f639f396a0f91/chickZen_logo.png?w=240&fm=webp",
+  "jen.webp": "https://images.ctfassets.net/w36tuy329a8r/64ySuAfygxG8uXm9FUJyaC/16b05f12e914b1b537f4d2b2204be7e7/Jennifer_Corbo_Castellanos.jpeg?w=850&q=85&fm=webp"
+}
+Inter font files copied from the existing @fontsource/inter dependency; license included.

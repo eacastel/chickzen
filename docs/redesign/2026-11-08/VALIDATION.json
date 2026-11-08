@@ -1,0 +1,103 @@
+{
+  "checkedAt": "2026-11-08T16:24:52.816Z",
+  "results": [
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "h1Count": 1,
+      "heroCta": {
+        "top": 586,
+        "bottom": 637,
+        "fullyInViewport": true
+      },
+      "headerCtaVisible": true,
+      "brokenImages": [],
+      "brokenAnchors": [],
+      "fontLoaded": true,
+      "serviceDetailsKeyboardOpen": true,
+      "contactDestinationVisible": true
+    },
+    {
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "h1Count": 1,
+      "heroCta": {
+        "top": 461,
+        "bottom": 512,
+        "fullyInViewport": true
+      },
+      "headerCtaVisible": true,
+      "brokenImages": [],
+      "brokenAnchors": [],
+      "fontLoaded": true,
+      "serviceDetailsKeyboardOpen": true,
+      "contactDestinationVisible": true
+    },
+    {
+      "viewport": "small-mobile",
+      "width": 320,
+      "height": 740,
+      "scrollWidth": 320,
+      "h1Count": 1,
+      "heroCta": {
+        "top": 432,
+        "bottom": 483,
+        "fullyInViewport": true
+      },
+      "headerCtaVisible": true,
+      "brokenImages": [],
+      "brokenAnchors": [],
+      "fontLoaded": true,
+      "serviceDetailsKeyboardOpen": true,
+      "contactDestinationVisible": true
+    },
+    {
+      "viewport": "tablet",
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "h1Count": 1,
+      "heroCta": {
+        "top": 552,
+        "bottom": 603,
+        "fullyInViewport": true
+      },
+      "headerCtaVisible": true,
+      "brokenImages": [],
+      "brokenAnchors": [],
+      "fontLoaded": true,
+      "serviceDetailsKeyboardOpen": true,
+      "contactDestinationVisible": true
+    }
+  ],
+  "skipLinkFirst": true,
+  "textContrast": [
+    {
+      "foreground": "#ffffff",
+      "background": "#465963",
+      "ratio": 7.32
+    },
+    {
+      "foreground": "#5c6870",
+      "background": "#edeaf4",
+      "ratio": 4.82
+    },
+    {
+      "foreground": "#50616a",
+      "background": "#ffffff",
+      "ratio": 6.44
+    },
+    {
+      "foreground": "#6e6376",
+      "background": "#f8f6f8",
+      "ratio": 5.26
+    }
+  ],
+  "errors": [],
+  "unexpectedNetworkRequests": [],
+  "paymentOrContactSubmitted": false
+}
