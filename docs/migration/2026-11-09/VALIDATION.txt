@@ -27,10 +27,11 @@ Production email and public indexing were explicitly approved and are enabled.
 Payments and analytics remain off. The enabled form passed browser QA, with no
 Google requests or queue. All 23 sitemap entries have correct indexing/canonicals;
 robots.txt advertises the sitemap, and llms.txt is published with a discovery link.
-Custom domains are attached in Vercel, but public traffic DNS remains on Netlify.
-The certificate TXT records are verified. Actual custom-host TLS awaits clearing
-the CAA restriction inherited through www's existing Netlify CNAME. The requested
-preparation change (www -> chickzen.com) preserves current Netlify hosting.
+Custom domains and public traffic DNS now use Vercel. Both domains have verified
+HTTPS; www returns 308 to the apex. Certificate automatic renewal is enabled.
+Actual custom-host browser checks passed nine routes and four widths. Public
+checks confirmed eight legacy redirects, all 23 sitemap entries and llms.txt.
+No Google events, human-recipient emails or payments were sent during QA.
 Contact rate limiting is active and verified without sending email. The latest
 preview handles HTML 429 errors, preserves input and retry IDs, and passed its
 mocked retry check. Stable public review: https://chickzen-preview.vercel.app.

@@ -1,10 +1,11 @@
 CHICKZEN — NEXT.JS / VERCEL MIGRATION
-9 November 2026 — working migration and launch preparation
+9 November 2026 — live Next.js / Vercel site
 
 Stable public review address: https://chickzen-preview.vercel.app
 See STABLE-PREVIEW.txt for access and updating this same address.
 
-Current launch status: production-readiness/README.txt.
+Live site: https://chickzen.com
+Current release and verification: production-readiness/README.txt.
 Earlier visual refinement: header-refinement/README.txt (opaque header and logo).
 
 Repository: https://github.com/eacastel/chickzen
@@ -68,28 +69,22 @@ Project SSO stays enabled; public review access is allowed for the stable
 chickzen-preview.vercel.app alias with explicit approval. A separate production
 build now has explicitly approved indexing and email delivery enabled, with
 sitemap.xml and llms.txt published. Analytics and checkout remain disabled. The
-custom domains are attached; the live Netlify app and apex traffic DNS are unchanged.
+custom domains and traffic DNS now use Vercel. HTTPS is verified on both hosts;
+www permanently redirects to chickzen.com. Netlify remains available for rollback.
 
 Vercel Git integration is still pending GitHub app access to eacastel/chickzen.
 The branch is pushed successfully; CLI deployments work in the correct Vercel
 project. After access is granted, connect this project rather than creating one.
 
-BEFORE PUBLIC CUTOVER
-- The two certificate TXT records are verified. Change the existing www CNAME to
-  chickzen.com, keeping current apex A records, to clear Netlify's inherited CAA
-  restriction without changing the hosting destination. Then issue/verify HTTPS.
-- Production activation was explicitly approved and completed. Verify actual-host
-  HTTPS, redirects and indexing after the certificate becomes available.
-- Give Emilio the green light and current Vercel DNS values; he changes traffic DNS.
-- Keep analytics disabled until the new host is confirmed, then coordinate the
-  existing GA4/GTM measurement transition with the analytics owner.
-- Retain Netlify for rollback. Preserve email MX, TXT and Cloudflare nameservers.
+LIVE RELEASE AND FOLLOW-UP
+Emilio applied the final DNS records, and the Vercel certificate was issued with
+automatic renewal. Live HTTPS, indexing, redirects, sitemap and llms.txt passed.
+See production-readiness for exact evidence and the rollback DNS snapshot.
+Production inquiries are enabled; no human-recipient automated test was sent.
 
-Production Resend credentials are prepared. Durable Vercel contact rate limiting
-is active and verified. Newsletter and checkout remain disabled; configuring them
-is separate from launching the consulting site. No human received an automated
-test inquiry. Real inbox receipt can be checked with Jen's first genuine inquiry
-or an explicitly authorized test.
+Analytics remains disabled until its coordinated activation with the existing
+analytics owner. Newsletter and checkout remain separate, disabled features.
+Keep the existing GA4 property; verify genuine consented data after activation.
 
 References:
 https://resend.com/docs/dashboard/emails/send-test-emails

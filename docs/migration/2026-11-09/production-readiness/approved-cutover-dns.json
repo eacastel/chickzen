@@ -1,0 +1,27 @@
+{
+  "verifiedAt": "2026-11-09T21:31:16.765Z",
+  "project": "chickzen",
+  "records": [
+    {
+      "type": "A",
+      "name": "@",
+      "value": "76.76.21.21",
+      "domain": "chickzen.com",
+      "acceptedByVercel": true
+    },
+    {
+      "type": "CNAME",
+      "name": "www",
+      "value": "cname.vercel-dns.com",
+      "domain": "www.chickzen.com",
+      "acceptedByVercel": true
+    }
+  ],
+  "cloudflareProxy": "DNS only",
+  "ttl": "Auto",
+  "replaceOldNetlifyTrafficRecords": true,
+  "publicDnsChangedByAgent": false,
+  "tlsStillPending": false,
+  "appliedBy": "user",
+  "cutoverVerifiedAt": "2026-11-09T21:35:22.342170+00:00"
+}

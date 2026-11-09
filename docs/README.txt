@@ -10,13 +10,13 @@ No login or expiring share link is required.
 
 docs/migration/2026-11-09/production-readiness/README.txt
   Current launch preparation, production deployment, contact rate limiting,
-  HTTPS validation records and remaining certificate/DNS steps. Read this
-  before changing DNS; earlier review folders are historical snapshots.
+  successful live HTTPS/DNS verification and analytics follow-up. Earlier review
+  folders are historical snapshots.
 
 docs/migration/2026-11-09/analytics-stage/README.txt
   Current preview: consent controls, staged GTM events, restored legacy URLs,
   correct confirmation/404 canonicals and checkout sitemap exclusion.
-  Tracking remains disabled on preview; production/DNS have not switched.
+  Historical analytics staging; see production-readiness for the live cutover.
 
 docs/migration/2026-11-09/header-refinement/README.txt
   Header refinement: solid header while scrolling and logo navigation to homepage top.
@@ -86,7 +86,8 @@ docs/redesign/2026-11-08/deployment/
 The older Netlify preview remains the standalone homepage concept. The new
 Vercel review deployment is the working Next.js application with its journal
 integrated. Inquiry delivery now uses Aliigo's verified Resend sender and key.
-The live chickzen.com site remains on Netlify pending review and cutover.
+The live chickzen.com site now runs on Vercel with HTTPS, indexing, sitemap and
+llms.txt verified. Production analytics remains off for its coordinated activation.
 
 The existing analytics documents remain in their original folder. The design
 deliverables and live-site evidence have been consolidated into this checkout.

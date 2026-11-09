@@ -17,10 +17,13 @@
     "analyticsEnvExplicitlySet": true,
     "checkoutEnabled": false
   },
-  "trafficDnsChanged": false,
-  "readyForDnsCutover": false,
-  "pending": [
-    "www CNAME preparation change to remove inherited Netlify CAA restriction",
-    "certificate issuance and actual-host TLS verification"
-  ]
+  "trafficDnsChanged": true,
+  "readyForDnsCutover": true,
+  "pending": [],
+  "earlyCutoverAuthorized": true,
+  "earlyCutoverAuthorizedAt": "2026-11-09T21:30:40.063649+00:00",
+  "certificateVerified": true,
+  "dnsChangedBy": "user",
+  "cutoverComplete": true,
+  "cutoverVerifiedAt": "2026-11-09T21:35:22.342170+00:00"
 }

@@ -31,4 +31,5 @@ cookies or authentication. Preview noindex headers remain enabled.
 Project-wide protection is retained. The original generated deployment URL
 still requires authentication. Do not disable protection project-wide.
 Public-access verification: header-refinement/public-access-validation.json.
-The live chickzen.com site is unchanged.
+The live https://chickzen.com site now runs on the approved Vercel production
+build. Preview remains separately noindex and excluded from analytics.

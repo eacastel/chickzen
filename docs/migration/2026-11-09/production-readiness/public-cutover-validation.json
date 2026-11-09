@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-11-09T21:35:22.603Z",
+  "sourceCommit": "bb4e997",
+  "deploymentId": "dpl_631dPHdGE5icWbyUht9xSYuTYWL3",
+  "origin": "https://chickzen.com",
+  "publicDnsUsed": true,
+  "tlsVerificationEnabled": true,
+  "redirects": [
+    {
+      "path": "/origin-story",
+      "status": 308,
+      "location": "https://chickzen.com/about"
+    },
+    {
+      "path": "/good-vibes",
+      "status": 308,
+      "location": "https://chickzen.com/about#recommendations"
+    },
+    {
+      "path": "/lets-begin",
+      "status": 308,
+      "location": "https://chickzen.com/contact"
+    },
+    {
+      "path": "/shop",
+      "status": 308,
+      "location": "https://chickzen.com/services"
+    },
+    {
+      "path": "/home",
+      "status": 308,
+      "location": "https://chickzen.com/"
+    },
+    {
+      "path": "/journal",
+      "status": 308,
+      "location": "https://chickzen.com/blog"
+    },
+    {
+      "path": "/journal/brand-clarity-session-get-unstuck",
+      "status": 308,
+      "location": "https://chickzen.com/blog/brand-clarity-session-get-unstuck"
+    },
+    {
+      "path": "/services/checkout",
+      "status": 308,
+      "location": "https://chickzen.com/services/lets-begin"
+    }
+  ],
+  "sitemapStatus": 200,
+  "sitemapCount": 23,
+  "llmsStatus": 200,
+  "emailsSent": false,
+  "analyticsSent": false
+}

@@ -17,7 +17,7 @@
     }
   ],
   "publicTrafficDnsChanged": false,
-  "status": "TXT_VALIDATED_CERTIFICATE_BLOCKED_BY_NETLIFY_CAA",
+  "status": "CERTIFICATE_ISSUED_AND_BOTH_HOSTS_VERIFIED",
   "txtRecordsVerifiedAt": "2026-11-09T21:19:29.563571+00:00",
   "certificateError": "pretest_conflicting_caa_record_error",
   "requestedPreparationChange": {
@@ -37,5 +37,9 @@
       "httpsStatus": 301,
       "sslVerifyResult": 0
     }
-  }
+  },
+  "wwwPreparationVerifiedAt": "2026-11-09T21:28:17.520027+00:00",
+  "currentAuthoritativeWwwCname": "cname.vercel-dns.com",
+  "note": "User changed final traffic DNS. Certificate issued with autoRenew=true. Actual-host browser checks and public HTTPS passed.",
+  "certificateVerifiedAt": "2026-11-09T21:35:22.342170+00:00"
 }
