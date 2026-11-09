@@ -1,0 +1,88 @@
+{
+  "url": "https://chickzen-gyowrnclx-emilio-castellanos-projects.vercel.app",
+  "layouts": [
+    {
+      "name": "desktop",
+      "overflow": false,
+      "ctaVisible": true,
+      "proofAfterHero": true,
+      "quotes": 2,
+      "formVisible": true,
+      "submissionDisabled": true,
+      "imagesLoaded": true,
+      "journalLocal": true,
+      "analyticsLoaded": false,
+      "brokenAnchors": 0
+    },
+    {
+      "name": "tablet",
+      "overflow": false,
+      "ctaVisible": true,
+      "proofAfterHero": true,
+      "quotes": 2,
+      "formVisible": true,
+      "submissionDisabled": true,
+      "imagesLoaded": true,
+      "journalLocal": true,
+      "analyticsLoaded": false,
+      "brokenAnchors": 0
+    },
+    {
+      "name": "mobile",
+      "overflow": false,
+      "ctaVisible": true,
+      "proofAfterHero": true,
+      "quotes": 2,
+      "formVisible": true,
+      "submissionDisabled": true,
+      "imagesLoaded": true,
+      "journalLocal": true,
+      "analyticsLoaded": false,
+      "brokenAnchors": 0
+    },
+    {
+      "name": "small-mobile",
+      "overflow": false,
+      "ctaVisible": true,
+      "proofAfterHero": true,
+      "quotes": 2,
+      "formVisible": true,
+      "submissionDisabled": true,
+      "imagesLoaded": true,
+      "journalLocal": true,
+      "analyticsLoaded": false,
+      "brokenAnchors": 0
+    }
+  ],
+  "articles": 11,
+  "article": "/blog/brand-clarity-session-get-unstuck",
+  "routes": [
+    {
+      "path": "/about",
+      "status": 200
+    },
+    {
+      "path": "/privacy-policy",
+      "status": 200
+    },
+    {
+      "path": "/terms-and-conditions",
+      "status": 200
+    },
+    {
+      "path": "/contact",
+      "status": 200
+    },
+    {
+      "path": "/services/lets-begin",
+      "status": 200
+    },
+    {
+      "path": "/success",
+      "status": 200
+    }
+  ],
+  "journalRedirect": 308,
+  "emailDisabled": true,
+  "errors": []
+}

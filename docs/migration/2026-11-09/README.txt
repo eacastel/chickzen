@@ -65,8 +65,10 @@ RELEASE WORK STILL REQUIRED
    settings are test-mode; confirm live keys and fulfilment before enabling checkout.
 5. Copy reviewed environment values into Vercel production, retaining the existing
    analytics ID. Keep all keys server-only except Stripe's publishable key and GA ID.
-6. Approve the working preview, then merge the migration branch and connect/configure
-   Git deployments. A domain cutover has not been performed or scheduled.
+6. Grant the Vercel GitHub app access to eacastel/chickzen. The connection attempt
+   was rejected by Vercel, so the working deployment uses the CLI. The source branch
+   is pushed successfully. After access is granted, connect the existing project
+   rather than creating another. Approve the preview before merging or cutting over.
 7. At cutover, attach chickzen.com/www in Vercel, use the DNS records Vercel supplies,
    set SITE_LAUNCHED=true only for the production deployment, and verify canonical
    URLs, redirects, sitemap, inquiry delivery and payments. Keep Netlify available
@@ -81,3 +83,9 @@ verification are recorded in VALIDATION.txt when complete.
 Local dependencies were reused from the same Chickzen project to avoid duplicating
 723 MB on Aurora. The deploy uses the lockfile's patched releases through npm ci.
 Cloud build is authoritative for the pinned dependency versions and Node 22 runtime.
+
+REVIEW ACCESS
+Project-wide SSO remains enabled. Automatic approval review rejected removing SSO
+for all deployments; a seven-day share link was instead created for the single
+review deployment. That scoped access link is stored only in ignored task state
+and supplied in the conversation, never committed to this public repository.
