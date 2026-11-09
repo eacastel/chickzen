@@ -1,0 +1,105 @@
+{
+  "images": [
+    {
+      "alt": "chickzen",
+      "natural": 96,
+      "complete": true
+    },
+    {
+      "alt": "Jennifer Castellanos, founder of chickzen",
+      "natural": 400,
+      "complete": true
+    },
+    {
+      "alt": "Nate 'n Al Delicatessen",
+      "natural": 140,
+      "complete": true
+    },
+    {
+      "alt": "Beverly Hills Chamber of Commerce",
+      "natural": 125,
+      "complete": true
+    },
+    {
+      "alt": "Beverly Hills Fire Department",
+      "natural": 93,
+      "complete": true
+    },
+    {
+      "alt": "Cedars Sinai",
+      "natural": 140,
+      "complete": true
+    },
+    {
+      "alt": "City Hall Denver",
+      "natural": 160,
+      "complete": true
+    },
+    {
+      "alt": "City of Beverly Hills Conference and Visitor's Bureau ",
+      "natural": 160,
+      "complete": true
+    },
+    {
+      "alt": "CoClubs Denver",
+      "natural": 140,
+      "complete": true
+    },
+    {
+      "alt": "Cook Islands Finance",
+      "natural": 140,
+      "complete": true
+    },
+    {
+      "alt": "Emerald Library",
+      "natural": 160,
+      "complete": true
+    },
+    {
+      "alt": "GEARYS Beverly Hills",
+      "natural": 117,
+      "complete": true
+    },
+    {
+      "alt": "Keany Associates Developmental Services",
+      "natural": 148,
+      "complete": true
+    },
+    {
+      "alt": "Pat McGann Gallery",
+      "natural": 160,
+      "complete": true
+    },
+    {
+      "alt": "Punch Bowl Social",
+      "natural": 140,
+      "complete": true
+    },
+    {
+      "alt": "Hollywood Schoolhouse Garden",
+      "natural": 145,
+      "complete": true
+    },
+    {
+      "alt": "Light My Today",
+      "natural": 160,
+      "complete": true
+    },
+    {
+      "alt": "Xi'an Beverly Hills",
+      "natural": 137,
+      "complete": true
+    },
+    {
+      "alt": "L'Oréal ",
+      "natural": 160,
+      "complete": true
+    },
+    {
+      "alt": "William Morris Endeavor",
+      "natural": 160,
+      "complete": true
+    }
+  ],
+  "failed": []
+}

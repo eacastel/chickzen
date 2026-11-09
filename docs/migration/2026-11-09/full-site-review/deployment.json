@@ -1,0 +1,17 @@
+{
+  "id": "dpl_JBM9zD7r4RAUiHYE8oCabwUSzZvq",
+  "url": "chickzen-9f7e43bq3-emilio-castellanos-projects.vercel.app",
+  "readyState": "READY",
+  "target": null,
+  "alias": [],
+  "createdAt": 1794231710558,
+  "sourceCommit": "7e8e0e1",
+  "project": "chickzen",
+  "projectId": "prj_4dtRYBrYg4BD0313JA1SJZOUu4pr",
+  "ssoProtection": {
+    "deploymentType": "all_except_custom_domains"
+  },
+  "gitConnected": false,
+  "productionDomainChanged": false,
+  "emailPreviewEnabled": true
+}

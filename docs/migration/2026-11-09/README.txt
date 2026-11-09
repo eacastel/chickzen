@@ -1,91 +1,81 @@
-CHICKZEN — NEXT.JS / VERCEL MIGRATION PREPARATION
-9 November 2026
+CHICKZEN — NEXT.JS / VERCEL MIGRATION
+9 November 2026 — current full-site review
 
-Branch: codex/chickzen-vercel-migration
 Repository: https://github.com/eacastel/chickzen
-Working checkout: /home/eacastel/Avanti/worktrees/chickzen-editorial-strategy-20261108
+Branch: codex/chickzen-vercel-migration
+Implementation: /home/eacastel/Avanti/worktrees/chickzen-editorial-strategy-20261108
+Canonical project documents: /home/eacastel/Avanti/webdev/chickzen/docs
 Vercel team: emilio-castellanos-projects
 Vercel project: chickzen (prj_4dtRYBrYg4BD0313JA1SJZOUu4pr)
 
-IMPLEMENTATION
-The approved editorial homepage now renders through Next.js React components.
-The studio portrait, prominent testimonials and process-only numbering remain.
-The shared header and footer connect to existing About, Journal and legal routes.
-The homepage journal feature reads the newest published Contentful article;
-/blog and existing /blog/:slug URLs stay within the application. /journal redirects
-to /blog. No CMS entries or publishing workflows were changed. New homepage copy
-is source-controlled; existing inner pages and journal stay CMS-managed.
+CURRENT REVIEW
+See full-site-review/README.txt, browser-validation.json and screenshots for the
+latest deployment and verification. Images beside this README are the initial
+migration baseline, before the complete editorial integration.
 
-Contact uses a real form and /api/contact endpoint. The existing Resend service
-handles inquiry notifications; MailerLite handles optional, unchecked newsletter
-opt-in only when its API key and group are configured. Inquiry delivery uses a
-fixed recipient and verified sender, visitor email as Reply-To, input limits,
-same-origin checking, a honeypot and a stable idempotency key for retries. Provider
-failures are shown honestly. A newsletter failure does not discard the inquiry.
-No real email was sent during preparation; automated provider tests are mocked.
+The approved homepage, portrait, restrained palette and earlier CTA placement
+remain. All 12 published Contentful recommendations now appear directly below
+the hero in an infinite carousel with actual CMS star ratings, swipe, keyboard,
+previous/next and pause controls. Reduced motion disables automatic playback.
+The About page also offers the complete recommendations as a static reading grid.
 
-MailerLite itself does not provide SMTP. MailerSend offers separate transactional
-API/SMTP access, but an existing send-only Resend key is already configured locally.
-The read-only Resend check confirmed send-only scope; it cannot list sending domains,
-so the verified sender address and actual delivery still need confirmation.
+About, services, journal articles, policies, contact and the retained checkout
+share the editorial design. All 11 journal articles remain inside Next.js. The
+service catalogue contains 13 resolved published products in four categories.
+An unresolved CMS service reference is omitted rather than fabricated. The
+previously empty Strawberry Lemonade destination now offers a direct email
+request for the guide; no automatic download or newsletter delivery is claimed.
+CMS publishing workflows and original content remain intact. The new homepage
+copy is source-controlled. Contentful data remains cached for one hour.
+
+EMAIL AND CONTACT
+Visible email and WhatsApp links appear in the header, footer and contact panel.
+WhatsApp uses the site's existing Spain number, +34 606 989 881, in muted colors.
+
+At Emilio's request, the existing Aliigo Vercel Resend key is reused. The older
+local Chickzen key could not send from either chickzen.com or aliigo.com; the
+correct Aliigo project key successfully sent to Resend's simulated delivery
+inbox. The actual Chickzen server delivery function was also verified against
+that simulated inbox. No human recipient received an automated test message.
+
+Chickzen Preview environment:
+  RESEND_API_KEY: stored as a sensitive server-only variable (value not recorded)
+  CONTACT_EMAIL_FROM=notifications@aliigo.com
+  CONTACT_EMAIL_TO=hello@chickzen.com
+  EMAIL_DELIVERY_ENABLED=true
+The sender display name is chickzen; Reply-To is the visitor's email address.
+Public contact links continue to use hello@chickzen.com. The form only reports
+success after Resend acknowledges the request. Validation, same-origin checking,
+a honeypot, timeouts and stable retry keys remain in place. Newsletter opt-in is
+hidden until Jen's MailerLite key and group are configured. No mailing list is
+silently created and visitors are not automatically subscribed.
+
+HOSTING AND CUTOVER
+Next.js 16.4.5, React 19.3.1 and Node 22 are configured. The lockfile/cloud build
+are authoritative; task-local checks reuse this project's existing dependencies
+to respect Aurora's storage reserve. No new dependency was needed for this work.
+
+The new review is a Preview deployment. SITE_LAUNCHED=false and
+CHECKOUT_ENABLED=false. Production analytics are not loaded and preview indexing
+is disabled. Project SSO stays enabled; a separate seven-day deployment share
+link is supplied privately and never committed. Live chickzen.com, its DNS and
+Netlify production remain unchanged.
+
+Vercel Git integration is still pending GitHub app access to eacastel/chickzen.
+The branch is pushed successfully; CLI deployments work in the correct Vercel
+project. After access is granted, connect this project rather than creating one.
+
+BEFORE APPROVED PUBLIC CUTOVER
+- Confirm real inquiry receipt with Jen using an explicitly authorized test.
+- Configure durable rate limiting for POST /api/contact before public intake.
+- If desired, connect MailerLite's intended group and verify opt-in/guide delivery.
+- Validate Stripe test payment, fulfilment and live keys before enabling checkout.
+- Copy the approved server settings into Production; retain the current GA ID.
+- After design approval, attach chickzen.com/www using Vercel's DNS instructions,
+  set SITE_LAUNCHED=true only in Production, and verify URLs, redirects, sitemap,
+  inquiry delivery and payments. Retain Netlify for rollback. Preserve email MX.
+
+References:
+https://resend.com/docs/dashboard/emails/send-test-emails
+https://resend.com/docs/knowledge-base/how-do-I-create-an-email-address-or-sender-in-resend
 https://www.mailerlite.com/help/does-mailerlite-offer-smtp-simple-mail-transfer-protocol
-https://resend.com/docs/api-reference/emails/send-email
-https://developers.mailerlite.com/api/subscribers
-
-CHECKOUT AND HOSTING
-Retained the existing service catalogue and Stripe checkout. Payment amounts are
-now computed from cached CMS prices on the server; client amounts are not trusted.
-/success is a real route and verifies the payment with Stripe before claiming success.
-Vercel geolocation is supported with the existing Netlify header as a fallback.
-Netlify configuration is retained for rollback. Contentful's hourly data cache stays.
-Next.js 16.4.5 and React 19.3.1 are pinned in the package lock. Node 22 is
-selected for Vercel. Existing production analytics are retained but disabled in preview.
-
-PREVIEW CONFIGURATION
-Contentful delivery credentials are installed in Preview and in the new project's
-unlaunched Production environment for Vercel's mandatory first-deployment bootstrap.
-Vercel labels the first deployment Production even when --target=preview is used.
-This new project has no chickzen.com custom domain; all release flags remain off.
-SITE_LAUNCHED=false, EMAIL_DELIVERY_ENABLED=false and CHECKOUT_ENABLED=false.
-No mail/payment credentials are enabled on the preview. The form is visible but
-submission is disabled until a verified sender is configured. Email remains available.
-All preview pages have noindex headers and robots rules. The current chickzen.com
-DNS, Netlify production deployment and static design review are unchanged.
-
-RELEASE WORK STILL REQUIRED
-1. Confirm the Resend verified sender for CONTACT_EMAIL_FROM, Jen's receiving inbox,
-   and set the server-only Resend key. Authorize and verify an actual delivery test
-   before enabling EMAIL_DELIVERY_ENABLED.
-2. Connect Jen's MailerLite API key and intended group; verify double-opt-in settings
-   for API signups and test with an authorized address. Subscriber status is not
-   forced to active and existing unsubscribed contacts are not forcibly reactivated.
-3. Configure Vercel Firewall rate limiting for POST /api/contact before public intake.
-   The honeypot/origin checks are basic defenses, not a durable rate limiter.
-4. Complete an end-to-end Stripe test with test credentials. Existing local Stripe
-   settings are test-mode; confirm live keys and fulfilment before enabling checkout.
-5. Copy reviewed environment values into Vercel production, retaining the existing
-   analytics ID. Keep all keys server-only except Stripe's publishable key and GA ID.
-6. Grant the Vercel GitHub app access to eacastel/chickzen. The connection attempt
-   was rejected by Vercel, so the working deployment uses the CLI. The source branch
-   is pushed successfully. After access is granted, connect the existing project
-   rather than creating another. Approve the preview before merging or cutting over.
-7. At cutover, attach chickzen.com/www in Vercel, use the DNS records Vercel supplies,
-   set SITE_LAUNCHED=true only for the production deployment, and verify canonical
-   URLs, redirects, sitemap, inquiry delivery and payments. Keep Netlify available
-   for rollback until those checks pass. Do not change MX/email records.
-
-VALIDATION
-Run npm run typecheck and npm run test:migration. The 12 focused tests cover invalid
-and cross-origin inquiries, disabled delivery, provider failures, newsletter consent,
-retry keys, CMS pricing, geography and preview indexing. Cloud build and browser
-verification are recorded in VALIDATION.txt when complete.
-
-Local dependencies were reused from the same Chickzen project to avoid duplicating
-723 MB on Aurora. The deploy uses the lockfile's patched releases through npm ci.
-Cloud build is authoritative for the pinned dependency versions and Node 22 runtime.
-
-REVIEW ACCESS
-Project-wide SSO remains enabled. Automatic approval review rejected removing SSO
-for all deployments; a seven-day share link was instead created for the single
-review deployment. That scoped access link is stored only in ignored task state
-and supplied in the conversation, never committed to this public repository.

@@ -1,0 +1,9 @@
+{
+  "from": "notifications@aliigo.com",
+  "to": "hello@chickzen.com",
+  "source": "Aliigo Vercel RESEND_API_KEY",
+  "providerTest": "accepted by Resend simulated delivery endpoint",
+  "previewEnabled": true,
+  "realRecipientTestSent": false,
+  "applicationDeliveryFunction": "passed against Resend simulated inbox"
+}

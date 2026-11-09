@@ -1,0 +1,194 @@
+{
+  "url": "https://chickzen-9f7e43bq3-emilio-castellanos-projects.vercel.app",
+  "layouts": [
+    {
+      "name": "desktop",
+      "overflow": false,
+      "ctaVisible": true,
+      "proofAfterHero": true,
+      "reviews": 12,
+      "fiveStarRatings": 12,
+      "submissionEnabled": true,
+      "imagesLoaded": true,
+      "journalLocal": true,
+      "analyticsLoaded": false,
+      "contactVisible": true,
+      "whatsapp": "https://wa.me/34606989881",
+      "email": "mailto:hello@chickzen.com",
+      "loopsForwardAndBack": true
+    },
+    {
+      "name": "tablet",
+      "overflow": false,
+      "ctaVisible": true,
+      "proofAfterHero": true,
+      "reviews": 12,
+      "fiveStarRatings": 12,
+      "submissionEnabled": true,
+      "imagesLoaded": true,
+      "journalLocal": true,
+      "analyticsLoaded": false,
+      "contactVisible": true,
+      "whatsapp": "https://wa.me/34606989881",
+      "email": "mailto:hello@chickzen.com",
+      "loopsForwardAndBack": true
+    },
+    {
+      "name": "mobile",
+      "overflow": false,
+      "ctaVisible": true,
+      "proofAfterHero": true,
+      "reviews": 12,
+      "fiveStarRatings": 12,
+      "submissionEnabled": true,
+      "imagesLoaded": true,
+      "journalLocal": true,
+      "analyticsLoaded": false,
+      "contactVisible": true,
+      "whatsapp": "https://wa.me/34606989881",
+      "email": "mailto:hello@chickzen.com",
+      "loopsForwardAndBack": true
+    },
+    {
+      "name": "small-mobile",
+      "overflow": false,
+      "ctaVisible": true,
+      "proofAfterHero": true,
+      "reviews": 12,
+      "fiveStarRatings": 12,
+      "submissionEnabled": true,
+      "imagesLoaded": true,
+      "journalLocal": true,
+      "analyticsLoaded": false,
+      "contactVisible": true,
+      "whatsapp": "https://wa.me/34606989881",
+      "email": "mailto:hello@chickzen.com",
+      "loopsForwardAndBack": true
+    }
+  ],
+  "articles": 11,
+  "routes": [
+    {
+      "path": "/about",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/services",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/find-your-flavor",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/the-strawberry-lemonade-effect",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/privacy-policy",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/terms-and-conditions",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/cookie-policy",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/disclaimer",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/accessibility-statement",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/services/lets-begin",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/success",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/blog/brand-clarity-session-get-unstuck",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/blog/who-were-you-when-you-were-you",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/blog/caring-for-your-self",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/blog/how-to-choose-the-right-brand-service-for-where-you-are-now",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/blog/the-fastest-way-to-take-your-brand-strategy-to-the-next-level",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/blog/lightning-messaging",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/blog/the-era-of-the-strong-voice",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/blog/youre-leading-the-work-now-lets-get-the-buy-in",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/blog/your-story-matters-the-power-of-authentic-brand-storytelling",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/blog/extraordinarily-hard-things",
+      "status": 200,
+      "mobileOverflow": false
+    },
+    {
+      "path": "/blog/a-case-for-strawberry-lemonade",
+      "status": 200,
+      "mobileOverflow": false
+    }
+  ],
+  "emailEnabled": true,
+  "actualEndpointInvalidPayload": 400,
+  "browserFormFailureAndRetry": "passed with mocked delivery",
+  "realRecipientTestSent": false,
+  "autoAdvanceAndPause": true,
+  "reducedMotion": true,
+  "errors": []
+}

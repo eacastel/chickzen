@@ -1,43 +1,26 @@
-CHICKZEN MIGRATION — VALIDATION
+CHICKZEN MIGRATION — CURRENT VALIDATION
 9 November 2026
 
-Application implementation: 819f726 on codex/chickzen-vercel-migration.
-Vercel deployment: dpl_FPN74b1Csq6xkx1FnNxJDxaEsJRa
-URL (requires Vercel login or the separate scoped share link):
-https://chickzen-gyowrnclx-emilio-castellanos-projects.vercel.app
+Latest application commit: 7e8e0e1 on codex/chickzen-vercel-migration.
+Latest Vercel deployment: dpl_JBM9zD7r4RAUiHYE8oCabwUSzZvq (Preview).
+Current records, browser checks and screenshots:
+  full-site-review/README.txt
+  full-site-review/deployment.json
+  full-site-review/browser-validation.json
 
 Cloud build: PASS, Next.js 16.4.5, React 19.3.1, Node 22.
-ESLint and TypeScript: PASS in the cloud build.
-Static generation: 33 pages/routes, Contentful content fetched successfully.
-The checked-in tsconfig now matches the mandatory adjustments made by Next.js 16
-in that successful build; this documentation/config alignment does not alter the
-reviewed application output.
+ESLint and TypeScript: PASS locally and in the cloud build.
+Static generation: 33 pages/routes.
+Focused server migration tests: 12 passed, 0 failed; provider calls mocked.
+Actual delivery function: Resend accepted using its simulated delivery inbox.
+No real email recipient or payment was used for automated testing.
 
-Focused migration tests: 12 passed, 0 failed. Email/newsletter requests were mocked.
-Runtime dependency audit: 0 vulnerabilities. Eight moderate findings remain in
-build/lint tooling (TypeScript ESLint/minimatch and typography selector parsing);
-these are not reported in npm audit --omit=dev. No force/major audit fix was applied.
+The prior dependency audit still applies; no dependencies changed in this update:
+runtime vulnerabilities 0; eight moderate findings in development/build tooling.
+See runtime-audit.json for that audit.
 
-Published browser checks: PASS at 1440, 768, 390 and 320 px widths.
-No horizontal overflow, broken local anchors, missing images or JavaScript errors.
-Opening CTA stays visible; testimonials immediately follow the hero. All three
-service disclosures and the mobile menu work by keyboard/native interaction.
-The inquiry form is present, correctly disabled, and its API returns 503 with an
-email fallback. No real email or payment was attempted.
-
-Journal: 11 article cards, internal navigation and an article detail page verified.
-About, privacy, terms, contact, checkout and payment-status routes returned 200.
-/journal redirects permanently to /blog. Direct /success does not claim payment.
-Preview noindex headers/robots are present; production GA is not loaded.
-
-Browser results and screenshots are in the canonical main checkout at:
-/home/eacastel/Avanti/webdev/chickzen/docs/migration/2026-11-09
-
-Access: Project SSO remains enabled; a seven-day share link grants access only to
-this deployment. The token is excluded from Git and is shared in the conversation.
-The GitHub source branch is pushed. Vercel's Git integration connection failed;
-repository access must be granted before automatic deployments can be enabled.
-
-Production: chickzen.com and its Netlify deployment were not changed. The Vercel
-bootstrap uses Production classification but has no domain aliases, and launch,
-mail and checkout flags are all false. See README.txt for activation/cutover steps.
+Preview email is enabled using Aliigo's verified sender and existing key.
+Payments and analytics remain disabled. No production domain or DNS was changed.
+Vercel SSO remains enabled with a deployment-specific seven-day share link.
+The initial migration screenshots and deployment.json beside this file are
+retained as historical evidence; full-site-review contains the current review.
