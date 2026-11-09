@@ -1,6 +1,8 @@
 CHICKZEN — NEXT.JS / VERCEL MIGRATION
 9 November 2026 — current full-site review
 
+Latest preview refinement: header-refinement/README.txt (opaque header and logo).
+
 Repository: https://github.com/eacastel/chickzen
 Branch: codex/chickzen-vercel-migration
 Implementation: /home/eacastel/Avanti/worktrees/chickzen-editorial-strategy-20261108

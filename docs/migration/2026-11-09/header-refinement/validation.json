@@ -1,0 +1,38 @@
+{
+  "url": "https://chickzen-2q9aae8t4-emilio-castellanos-projects.vercel.app",
+  "deployment": "dpl_CUZNBXaoTi8XfoPbJZUkBtQdxued",
+  "commit": "0da9ad8",
+  "checks": [
+    {
+      "name": "desktop",
+      "fromHomepage": {
+        "path": "/",
+        "scrollY": 0
+      },
+      "fromAbout": true,
+      "keyboardWorks": true,
+      "mobileMenuCloses": true,
+      "header": {
+        "background": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "top": 0
+      }
+    },
+    {
+      "name": "mobile",
+      "fromHomepage": {
+        "path": "/",
+        "scrollY": 0
+      },
+      "fromAbout": true,
+      "keyboardWorks": true,
+      "mobileMenuCloses": true,
+      "header": {
+        "background": "rgb(255, 255, 255)",
+        "opacity": "1",
+        "top": 0
+      }
+    }
+  ],
+  "errors": []
+}
