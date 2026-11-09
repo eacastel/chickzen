@@ -1,5 +1,6 @@
 import Image from "next/image";
-const AnimatedBlogPost = (await import("@/components/AnimatedBlogPost")).default;
+import EditorialRichText from "@/components/editorial/EditorialRichText";
+import { asset } from "@/lib/editorial-content";
 import { notFound } from "next/navigation";
 import { defaultMetadata } from "@/lib/defaultMetadata";
 import type { Metadata } from "next";
@@ -98,14 +99,6 @@ export default async function BlogPostPage({
     ? `https:${image.fields.file.url}`
     : null;
 
-  const imagePosition = fields.imagePosition;
-  const floatClass =
-    imagePosition === "left"
-      ? "md:float-left md:mr-6"
-      : imagePosition === "right"
-      ? "md:float-right md:ml-6"
-      : "";
-
   const body = fields.body as Document;
   const plainText = body ? documentToPlainTextString(body) : "";
   const readTime = getReadTime(plainText);
@@ -115,77 +108,75 @@ export default async function BlogPostPage({
   const previousPost = allPosts[index - 1] || null;
   const nextPost = allPosts[index + 1] || null;
 
-  const RichTextRenderer = (await import("@/components/RichTextRenderer")).default;
-
-
+  const cover = asset(fields.coverImage);
   return (
-    <AnimatedBlogPost>
-    <article className="max-w-3xl mx-auto px-4 py-2  text-gray-700">
-      <header className="mb-6">
-        <h1 className="tracking-tighter text-5xl leading-tight font-serif mb-4">{title}</h1>
-        {byline && <p className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-4 text-left">{byline}</p>}
-        {publishDate && (
-          <p className="text-xs text-gray-400 mb-8">
-            {publishDate.toLocaleDateString("en-US")} • {readTime}
-          </p>
-        )}
-        
+    <article className="wrap journal-article">
+      <header className="page-heading">
+        <Link className="eyebrow journal-back" href="/blog">
+          ← The journal
+        </Link>
+        <h1>{title}</h1>
+        {byline && <p className="page-byline">{byline}</p>}
+        <p className="article-meta">
+          {publishDate && !Number.isNaN(publishDate.getTime()) && (
+            <>
+              <time dateTime={publishDate.toISOString()}>
+                {publishDate.toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                  timeZone: "UTC",
+                })}
+              </time>
+              <span aria-hidden="true"> · </span>
+            </>
+          )}
+          {readTime}
+        </p>
       </header>
-
-{imageUrl && (
-  <div
-    className={`mb-6  mt-4 w-full max-w-xs overflow-hidden rounded-lg hover:brightness-105
-      ${floatClass} md:mx-0 mx-auto md:mb-4`}
-  >
-    <Image
-      src={imageUrl}
-      alt={title}
-      width={300}
-      height={0}
-      className="h-auto w-full object-cover rounded-lg"
-      priority
-    />
-  </div>
-)}
-
-<div className=" max-w-none text-gray-700 ">
-  <RichTextRenderer document={body} />
-</div>
-
-      <div className="mt-16 border-t pt-6 grid sm:grid-cols-1 md:grid-cols-2 gap-6">
+      {imageUrl && (
+        <Image
+          className="article-cover"
+          src={imageUrl}
+          alt={cover.title || title}
+          width={cover.width}
+          height={cover.height}
+          sizes="(max-width: 900px) 90vw, 820px"
+          priority
+        />
+      )}
+      <EditorialRichText document={body} />
+      {tags.length > 0 && (
+        <ul className="article-tags" aria-label="Topics">
+          {tags.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+      )}
+      <nav className="article-neighbors" aria-label="More journal articles">
         {previousPost && (
-          <Link href={`/blog/${previousPost.fields.slug}`} className="block p-4 rounded-lg bg-gray-100 hover:border-gray-300 hover:shadow-sm transition text-right">
-            <p className="text-sm text-gray-500 mb-1">← Previous</p>
-            <h3 className="text-xl text-gray-700 font-serif tracking-tight hover:none leading-snug">
-              {String(previousPost.fields.title)}
-            </h3>
+          <Link href={`/blog/${previousPost.fields.slug}`}>
+            <span className="eyebrow">← Previous article</span>
+            <h2>{String(previousPost.fields.title)}</h2>
           </Link>
         )}
-{nextPost && (
-  <Link
-    href={`/blog/${nextPost.fields.slug}`}
-    className="block p-4 rounded-lg bg-gray-100 hover:border-gray-300 hover:shadow-sm transition text-left"
-  >
-    <p className="text-sm text-gray-500 mb-1">Next →</p>
-    <h3 className="text-xl text-gray-700 font-serif tracking-tight hover:none leading-snug">
-      {String(nextPost.fields.title)}
-    </h3>
-  </Link>
-)}
-
-      </div>
-              <div className="flex flex-auto justify-center m-6 width-full max-w-5xl text-center">
-        {tags.length > 0 && (
-          <ul className="flex gap-8 mt-2 text-xs text-gray-500 flex-wrap">
-            {tags.map((tag) => (
-              <li key={tag} className="bg-gray-100 px-2 py-1 rounded">
-                #{tag}
-              </li>
-            ))}
-          </ul>
+        {nextPost && (
+          <Link href={`/blog/${nextPost.fields.slug}`}>
+            <span className="eyebrow">Next article →</span>
+            <h2>{String(nextPost.fields.title)}</h2>
+          </Link>
         )}
-        </div>
+      </nav>
+      <aside className="page-invitation">
+        <span className="eyebrow">From ideas to your next step</span>
+        <h2>What could this mean for your brand?</h2>
+        <p>
+          Talk it through with Jen and find a direction that feels like you.
+        </p>
+        <Link className="button" href="/contact">
+          Start a conversation <span aria-hidden="true">↗</span>
+        </Link>
+      </aside>
     </article>
-    </AnimatedBlogPost>
   );
 }

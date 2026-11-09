@@ -6,7 +6,7 @@ import StripeWrapper from "@/components/StripeWrapper";
 import type { ServiceTypeEntry, ServiceProductEntry } from "@/types/contentful";
 import { filterResolvedEntries, getLocalized } from "@/lib/utils/contentful";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { FaCheckSquare, FaRegSquare } from "react-icons/fa";
+
 import type { Document } from "@contentful/rich-text-types";
 import { formatCurrency, type Currency } from "@/lib/utils/currency";
 
@@ -23,31 +23,6 @@ function extractNumber(raw: unknown): number {
   return 0;
 }
 
-/* ---------- checkbox component -------------------------------------- */
-function CustomCheckbox({
-  checked,
-  onChange,
-}: {
-  checked: boolean;
-  onChange: () => void;
-}) {
-  return (
-    <button
-      onClick={(e) => {
-        e.stopPropagation();
-        onChange();
-      }}
-      className="text-[#D4AF7F] text-2xl focus:outline-none"
-      aria-label="Toggle selection"
-    >
-      {checked ? <FaCheckSquare /> : <FaRegSquare />}
-    </button>
-  );
-}
-
-/* ==================================================================== */
-/*  MAIN                                                                */
-/* ==================================================================== */
 export default function ServicesCheckoutClient({
   currency,
   checkoutEnabled,
@@ -60,37 +35,44 @@ export default function ServicesCheckoutClient({
     ServiceProductEntry[]
   >([]);
   const [clientSecret, setClientSecret] = useState("");
-  const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
 
-  const [checkoutError,setCheckoutError]=useState("");
-  const [checkoutPending,setCheckoutPending]=useState(false);
-  const [quotedAmount,setQuotedAmount]=useState(0);
+  const [checkoutError, setCheckoutError] = useState("");
+  const [checkoutPending, setCheckoutPending] = useState(false);
+  const [quotedAmount, setQuotedAmount] = useState(0);
 
   /* ---------- fetch tiers ------------------------------------------- */
   useEffect(() => {
     fetch("/api/service-types")
-      .then(async (res) => res.json())
+      .then(async (res) => {
+        if (!res.ok) throw new Error("Services unavailable");
+        return res.json();
+      })
       .then((data) => {
         const sorted = data.sort(
           (a: ServiceTypeEntry, b: ServiceTypeEntry) =>
             (getLocalized(a.fields.sortOrder) ?? 0) -
-            (getLocalized(b.fields.sortOrder) ?? 0)
+            (getLocalized(b.fields.sortOrder) ?? 0),
         );
         setServiceTypes(sorted);
       })
-      .catch((err) => console.error("Failed to load service types", err));
+      .catch(() => setLoadError(true))
+      .finally(() => setLoading(false));
   }, []);
 
   /* ---------- helpers ---------------------------------------------- */
   const priceForProduct = (p: ServiceProductEntry) => {
     const raw =
-      currency === "USD" ? p.fields.usPrice ?? p.fields.price : p.fields.price;
+      currency === "USD"
+        ? (p.fields.usPrice ?? p.fields.price)
+        : p.fields.price;
     return extractNumber(raw);
   };
 
   const total = selectedProducts.reduce(
     (sum, p) => sum + priceForProduct(p),
-    0
+    0,
   );
 
   /* ---------- toggle ------------------------------------------------ */
@@ -107,124 +89,124 @@ export default function ServicesCheckoutClient({
 
   /* ---------- checkout --------------------------------------------- */
   const handleCheckout = async () => {
-    if(checkoutPending)return;
-    setCheckoutPending(true);setCheckoutError("");
-    try{
-      const res=await fetch("/api/create-payment-intent",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({currency,productIds:selectedProducts.map(p=>p.sys.id)})});
-      const data=await res.json();
-      if(!res.ok||!data.clientSecret)throw new Error(data.error||"Checkout is unavailable. Please contact Jen.");
-      setQuotedAmount(data.amount);setClientSecret(data.clientSecret);
-    }catch(error){setCheckoutError(error instanceof Error?error.message:"Please contact Jen to arrange payment.");}finally{setCheckoutPending(false);}
+    if (checkoutPending) return;
+    setCheckoutPending(true);
+    setCheckoutError("");
+    try {
+      const res = await fetch("/api/create-payment-intent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          currency,
+          productIds: selectedProducts.map((p) => p.sys.id),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.clientSecret)
+        throw new Error(
+          data.error || "Checkout is unavailable. Please contact Jen.",
+        );
+      setQuotedAmount(data.amount);
+      setClientSecret(data.clientSecret);
+    } catch (error) {
+      setCheckoutError(
+        error instanceof Error
+          ? error.message
+          : "Please contact Jen to arrange payment.",
+      );
+    } finally {
+      setCheckoutPending(false);
+    }
   };
 
-  /* ================================================================= */
-  /*  RENDER                                                           */
-  /* ================================================================= */
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
-      <h2 className="text-5xl text-gray-600 font-serif tracking-tighter mb-6 text-center">
-        Let’s Begin
-      </h2>
-
-      <div className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-6 text-center">
-        Insights on voice, strategy, and the bold work of building a brand that
-        leads
+    <div className="wrap content-page checkout-page">
+      <header className="page-heading">
+        <span className="eyebrow">Your next chapter</span>
+        <h1>Let’s begin.</h1>
+        <p className="page-byline">
+          Choose the support that fits your next step.
+        </p>
+      </header>
+      <div className="editorial-prose">
+        <p>
+          Already spoken with Jen? Select your agreed services below. If you’re
+          still exploring,{" "}
+          <Link href="/contact">start with a conversation</Link> and we’ll find
+          the right fit.
+        </p>
       </div>
-
-      <div className="leading-relaxed text-gray-700 text-justified mb-8">
-        <p className="mb-4 leading-relaxed text-gray-700">You’re ready—and we’re honored to be part of what’s next. Unlock the power of your voice and shape a brand that’s clear, confident, and built to grow. Whether you’re stepping into something new, refining what’s already in motion, or expanding your reach with intention, this is where your momentum builds.</p>
-
-<p className="mb-4 leading-relaxed text-gray-700">Select the service—or combination of offerings—that best aligns with your vision. Once your selections are complete, you’ll receive an email with next steps and everything you need to begin.</p>
-
-<p className="mb-4 leading-relaxed text-gray-700 font-semibold">Welcome to the fold. Your voice. Your brand. Let’s go.</p>
-      </div>
-
-      {/* ---------- tiers -------------------------------------------- */}
-      <div className="space-y-8">
-        {serviceTypes.map((tier) => {
-          const products = filterResolvedEntries(
-            getLocalized(tier.fields.services) ?? []
-          ) as ServiceProductEntry[];
-
-          return (
-            <div
-              key={tier.sys.id}
-              className="rounded-2xl shadow-md px-6 py-8 border border-gray-100"
-            >
-              <h3 className="text-4xl mb-4 font-serif font-medium text-center text-gray-700">
-                {getLocalized(tier.fields.title)}
-              </h3>
-              <p className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-6 text-center">
-                {getLocalized(tier.fields.byline)}
-              </p>
-
-              <ul className="space-y-4">
-                {products.map((product) => {
-                  const isSelected = selectedProducts.some(
-                    (p) => p.sys.id === product.sys.id
-                  );
-                  const description = getLocalized(product.fields.description);
-                  const price = priceForProduct(product);
-
-                  return (
-                    <li
-                      key={product.sys.id}
-                      className="flex justify-between items-start bg-white p-3 rounded-md hover:bg-gray-50 transition border border-gray-200 relative cursor-pointer"
-                      onClick={() => toggleProduct(product)}
-                      onMouseEnter={() => setHoveredProductId(product.sys.id)}
-                      onMouseLeave={() => setHoveredProductId(null)}
-                    >
-                      {/* checkbox + title */}
-                      <div className="flex items-center gap-3 w-full">
-                        <CustomCheckbox
-                          checked={isSelected}
-                          onChange={() => toggleProduct(product)}
-                        />
-                        <p className="font-medium text-gray-700 flex-1">
-                          {getLocalized(product.fields.title)}
-                        </p>
-                      </div>
-
-                      {/* price */}
-                      <span className="text-m font-medium text-gray-600 whitespace-nowrap ml-2">
-                        {formatCurrency(price, currency)}
-                      </span>
-
-                      {/* tooltip */}
-                      {hoveredProductId === product.sys.id &&
-                        description &&
-                        typeof description !== "string" && (
-                          <div className="absolute top-full mt-1 right-0 z-20 w-[80%] p-4 bg-white shadow-xl border border-gray-200 rounded text-gray-600 hidden md:block">
-                            {documentToReactComponents(description as Document)}
-                          </div>
-                        )}
-                    </li>
-                  );
-                })}
-              </ul>
+      {!checkoutEnabled && (
+        <p className="checkout-notice">
+          Online payment is currently unavailable.{" "}
+          <Link href="/contact">Contact Jen to arrange your services.</Link>
+        </p>
+      )}
+      {loading && <p role="status">Loading services…</p>}
+      {loadError && (
+        <p role="alert">
+          Services couldn’t load. Please{" "}
+          <Link href="/contact">contact Jen</Link> to get started.
+        </p>
+      )}
+      {serviceTypes.map((tier) => {
+        const products = filterResolvedEntries(
+          getLocalized(tier.fields.services) ?? [],
+        ) as ServiceProductEntry[];
+        return (
+          <section className="service-category" key={tier.sys.id}>
+            <div>
+              <h2>{getLocalized(tier.fields.title)}</h2>
+              <p>{getLocalized(tier.fields.byline)}</p>
             </div>
-          );
-        })}
-      </div>
-
-      {/* ---------- summary ------------------------------------------ */}
+            <div className="service-list">
+              {products.map((product) => {
+                const description = getLocalized(product.fields.description);
+                return (
+                  <div className="checkout-product" key={product.sys.id}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={selectedProducts.some(
+                          (p) => p.sys.id === product.sys.id,
+                        )}
+                        onChange={() => toggleProduct(product)}
+                      />
+                      <span>{getLocalized(product.fields.title)}</span>
+                      <strong>
+                        {formatCurrency(priceForProduct(product), currency)}
+                      </strong>
+                    </label>
+                    {description && typeof description !== "string" && (
+                      <details>
+                        <summary>Service details</summary>
+                        <div className="editorial-prose">
+                          {documentToReactComponents(description as Document)}
+                        </div>
+                      </details>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
       {selectedProducts.length > 0 && (
-        <div className="mt-12 text-center">
-          <h4 className="text-xl mb-2 font-serif">Selected Services:</h4>
-          <ul className="mb-4">
+        <section className="checkout-summary" aria-labelledby="summary-title">
+          <h2 id="summary-title">Your selected services</h2>
+          <ul>
             {selectedProducts.map((p) => (
               <li key={p.sys.id}>
-                {getLocalized(p.fields.title)} –{" "}
-                {formatCurrency(priceForProduct(p), currency)}
+                {getLocalized(p.fields.title)}{" "}
+                <span>{formatCurrency(priceForProduct(p), currency)}</span>
               </li>
             ))}
           </ul>
-          <p className="text-lg font-semibold mb-4">
+          <p className="checkout-total">
             Total: {formatCurrency(total, currency)}
           </p>
-
-          {!checkoutEnabled && <p role="status" className="mb-4">Online checkout is currently unavailable. <Link className="underline" href="/#begin">Contact Jen to get started.</Link></p>}
-          {checkoutError && <p role="alert" className="mb-4">{checkoutError}</p>}
+          {checkoutError && <p role="alert">{checkoutError}</p>}
           {clientSecret ? (
             <StripeWrapper
               clientSecret={clientSecret}
@@ -233,14 +215,14 @@ export default function ServicesCheckoutClient({
             />
           ) : (
             <button
+              className="button"
               onClick={handleCheckout}
-              disabled={!checkoutEnabled||checkoutPending}
-              className="bg-black text-white px-6 py-3 rounded hover:bg-gray-700"
+              disabled={!checkoutEnabled || checkoutPending}
             >
-              {checkoutPending?"Preparing payment…":"Proceed to Payment"}
+              {checkoutPending ? "Preparing payment…" : "Proceed to payment"}
             </button>
           )}
-        </div>
+        </section>
       )}
     </div>
   );

@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { inquiryTopics } from "@/lib/inquiry-topics";
 import Link from "next/link";
 
@@ -13,6 +13,13 @@ export default function InquiryForm({
   const [pending, setPending] = useState(false),
     [status, setStatus] = useState(""),
     [accepted, setAccepted] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  useEffect(() => {
+    const service = new URLSearchParams(window.location.search).get("service");
+    const message = formRef.current?.elements.namedItem("message");
+    if (service && message instanceof HTMLTextAreaElement && !message.value)
+      message.value = `I’d like to learn more about ${service.slice(0, 160)}. `;
+  }, []);
   const submissionId = useRef("");
   const submittedPayload = useRef("");
   async function submit(event: React.FormEvent<HTMLFormElement>) {
@@ -21,9 +28,12 @@ export default function InquiryForm({
     const form = event.currentTarget,
       values = new FormData(form);
     const fields = {
-      name: values.get("name"), email: values.get("email"),
-      business: values.get("business") || "", topic: values.get("topic"),
-      message: values.get("message"), website: values.get("website") || "",
+      name: values.get("name"),
+      email: values.get("email"),
+      business: values.get("business") || "",
+      topic: values.get("topic"),
+      message: values.get("message"),
+      website: values.get("website") || "",
       newsletter: values.get("newsletter") === "yes",
     };
     const fingerprint = JSON.stringify(fields);
@@ -64,6 +74,7 @@ export default function InquiryForm({
   }
   return (
     <form
+      ref={formRef}
       className="contact-form"
       onSubmit={submit}
       aria-label="Consulting inquiry"

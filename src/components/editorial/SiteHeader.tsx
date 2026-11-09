@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
+import ContactLinks from "./ContactLinks";
 
 export default function SiteHeader() {
   const menu = useRef<HTMLDetailsElement>(null);
@@ -22,14 +23,14 @@ export default function SiteHeader() {
           />
         </Link>
         <div className="nav-links">
-          <Link href="/#work">Work with Jen</Link>
+          <Link href="/services">Work with Jen</Link>
           <Link href="/about">Meet Jen</Link>
           <Link href="/blog">The journal</Link>
         </div>
         <details className="mobile-menu" ref={menu}>
           <summary>Menu</summary>
           <nav aria-label="Mobile navigation">
-            <Link href="/#work" onClick={close}>
+            <Link href="/services" onClick={close}>
               Work with Jen
             </Link>
             <Link href="/about" onClick={close}>
@@ -44,6 +45,11 @@ export default function SiteHeader() {
           Talk with Jen <span aria-hidden="true">↗</span>
         </Link>
       </nav>
+      <div className="header-contact">
+        <div className="wrap">
+          <ContactLinks />
+        </div>
+      </div>
     </header>
   );
 }

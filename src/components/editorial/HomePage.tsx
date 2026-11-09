@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import JournalFeature from "./JournalFeature";
 import ContactSection from "./ContactSection";
+import TestimonialsSection from "./TestimonialsSection";
 
 export default function EditorialHomePage() {
   return (
@@ -52,49 +53,7 @@ export default function EditorialHomePage() {
           </figcaption>
         </figure>
       </section>
-      <section
-        className="wrap proof"
-        id="testimonials"
-        aria-labelledby="proof-title"
-      >
-        <div className="proof-head">
-          <div>
-            <span className="eyebrow proof-kicker">
-              <svg
-                className="proof-star"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                focusable="false"
-              >
-                <path
-                  d="M12 1.5 15 9l7.5 3L15 15l-3 7.5L9 15l-7.5-3L9 9Z"
-                  fill="currentColor"
-                />
-              </svg>
-              Testimonials
-            </span>
-            <h2 id="proof-title">What it’s like to work with Jen.</h2>
-          </div>
-          <Link className="text-link" href="/about">
-            More recommendations <span aria-hidden="true">↗</span>
-          </Link>
-        </div>
-        <div className="proof-quotes">
-          <figure>
-            <blockquote>
-              “An asset to anyone seeking key business advice, creativity,
-              honesty, integrity and knowledge.”
-            </blockquote>
-            <figcaption>— L. Leshner</figcaption>
-          </figure>
-          <figure>
-            <blockquote>
-              “She is sharp, personable, and gets results.”
-            </blockquote>
-            <figcaption>— E. Groody</figcaption>
-          </figure>
-        </div>
-      </section>
+      <TestimonialsSection />
       <div className="wrap experience" aria-label="Jen's experience">
         <span className="eyebrow">Experience that informs the work</span>
         <div className="credential">
