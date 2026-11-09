@@ -66,18 +66,20 @@ The public review is a Preview deployment. SITE_LAUNCHED=false and
 CHECKOUT_ENABLED=false. Analytics are not loaded and preview indexing is disabled.
 Project SSO stays enabled; public review access is allowed for the stable
 chickzen-preview.vercel.app alias with explicit approval. A separate production
-build is staged with public indexing and email delivery still disabled. The
-custom domains are attached; live traffic DNS and the Netlify app are unchanged.
+build now has explicitly approved indexing and email delivery enabled, with
+sitemap.xml and llms.txt published. Analytics and checkout remain disabled. The
+custom domains are attached; the live Netlify app and apex traffic DNS are unchanged.
 
 Vercel Git integration is still pending GitHub app access to eacastel/chickzen.
 The branch is pushed successfully; CLI deployments work in the correct Vercel
 project. After access is granted, connect this project rather than creating one.
 
 BEFORE PUBLIC CUTOVER
-- Add the two requested certificate-validation TXT records; leave traffic DNS as-is.
-- Obtain the required explicit activation approval after automatic approval review
-  rejected enabling production indexing and email ahead of the DNS move.
-- Issue and verify HTTPS, enable the approved production flags, redeploy and verify.
+- The two certificate TXT records are verified. Change the existing www CNAME to
+  chickzen.com, keeping current apex A records, to clear Netlify's inherited CAA
+  restriction without changing the hosting destination. Then issue/verify HTTPS.
+- Production activation was explicitly approved and completed. Verify actual-host
+  HTTPS, redirects and indexing after the certificate becomes available.
 - Give Emilio the green light and current Vercel DNS values; he changes traffic DNS.
 - Keep analytics disabled until the new host is confirmed, then coordinate the
   existing GA4/GTM measurement transition with the analytics owner.

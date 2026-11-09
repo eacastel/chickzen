@@ -5,8 +5,8 @@ Stable address: https://chickzen-preview.vercel.app
 Project: chickzen (prj_4dtRYBrYg4BD0313JA1SJZOUu4pr)
 Team: emilio-castellanos-projects
 Source branch: codex/chickzen-vercel-migration
-Current deployment: dpl_CVD9dbVRijYsiHT4RDGz4mGherT5
-Current application commit: 12302c5
+Current deployment: dpl_ABqSgiAPDK5K1CVPizMwSTLs89XM
+Current application commit: bb4e997
 
 Use this same alias for all future review updates. After a new preview build is
 READY and verified, point this alias at it:

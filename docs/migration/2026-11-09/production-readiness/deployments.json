@@ -1,25 +1,26 @@
 {
-  "sourceCommit": "12302c5",
+  "sourceCommit": "bb4e997",
   "preview": {
-    "id": "dpl_CVD9dbVRijYsiHT4RDGz4mGherT5",
-    "url": "https://chickzen-o99c4q9ue-emilio-castellanos-projects.vercel.app",
+    "id": "dpl_ABqSgiAPDK5K1CVPizMwSTLs89XM",
+    "url": "https://chickzen-eken71axq-emilio-castellanos-projects.vercel.app",
     "reviewUrl": "https://chickzen-preview.vercel.app",
-    "readyState": "READY"
+    "readyState": "READY",
+    "sourceCommit": "bb4e997"
   },
   "production": {
-    "id": "dpl_5ednzGb5iFJxvQLsA2Mp6tNNsSyD",
-    "url": "https://chickzen-iag4mqxth-emilio-castellanos-projects.vercel.app",
+    "id": "dpl_631dPHdGE5icWbyUht9xSYuTYWL3",
+    "url": "https://chickzen-46bj9blb2-emilio-castellanos-projects.vercel.app",
     "readyState": "READY",
-    "siteLaunched": false,
-    "emailDeliveryEnabled": false,
+    "siteLaunched": true,
+    "emailDeliveryEnabled": true,
     "analyticsEnabled": false,
-    "analyticsEnvExplicitlySet": false,
+    "analyticsEnvExplicitlySet": true,
     "checkoutEnabled": false
   },
   "trafficDnsChanged": false,
   "readyForDnsCutover": false,
   "pending": [
-    "certificate TXT records and actual-host TLS verification",
-    "explicit production activation approval and rebuild"
+    "www CNAME preparation change to remove inherited Netlify CAA restriction",
+    "certificate issuance and actual-host TLS verification"
   ]
 }

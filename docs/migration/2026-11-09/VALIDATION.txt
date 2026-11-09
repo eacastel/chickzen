@@ -1,9 +1,9 @@
 CHICKZEN MIGRATION — CURRENT VALIDATION
 9 November 2026
 
-Latest application commit: 12302c5 on codex/chickzen-vercel-migration.
-Latest Preview: dpl_CVD9dbVRijYsiHT4RDGz4mGherT5, READY.
-Staged Production: dpl_5ednzGb5iFJxvQLsA2Mp6tNNsSyD, READY, not activated.
+Latest application commit: bb4e997 on codex/chickzen-vercel-migration.
+Latest Preview: dpl_ABqSgiAPDK5K1CVPizMwSTLs89XM, READY.
+Production: dpl_631dPHdGE5icWbyUht9xSYuTYWL3, READY, indexing and email enabled.
 Current records, browser checks and screenshots:
   production-readiness/README.txt and validation JSON files (current launch status)
   analytics-stage/README.txt and validation JSON files (broader route/event checks)
@@ -23,10 +23,14 @@ runtime vulnerabilities 0; eight moderate findings in development/build tooling.
 See runtime-audit.json for that audit.
 
 Preview email is enabled using Aliigo's verified sender and existing key.
-Production credentials are prepared; production email and public indexing remain
-disabled pending explicit activation approval. Payments and analytics are off.
+Production email and public indexing were explicitly approved and are enabled.
+Payments and analytics remain off. The enabled form passed browser QA, with no
+Google requests or queue. All 23 sitemap entries have correct indexing/canonicals;
+robots.txt advertises the sitemap, and llms.txt is published with a discovery link.
 Custom domains are attached in Vercel, but public traffic DNS remains on Netlify.
-Actual custom-host TLS verification awaits the user's certificate TXT records.
+The certificate TXT records are verified. Actual custom-host TLS awaits clearing
+the CAA restriction inherited through www's existing Netlify CNAME. The requested
+preparation change (www -> chickzen.com) preserves current Netlify hosting.
 Contact rate limiting is active and verified without sending email. The latest
 preview handles HTML 429 errors, preserves input and retry IDs, and passed its
 mocked retry check. Stable public review: https://chickzen-preview.vercel.app.

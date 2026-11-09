@@ -10,7 +10,7 @@ No login or expiring share link is required.
 
 docs/migration/2026-11-09/production-readiness/README.txt
   Current launch preparation, production deployment, contact rate limiting,
-  HTTPS validation records and outstanding activation approval. Read this
+  HTTPS validation records and remaining certificate/DNS steps. Read this
   before changing DNS; earlier review folders are historical snapshots.
 
 docs/migration/2026-11-09/analytics-stage/README.txt

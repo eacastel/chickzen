@@ -1,0 +1,17 @@
+{
+  "sourceCommit": "bb4e997",
+  "origin": "https://chickzen-46bj9blb2-emilio-castellanos-projects.vercel.app",
+  "productionRobotsAllow": true,
+  "sitemapAdvertised": true,
+  "sitemapEntries": 23,
+  "journalArticles": 11,
+  "allSitemapUrlsIndexableSelfCanonical": true,
+  "llmsPublished": true,
+  "llmsContentType": "text/plain; charset=utf-8",
+  "llmsLinks": 11,
+  "llmsDiscoveryLinkPresent": true,
+  "excludedTransactionPagesNoindex": true,
+  "deploymentHostnameProtectedFromIndexing": true,
+  "actualCustomHostTlsVerified": false,
+  "emailsSent": false
+}

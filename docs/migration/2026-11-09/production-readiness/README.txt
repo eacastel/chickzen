@@ -1,13 +1,13 @@
 CHICKZEN — PRODUCTION PREPARATION
 9 November 2026
 
-STATUS: PREPARED, NOT YET CLEARED FOR TRAFFIC DNS CUTOVER
+STATUS: PRODUCTION ACTIVATED; HTTPS COMPLETION STILL REQUIRED BEFORE CUTOVER
 
 Public review: https://chickzen-preview.vercel.app
-Source: 12302c5, branch codex/chickzen-vercel-migration.
-Preview: dpl_CVD9dbVRijYsiHT4RDGz4mGherT5, READY.
-Staged Production: dpl_5ednzGb5iFJxvQLsA2Mp6tNNsSyD, READY.
-Production build: chickzen-iag4mqxth-emilio-castellanos-projects.vercel.app.
+Production source: bb4e997, branch codex/chickzen-vercel-migration.
+Preview: dpl_ABqSgiAPDK5K1CVPizMwSTLs89XM, READY.
+Production: dpl_631dPHdGE5icWbyUht9xSYuTYWL3, READY.
+Production build: chickzen-46bj9blb2-emilio-castellanos-projects.vercel.app.
 Vercel project prj_4dtRYBrYg4BD0313JA1SJZOUu4pr, team emilio-castellanos-projects.
 
 The production build succeeded with lint, TypeScript and 33 prerendered routes.
@@ -17,13 +17,14 @@ Vercel; www is configured to redirect to chickzen.com with HTTP 308.
 Public DNS still sends traffic to Netlify. Neither its app nor traffic DNS changed.
 
 ACTIVATION STATE
-Production SITE_LAUNCHED=false and EMAIL_DELIVERY_ENABLED=false.
-CHECKOUT_ENABLED=false. ANALYTICS_ENABLED is absent and therefore false by design.
+Production SITE_LAUNCHED=true and EMAIL_DELIVERY_ENABLED=true, explicitly approved
+by Emilio and deployed. CHECKOUT_ENABLED=false. ANALYTICS_ENABLED=false is now
+explicitly configured in Production.
 NEXT_PUBLIC_GTM_ID=GTM-WDHMFN7J; GA4 remains G-6PCNC6QKXE.
 The approved sensitive Resend variables now target Preview and Production.
 Sender: chickzen <notifications@aliigo.com>; recipient: hello@chickzen.com.
 Visitor email is Reply-To. No secret values are recorded in these documents.
-Preview email is enabled; Production email remains disabled until activation.
+Preview and Production email are enabled. No human-recipient test email was sent.
 
 Code now separates public indexing from analytics activation. Loading GTM and
 reporting API analytics eligibility both require ANALYTICS_ENABLED=true as well
@@ -40,26 +41,45 @@ and retry ID, and displays a clear wait/retry message with an email alternative.
 The final preview passed the mocked 429/retry browser test on mobile.
 Evidence: firewall-validation.json and rate-limit-ui-validation.json.
 
-HTTPS VALIDATION — USER ACTION PENDING
+SITEMAP AND LLMS.TXT
+Production robots.txt now permits public crawling and advertises the sitemap.
+All 23 sitemap entries, including 11 journal articles, returned HTTP 200 with
+index/follow metadata and matching canonical URLs on the protected deployment.
+Transaction confirmation and disabled checkout remain noindex and outside sitemap.
+public/llms.txt provides a concise description of Jen's consulting and 11 links
+to public resources. The layout advertises it using rel=describedby. Its response
+is text/plain; charset=utf-8. Source follows https://llmstxt.org/ format.
+Sitemap and llms.txt publication is complete on Vercel; the old Netlify site still
+serves the public domain until DNS changes. Search Console submission, if needed,
+should follow cutover so its fetch reaches the new sitemap.
+Evidence: discovery-validation.json and enabled-validation.json.
+
+HTTPS VALIDATION — WWW PREPARATION CHANGE PENDING
 The following TXT records were requested in Cloudflare, with TTL Auto:
   _acme-challenge
   h756rsRylJhj3aUNmL8DlndIThkIIvymFe2SUR31pzA
   _acme-challenge.www
   J-QZjk5ht79BCQ3pZxT-VSp2Zt0cTILvPDBa7WEqVmk
-These records validate certificates and do not move traffic. They were not yet
-visible in the latest DNS lookup. After they resolve, issue the certificate and
-test both real hostnames directly against Vercel with full TLS verification.
+Both records are visible and match. They validate certificates without moving
+traffic. Certificate issuance returned pretest_conflicting_caa_record_error:
+www still points to Netlify, whose inherited CAA records authorize Amazon and
+DigiCert rather than Let's Encrypt. Do not add a CAA alongside a CNAME.
+
+Emilio was asked to change only CNAME www to chickzen.com, DNS only, TTL Auto,
+while retaining the current apex A records and the two TXT records. This keeps
+www on Netlify via the apex and removes the inherited netlify.app CAA restriction.
+Both current apex IPs were tested with www's real hostname: HTTPS verified and
+HTTP 301 returned. After this preparation change propagates, finalize the existing
+certificate order and test both real hosts directly against Vercel with verified TLS.
 Actual custom-domain HTTPS verification is still pending; protected deployment
 browser checks are not a substitute for that check.
 
-ACTIVATION APPROVAL — USER ACTION PENDING
-Automatic approval review rejected enabling SITE_LAUNCHED and EMAIL_DELIVERY_ENABLED
-before DNS cutover, stating that readiness authorization did not clearly authorize
-pre-cutover public indexing and live email delivery. A successful inactive production
-deployment and credential preparation were allowed and completed. A second request
-to activate was also rejected. Do not retry activation without explicit user approval.
-The concrete proposed action is to enable those two Production flags, leave
-analytics and checkout disabled, and deploy a fresh build with DNS unchanged.
+ACTIVATION APPROVAL — COMPLETED
+Earlier automatic approval review required explicit approval for pre-cutover
+indexing and email. Emilio then explicitly approved both and requested sitemap
+publication and llms.txt. The approval requirement is resolved; the flags were
+changed successfully and the new production build passed browser and discovery
+checks. No further activation permission is needed for this approved scope.
 
 TRAFFIC DNS — DO NOT CHANGE YET
 Vercel's current domain-config API ranks these targets first:
@@ -73,12 +93,11 @@ Use DNS-only records in Cloudflare. Preserve Cloudflare nameservers, MX and emai
 TXT records. Current rollback records are captured in domain-preparation.json.
 
 REMAINING SEQUENCE
-1. Confirm TXT records and issue/verify the domain certificate.
-2. Obtain explicit activation approval, set the approved flags and redeploy.
-3. Verify actual-host HTTPS, page/indexing behavior and enabled form UI using
-   mocked submissions. Confirm analytics remains off and checkout remains off.
-4. Tell Emilio the site is ready and provide fresh traffic DNS records.
-5. After Emilio changes DNS, verify the live host and coordinate analytics with
+1. Confirm the www CNAME preparation change and issue/verify the domain certificate.
+2. Verify actual-host HTTPS, indexing, redirects, sitemap and llms.txt. The enabled
+   form already passed browser QA; analytics and checkout remain off.
+3. Tell Emilio the site is ready and provide fresh traffic DNS records.
+4. After Emilio changes DNS, verify the live host and coordinate analytics with
    its existing owner. Keep the old Netlify deployment available for rollback.
 
 ANALYTICS HANDOFF

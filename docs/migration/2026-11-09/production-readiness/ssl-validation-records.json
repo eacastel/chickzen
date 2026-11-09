@@ -17,5 +17,25 @@
     }
   ],
   "publicTrafficDnsChanged": false,
-  "status": "AWAITING_USER_DNS_VALIDATION_RECORDS"
+  "status": "TXT_VALIDATED_CERTIFICATE_BLOCKED_BY_NETLIFY_CAA",
+  "txtRecordsVerifiedAt": "2026-11-09T21:19:29.563571+00:00",
+  "certificateError": "pretest_conflicting_caa_record_error",
+  "requestedPreparationChange": {
+    "type": "CNAME",
+    "name": "www",
+    "from": "dashing-gaufre-cbbd48.netlify.app",
+    "to": "chickzen.com",
+    "proxy": "DNS only",
+    "apexARecordsRemainUnchanged": true
+  },
+  "currentNetlifyRouteVerified": {
+    "wwwOn75.2.60.5": {
+      "httpsStatus": 301,
+      "sslVerifyResult": 0
+    },
+    "wwwOn99.83.231.61": {
+      "httpsStatus": 301,
+      "sslVerifyResult": 0
+    }
+  }
 }
