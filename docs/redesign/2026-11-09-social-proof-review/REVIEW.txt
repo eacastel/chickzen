@@ -1,0 +1,26 @@
+CHICKZEN — SOCIAL PROOF AND NUMBERING REFINEMENT
+9 November 2026
+
+Recommendations sit immediately after the three service choices and before
+the invitation to contact Jen. This provides reassurance at the point where
+a visitor is considering the next step. The experience strip remains near
+the opening; the About section now pairs its heading with Jen's introduction.
+
+The two short excerpts and their attributions come from the existing About
+page at https://chickzen.com/about, captured in the 8 November live audit:
+../2026-11-08/audit/review.json
+
+L. Leshner: "An asset to anyone seeking key business advice, creativity,
+honesty, integrity and knowledge."
+E. Groody: "She is sharp, personable, and gets results."
+
+Attributions retain the published names. No client roles, ratings, engagement
+details or measurable outcomes have been invented. More recommendations link
+to the existing About page.
+
+Decorative numbers were removed from section eyebrows and service choices.
+Only the actual three-step process uses numbers, now 1, 2 and 3 in an ordered
+list. The services remain alternatives rather than a suggested sequence.
+
+The existing palette, typography, portrait, credentials and CTA destinations
+are retained. This change is scoped to the editorial review concept.
