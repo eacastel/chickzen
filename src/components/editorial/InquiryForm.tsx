@@ -53,10 +53,12 @@ export default function InquiryForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...fields, submissionId: submissionId.current }),
       });
-      const result = await response.json();
-      if (response.status !== 202 || result.accepted !== true)
+      if (response.status === 429)
+        throw new Error("Please wait a minute before trying again, or email Jen directly. Your details are still here.");
+      const result = await response.json().catch(() => null);
+      if (response.status !== 202 || result?.accepted !== true)
         throw new Error(
-          result.error || "Please try again or email Jen directly.",
+          typeof result?.error === "string" ? result.error : "Please try again or email Jen directly.",
         );
       recordInquiryAccepted(response.status, result, submissionId.current, analyticsContext);
       setAccepted(true);
