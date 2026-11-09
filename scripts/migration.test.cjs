@@ -9,12 +9,12 @@ Module._extensions[".ts"]=(module,filename)=>module._compile(ts.transpileModule(
 const {POST}=require("../src/app/api/contact/route.ts");
 const {quoteServices}=require("../src/lib/checkout.ts");
 const {GET:geo}=require("../src/app/api/geo/route.ts");
-const {isPublicProduction}=require("../src/lib/deployment.ts");
+const {isPublicProduction,isAnalyticsProduction}=require("../src/lib/deployment.ts");
 const inquiry={name:"Review Visitor",email:"visitor@example.com",business:"Example business",topic:"Clarity & focused strategy",message:"I would like help clarifying the positioning for my business.",newsletter:false,website:"",submissionId:"0e2b5612-57bc-4a9a-bf3e-657cf6416880"};
 let calls=[];
 const request=(body=inquiry,origin="https://chickzen.test")=>new Request("https://chickzen.test/api/contact",{method:"POST",headers:{origin,"content-type":"application/json"},body:JSON.stringify(body)});
 beforeEach(()=>{
- calls=[];Object.assign(process.env,{SITE_LAUNCHED:"false",VERCEL_ENV:"preview",NEXT_PUBLIC_GTM_ID:"",EMAIL_DELIVERY_ENABLED:"true",RESEND_API_KEY:"test-not-a-real-key",CONTACT_EMAIL_FROM:"website@example.com",CONTACT_EMAIL_TO:"jen@example.com",MAILERLITE_API_KEY:"test-not-a-real-key",MAILERLITE_GROUP_ID:"test-group"});
+ calls=[];Object.assign(process.env,{SITE_LAUNCHED:"false",ANALYTICS_ENABLED:"false",VERCEL_ENV:"preview",NEXT_PUBLIC_GTM_ID:"",EMAIL_DELIVERY_ENABLED:"true",RESEND_API_KEY:"test-not-a-real-key",CONTACT_EMAIL_FROM:"website@example.com",CONTACT_EMAIL_TO:"jen@example.com",MAILERLITE_API_KEY:"test-not-a-real-key",MAILERLITE_GROUP_ID:"test-group"});
  global.fetch=async(url,options)=>{calls.push({url,options,body:JSON.parse(options.body)});return Response.json({id:"mock-acknowledgement"});};
 });
 test("cross-origin requests never send email",async()=>{assert.equal((await POST(request(inquiry,"https://other.test"))).status,403);assert.equal(calls.length,0);});
@@ -55,7 +55,7 @@ test("preview stays unindexed even when the launch flag is accidentally enabled"
 
 
 test("acknowledged delivery is analytics eligible only on the released production domain", async()=>{
- Object.assign(process.env,{SITE_LAUNCHED:"true",VERCEL_ENV:"production",NEXT_PUBLIC_GTM_ID:"GTM-WDHMFN7J"});
+ Object.assign(process.env,{SITE_LAUNCHED:"true",ANALYTICS_ENABLED:"true",VERCEL_ENV:"production",NEXT_PUBLIC_GTM_ID:"GTM-WDHMFN7J"});
  for(const [origin,eligible] of [["https://chickzen.com",true],["https://www.chickzen.com",true],["https://chickzen-preview.vercel.app",false],["http://chickzen.com",false],["https://chickzen.com.example.org",false]]){
   const response=await POST(new Request(origin+"/api/contact",{method:"POST",headers:{origin,"content-type":"application/json"},body:JSON.stringify(inquiry)}));
   assert.equal(response.status,202);assert.equal((await response.json()).analyticsEligible,eligible);
@@ -69,4 +69,16 @@ test("a successful HTTP response without a provider acknowledgement never accept
   global.fetch=async()=>Response.json(result);
   const response=await POST(request());assert.equal(response.status,502);assert.notEqual((await response.json()).accepted,true);
  }
+});
+
+test("analytics release is independent from public indexing and fails closed",async()=>{
+ Object.assign(process.env,{SITE_LAUNCHED:"true",VERCEL_ENV:"production",NEXT_PUBLIC_GTM_ID:"GTM-WDHMFN7J",ANALYTICS_ENABLED:"false"});
+ assert.equal(isPublicProduction(),true);assert.equal(isAnalyticsProduction(),false);
+ const send=()=>POST(new Request("https://chickzen.com/api/contact",{method:"POST",headers:{origin:"https://chickzen.com","content-type":"application/json"},body:JSON.stringify(inquiry)}));
+ assert.equal((await(await send()).json()).analyticsEligible,false);
+ process.env.ANALYTICS_ENABLED="true";assert.equal(isAnalyticsProduction(),true);
+ assert.equal((await(await send()).json()).analyticsEligible,true);
+ process.env.VERCEL_ENV="preview";assert.equal(isAnalyticsProduction(),false);
+ assert.equal((await(await send()).json()).analyticsEligible,false);
+ delete process.env.ANALYTICS_ENABLED;process.env.VERCEL_ENV="production";assert.equal(isAnalyticsProduction(),false);
 });
