@@ -74,9 +74,11 @@
     .offer-detail .text-link { margin-top:15px; }
     .services-foot { display:flex; align-items:center; justify-content:space-between; gap:24px; padding-top:26px; }
     .services-foot p { font-family:var(--serif); font-style:italic; font-size:19px; }
-    .proof { margin-top:36px; padding:30px 36px; background:#faf6f8; border-radius:2px 2px 36px 2px; }
-    .proof-head { display:flex; align-items:baseline; justify-content:space-between; gap:24px; margin-bottom:23px; }
-    .proof-head h3 { font-size:23px; line-height:1.3; }
+    .proof { margin-block:0 40px; padding:30px 36px; background:var(--rose); border:1px solid #e4dbe1; border-radius:2px 2px 36px 2px; }
+    .proof-head { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:25px; }
+    .proof-kicker { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+    .proof-star { width:21px; height:21px; flex-shrink:0; color:#80697c; }
+    .proof-head h2 { font-size:30px; line-height:1.25; letter-spacing:-.02em; }
     .proof-head .text-link { font-size:10px; }
     .proof-quotes { display:grid; grid-template-columns:1.2fr 1fr; gap:36px; }
     .proof-quotes figure { display:flex; flex-direction:column; align-items:flex-start; }
@@ -165,9 +167,9 @@
       .offer-detail .text-link { font-size:11px; }
       .services-foot { align-items:start; flex-direction:column; gap:15px; padding-top:24px; }
       .services-foot p { font-size:18px; }
-      .proof { margin-top:28px; padding:25px 23px; }
+      .proof { margin-block:0 30px; padding:25px 23px; }
       .proof-head { display:block; margin-bottom:23px; }
-      .proof-head h3 { font-size:23px; margin-bottom:12px; }
+      .proof-head h2 { font-size:27px; margin-bottom:15px; }
       .proof-quotes { grid-template-columns:1fr; gap:23px; }
       .proof-quotes figure + figure { border-left:0; border-top:1px solid #ded6dc; padding:23px 0 0; }
       .proof-quotes blockquote { font-size:23px; margin-bottom:14px; }
@@ -239,6 +241,25 @@
         </figcaption>
       </figure>
     </section>
+    <section class="wrap proof" id="testimonials" aria-labelledby="proof-title">
+      <div class="proof-head">
+        <div>
+          <span class="eyebrow proof-kicker"><svg class="proof-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 1.5 15 9l7.5 3L15 15l-3 7.5L9 15l-7.5-3L9 9Z" fill="currentColor"/></svg>Testimonials</span>
+          <h2 id="proof-title">What it’s like to work with Jen.</h2>
+        </div>
+        <a class="text-link" href="https://chickzen.com/about">More recommendations <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="proof-quotes">
+        <figure>
+          <blockquote>“An asset to anyone seeking key business advice, creativity, honesty, integrity and knowledge.”</blockquote>
+          <figcaption>— L. Leshner</figcaption>
+        </figure>
+        <figure>
+          <blockquote>“She is sharp, personable, and gets results.”</blockquote>
+          <figcaption>— E. Groody</figcaption>
+        </figure>
+      </div>
+    </section>
     <div class="wrap experience" aria-label="Jen's experience">
       <span class="eyebrow">Experience that informs the work</span>
       <div class="credential"><strong>20+ years</strong><span>Brand, marketing &amp; business growth</span></div>
@@ -276,19 +297,6 @@
           <div class="offer-detail"><p>Explore an ongoing Strategic Brand Partner engagement for decisions about your positioning, messaging and growth. Start with a conversation about the support, scope and cadence your business needs.</p><a class="text-link" href="mailto:hello@chickzen.com?subject=Strategic%20partnership%20with%20Jen">Explore a strategic partnership <span aria-hidden="true">↗</span></a></div>
         </details>
       </div>
-      <aside class="proof" aria-labelledby="proof-title">
-        <div class="proof-head"><h3 id="proof-title">In their words</h3><a class="text-link" href="https://chickzen.com/about">More recommendations <span aria-hidden="true">↗</span></a></div>
-        <div class="proof-quotes">
-          <figure>
-            <blockquote>“An asset to anyone seeking key business advice, creativity, honesty, integrity and knowledge.”</blockquote>
-            <figcaption>— L. Leshner</figcaption>
-          </figure>
-          <figure>
-            <blockquote>“She is sharp, personable, and gets results.”</blockquote>
-            <figcaption>— E. Groody</figcaption>
-          </figure>
-        </div>
-      </aside>
       <div class="services-foot"><p>Not sure where to begin? That’s a good place to start.</p><a class="text-link" href="#begin">Let’s work it out together <span aria-hidden="true">↗</span></a></div>
     </section>
     <section class="approach-band" aria-labelledby="approach-title">

@@ -1,0 +1,15 @@
+CHICKZEN — MORE VISIBLE TESTIMONIALS
+9 November 2026
+
+Moved the two existing recommendations directly below the hero, before the
+experience strip and service choices. A larger heading ("What it’s like to
+work with Jen."), explicit Testimonials label, blush panel and subtle border
+make the content easier to recognize. A single four-point star is decorative;
+no star score or review count is claimed. Original quotations and attributions
+remain unchanged. The previous placement and checks are retained one level up.
+
+This remains the standalone HTML homepage concept in the existing GitHub
+repository and Netlify project. Production uses Next.js and Contentful.
+Journal and About links open production. Contact buttons currently open email;
+a general inquiry form and integration into the existing application remain
+implementation work. The existing live form is the Stripe service checkout.
