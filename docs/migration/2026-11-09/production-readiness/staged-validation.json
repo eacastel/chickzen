@@ -1,0 +1,55 @@
+{
+  "sourceCommit": "12302c5",
+  "origin": "https://chickzen-iag4mqxth-emilio-castellanos-projects.vercel.app",
+  "emailFormEnabled": false,
+  "productionHostStillNoindex": true,
+  "analyticsRequests": 0,
+  "googleQueueCreated": false,
+  "viewports": [
+    1440,
+    768,
+    390,
+    320
+  ],
+  "routes": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/contact",
+      "status": 200
+    },
+    {
+      "path": "/services",
+      "status": 200
+    },
+    {
+      "path": "/about",
+      "status": 200
+    },
+    {
+      "path": "/blog",
+      "status": 200
+    },
+    {
+      "path": "/blog/brand-clarity-session-get-unstuck",
+      "status": 200
+    },
+    {
+      "path": "/services/lets-begin",
+      "status": 200
+    },
+    {
+      "path": "/success",
+      "status": 200
+    },
+    {
+      "path": "/not-a-real-chickzen-page",
+      "status": 404
+    }
+  ],
+  "errors": [],
+  "realEmailsOrPaymentsSent": false,
+  "publicCustomDomainTlsVerified": false
+}

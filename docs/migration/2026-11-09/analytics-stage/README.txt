@@ -1,6 +1,13 @@
 CHICKZEN — STAGED ANALYTICS AND URL PRESERVATION
 9 November 2026
 
+HISTORICAL VALIDATION SNAPSHOT
+This folder records the ccc3de7 analytics review. Current deployment and cutover
+status is in ../production-readiness/README.txt. Source 0347937 later added the
+independent ANALYTICS_ENABLED gate to both script loading and API eligibility;
+public indexing alone no longer enables collection. Production is now staged,
+custom domains are attached, and public traffic DNS still points to Netlify.
+
 PUBLIC REVIEW
 https://chickzen-preview.vercel.app
 Deployment dpl_8mbTjmvHTYo3FLCW8aT7oegk4CpL, READY.

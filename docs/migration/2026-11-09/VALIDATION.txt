@@ -1,9 +1,12 @@
 CHICKZEN MIGRATION — CURRENT VALIDATION
 9 November 2026
 
-Latest application commit: 7e8e0e1 on codex/chickzen-vercel-migration.
-Latest Vercel deployment: dpl_JBM9zD7r4RAUiHYE8oCabwUSzZvq (Preview).
+Latest application commit: 12302c5 on codex/chickzen-vercel-migration.
+Latest Preview: dpl_CVD9dbVRijYsiHT4RDGz4mGherT5, READY.
+Staged Production: dpl_5ednzGb5iFJxvQLsA2Mp6tNNsSyD, READY, not activated.
 Current records, browser checks and screenshots:
+  production-readiness/README.txt and validation JSON files (current launch status)
+  analytics-stage/README.txt and validation JSON files (broader route/event checks)
   full-site-review/README.txt
   full-site-review/deployment.json
   full-site-review/browser-validation.json
@@ -11,7 +14,7 @@ Current records, browser checks and screenshots:
 Cloud build: PASS, Next.js 16.4.5, React 19.3.1, Node 22.
 ESLint and TypeScript: PASS locally and in the cloud build.
 Static generation: 33 pages/routes.
-Focused server migration tests: 12 passed, 0 failed; provider calls mocked.
+Focused migration/API tests: 15 passed; analytics tests: 7 passed. Providers mocked.
 Actual delivery function: Resend accepted using its simulated delivery inbox.
 No real email recipient or payment was used for automated testing.
 
@@ -20,7 +23,13 @@ runtime vulnerabilities 0; eight moderate findings in development/build tooling.
 See runtime-audit.json for that audit.
 
 Preview email is enabled using Aliigo's verified sender and existing key.
-Payments and analytics remain disabled. No production domain or DNS was changed.
-Vercel SSO remains enabled with a deployment-specific seven-day share link.
-The initial migration screenshots and deployment.json beside this file are
-retained as historical evidence; full-site-review contains the current review.
+Production credentials are prepared; production email and public indexing remain
+disabled pending explicit activation approval. Payments and analytics are off.
+Custom domains are attached in Vercel, but public traffic DNS remains on Netlify.
+Actual custom-host TLS verification awaits the user's certificate TXT records.
+Contact rate limiting is active and verified without sending email. The latest
+preview handles HTML 429 errors, preserves input and retry IDs, and passed its
+mocked retry check. Stable public review: https://chickzen-preview.vercel.app.
+Vercel SSO remains enabled for other generated deployment addresses.
+The initial migration screenshots/deployment.json and earlier review folders
+are historical evidence. production-readiness contains the current launch status.

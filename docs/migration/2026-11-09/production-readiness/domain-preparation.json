@@ -1,0 +1,35 @@
+{
+  "capturedAt": "2026-11-09T17:14:10.372035+00:00",
+  "domains": [
+    {
+      "name": "chickzen.com",
+      "verified": true,
+      "redirect": null,
+      "redirectStatusCode": null,
+      "verification": null
+    },
+    {
+      "name": "www.chickzen.com",
+      "verified": true,
+      "redirect": "chickzen.com",
+      "redirectStatusCode": 308,
+      "verification": null
+    }
+  ],
+  "publicDnsUnchanged": {
+    "chickzen.com A": [
+      "75.2.60.5",
+      "99.83.231.61"
+    ],
+    "www.chickzen.com CNAME": [
+      "dashing-gaufre-cbbd48.netlify.app."
+    ],
+    "chickzen.com MX": [
+      "1 smtp.google.com."
+    ],
+    "chickzen.com NS": [
+      "celine.ns.cloudflare.com.",
+      "khalid.ns.cloudflare.com."
+    ]
+  }
+}

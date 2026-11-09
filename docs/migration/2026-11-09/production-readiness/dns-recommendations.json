@@ -1,0 +1,76 @@
+{
+  "capturedAt": "2026-11-09T17:32:32.537Z",
+  "source": "Vercel domain configuration API v6",
+  "records": [
+    {
+      "domain": "chickzen.com",
+      "recommendedIPv4": [
+        {
+          "rank": 1,
+          "value": [
+            "216.150.1.1",
+            "216.150.16.1"
+          ]
+        },
+        {
+          "rank": 2,
+          "value": [
+            "76.76.21.21"
+          ]
+        }
+      ],
+      "recommendedCNAME": [
+        {
+          "rank": 1,
+          "value": "29bc08226de3d2dc.vercel-dns-016.com."
+        },
+        {
+          "rank": 2,
+          "value": "cname.vercel-dns.com."
+        }
+      ],
+      "currentA": [
+        "75.2.60.5",
+        "99.83.231.61"
+      ],
+      "currentCNAME": [],
+      "misconfigured": true
+    },
+    {
+      "domain": "www.chickzen.com",
+      "recommendedIPv4": [
+        {
+          "rank": 1,
+          "value": [
+            "216.150.1.1",
+            "216.150.16.1"
+          ]
+        },
+        {
+          "rank": 2,
+          "value": [
+            "76.76.21.21"
+          ]
+        }
+      ],
+      "recommendedCNAME": [
+        {
+          "rank": 1,
+          "value": "29bc08226de3d2dc.vercel-dns-016.com."
+        },
+        {
+          "rank": 2,
+          "value": "cname.vercel-dns.com."
+        }
+      ],
+      "currentA": [
+        "52.52.192.191",
+        "13.52.188.95"
+      ],
+      "currentCNAME": [
+        "dashing-gaufre-cbbd48.netlify.app."
+      ],
+      "misconfigured": true
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-11-09T17:24:03.908971+00:00",
+  "domains": [
+    "chickzen.com",
+    "www.chickzen.com"
+  ],
+  "records": [
+    {
+      "type": "TXT",
+      "name": "_acme-challenge",
+      "value": "h756rsRylJhj3aUNmL8DlndIThkIIvymFe2SUR31pzA"
+    },
+    {
+      "type": "TXT",
+      "name": "_acme-challenge.www",
+      "value": "J-QZjk5ht79BCQ3pZxT-VSp2Zt0cTILvPDBa7WEqVmk"
+    }
+  ],
+  "publicTrafficDnsChanged": false,
+  "status": "AWAITING_USER_DNS_VALIDATION_RECORDS"
+}

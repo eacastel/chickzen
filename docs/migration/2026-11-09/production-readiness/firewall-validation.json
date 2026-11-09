@@ -1,0 +1,61 @@
+{
+  "rules": [
+    {
+      "action": {
+        "mitigate": {
+          "action": "rate_limit",
+          "actionDuration": null,
+          "rateLimit": {
+            "action": "rate_limit",
+            "algo": "fixed_window",
+            "keys": [
+              "ip"
+            ],
+            "limit": 5,
+            "window": 60
+          },
+          "redirect": null
+        }
+      },
+      "active": true,
+      "conditionGroup": [
+        {
+          "conditions": [
+            {
+              "op": "eq",
+              "type": "path",
+              "value": "/api/contact"
+            },
+            {
+              "op": "eq",
+              "type": "method",
+              "value": "POST"
+            }
+          ]
+        }
+      ],
+      "description": "Allow up to five contact POSTs per minute per source IP; reject excess requests before email delivery.",
+      "id": "rule_limit_chickzen_contact_submissions_OsHIic",
+      "name": "Limit Chickzen contact submissions",
+      "valid": true,
+      "validationErrors": null
+    }
+  ],
+  "invalidPayloadStatuses": [
+    400,
+    400,
+    400,
+    400,
+    400,
+    429
+  ],
+  "blockedResponse": [
+    {
+      "status": 429,
+      "mitigated": "deny",
+      "contentType": "application/json"
+    }
+  ],
+  "emailsSent": false,
+  "note": "Requests contained only an empty JSON object; app validation rejected them before email. Vercel limits per IP within each region."
+}

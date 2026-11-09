@@ -8,6 +8,11 @@ NEXT.JS / VERCEL MIGRATION
 Stable public review: https://chickzen-preview.vercel.app
 No login or expiring share link is required.
 
+docs/migration/2026-11-09/production-readiness/README.txt
+  Current launch preparation, production deployment, contact rate limiting,
+  HTTPS validation records and outstanding activation approval. Read this
+  before changing DNS; earlier review folders are historical snapshots.
+
 docs/migration/2026-11-09/analytics-stage/README.txt
   Current preview: consent controls, staged GTM events, restored legacy URLs,
   correct confirmation/404 canonicals and checkout sitemap exclusion.

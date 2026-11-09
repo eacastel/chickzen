@@ -1,0 +1,25 @@
+{
+  "sourceCommit": "12302c5",
+  "preview": {
+    "id": "dpl_CVD9dbVRijYsiHT4RDGz4mGherT5",
+    "url": "https://chickzen-o99c4q9ue-emilio-castellanos-projects.vercel.app",
+    "reviewUrl": "https://chickzen-preview.vercel.app",
+    "readyState": "READY"
+  },
+  "production": {
+    "id": "dpl_5ednzGb5iFJxvQLsA2Mp6tNNsSyD",
+    "url": "https://chickzen-iag4mqxth-emilio-castellanos-projects.vercel.app",
+    "readyState": "READY",
+    "siteLaunched": false,
+    "emailDeliveryEnabled": false,
+    "analyticsEnabled": false,
+    "analyticsEnvExplicitlySet": false,
+    "checkoutEnabled": false
+  },
+  "trafficDnsChanged": false,
+  "readyForDnsCutover": false,
+  "pending": [
+    "certificate TXT records and actual-host TLS verification",
+    "explicit production activation approval and rebuild"
+  ]
+}
