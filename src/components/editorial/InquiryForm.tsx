@@ -14,28 +14,30 @@ export default function InquiryForm({
     [status, setStatus] = useState(""),
     [accepted, setAccepted] = useState(false);
   const submissionId = useRef("");
+  const submittedPayload = useRef("");
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (pending) return;
     const form = event.currentTarget,
       values = new FormData(form);
-    if (!submissionId.current) submissionId.current = crypto.randomUUID();
+    const fields = {
+      name: values.get("name"), email: values.get("email"),
+      business: values.get("business") || "", topic: values.get("topic"),
+      message: values.get("message"), website: values.get("website") || "",
+      newsletter: values.get("newsletter") === "yes",
+    };
+    const fingerprint = JSON.stringify(fields);
+    if (!submissionId.current || submittedPayload.current !== fingerprint) {
+      submissionId.current = crypto.randomUUID();
+      submittedPayload.current = fingerprint;
+    }
     setPending(true);
     setStatus("");
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: values.get("name"),
-          email: values.get("email"),
-          business: values.get("business") || "",
-          topic: values.get("topic"),
-          message: values.get("message"),
-          website: values.get("website") || "",
-          newsletter: values.get("newsletter") === "yes",
-          submissionId: submissionId.current,
-        }),
+        body: JSON.stringify({ ...fields, submissionId: submissionId.current }),
       });
       const result = await response.json();
       if (!response.ok || result.accepted !== true)

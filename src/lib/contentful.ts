@@ -31,7 +31,7 @@ function cacheContentful<TArgs extends unknown[], TResult>(
   key: string,
   query: (...args: TArgs) => Promise<TResult>
 ) {
-  return unstable_cache(query, [key], {
+  return unstable_cache(query, ["contentful", process.env.CONTENTFUL_SPACE_ID || "", process.env.CONTENTFUL_ENVIRONMENT || "master", key], {
     revalidate: CONTENTFUL_REVALIDATE_SECONDS,
     tags: ["contentful"],
   });

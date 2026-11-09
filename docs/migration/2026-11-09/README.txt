@@ -38,11 +38,14 @@ now computed from cached CMS prices on the server; client amounts are not truste
 /success is a real route and verifies the payment with Stripe before claiming success.
 Vercel geolocation is supported with the existing Netlify header as a fallback.
 Netlify configuration is retained for rollback. Contentful's hourly data cache stays.
-Next.js and React maintenance releases are pinned in the package lock. Node 22 is
+Next.js 16.4.5 and React 19.3.1 are pinned in the package lock. Node 22 is
 selected for Vercel. Existing production analytics are retained but disabled in preview.
 
 PREVIEW CONFIGURATION
-Contentful delivery credentials are installed in Vercel's preview environment only.
+Contentful delivery credentials are installed in Preview and in the new project's
+unlaunched Production environment for Vercel's mandatory first-deployment bootstrap.
+Vercel labels the first deployment Production even when --target=preview is used.
+This new project has no chickzen.com custom domain; all release flags remain off.
 SITE_LAUNCHED=false, EMAIL_DELIVERY_ENABLED=false and CHECKOUT_ENABLED=false.
 No mail/payment credentials are enabled on the preview. The form is visible but
 submission is disabled until a verified sender is configured. Email remains available.

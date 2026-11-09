@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import StripeWrapper from "@/components/StripeWrapper";
 import type { ServiceTypeEntry, ServiceProductEntry } from "@/types/contentful";
@@ -222,7 +223,7 @@ export default function ServicesCheckoutClient({
             Total: {formatCurrency(total, currency)}
           </p>
 
-          {!checkoutEnabled && <p role="status" className="mb-4">Online checkout is currently unavailable. <a className="underline" href="/#begin">Contact Jen to get started.</a></p>}
+          {!checkoutEnabled && <p role="status" className="mb-4">Online checkout is currently unavailable. <Link className="underline" href="/#begin">Contact Jen to get started.</Link></p>}
           {checkoutError && <p role="alert" className="mb-4">{checkoutError}</p>}
           {clientSecret ? (
             <StripeWrapper
