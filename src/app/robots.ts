@@ -1,12 +1,10 @@
 import type { MetadataRoute } from "next";
-
+import { isPublicProduction } from "@/lib/deployment";
 export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: ["/api/"],
-    },
-    sitemap: "https://chickzen.com/sitemap.xml",
-  };
+  return isPublicProduction()
+    ? {
+        rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/success"] },
+        sitemap: "https://chickzen.com/sitemap.xml",
+      }
+    : { rules: { userAgent: "*", disallow: "/" } };
 }

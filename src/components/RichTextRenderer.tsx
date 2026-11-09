@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import {
   BLOCKS,
@@ -107,17 +108,13 @@ export default function RichTextRenderer({ document }: Props) {
 
             return <li className="ml-1">{children}</li>;
           },
-          [INLINES.HYPERLINK]: (node, children) => (
-            <a
-              href={node.data.uri}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: "#5a7d88" }}
-              className="underline hover:opacity-80 transition-opacity"
-            >
-              {children}
-            </a>
-          ),
+          [INLINES.HYPERLINK]: (node, children) => {
+            const uri=String(node.data.uri || "");
+            const local=uri.startsWith("/") && !uri.startsWith("//") ? uri : uri.replace(/^https:\/\/(www\.)?chickzen\.com(?=\/|$)/, "") || "/";
+            if(local.startsWith("/") && !local.startsWith("//")) return <Link href={local} className="underline underline-offset-4">{children}</Link>;
+            if(!/^(https?:|mailto:|tel:)/i.test(uri)) return <span>{children}</span>;
+            return <a href={uri} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4">{children}</a>;
+          },
           
         },
         renderText: (text: string) => {

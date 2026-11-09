@@ -3,13 +3,13 @@
 import type { Metadata } from "next";
 
 export const defaultMetadata: Metadata = {
-  title: "chickzen™: Empowering Women to Convey their Unique Value Proposition to their Target Audience",
+  title: "Brand strategy & messaging for women | chickzen",
   description: "chickzen™ empowers women to clarify their story and connect with the right audience. Learn how our process helps you pitch with confidence and purpose.",
   alternates: {
     canonical: "https://chickzen.com",
   },
   openGraph: {
-    title: "chickzen™: Empowering Women to Convey their Unique Value Proposition to their Target Audience",
+    title: "Brand strategy & messaging for women | chickzen",
     description: "chickzen™ empowers women to clarify their story and connect with the right audience. Learn how our process helps you pitch with confidence and purpose."
 ,
     url: "https://chickzen.com",
@@ -20,7 +20,7 @@ export const defaultMetadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Chickzen",
-    description: "Empowering women founders with pitch clarity.",
+    description: "Brand strategy and messaging for women building their next chapter.",
     images: ["/og-default.png"],
   },
 };

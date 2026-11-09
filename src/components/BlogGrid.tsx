@@ -1,182 +1,61 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Entry, EntrySkeletonType, EntryFieldTypes, Asset } from "contentful";
+import type { Asset } from "contentful";
 import type { Document } from "@contentful/rich-text-types";
 import { documentToPlainTextString } from "@contentful/rich-text-plain-text-renderer";
-import RichTextRenderer from "./RichTextRenderer";
+import type { BlogPostEntry } from "@/types/contentful";
 
-interface BlogPostFields {
-  title?: EntryFieldTypes.Symbol;
-  order?: EntryFieldTypes.Integer;
-  slug?: EntryFieldTypes.Symbol;
-  byline?: EntryFieldTypes.Symbol;
-  tags?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
-  metaSummary?: EntryFieldTypes.Symbol;
-  body: EntryFieldTypes.RichText;
-  coverImage: Asset;
-}
-
-type BlogPostSkeleton = EntrySkeletonType<BlogPostFields, "blogPost">;
-type BlogPostEntry = Entry<BlogPostSkeleton>;
-
-type Props = {
-  posts: BlogPostEntry[];
-};
-
-function getReadTime(text: string): string {
-  const words = text.trim().split(/\s+/).length;
-  const minutes = Math.max(1, Math.ceil(words / 200));
-  return `${minutes} min read`;
-}
-
-function extractLocalizedString(value: unknown, locale = "en-US"): string {
-  if (typeof value === "string") return value;
-  if (typeof value === "object" && value !== null && locale in value)
-    return String((value as Record<string, unknown>)[locale]);
-  return "";
-}
-
-export default function BlogGrid({ posts }: Props) {
+export default function BlogGrid({ posts }: { posts: BlogPostEntry[] }) {
   return (
-    <div className="max-w-5xl mx-auto py-12 px-4">
-      <motion.h1
-        className="text-5xl text-gray-600 font-serif tracking-tighter mb-6 text-center"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
-      >
-        Deep Thoughts
-      </motion.h1>
-
-      <motion.p
-        className="text-2xl tracking-tighter text-gray-600 font-serif italic mb-6 text-center"
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        viewport={{ once: true }}
-      >
-        Insights on voice, strategy, and the bold work of building a brand that
-        leads.
-      </motion.p>
-
-      <motion.p
-        className="prose prose-lg max-w-none mx-auto text-justify pb-8"
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        viewport={{ once: true }}
-      >
-        Deep Thoughts is where brand leaders, founders, and creatives explore
-        the voice-first strategies that move ideas forward. Inside, you’ll find
-        insights on messaging, identity, growth, and the power of owning your
-        narrative. Whether you&apos;re refining your brand or finding the words
-        to lead it, this is where the bold work begins.
-      </motion.p>
-
-      <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <section className="wrap journal-page">
+      <span className="eyebrow">The chickzen journal</span>
+      <h1>Clarity, a little at a time.</h1>
+      <p>
+        Ideas on voice, strategy, and the thoughtful work of building a brand
+        that feels like you.
+      </p>
+      <div className="journal-grid">
         {posts
-          .slice() // to avoid mutating original
-          .sort((a, b) => {
-            const orderA =
-              typeof a.fields.order === "number"
-                ? a.fields.order
-                : typeof a.fields.order === "object" && a.fields.order !== null
-                ? (Object.values(a.fields.order)[0] as number)
-                : 9999;
-
-            const orderB =
-              typeof b.fields.order === "number"
-                ? b.fields.order
-                : typeof b.fields.order === "object" && b.fields.order !== null
-                ? (Object.values(b.fields.order)[0] as number)
-                : 9999;
-
-            return orderA - orderB;
-          })
+          .filter((p) => typeof p.fields.slug === "string")
           .map((post) => {
-            const title = String(post.fields.title ?? "Untitled");
-            const slug = String(post.fields.slug ?? "");
-            const tags = Array.isArray(post.fields.tags)
-              ? post.fields.tags
-              : [];
+            const title = String(post.fields.title || "From the journal");
             const image = post.fields.coverImage as unknown as Asset;
-            const imageUrl = image?.fields?.file?.url
-              ? `https:${image.fields.file.url}`
-              : null;
-            const rawBody = post.fields.body;
-            const body =
-              typeof rawBody === "object" && "nodeType" in rawBody
-                ? (rawBody as Document)
-                : undefined;
-            const plainText = body ? documentToPlainTextString(body) : "";
-            const readTime = getReadTime(plainText);
-            const byline = extractLocalizedString(post.fields.byline);
-
+            const imageUrl =
+              typeof image?.fields?.file?.url === "string"
+                ? `https:${image.fields.file.url}`
+                : null;
+            const body = post.fields.body as Document | undefined;
+            const plain = body?.nodeType ? documentToPlainTextString(body) : "";
+            const excerpt =
+              typeof post.fields.metaSummary === "string"
+                ? post.fields.metaSummary
+                : plain.slice(0, 160) + (plain.length > 160 ? "…" : "");
             return (
-              <motion.div
-                key={slug}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: true, amount: 0.1 }}
-                className="relative"
-              >
-                <Link
-                  href={`/blog/${slug}`}
-                  className="absolute inset-0 z-10"
-                  aria-label={`Read ${title}`}
-                />
-                <article className="block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-4">
-                  {imageUrl && (
-                    <div className="flex justify-center">
-                      <div className="relative w-[200px] h-[200px] mb-4 rounded-4xl overflow-hidden shadow-md border border-gray-100">
-                        <Image
-                          src={imageUrl}
-                          alt={title}
-                          fill
-                          className="object-cover object-center"
-                          sizes="200px"
-                        />
-                      </div>
-                    </div>
-                  )}
-
-                  <h2 className="text-3xl font-medium mb-1 font-serif text-center text-gray-700">
-                    {title}
-                  </h2>
-                  {byline && (
-                    <p className="tracking-tighter text-gray-500 font-serif italic mt-4 text-lg text-left">
-                      {byline}
-                    </p>
-                  )}
-
-                  <div className="mt-3 text-sm text-gray-700 line-clamp-3 prose prose-sm max-w-none">
-                    <RichTextRenderer document={body as Document} />
-                  </div>
-
-                  <p className="mt-4 text-sm text-gray-400 mb-1">{readTime}</p>
-
-                  {tags.length > 0 && (
-                    <div className="mt-4 flex gap-2 text-xs flex-wrap">
-                      {tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="bg-gray-100 text-gray-600 px-2 py-1 rounded hover:bg-gray-200 transition"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </article>
-              </motion.div>
+              <article className="journal-card" key={post.sys.id}>
+                {imageUrl && (
+                  <Image
+                    src={imageUrl}
+                    alt=""
+                    width={600}
+                    height={400}
+                    sizes="(max-width:700px) 90vw, (max-width:1000px) 45vw, 33vw"
+                  />
+                )}
+                <span className="eyebrow">
+                  {Math.max(1, Math.ceil(plain.split(/\s+/).length / 200))} min
+                  read
+                </span>
+                <h2>
+                  <Link href={`/blog/${post.fields.slug}`}>{title}</Link>
+                </h2>
+                <p>{excerpt}</p>
+                <Link className="text-link" href={`/blog/${post.fields.slug}`}>
+                  Read the article <span aria-hidden="true">↗</span>
+                </Link>
+              </article>
             );
           })}
       </div>
-    </div>
+    </section>
   );
 }

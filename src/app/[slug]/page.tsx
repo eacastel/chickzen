@@ -23,7 +23,7 @@ import type {
   ServiceTypeEntry,
 } from "@/types/contentful";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
@@ -155,7 +155,7 @@ export default async function Page({
     : [page.fields.section];
 
   return (
-    <main>
+    <div className="article-shell">
       {content.map((entry, i) => {
         if (typeof entry !== "object" || entry === null || !("sys" in entry)) {
           return null;
@@ -250,6 +250,6 @@ export default async function Page({
 
         return null;
       })}
-    </main>
+    </div>
   );
 }

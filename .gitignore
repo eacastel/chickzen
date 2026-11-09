@@ -66,3 +66,8 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+# Task-local review evidence and dependency symlink
+.review/
+node_modules
+!.env.example

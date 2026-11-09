@@ -5,13 +5,13 @@ export const metadata = {
   description:
     "Select the services you need and complete payment securely.",
   alternates: {
-    canonical: "https://chickzen.com/services/checkout",
+    canonical: "https://chickzen.com/services/lets-begin",
   },
   openGraph: {
     title: "Services Checkout | Chickzen",
     description:
       "Select the services you need and complete payment securely.",
-    url: "https://chickzen.com/services/checkout",
+    url: "https://chickzen.com/services/lets-begin",
     siteName: "Chickzen",
     images: ["/og-default.png"],
     type: "website",
@@ -26,5 +26,5 @@ export const metadata = {
 };
 
 export default function ServicesCheckoutPage() {
-  return <ClientWrapper />;
+  return <ClientWrapper checkoutEnabled={process.env.CHECKOUT_ENABLED === "true" && !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY} />;
 }

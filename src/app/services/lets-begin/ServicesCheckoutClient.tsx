@@ -49,8 +49,10 @@ function CustomCheckbox({
 /* ==================================================================== */
 export default function ServicesCheckoutClient({
   currency,
+  checkoutEnabled,
 }: {
   currency: Currency;
+  checkoutEnabled: boolean;
 }) {
   const [serviceTypes, setServiceTypes] = useState<ServiceTypeEntry[]>([]);
   const [selectedProducts, setSelectedProducts] = useState<
@@ -58,6 +60,10 @@ export default function ServicesCheckoutClient({
   >([]);
   const [clientSecret, setClientSecret] = useState("");
   const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
+
+  const [checkoutError,setCheckoutError]=useState("");
+  const [checkoutPending,setCheckoutPending]=useState(false);
+  const [quotedAmount,setQuotedAmount]=useState(0);
 
   /* ---------- fetch tiers ------------------------------------------- */
   useEffect(() => {
@@ -88,6 +94,8 @@ export default function ServicesCheckoutClient({
 
   /* ---------- toggle ------------------------------------------------ */
   const toggleProduct = (product: ServiceProductEntry) => {
+    setClientSecret("");
+    setCheckoutError("");
     setSelectedProducts((prev) => {
       const exists = prev.some((p) => p.sys.id === product.sys.id);
       return exists
@@ -98,24 +106,14 @@ export default function ServicesCheckoutClient({
 
   /* ---------- checkout --------------------------------------------- */
   const handleCheckout = async () => {
-    const res = await fetch("/api/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: "Guest",
-        email: "guest@example.com",
-        currency,
-        amount: Math.round(total * 100),
-        products: selectedProducts.map((p) => ({
-          id: p.sys.id,
-          title: getLocalized(p.fields.title),
-          price: priceForProduct(p),
-        })),
-      }),
-    });
-
-    const data = await res.json();
-    if (data.clientSecret) setClientSecret(data.clientSecret);
+    if(checkoutPending)return;
+    setCheckoutPending(true);setCheckoutError("");
+    try{
+      const res=await fetch("/api/create-payment-intent",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({currency,productIds:selectedProducts.map(p=>p.sys.id)})});
+      const data=await res.json();
+      if(!res.ok||!data.clientSecret)throw new Error(data.error||"Checkout is unavailable. Please contact Jen.");
+      setQuotedAmount(data.amount);setClientSecret(data.clientSecret);
+    }catch(error){setCheckoutError(error instanceof Error?error.message:"Please contact Jen to arrange payment.");}finally{setCheckoutPending(false);}
   };
 
   /* ================================================================= */
@@ -224,18 +222,21 @@ export default function ServicesCheckoutClient({
             Total: {formatCurrency(total, currency)}
           </p>
 
+          {!checkoutEnabled && <p role="status" className="mb-4">Online checkout is currently unavailable. <a className="underline" href="/#begin">Contact Jen to get started.</a></p>}
+          {checkoutError && <p role="alert" className="mb-4">{checkoutError}</p>}
           {clientSecret ? (
             <StripeWrapper
               clientSecret={clientSecret}
-              amountCents={Math.round(total * 100)}
+              amountCents={quotedAmount}
               currency={currency}
             />
           ) : (
             <button
               onClick={handleCheckout}
+              disabled={!checkoutEnabled||checkoutPending}
               className="bg-black text-white px-6 py-3 rounded hover:bg-gray-700"
             >
-              Proceed to Payment
+              {checkoutPending?"Preparing payment…":"Proceed to Payment"}
             </button>
           )}
         </div>

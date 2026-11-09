@@ -1,0 +1,6 @@
+docs/
+.review/
+.env*
+!.env.example
+*.tsbuildinfo
+.next/

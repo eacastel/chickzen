@@ -1,30 +1,14 @@
-// src/app/api/geo/route.ts
-import { NextResponse } from "next/server";
-
 export async function GET(request: Request) {
-  // Netlify sends a header named `x-nf-geo` whose value is a JSON string
-  const rawHeader = request.headers.get("x-nf-geo") ?? "{}";
-
-  // Narrow the type of what we expect after JSON.parse
-  interface NetlifyGeoHeader {
-    country?: string;
-    region?: string;
-    city?: string;
-    latitude?: string;
-    longitude?: string;
-    [key: string]: unknown;   // allow other keys without using `any`
+  let country = request.headers.get("x-vercel-ip-country") || undefined;
+  if (!country) {
+    try {
+      const geo = JSON.parse(request.headers.get("x-nf-geo") || "{}");
+      country = typeof geo.country === "string" ? geo.country : undefined;
+    } catch {}
   }
-
-  let geo: NetlifyGeoHeader;
-
-  try {
-    geo = JSON.parse(rawHeader) as NetlifyGeoHeader;
-  } catch {
-    geo = {};
-  }
-
-  return NextResponse.json(
-    { geo },
-    { headers: { "Cache-Control": "private, max-age=3600" } }
+  if (country && !/^[a-z]{2}$/i.test(country)) country = undefined;
+  return Response.json(
+    { geo: country ? { country: country.toUpperCase() } : {} },
+    { headers: { "Cache-Control": "private, no-store" } },
   );
 }

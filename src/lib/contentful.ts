@@ -21,6 +21,7 @@ import type {
 
 const client = createClient({
   space:        process.env.CONTENTFUL_SPACE_ID!,      // ⬅  non-null assertion OK in your config
+  environment: process.env.CONTENTFUL_ENVIRONMENT || "master",
   accessToken:  process.env.CONTENTFUL_ACCESS_TOKEN!,
 });
 

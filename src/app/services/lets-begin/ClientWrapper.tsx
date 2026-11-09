@@ -17,7 +17,7 @@ function countryFromGeoResponse(value: unknown): string | undefined {
   return typeof geo.country === "string" ? geo.country.toUpperCase() : undefined;
 }
 
-export default function ClientWrapper() {
+export default function ClientWrapper({checkoutEnabled}:{checkoutEnabled:boolean}) {
   const override = process.env.NEXT_PUBLIC_CURRENCY_OVERRIDE;
   const [currency, setCurrency] = useState<Currency>(
     override === "USD" ? "USD" : "EUR"
@@ -42,5 +42,5 @@ export default function ClientWrapper() {
     return () => controller.abort();
   }, [override]);
 
-  return <ServicesCheckoutClient currency={currency} />;
+  return <ServicesCheckoutClient currency={currency} checkoutEnabled={checkoutEnabled} />;
 }

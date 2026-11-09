@@ -12,9 +12,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     { url: SITE_URL },
     { url: `${SITE_URL}/blog` },
+    { url: `${SITE_URL}/contact` },
     { url: `${SITE_URL}/services/lets-begin` },
     ...pageSlugs
-      .filter((slug) => slug !== "home" && !slug.includes("/"))
+      .filter((slug) => slug !== "home" && slug !== "contact" && slug !== "blog" && !slug.includes("/"))
       .map((slug) => ({ url: `${SITE_URL}/${slug}` })),
     ...blogSlugs.map((slug) => ({ url: `${SITE_URL}/blog/${slug}` })),
   ];
