@@ -4,8 +4,8 @@ CHICKZEN — HEADER AND HOMEPAGE LINK REFINEMENT
 Application commit: 0da9ad8
 Branch: codex/chickzen-vercel-migration
 Deployment: dpl_CUZNBXaoTi8XfoPbJZUkBtQdxued
-Preview: https://chickzen-2q9aae8t4-emilio-castellanos-projects.vercel.app
-Use the separate seven-day share link supplied in the conversation.
+Public preview: https://chickzen-preview.vercel.app
+Public access explicitly approved and verified; no login or expiring link needed.
 
 The sticky header now uses solid white, preventing the hero photo from showing
 through behind the menu during scrolling. The logo links to /#main so it returns

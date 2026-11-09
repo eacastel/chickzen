@@ -1,7 +1,7 @@
 CHICKZEN — NEXT.JS / VERCEL MIGRATION
 9 November 2026 — current full-site review
 
-Stable review address: https://chickzen-preview.vercel.app
+Stable public review address: https://chickzen-preview.vercel.app
 See STABLE-PREVIEW.txt for access and updating this same address.
 
 Latest preview refinement: header-refinement/README.txt (opaque header and logo).
@@ -62,8 +62,8 @@ to respect Aurora's storage reserve. No new dependency was needed for this work.
 
 The new review is a Preview deployment. SITE_LAUNCHED=false and
 CHECKOUT_ENABLED=false. Production analytics are not loaded and preview indexing
-is disabled. Project SSO stays enabled; a separate seven-day deployment share
-link is supplied privately and never committed. Live chickzen.com, its DNS and
+is disabled. Project SSO stays enabled; public access is allowed only for the stable
+chickzen-preview.vercel.app alias with explicit approval. Live chickzen.com, its DNS and
 Netlify production remain unchanged.
 
 Vercel Git integration is still pending GitHub app access to eacastel/chickzen.

@@ -17,7 +17,12 @@ Do not give Jen a new deployment-specific address for each revision. This alias
 currently displays the opaque header and homepage-logo fixes. The homepage was
 verified through this alias, including the correct header background and link.
 
-Access currently retains Vercel protection. A seven-day alias-specific share
-link is stored in ignored task state and supplied through the conversation.
-Permanent public access to only this preview alias is awaiting explicit approval.
-Do not disable protection project-wide. The live chickzen.com site is unchanged.
+Public review access was explicitly approved by Emilio and enabled for only
+chickzen-preview.vercel.app. Use the clean address above: no login, share token
+or expiry applies. The homepage, contact and journal were verified without
+cookies or authentication. Preview noindex headers remain enabled.
+
+Project-wide protection is retained. The original generated deployment URL
+still requires authentication. Do not disable protection project-wide.
+Public-access verification: header-refinement/public-access-validation.json.
+The live chickzen.com site is unchanged.

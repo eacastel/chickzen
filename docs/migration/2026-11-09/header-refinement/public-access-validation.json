@@ -1,0 +1,25 @@
+{
+  "url": "https://chickzen-preview.vercel.app",
+  "publicAccess": true,
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "noLoginOrTokenNeeded": true,
+      "noindex": true
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "noLoginOrTokenNeeded": true,
+      "noindex": true
+    },
+    {
+      "path": "/blog",
+      "status": 200,
+      "noLoginOrTokenNeeded": true,
+      "noindex": true
+    }
+  ],
+  "otherDeploymentStillProtected": true
+}
