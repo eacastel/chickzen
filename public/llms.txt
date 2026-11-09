@@ -1,0 +1,27 @@
+# chickzen
+
+> chickzen is Jennifer Castellanos's brand strategy and messaging consultancy for women building the next chapter of their business.
+
+Jen helps clients clarify their positioning, shape their message and make practical decisions about their brand. Support includes focused strategy sessions, brand audits, messaging projects and ongoing consulting. The website's main next step is a conversation with Jen about the client's business and needs.
+
+The canonical website is https://chickzen.com. Consult the current service pages and contact Jen for scope, availability and pricing. Client recommendations describe individual experiences and do not promise outcomes.
+
+## About and services
+
+- [Home](https://chickzen.com/): Overview of chickzen's approach to brand strategy and messaging.
+- [Meet Jen](https://chickzen.com/about): Jennifer Castellanos's background and approach.
+- [Work with Jen](https://chickzen.com/services): Current consulting services and ways to work together.
+- [Client recommendations](https://chickzen.com/about#recommendations): Published reviews from clients.
+- [Contact Jen](https://chickzen.com/contact): Inquiry form and direct contact options. Public email: hello@chickzen.com.
+
+## Journal and resources
+
+- [The journal](https://chickzen.com/blog): Articles on brand strategy, messaging and finding your voice.
+- [The Strawberry Lemonade Effect](https://chickzen.com/the-strawberry-lemonade-effect): Information about the guide and how to request a copy from Jen.
+- [Sitemap](https://chickzen.com/sitemap.xml): Current indexable pages and published journal articles.
+
+## Optional
+
+- [Privacy policy](https://chickzen.com/privacy-policy): Information about personal data.
+- [Cookie policy](https://chickzen.com/cookie-policy): Information about cookies and analytics choices.
+- [Terms and conditions](https://chickzen.com/terms-and-conditions): Terms for using chickzen's services and website.
