@@ -68,7 +68,7 @@ CHECKOUT_ENABLED=false. Analytics are not loaded and preview indexing is disable
 Project SSO stays enabled; public review access is allowed for the stable
 chickzen-preview.vercel.app alias with explicit approval. A separate production
 build now has explicitly approved indexing and email delivery enabled, with
-sitemap.xml and llms.txt published. Analytics and checkout remain disabled. The
+sitemap.xml and llms.txt published. Consent-based analytics is enabled; checkout remains disabled. The
 custom domains and traffic DNS now use Vercel. HTTPS is verified on both hosts;
 www permanently redirects to chickzen.com. Netlify remains available for rollback.
 
@@ -82,8 +82,8 @@ automatic renewal. Live HTTPS, indexing, redirects, sitemap and llms.txt passed.
 See production-readiness for exact evidence and the rollback DNS snapshot.
 Production inquiries are enabled; no human-recipient automated test was sent.
 
-Analytics remains disabled until its coordinated activation with the existing
-analytics owner. Newsletter and checkout remain separate, disabled features.
+Consent-based analytics was activated with the existing analytics owner after
+disabling duplicate automatic events. Newsletter and checkout remain disabled.
 Keep the existing GA4 property; verify genuine consented data after activation.
 
 References:

@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-11-09T21:45:00.553Z",
+  "origin": "https://chickzen.com",
+  "deploymentId": "dpl_2t4iy5feGKcbDBjdmMJrLBSnuc6U",
+  "sourceCommit": "b539b67",
+  "tlsVerified": true,
+  "liveConsentGate": true,
+  "googleScriptStubbed": true,
+  "googleContainer": "GTM-WDHMFN7J",
+  "pageviews": [
+    "/",
+    "/services"
+  ],
+  "realGoogleCollectors": 0,
+  "realEmailOrPaymentSent": false,
+  "errors": []
+}

@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "bb4e997",
+  "sourceCommit": "b539b67203bf6497a8206ba32367d2f3bfce1f4b",
   "preview": {
     "id": "dpl_ABqSgiAPDK5K1CVPizMwSTLs89XM",
     "url": "https://chickzen-eken71axq-emilio-castellanos-projects.vercel.app",
@@ -8,12 +8,12 @@
     "sourceCommit": "bb4e997"
   },
   "production": {
-    "id": "dpl_631dPHdGE5icWbyUht9xSYuTYWL3",
-    "url": "https://chickzen-46bj9blb2-emilio-castellanos-projects.vercel.app",
+    "id": "dpl_2t4iy5feGKcbDBjdmMJrLBSnuc6U",
+    "url": "https://chickzen-ofuwd0u7n-emilio-castellanos-projects.vercel.app",
     "readyState": "READY",
     "siteLaunched": true,
     "emailDeliveryEnabled": true,
-    "analyticsEnabled": false,
+    "analyticsEnabled": true,
     "analyticsEnvExplicitlySet": true,
     "checkoutEnabled": false
   },
@@ -25,5 +25,7 @@
   "certificateVerified": true,
   "dnsChangedBy": "user",
   "cutoverComplete": true,
-  "cutoverVerifiedAt": "2026-11-09T21:35:22.342170+00:00"
+  "cutoverVerifiedAt": "2026-11-09T21:35:22.342170+00:00",
+  "applicationSource": "bb4e997",
+  "analyticsActivatedAt": "2026-11-09T21:44:59Z"
 }

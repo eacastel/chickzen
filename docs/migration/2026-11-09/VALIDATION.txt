@@ -3,7 +3,7 @@ CHICKZEN MIGRATION — CURRENT VALIDATION
 
 Latest application commit: bb4e997 on codex/chickzen-vercel-migration.
 Latest Preview: dpl_ABqSgiAPDK5K1CVPizMwSTLs89XM, READY.
-Production: dpl_631dPHdGE5icWbyUht9xSYuTYWL3, READY, indexing and email enabled.
+Production: dpl_2t4iy5feGKcbDBjdmMJrLBSnuc6U, READY, indexing/email/consent analytics enabled.
 Current records, browser checks and screenshots:
   production-readiness/README.txt and validation JSON files (current launch status)
   analytics-stage/README.txt and validation JSON files (broader route/event checks)
@@ -24,7 +24,7 @@ See runtime-audit.json for that audit.
 
 Preview email is enabled using Aliigo's verified sender and existing key.
 Production email and public indexing were explicitly approved and are enabled.
-Payments and analytics remain off. The enabled form passed browser QA, with no
+Payments remain off; consent-based analytics is now enabled. The enabled form passed browser QA, with no
 Google requests or queue. All 23 sitemap entries have correct indexing/canonicals;
 robots.txt advertises the sitemap, and llms.txt is published with a discovery link.
 Custom domains and public traffic DNS now use Vercel. Both domains have verified

@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-11-09T21:45:25.190Z",
+  "aliases": [
+    {
+      "alias": "chickzen.com",
+      "status": 200,
+      "deploymentId": "dpl_2t4iy5feGKcbDBjdmMJrLBSnuc6U",
+      "redirect": null
+    },
+    {
+      "alias": "www.chickzen.com",
+      "status": 200,
+      "deploymentId": "dpl_2t4iy5feGKcbDBjdmMJrLBSnuc6U",
+      "redirect": "chickzen.com"
+    },
+    {
+      "alias": "chickzen-preview.vercel.app",
+      "status": 200,
+      "deploymentId": "dpl_ABqSgiAPDK5K1CVPizMwSTLs89XM",
+      "redirect": null
+    }
+  ]
+}

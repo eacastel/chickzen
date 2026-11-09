@@ -6,7 +6,7 @@ STATUS: DNS CUTOVER COMPLETE; LIVE HTTPS VERIFIED
 Live site: https://chickzen.com
 Public review: https://chickzen-preview.vercel.app
 Application source: bb4e997, branch codex/chickzen-vercel-migration.
-Production: dpl_631dPHdGE5icWbyUht9xSYuTYWL3, READY.
+Production: dpl_2t4iy5feGKcbDBjdmMJrLBSnuc6U, READY, promoted from commit b539b67.
 Preview: dpl_ABqSgiAPDK5K1CVPizMwSTLs89XM, READY.
 Project: chickzen (prj_4dtRYBrYg4BD0313JA1SJZOUu4pr).
 Team: emilio-castellanos-projects.
@@ -32,7 +32,8 @@ DNS caches can continue to update independently after these observations.
 
 ACTIVATION STATE
 Production SITE_LAUNCHED=true and EMAIL_DELIVERY_ENABLED=true were explicitly
-approved and deployed. ANALYTICS_ENABLED=false and CHECKOUT_ENABLED=false.
+approved and deployed. ANALYTICS_ENABLED=true is now deployed and persisted in
+the Production project default. CHECKOUT_ENABLED=false.
 Preview remains noindex and analytics-disabled. The public review alias works
 without login; protection remains on other generated deployment addresses.
 
@@ -66,19 +67,36 @@ Cloud build, lint, TypeScript and 33 prerendered routes passed.
 The real custom-host browser check passed nine routes at four widths (1440,
 768, 390, 320), enabled form UI, correct indexing exceptions, www redirect,
 sitemap and llms.txt. Public DNS checks independently confirmed HTTPS and files.
-No Google requests or dataLayer were created, including after accepting consent.
+The initial cutover checks confirmed analytics OFF even after accepting consent.
+The later activation check verified consent-controlled pageview dispatch with
+Google scripts stubbed and every collector blocked.
 No real email or payment was sent during cutover checks.
 Evidence: certificate.json, custom-host-validation.json,
 public-cutover-validation.json, discovery-validation.json, enabled-validation.json,
 approved-cutover-dns.json and deployments.json.
 
-ANALYTICS NEXT PHASE
-Existing GA4 G-6PCNC6QKXE and dedicated GTM-WDHMFN7J are preserved. The analytics
-owner has the successful live-host handoff. Production collection is still off;
-old Enhanced Measurement was not changed during this release. Coordinate the
-manual-tracking build with the owner's saved/readback Enhanced Measurement-off
-change before enabling ANALYTICS_ENABLED. Verify a genuine consented receipt
-separately; automated QA did not create live events. Checkout is a separate phase.
+ANALYTICS ACTIVATED
+Existing GA4 G-6PCNC6QKXE and dedicated GTM-WDHMFN7J version 3 are preserved.
+The analytics owner saved/read back all eight Enhanced Measurement switches OFF
+at 2026-11-09T21:43:55.020Z. We then persisted the Production analytics default ON
+at 21:44:36.043Z and promoted the prevalidated candidate, confirmed by 21:44:59Z.
+No event/schema changes were made. Preview remains excluded. The brief measurement
+transition gap is documented by those times; the website stayed available.
+
+Candidate QA used the actual build at a simulated production browser origin with
+Google stubbed and all inquiry/provider requests intercepted. Consent, service
+and accepted-inquiry events passed; no form details leaked into event payloads.
+The existing API ON/OFF/preview tests passed with provider calls mocked. Live
+consent/pageview dispatch then passed at 21:45:00.553Z, also without real events.
+The analytics owner is verifying actual Google tags with collectors blocked.
+Genuine consented receipt in GA4 is a separate follow-up; no artificial inquiry
+or analytics event was sent. Search Console submission is handled by that owner;
+site publication must not be described as proof of Google indexing.
+Search Console indexed-version baseline: 9 indexed, 10 unknown and 4 crawled but
+not indexed. Recorded crawl dates predate the redesign, so this is not evidence
+of a migration loss or fresh indexing. See GOOGLE-INDEX-BASELINE.csv.
+See analytics-activation.json, analytics-candidate-validation.json,
+live-analytics-validation.json and promoted-aliases.json.
 
 References:
 https://vercel.com/docs/domains/pre-generating-ssl-certs

@@ -1,0 +1,23 @@
+{
+  "rotatedAt": "2026-11-09T21:42:22.957Z",
+  "scope": "Chickzen project QA automation bypass only",
+  "oldTokenRemovedFromProject": true,
+  "newTokenPresent": true,
+  "sso": {
+    "deploymentType": "all_except_custom_domains"
+  },
+  "checks": [
+    {
+      "url": "https://chickzen-ofuwd0u7n-emilio-castellanos-projects.vercel.app",
+      "withoutToken": 302,
+      "withNewToken": 200
+    },
+    {
+      "url": "https://chickzen-eken71axq-emilio-castellanos-projects.vercel.app",
+      "withoutToken": 302,
+      "withNewToken": 200
+    }
+  ],
+  "otherProtectionSettingsChanged": false,
+  "reason": "A diagnostic included the QA bypass header. Revoked/regenerated the owned bypass and added error redaction. Initial immediate old-token HTTP check was inconclusive."
+}

@@ -1,0 +1,25 @@
+{
+  "preparedAt": "2026-11-09T21:43:24.399917+00:00",
+  "sourceCommit": "b539b67203bf6497a8206ba32367d2f3bfce1f4b",
+  "applicationSource": "bb4e997",
+  "candidateId": "dpl_2t4iy5feGKcbDBjdmMJrLBSnuc6U",
+  "candidateUrl": "https://chickzen-ofuwd0u7n-emilio-castellanos-projects.vercel.app",
+  "readyState": "READY",
+  "promoted": true,
+  "candidateAnalyticsEnabled": true,
+  "projectProductionDefaultAnalyticsEnabled": true,
+  "liveAnalyticsEnabled": true,
+  "apiEligibilityTests": {
+    "passed": 4,
+    "skipped": 11,
+    "allProvidersMocked": true
+  },
+  "browserReport": "analytics-candidate-validation.json",
+  "pending": "Analytics owner real-tag blocked verification; genuine consented receipt remains separate.",
+  "projectDefaultReadbackAt": "2026-11-09T21:44:36.043Z",
+  "promotionConfirmedBy": "2026-11-09T21:44:59Z",
+  "enhancedMeasurementDisabledReadbackAt": "2026-11-09T21:43:55.020Z",
+  "liveBrowserVerifiedAt": "2026-11-09T21:45:00.553Z",
+  "liveValidation": "live-analytics-validation.json",
+  "realEventsSentByQA": false
+}

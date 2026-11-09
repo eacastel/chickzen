@@ -87,7 +87,7 @@ The older Netlify preview remains the standalone homepage concept. The new
 Vercel review deployment is the working Next.js application with its journal
 integrated. Inquiry delivery now uses Aliigo's verified Resend sender and key.
 The live chickzen.com site now runs on Vercel with HTTPS, indexing, sitemap and
-llms.txt verified. Production analytics remains off for its coordinated activation.
+llms.txt verified. Consent-based production analytics is enabled; preview traffic remains excluded.
 
 The existing analytics documents remain in their original folder. The design
 deliverables and live-site evidence have been consolidated into this checkout.

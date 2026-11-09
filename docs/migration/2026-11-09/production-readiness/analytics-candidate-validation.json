@@ -1,0 +1,47 @@
+{
+  "checkedAt": "2026-11-09T21:42:41.342Z",
+  "sourceCommit": "b539b67",
+  "applicationSource": "bb4e997",
+  "candidate": "https://chickzen-ofuwd0u7n-emilio-castellanos-projects.vercel.app",
+  "livePromotionPerformed": false,
+  "googleScriptStubbed": true,
+  "allProviderPostsIntercepted": true,
+  "results": [
+    {
+      "origin": "https://chickzen.com",
+      "case": "live remains OFF",
+      "googleQueue": false,
+      "googleRequests": 0
+    },
+    {
+      "origin": "https://chickzen-ofuwd0u7n-emilio-castellanos-projects.vercel.app",
+      "case": "excluded hostname",
+      "googleQueue": false,
+      "googleRequests": 0
+    },
+    {
+      "origin": "https://chickzen-preview.vercel.app",
+      "case": "excluded hostname",
+      "googleQueue": false,
+      "googleRequests": 0
+    },
+    {
+      "case": "actual candidate served to simulated production browser origin",
+      "consentGate": true,
+      "singleGoogleScriptStub": true,
+      "serviceEvent": true,
+      "mockedInquiryEvent": true,
+      "noInquiryPersonalData": true,
+      "eventNames": [
+        "ck_page_view",
+        "ck_page_view",
+        "ck_service_select",
+        "ck_page_view",
+        "ck_inquiry_accepted"
+      ],
+      "realProviderPosts": 0,
+      "realGoogleCollectors": 0,
+      "errors": []
+    }
+  ]
+}
