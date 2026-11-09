@@ -1,6 +1,9 @@
 CHICKZEN — NEXT.JS / VERCEL MIGRATION
 9 November 2026 — current full-site review
 
+Stable review address: https://chickzen-preview.vercel.app
+See STABLE-PREVIEW.txt for access and updating this same address.
+
 Latest preview refinement: header-refinement/README.txt (opaque header and logo).
 
 Repository: https://github.com/eacastel/chickzen

@@ -1,0 +1,23 @@
+CHICKZEN — STABLE REVIEW ADDRESS
+9 November 2026
+
+Stable address: https://chickzen-preview.vercel.app
+Project: chickzen (prj_4dtRYBrYg4BD0313JA1SJZOUu4pr)
+Team: emilio-castellanos-projects
+Source branch: codex/chickzen-vercel-migration
+Current deployment: dpl_CUZNBXaoTi8XfoPbJZUkBtQdxued
+Current application commit: 0da9ad8
+
+Use this same alias for all future review updates. After a new preview build is
+READY and verified, point this alias at it:
+
+vercel alias set <new-ready-deployment-url> chickzen-preview.vercel.app --scope emilio-castellanos-projects
+
+Do not give Jen a new deployment-specific address for each revision. This alias
+currently displays the opaque header and homepage-logo fixes. The homepage was
+verified through this alias, including the correct header background and link.
+
+Access currently retains Vercel protection. A seven-day alias-specific share
+link is stored in ignored task state and supplied through the conversation.
+Permanent public access to only this preview alias is awaiting explicit approval.
+Do not disable protection project-wide. The live chickzen.com site is unchanged.
