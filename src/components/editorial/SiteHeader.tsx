@@ -12,7 +12,7 @@ export default function SiteHeader() {
   return (
     <header className="masthead">
       <nav className="wrap nav" aria-label="Main navigation">
-        <Link href="/" aria-label="chickzen home" onClick={close}>
+        <Link href="/#main" aria-label="chickzen home" onClick={close}>
           <Image
             className="logo"
             src="/brand/chickzen-logo.webp"
