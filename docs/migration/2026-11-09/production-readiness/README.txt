@@ -88,7 +88,12 @@ Google stubbed and all inquiry/provider requests intercepted. Consent, service
 and accepted-inquiry events passed; no form details leaked into event payloads.
 The existing API ON/OFF/preview tests passed with provider calls mocked. Live
 consent/pageview dispatch then passed at 21:45:00.553Z, also without real events.
-The analytics owner is verifying actual Google tags with collectors blocked.
+The analytics owner verified the actual published Google tags on desktop/mobile:
+16 checks and eight intercepted wire events passed at 2026-11-09T21:48:50.103Z.
+Both contact POSTs were mocked; no real email/payment or GA4 test event was sent.
+Consent/rejection/withdrawal, single navigation views, campaign attribution,
+service context, inquiry acknowledgment, privacy and mobile controls all passed.
+See live-google-tag-validation.json for the summary and original evidence path.
 Genuine consented receipt in GA4 is a separate follow-up; no artificial inquiry
 or analytics event was sent. Search Console submission is handled by that owner;
 site publication must not be described as proof of Google indexing.

@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-11-09T21:48:19.620Z",
+  "completed_utc": "2026-11-09T21:48:50.103Z",
+  "scope": "Actual public HTTPS website, fresh isolated desktop/mobile browser contexts; published Google scripts allowed, every collector fulfilled locally. All contact/payment/newsletter POSTs intercepted; no real provider or GA4 test delivery.",
+  "checks": [
+    {
+      "case": "Before consent: no Google scripts or collectors",
+      "pass": true
+    },
+    {
+      "case": "Reject persists and collects nothing",
+      "pass": true
+    },
+    {
+      "case": "Accepted initial view exactly once to original GA4",
+      "pass": true
+    },
+    {
+      "case": "Campaign attribution retained with clean live URL",
+      "pass": true
+    },
+    {
+      "case": "One live SPA view /about",
+      "pass": true
+    },
+    {
+      "case": "One live SPA view /services",
+      "pass": true
+    },
+    {
+      "case": "Service details and source survive live navigation",
+      "pass": true
+    },
+    {
+      "case": "Contact click fires once without stale service fields",
+      "pass": true
+    },
+    {
+      "case": "Mocked provider failure produces no inquiry goal",
+      "pass": true
+    },
+    {
+      "case": "Mocked acknowledged inquiry emits one generic goal; no real mail",
+      "pass": true
+    },
+    {
+      "case": "No private URL/form marker enters any blocked collector",
+      "pass": true
+    },
+    {
+      "case": "No generic automatic or unverified commerce events",
+      "pass": true
+    },
+    {
+      "case": "Live withdrawal stops collection and clears GA cookies",
+      "pass": true
+    },
+    {
+      "case": "Mobile choices fit at page bottom",
+      "pass": true
+    },
+    {
+      "case": "One consented mobile initial view",
+      "pass": true
+    },
+    {
+      "case": "No browser errors",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "mocked_contact_posts": 2,
+  "actual_ga4_delivery": false,
+  "actual_email_or_payment": false,
+  "sourceEvidence": "/home/eacastel/Avanti/clients/analytics/2026-11-09-chickzen-gtm/data/live-production-tag-audit.json",
+  "blockedWireEventCount": 8,
+  "genuineVisitorReceiptConfirmed": false,
+  "searchConsoleSitemapSubmitted": false,
+  "searchConsoleSubmissionPending": "Analytics owner awaiting browser access; API scope is read-only."
+}

@@ -38,3 +38,9 @@ mocked retry check. Stable public review: https://chickzen-preview.vercel.app.
 Vercel SSO remains enabled for other generated deployment addresses.
 The initial migration screenshots/deployment.json and earlier review folders
 are historical evidence. production-readiness contains the current launch status.
+
+Final actual-Google-tag audit on public HTTPS: PASS, 16 desktop/mobile checks,
+eight wire events intercepted locally, two contact POSTs mocked. No real GA4
+test event, email or payment was delivered. See production-readiness/
+live-google-tag-validation.json. Genuine consented receipt remains unconfirmed;
+Search Console submission awaits analytics-owner browser access.
