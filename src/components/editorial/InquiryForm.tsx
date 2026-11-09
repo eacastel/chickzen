@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { inquiryTopics } from "@/lib/inquiry-topics";
 import Link from "next/link";
+import { captureInquiryContext, recordInquiryAccepted } from "@/lib/analytics/client";
 
 export default function InquiryForm({
   enabled,
@@ -22,9 +23,12 @@ export default function InquiryForm({
   }, []);
   const submissionId = useRef("");
   const submittedPayload = useRef("");
+  const submitting = useRef(false);
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (pending) return;
+    if (submitting.current || accepted) return;
+    submitting.current = true;
+    const analyticsContext = captureInquiryContext();
     const form = event.currentTarget,
       values = new FormData(form);
     const fields = {
@@ -50,10 +54,11 @@ export default function InquiryForm({
         body: JSON.stringify({ ...fields, submissionId: submissionId.current }),
       });
       const result = await response.json();
-      if (!response.ok || result.accepted !== true)
+      if (response.status !== 202 || result.accepted !== true)
         throw new Error(
           result.error || "Please try again or email Jen directly.",
         );
+      recordInquiryAccepted(response.status, result, submissionId.current, analyticsContext);
       setAccepted(true);
       setStatus(
         result.newsletterWarning
@@ -69,6 +74,7 @@ export default function InquiryForm({
           : "Please try again or email Jen directly.",
       );
     } finally {
+      submitting.current = false;
       setPending(false);
     }
   }

@@ -1,6 +1,9 @@
 import ClientWrapper from "./ClientWrapper";
+import Link from "next/link";
+const checkoutEnabled = process.env.CHECKOUT_ENABLED === "true" && !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 
 export const metadata = {
+  ...(!checkoutEnabled ? { robots: { index: false, follow: true } } : {}),
   title: "Services Checkout | Chickzen",
   description:
     "Select the services you need and complete payment securely.",
@@ -26,5 +29,11 @@ export const metadata = {
 };
 
 export default function ServicesCheckoutPage() {
-  return <ClientWrapper checkoutEnabled={process.env.CHECKOUT_ENABLED === "true" && !!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY} />;
+  if (!checkoutEnabled) return <section className="wrap journal-page">
+    <span className="eyebrow">Work with Jen</span>
+    <h1>Let’s choose your next step together.</h1>
+    <p>Tell Jen about your brand and what you would like to change. She’ll help you find the right service and arrange the next steps with you.</p>
+    <Link className="button" href="/contact">Talk with Jen <span aria-hidden="true">↗</span></Link>
+  </section>;
+  return <ClientWrapper checkoutEnabled={checkoutEnabled} />;
 }

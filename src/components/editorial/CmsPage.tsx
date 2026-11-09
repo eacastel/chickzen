@@ -32,6 +32,7 @@ function Invitation({ guide = false }: { guide?: boolean }) {
       </p>
       <Link
         className="button"
+        data-guide-request={guide ? "strawberry_lemonade" : undefined}
         href={
           guide
             ? "mailto:hello@chickzen.com?subject=The%20Strawberry%20Lemonade%20guide"
@@ -217,6 +218,7 @@ export default function CmsPage({
                             <EditorialRichText document={p.description} />
                             <Link
                               className="text-link"
+                              data-service-id={text(p.slug)}
                               href={`/contact?service=${encodeURIComponent(text(p.title))}#begin`}
                             >
                               Ask Jen about this service{" "}

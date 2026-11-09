@@ -1,4 +1,5 @@
 import Link from "next/link";
+export { notFoundMetadata as metadata } from "@/lib/defaultMetadata";
 
 export default async function NotFound() {
 

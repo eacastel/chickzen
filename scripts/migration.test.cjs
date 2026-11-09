@@ -5,7 +5,7 @@ const ts=require("typescript");
 // Compile the isolated server modules in memory; all provider requests are mocked.
 const resolve=Module._resolveFilename;
 Module._resolveFilename=function(id,parent,...rest){return resolve.call(this,id.startsWith("@/")?path.join(__dirname,"../src",id.slice(2)):id,parent,...rest);};
-Module._extensions[".ts"]=(module,filename)=>module._compile(ts.transpileModule(fs.readFileSync(filename,"utf8"),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,filename);
+Module._extensions[".ts"]=(module,filename)=>module._compile(ts.transpileModule(fs.readFileSync(filename,"utf8"),{compilerOptions:{esModuleInterop:true,module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,filename);
 const {POST}=require("../src/app/api/contact/route.ts");
 const {quoteServices}=require("../src/lib/checkout.ts");
 const {GET:geo}=require("../src/app/api/geo/route.ts");
@@ -14,7 +14,7 @@ const inquiry={name:"Review Visitor",email:"visitor@example.com",business:"Examp
 let calls=[];
 const request=(body=inquiry,origin="https://chickzen.test")=>new Request("https://chickzen.test/api/contact",{method:"POST",headers:{origin,"content-type":"application/json"},body:JSON.stringify(body)});
 beforeEach(()=>{
- calls=[];Object.assign(process.env,{EMAIL_DELIVERY_ENABLED:"true",RESEND_API_KEY:"test-not-a-real-key",CONTACT_EMAIL_FROM:"website@example.com",CONTACT_EMAIL_TO:"jen@example.com",MAILERLITE_API_KEY:"test-not-a-real-key",MAILERLITE_GROUP_ID:"test-group"});
+ calls=[];Object.assign(process.env,{SITE_LAUNCHED:"false",VERCEL_ENV:"preview",NEXT_PUBLIC_GTM_ID:"",EMAIL_DELIVERY_ENABLED:"true",RESEND_API_KEY:"test-not-a-real-key",CONTACT_EMAIL_FROM:"website@example.com",CONTACT_EMAIL_TO:"jen@example.com",MAILERLITE_API_KEY:"test-not-a-real-key",MAILERLITE_GROUP_ID:"test-group"});
  global.fetch=async(url,options)=>{calls.push({url,options,body:JSON.parse(options.body)});return Response.json({id:"mock-acknowledgement"});};
 });
 test("cross-origin requests never send email",async()=>{assert.equal((await POST(request(inquiry,"https://other.test"))).status,403);assert.equal(calls.length,0);});
@@ -25,7 +25,7 @@ test("invalid email, short message and filled honeypot never send",async()=>{
 test("oversized payload rejected before provider calls",async()=>{assert.equal((await POST(request({...inquiry,message:"x".repeat(17000)}))).status,413);assert.equal(calls.length,0);});
 test("disabled preview fails closed with email fallback",async()=>{process.env.EMAIL_DELIVERY_ENABLED="false";assert.equal((await POST(request())).status,503);assert.equal(calls.length,0);});
 test("accepted inquiry uses fixed inbox, visitor reply-to and stable retry key",async()=>{
- const response=await POST(request());assert.equal(response.status,202);assert.deepEqual(await response.json(),{accepted:true,newsletterWarning:false});assert.equal(calls.length,1);
+ const response=await POST(request());assert.equal(response.status,202);assert.deepEqual(await response.json(),{accepted:true,analyticsEligible:false,newsletterWarning:false});assert.equal(calls.length,1);
  assert.equal(calls[0].url,"https://api.resend.com/emails");assert.deepEqual(calls[0].body.to,["jen@example.com"]);assert.equal(calls[0].body.reply_to,inquiry.email);assert.equal(calls[0].options.headers["Idempotency-Key"],"chickzen-inquiry/"+inquiry.submissionId);
 });
 test("newsletter requires explicit opt-in and never forces resubscription",async()=>{
@@ -36,7 +36,7 @@ test("email failure cannot produce success or a newsletter signup",async()=>{
 });
 test("newsletter failure preserves the accepted inquiry with an honest warning",async()=>{
  global.fetch=async(url)=>url.includes("resend")?Response.json({id:"mock"}):Response.json({error:"unavailable"},{status:503});
- const response=await POST(request({...inquiry,newsletter:true}));assert.equal(response.status,202);assert.deepEqual(await response.json(),{accepted:true,newsletterWarning:true});
+ const response=await POST(request({...inquiry,newsletter:true}));assert.equal(response.status,202);assert.deepEqual(await response.json(),{accepted:true,analyticsEligible:false,newsletterWarning:true});
 });
 const types=[{fields:{services:[{sys:{id:"clarity",type:"Entry"},fields:{price:300,usPrice:350}},{sys:{id:"messaging",type:"Entry"},fields:{price:450}}]}}];
 test("checkout calculates amounts from CMS prices and selected currency",()=>{
@@ -51,4 +51,22 @@ test("geolocation supports Vercel and Netlify without shared caching",async()=>{
 });
 test("preview stays unindexed even when the launch flag is accidentally enabled",()=>{
  process.env.SITE_LAUNCHED="true";process.env.VERCEL_ENV="preview";assert.equal(isPublicProduction(),false);process.env.VERCEL_ENV="production";assert.equal(isPublicProduction(),true);process.env.SITE_LAUNCHED="false";assert.equal(isPublicProduction(),false);
+});
+
+
+test("acknowledged delivery is analytics eligible only on the released production domain", async()=>{
+ Object.assign(process.env,{SITE_LAUNCHED:"true",VERCEL_ENV:"production",NEXT_PUBLIC_GTM_ID:"GTM-WDHMFN7J"});
+ for(const [origin,eligible] of [["https://chickzen.com",true],["https://www.chickzen.com",true],["https://chickzen-preview.vercel.app",false],["http://chickzen.com",false],["https://chickzen.com.example.org",false]]){
+  const response=await POST(new Request(origin+"/api/contact",{method:"POST",headers:{origin,"content-type":"application/json"},body:JSON.stringify(inquiry)}));
+  assert.equal(response.status,202);assert.equal((await response.json()).analyticsEligible,eligible);
+ }
+ process.env.NEXT_PUBLIC_GTM_ID="";
+ const response=await POST(new Request("https://chickzen.com/api/contact",{method:"POST",headers:{origin:"https://chickzen.com","content-type":"application/json"},body:JSON.stringify(inquiry)}));
+ assert.equal((await response.json()).analyticsEligible,false);
+});
+test("a successful HTTP response without a provider acknowledgement never accepts an inquiry",async()=>{
+ for(const result of [{},{id:""},{id:" "},{id:5}]){
+  global.fetch=async()=>Response.json(result);
+  const response=await POST(request());assert.equal(response.status,502);assert.notEqual((await response.json()).accepted,true);
+ }
 });

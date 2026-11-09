@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Payment status | chickzen",
+  alternates: { canonical: "https://chickzen.com/success" },
   robots: { index: false, follow: false },
 };
 export default async function PaymentStatus({

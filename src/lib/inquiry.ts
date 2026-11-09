@@ -103,7 +103,7 @@ export async function deliverInquiry(inquiry: Inquiry) {
   if (!response.ok)
     throw new Error(`Email provider returned ${response.status}`);
   const data = await response.json();
-  if (typeof data.id !== "string")
+  if (typeof data.id !== "string" || !data.id.trim())
     throw new Error("Email provider did not acknowledge submission");
 }
 export async function subscribeToUpdates(inquiry: Inquiry) {

@@ -2,7 +2,7 @@ import Image from "next/image";
 import EditorialRichText from "@/components/editorial/EditorialRichText";
 import { asset } from "@/lib/editorial-content";
 import { notFound } from "next/navigation";
-import { defaultMetadata } from "@/lib/defaultMetadata";
+import { defaultMetadata, notFoundMetadata } from "@/lib/defaultMetadata";
 import type { Metadata } from "next";
 import { getAllBlogPosts, getAllBlogSlugs } from "@/lib/contentful";
 import type { Asset } from "contentful";
@@ -30,10 +30,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { getBlogPost } = await import("@/lib/contentful");
   const { slug } = await params;
-  if (!(await isKnownBlogSlug(slug))) return defaultMetadata;
+  if (!(await isKnownBlogSlug(slug))) return notFoundMetadata;
 
   const post = await getBlogPost(slug);
-  if (!post) return defaultMetadata;
+  if (!post) return notFoundMetadata;
 
   const { metaTitle, title, metaSummary, coverImage } = post.fields;
   const safeTitle = String(metaTitle ?? title ?? defaultMetadata.title);

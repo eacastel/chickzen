@@ -2,7 +2,7 @@
 
 import { notFound } from "next/navigation";
 import { getAllPageSlugs, getPage } from "@/lib/contentful";
-import { defaultMetadata } from "@/lib/defaultMetadata";
+import { defaultMetadata, notFoundMetadata } from "@/lib/defaultMetadata";
 import type { Metadata } from "next";
 import type { Asset } from "contentful";
 import CmsPage from "@/components/editorial/CmsPage";
@@ -30,10 +30,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
 
-  if (!(await isKnownPageSlug(slug))) return defaultMetadata;
+  if (!(await isKnownPageSlug(slug))) return notFoundMetadata;
 
   const page = await getPage(slug);
-  if (!page) return defaultMetadata;
+  if (!page) return notFoundMetadata;
 
   const previewImage = page.fields?.previewImage as Asset | undefined;
 
