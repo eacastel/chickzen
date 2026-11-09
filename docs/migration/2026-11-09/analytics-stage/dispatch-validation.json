@@ -1,0 +1,35 @@
+{
+  "mode": "actual application modules, stubbed Google script; no real collectors, emails, or payments",
+  "results": [
+    {
+      "case": "production-host fixture",
+      "pass": true,
+      "pageviewsBeforeWithdrawal": 5,
+      "services": 13,
+      "acceptedInquiryEvents": 1,
+      "googleScriptRequests": 1,
+      "realGoogleCollectors": 0,
+      "errors": []
+    },
+    {
+      "case": "https://chickzen-preview.vercel.app",
+      "zeroCollection": true
+    },
+    {
+      "case": "https://dashing-gaufre-cbbd48.netlify.app",
+      "zeroCollection": true
+    },
+    {
+      "case": "http://localhost:3000",
+      "zeroCollection": true
+    },
+    {
+      "case": "http://chickzen.com",
+      "zeroCollection": true
+    },
+    {
+      "case": "unknown path and rejected campaign",
+      "safeGeneric404": true
+    }
+  ]
+}

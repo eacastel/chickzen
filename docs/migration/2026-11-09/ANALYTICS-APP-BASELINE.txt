@@ -1,0 +1,127 @@
+CHICKZEN — APP / DEPLOYMENT BASELINE FOR GTM COORDINATION
+9 November 2026. Captured before any app tracking changes.
+
+OWNERSHIP AND SCOPE
+This thread owns the app, repository, preview deployments and future migration.
+Analytics thread 01a108af-e0c0-79e0-aacb-10dc6f6c9b6a owns Google configuration,
+historical reporting, GTM provisioning and the reviewed measurement contract.
+No DNS/domain switch, production promotion or Google configuration change was
+performed for this handoff. App instrumentation awaits the dedicated GTM ID and
+reviewed event, pageview ownership, URL/referrer sanitization and consent contract.
+Replace direct gtag when that contract is approved; do not run both loaders.
+
+PRESERVE GOOGLE HISTORY
+GA4 account 335447764; property 466008348; stream 9908921216;
+measurement ID G-6PCNC6QKXE. The main checkout .env.local confirms this ID.
+A dedicated Chickzen GTM container must continue sending to that same GA4 stream.
+The new Vercel project env inventory has no NEXT_PUBLIC_GA_ID or NEXT_PUBLIC_GTM_ID
+entry yet; explicit deployment configuration will be required. Gate variables
+exist but their values were not disclosed by this API response. See the prior
+migration records for their last configured values, and published checks below.
+
+CURRENT SOURCE / HOSTING
+Repo: https://github.com/eacastel/chickzen
+Branch: codex/chickzen-vercel-migration
+Worktree: /home/eacastel/Avanti/worktrees/chickzen-editorial-strategy-20261108
+HEAD: 9ce0d26 (documentation); deployed application commit: 0da9ad8.
+Canonical documents: /home/eacastel/Avanti/webdev/chickzen/docs
+Main checkout is still main; do not implement the migration in that older tree.
+Its pre-existing postcss.config.mjs change and untracked docs must be preserved.
+
+Live: https://chickzen.com and www.chickzen.com remain on Netlify.
+Netlify project: dashing-gaufre-cbbd48. DNS remains at Cloudflare.
+Approved review: https://chickzen-preview.vercel.app (HTTPS/443).
+No local preview port is assigned by this task; use the hosted review.
+Vercel team: emilio-castellanos-projects
+Vercel project: chickzen / prj_4dtRYBrYg4BD0313JA1SJZOUu4pr
+Ready preview deployment: dpl_CUZNBXaoTi8XfoPbJZUkBtQdxued.
+The stable preview alias is public by explicit approval. Other deployment URLs
+retain SSO. Always reassign this same alias after a reviewed preview update.
+Vercel Git integration is not connected; deployments are currently by CLI.
+The Vercel project's production target currently reports ERROR (a prior bootstrap
+attempt). Neither chickzen.com nor www.chickzen.com is attached to this project.
+Do not treat this as a production-ready destination for the DNS records supplied.
+
+APP AND REVIEW SCOPE
+Next.js 16.4.5, React 19.3.1, Node 22. The minimalist editorial direction, studio
+portrait, early CTAs, full 12-review carousel, shared opaque header and homepage
+logo navigation are reviewed. About, services, all 11 journal articles, policies,
+contact and retained checkout are integrated. CMS publishing remains in Contentful
+with the one-hour cache. Existing article slugs, titles and bodies are retained.
+Consulting inquiries are the primary funnel, with email/WhatsApp as direct options.
+Four service categories contain 13 resolved published services; one unresolved
+CMS reference is omitted. The previously empty Strawberry Lemonade destination
+now offers a manual email guide request. MailerLite automation is not configured.
+
+Email form is enabled in preview using Resend, fixed recipient hello@chickzen.com,
+verified Aliigo sender, visitor Reply-To and idempotent retry keys. Success only
+follows a 202 response with accepted:true from /api/contact, after provider ack.
+A newsletterWarning does not invalidate an accepted inquiry. No inquiry payload,
+email, name, message, business free text, or raw submission identifier belongs in
+analytics. Mailto/WhatsApp clicks represent intent, not an accepted lead.
+Checkout remains disabled. /success verifies the Stripe payment-intent/client-
+secret pair server-side; a bare visit never means purchase. No live payment or
+human email delivery was used in automated tests. Purchase measurement must wait
+for a reviewed verified-payment contract; do not infer it from the route name.
+
+CURRENT TRACKING IMPLEMENTATION / OPEN ISSUES
+src/app/layout.tsx contains the only direct gtag loader/config. It runs only when
+SITE_LAUNCHED=true, VERCEL_ENV=production and a valid NEXT_PUBLIC_GA_ID is present.
+src/lib/gtag.ts is an unused legacy helper. There are no implemented business
+analytics events or GTM loader. Production environment gating exists; an explicit
+runtime hostname allowlist still needs to be added. Preview deployment noindex
+headers, robots disallow and disabled analytics were previously browser-verified.
+
+Query/referrer sanitization is not yet implemented. Do not enable the current
+raw gtag config in production and assume payment/client-secret or personal query
+parameters are safe. Preserve intended UTM attribution using the reviewed
+allowlist. /success requires its query parameters for server verification, so do
+not strip them before the payment check. Sanitize measurement payloads instead.
+One owner must handle initial, SPA, back/forward pageviews. The November 8 live
+baseline used GA Enhanced Measurement history views; avoid adding a second route
+pageview producer without reconciling this behavior with the analytics owner.
+
+SEO / URL PRESERVATION
+Canonical production origin remains https://chickzen.com. Measurement may allow
+exact hosts chickzen.com and www.chickzen.com; never preview/Netlify/localhost.
+The final www-to-apex redirect needs configuring at cutover, not a hostname change.
+analytics-app-preservation-inventory.json lists 24 current sitemap URLs and all
+planned redirects. Preserve the existing /blog/:slug paths; /journal aliases only
+redirect. /home now redirects to /. No other route renames are planned.
+
+Fresh read-only checks show:
+- Live /services/lets-begin is 200 with the erroneous /services/checkout canonical;
+  preview uses the correct /services/lets-begin canonical, and /services/checkout
+  permanently redirects to it.
+- Live /success is 404; preview is 200 with noindex and verified-payment behavior.
+- Live /blog has no canonical in the fetched HTML; preview declares /blog.
+- Live robots.txt and sitemap.xml are 404. Preview robots disallows all crawling,
+  and its sitemap contains 24 production-origin URLs. Do not infer that there
+  were no historical URLs from the broken live sitemap; reconcile GA4/Search
+  Console URL history before cutover.
+- Preview /success and the real 404 response currently inherit the homepage
+  canonical. Both are noindex, but canonical policy should be cleaned up before
+  launch; do not confuse that with the fixed checkout canonical.
+- Valid reviewed pages stay at their original paths with the same business topic
+  and CMS content. Homepage copy and CTA destinations changed intentionally to
+  prioritize qualified consulting inquiries over immediate purchase.
+
+BASELINE EVIDENCE
+analytics-app-baseline-vercel.json: current project, domains, env inventory.
+analytics-app-baseline-routes.json: live/preview status, canonicals, redirects,
+robots and sitemap observations. Requests did not execute scripts or send events;
+absence of a Google script in initial HTML is not proof that live client tracking
+is absent. The November 8 blocked-collector browser audit remains the measurement
+baseline for live initial/SPA/back navigation and query leakage.
+full-site-review/browser-validation.json and header-refinement/validation.json:
+prior published desktop/mobile UI, route, carousel and form/keyboard checks.
+../../analytics/2026-11-08-lifetime-report/WEBSITE-AGENT-HANDOFF.txt:
+original tracking findings and acceptance criteria (see canonical docs path above).
+
+NEXT COORDINATION STEP
+Receive GTM account/container ID, reviewed URL map and event/consent contract.
+Stage app changes in the existing migration branch, using blocked Google collectors
+and mocked business flows for validation. Confirm one pageview per initial/SPA/
+back action, correct retained GA4 destination, no sensitive URL/referrer data and
+no false accepted-lead or purchase outcomes. Share preview evidence with analytics
+before any publishing or DNS/production switch. No switch is authorized here.

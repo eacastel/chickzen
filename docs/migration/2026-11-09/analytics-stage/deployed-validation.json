@@ -1,0 +1,236 @@
+{
+  "deploymentId": "dpl_8mbTjmvHTYo3FLCW8aT7oegk4CpL",
+  "sourceCommit": "ccc3de7",
+  "origin": "https://chickzen-preview.vercel.app",
+  "layouts": [
+    {
+      "width": 1440,
+      "consentFits": true,
+      "acceptRejectReopen": true,
+      "choicePersists": true,
+      "zeroCollection": true
+    },
+    {
+      "width": 768,
+      "consentFits": true,
+      "acceptRejectReopen": true,
+      "choicePersists": true,
+      "zeroCollection": true
+    },
+    {
+      "width": 390,
+      "consentFits": true,
+      "acceptRejectReopen": true,
+      "choicePersists": true,
+      "zeroCollection": true
+    },
+    {
+      "width": 320,
+      "consentFits": true,
+      "acceptRejectReopen": true,
+      "choicePersists": true,
+      "zeroCollection": true
+    }
+  ],
+  "routes": [
+    {
+      "path": "/",
+      "status": 200,
+      "canonical": "https://chickzen.com"
+    },
+    {
+      "path": "/blog",
+      "status": 200,
+      "canonical": "https://chickzen.com/blog"
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "canonical": "https://chickzen.com/contact"
+    },
+    {
+      "path": "/services/lets-begin",
+      "status": 200,
+      "canonical": "https://chickzen.com/services/lets-begin"
+    },
+    {
+      "path": "/find-your-flavor",
+      "status": 200,
+      "canonical": "https://chickzen.com/find-your-flavor"
+    },
+    {
+      "path": "/the-strawberry-lemonade-effect",
+      "status": 200,
+      "canonical": "https://chickzen.com/the-strawberry-lemonade-effect"
+    },
+    {
+      "path": "/services",
+      "status": 200,
+      "canonical": "https://chickzen.com/services"
+    },
+    {
+      "path": "/about",
+      "status": 200,
+      "canonical": "https://chickzen.com/about"
+    },
+    {
+      "path": "/disclaimer",
+      "status": 200,
+      "canonical": "https://chickzen.com/disclaimer"
+    },
+    {
+      "path": "/accessibility-statement",
+      "status": 200,
+      "canonical": "https://chickzen.com/accessibility-statement"
+    },
+    {
+      "path": "/cookie-policy",
+      "status": 200,
+      "canonical": "https://chickzen.com/cookie-policy"
+    },
+    {
+      "path": "/terms-and-conditions",
+      "status": 200,
+      "canonical": "https://chickzen.com/terms-and-conditions"
+    },
+    {
+      "path": "/privacy-policy",
+      "status": 200,
+      "canonical": "https://chickzen.com/privacy-policy"
+    },
+    {
+      "path": "/blog/extraordinarily-hard-things",
+      "status": 200,
+      "canonical": "https://chickzen.com/blog/extraordinarily-hard-things"
+    },
+    {
+      "path": "/blog/who-were-you-when-you-were-you",
+      "status": 200,
+      "canonical": "https://chickzen.com/blog/who-were-you-when-you-were-you"
+    },
+    {
+      "path": "/blog/caring-for-your-self",
+      "status": 200,
+      "canonical": "https://chickzen.com/blog/caring-for-your-self"
+    },
+    {
+      "path": "/blog/how-to-choose-the-right-brand-service-for-where-you-are-now",
+      "status": 200,
+      "canonical": "https://chickzen.com/blog/how-to-choose-the-right-brand-service-for-where-you-are-now"
+    },
+    {
+      "path": "/blog/the-fastest-way-to-take-your-brand-strategy-to-the-next-level",
+      "status": 200,
+      "canonical": "https://chickzen.com/blog/the-fastest-way-to-take-your-brand-strategy-to-the-next-level"
+    },
+    {
+      "path": "/blog/lightning-messaging",
+      "status": 200,
+      "canonical": "https://chickzen.com/blog/lightning-messaging"
+    },
+    {
+      "path": "/blog/brand-clarity-session-get-unstuck",
+      "status": 200,
+      "canonical": "https://chickzen.com/blog/brand-clarity-session-get-unstuck"
+    },
+    {
+      "path": "/blog/the-era-of-the-strong-voice",
+      "status": 200,
+      "canonical": "https://chickzen.com/blog/the-era-of-the-strong-voice"
+    },
+    {
+      "path": "/blog/youre-leading-the-work-now-lets-get-the-buy-in",
+      "status": 200,
+      "canonical": "https://chickzen.com/blog/youre-leading-the-work-now-lets-get-the-buy-in"
+    },
+    {
+      "path": "/blog/your-story-matters-the-power-of-authentic-brand-storytelling",
+      "status": 200,
+      "canonical": "https://chickzen.com/blog/your-story-matters-the-power-of-authentic-brand-storytelling"
+    },
+    {
+      "path": "/blog/a-case-for-strawberry-lemonade",
+      "status": 200,
+      "canonical": "https://chickzen.com/blog/a-case-for-strawberry-lemonade"
+    },
+    {
+      "path": "/success",
+      "status": 200,
+      "canonical": "https://chickzen.com/success"
+    },
+    {
+      "path": "/unknown-chickzen-page",
+      "status": 404,
+      "canonical": null
+    },
+    {
+      "path": "/blog/unknown-chickzen-post",
+      "status": 404,
+      "canonical": null
+    },
+    {
+      "path": "/missing/nested/page",
+      "status": 404,
+      "canonical": null
+    }
+  ],
+  "redirects": [
+    {
+      "path": "/origin-story",
+      "target": "/about",
+      "status": 308,
+      "onlySafeCampaignQuery": true
+    },
+    {
+      "path": "/good-vibes",
+      "target": "/about#recommendations",
+      "status": 308,
+      "onlySafeCampaignQuery": true
+    },
+    {
+      "path": "/lets-begin",
+      "target": "/contact",
+      "status": 308,
+      "onlySafeCampaignQuery": true
+    },
+    {
+      "path": "/shop",
+      "target": "/services",
+      "status": 308,
+      "onlySafeCampaignQuery": true
+    },
+    {
+      "path": "/home",
+      "target": "/",
+      "status": 308,
+      "onlySafeCampaignQuery": true
+    },
+    {
+      "path": "/journal",
+      "target": "/blog",
+      "status": 308,
+      "onlySafeCampaignQuery": true
+    },
+    {
+      "path": "/services/checkout",
+      "target": "/services/lets-begin",
+      "status": 308,
+      "onlySafeCampaignQuery": true
+    },
+    {
+      "path": "/journal/a-case-for-strawberry-lemonade",
+      "target": "/blog/a-case-for-strawberry-lemonade",
+      "status": 308,
+      "onlySafeCampaignQuery": true
+    }
+  ],
+  "sitemapUrls": 23,
+  "checkoutExcluded": true,
+  "form": {
+    "mockedOnly": true,
+    "doubleSubmitSuppressed": true,
+    "retryIdStable": true
+  },
+  "googleRequests": 0,
+  "errors": []
+}

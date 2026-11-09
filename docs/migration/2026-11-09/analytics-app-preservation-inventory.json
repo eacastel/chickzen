@@ -1,0 +1,63 @@
+{
+  "canonicalOrigin": "https://chickzen.com",
+  "productionMeasurementHosts": [
+    "chickzen.com",
+    "www.chickzen.com"
+  ],
+  "excludedHosts": [
+    "chickzen-preview.vercel.app",
+    "*.vercel.app",
+    "*.netlify.app",
+    "localhost"
+  ],
+  "preserveAtSamePath": [
+    "https://chickzen.com",
+    "https://chickzen.com/blog",
+    "https://chickzen.com/contact",
+    "https://chickzen.com/services/lets-begin",
+    "https://chickzen.com/find-your-flavor",
+    "https://chickzen.com/the-strawberry-lemonade-effect",
+    "https://chickzen.com/services",
+    "https://chickzen.com/about",
+    "https://chickzen.com/disclaimer",
+    "https://chickzen.com/accessibility-statement",
+    "https://chickzen.com/cookie-policy",
+    "https://chickzen.com/terms-and-conditions",
+    "https://chickzen.com/privacy-policy",
+    "https://chickzen.com/blog/extraordinarily-hard-things",
+    "https://chickzen.com/blog/who-were-you-when-you-were-you",
+    "https://chickzen.com/blog/caring-for-your-self",
+    "https://chickzen.com/blog/how-to-choose-the-right-brand-service-for-where-you-are-now",
+    "https://chickzen.com/blog/the-fastest-way-to-take-your-brand-strategy-to-the-next-level",
+    "https://chickzen.com/blog/lightning-messaging",
+    "https://chickzen.com/blog/brand-clarity-session-get-unstuck",
+    "https://chickzen.com/blog/the-era-of-the-strong-voice",
+    "https://chickzen.com/blog/youre-leading-the-work-now-lets-get-the-buy-in",
+    "https://chickzen.com/blog/your-story-matters-the-power-of-authentic-brand-storytelling",
+    "https://chickzen.com/blog/a-case-for-strawberry-lemonade"
+  ],
+  "additionalNonIndexableRoute": "/success",
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/",
+      "status": 308
+    },
+    {
+      "source": "/journal",
+      "destination": "/blog",
+      "status": 308
+    },
+    {
+      "source": "/journal/:slug",
+      "destination": "/blog/:slug",
+      "status": 308
+    },
+    {
+      "source": "/services/checkout",
+      "destination": "/services/lets-begin",
+      "status": 308
+    }
+  ],
+  "inventoryLimit": "Live sitemap.xml is 404. This inventory comes from CMS/preview routes and prior audit, not a complete historical traffic URL export. Reconcile with GA4 and Search Console before cutover."
+}

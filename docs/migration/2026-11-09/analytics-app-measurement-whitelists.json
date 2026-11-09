@@ -1,0 +1,285 @@
+{
+  "capturedAt": "2026-11-09T16:16:48.990815+00:00",
+  "sourceApplicationCommit": "0da9ad8",
+  "canonicalOrigin": "https://chickzen.com",
+  "pageCatalog": [
+    {
+      "page_path": "/",
+      "page_title": "Brand strategy & messaging for women | chickzen",
+      "canonical_url": "https://chickzen.com",
+      "h1": "A clearer brand. A voice that’s entirely yours.",
+      "page_group": "page"
+    },
+    {
+      "page_path": "/blog",
+      "page_title": "The journal | chickzen",
+      "canonical_url": "https://chickzen.com/blog",
+      "h1": "Clarity, a little at a time.",
+      "page_group": "page"
+    },
+    {
+      "page_path": "/contact",
+      "page_title": "Talk with Jen | chickzen",
+      "canonical_url": "https://chickzen.com/contact",
+      "h1": "Let’s find your next right step.",
+      "page_group": "page"
+    },
+    {
+      "page_path": "/services/lets-begin",
+      "page_title": "Services Checkout | Chickzen",
+      "canonical_url": "https://chickzen.com/services/lets-begin",
+      "h1": "",
+      "page_group": "page"
+    },
+    {
+      "page_path": "/find-your-flavor",
+      "page_title": "The Strawberry Lemonade Effect | chickzen™",
+      "canonical_url": "https://chickzen.com/find-your-flavor",
+      "h1": "The Strawberry Lemonade Effect",
+      "page_group": "page"
+    },
+    {
+      "page_path": "/the-strawberry-lemonade-effect",
+      "page_title": "The Strawberry Lemonade Effect",
+      "canonical_url": "https://chickzen.com/the-strawberry-lemonade-effect",
+      "h1": "The Strawberry Lemonade Effect",
+      "page_group": "page"
+    },
+    {
+      "page_path": "/services",
+      "page_title": "Services | Brand Strategy & Messaging with chickzen™",
+      "canonical_url": "https://chickzen.com/services",
+      "h1": "Services",
+      "page_group": "page"
+    },
+    {
+      "page_path": "/about",
+      "page_title": "Founder Story | Jennifer Castellanos of chickzen™",
+      "canonical_url": "https://chickzen.com/about",
+      "h1": "Origin Story",
+      "page_group": "page"
+    },
+    {
+      "page_path": "/disclaimer",
+      "page_title": "Disclaimer | chickzen™",
+      "canonical_url": "https://chickzen.com/disclaimer",
+      "h1": "Disclaimer",
+      "page_group": "policy"
+    },
+    {
+      "page_path": "/accessibility-statement",
+      "page_title": "Accessibility Statement | chickzen™",
+      "canonical_url": "https://chickzen.com/accessibility-statement",
+      "h1": "Accessibility Statement",
+      "page_group": "policy"
+    },
+    {
+      "page_path": "/cookie-policy",
+      "page_title": "Cookie Policy | chickzen™",
+      "canonical_url": "https://chickzen.com/cookie-policy",
+      "h1": "Cookie Policy",
+      "page_group": "policy"
+    },
+    {
+      "page_path": "/terms-and-conditions",
+      "page_title": "Terms & Conditions | chickzen™",
+      "canonical_url": "https://chickzen.com/terms-and-conditions",
+      "h1": "Terms & Conditions",
+      "page_group": "policy"
+    },
+    {
+      "page_path": "/privacy-policy",
+      "page_title": "Privacy Policy | chickzen™",
+      "canonical_url": "https://chickzen.com/privacy-policy",
+      "h1": "Privacy Policy",
+      "page_group": "policy"
+    },
+    {
+      "page_path": "/blog/extraordinarily-hard-things",
+      "page_title": "Extraordinarily Hard Things | chickzen™",
+      "canonical_url": "https://chickzen.com/blog/extraordinarily-hard-things",
+      "h1": "Extraordinarily Hard Things",
+      "page_group": "journal_article"
+    },
+    {
+      "page_path": "/blog/who-were-you-when-you-were-you",
+      "page_title": "Who Were You When You Were You | chickzen™",
+      "canonical_url": "https://chickzen.com/blog/who-were-you-when-you-were-you",
+      "h1": "Who Were You When You Were You",
+      "page_group": "journal_article"
+    },
+    {
+      "page_path": "/blog/caring-for-your-self",
+      "page_title": "Self-care is a leadership strategy",
+      "canonical_url": "https://chickzen.com/blog/caring-for-your-self",
+      "h1": "Caring for Your Self",
+      "page_group": "journal_article"
+    },
+    {
+      "page_path": "/blog/how-to-choose-the-right-brand-service-for-where-you-are-now",
+      "page_title": "Choose the Right Brand Strategy Service | chickzen™",
+      "canonical_url": "https://chickzen.com/blog/how-to-choose-the-right-brand-service-for-where-you-are-now",
+      "h1": "Service with Intention",
+      "page_group": "journal_article"
+    },
+    {
+      "page_path": "/blog/the-fastest-way-to-take-your-brand-strategy-to-the-next-level",
+      "page_title": "How to Evolve Your Brand Strategy—Without Starting Over | chickzen™",
+      "canonical_url": "https://chickzen.com/blog/the-fastest-way-to-take-your-brand-strategy-to-the-next-level",
+      "h1": "Level Up Your Strategy",
+      "page_group": "journal_article"
+    },
+    {
+      "page_path": "/blog/lightning-messaging",
+      "page_title": "Lightning Messaging | chickzen™ The Power Strategic Communication",
+      "canonical_url": "https://chickzen.com/blog/lightning-messaging",
+      "h1": "Lightning Messaging",
+      "page_group": "journal_article"
+    },
+    {
+      "page_path": "/blog/brand-clarity-session-get-unstuck",
+      "page_title": "How to Get Unstuck and Realign Your Brand | chickzen™",
+      "canonical_url": "https://chickzen.com/blog/brand-clarity-session-get-unstuck",
+      "h1": "Unleash Your Brand",
+      "page_group": "journal_article"
+    },
+    {
+      "page_path": "/blog/the-era-of-the-strong-voice",
+      "page_title": "The Era of the Strong Voice | Why Clarity & Confidence Matter for Women",
+      "canonical_url": "https://chickzen.com/blog/the-era-of-the-strong-voice",
+      "h1": "The Era of the Strong Voice",
+      "page_group": "journal_article"
+    },
+    {
+      "page_path": "/blog/youre-leading-the-work-now-lets-get-the-buy-in",
+      "page_title": "Get Buy-In for Your Big Idea—Without Diluting the Vision | chickzen™",
+      "canonical_url": "https://chickzen.com/blog/youre-leading-the-work-now-lets-get-the-buy-in",
+      "h1": "Getting Buy-in",
+      "page_group": "journal_article"
+    },
+    {
+      "page_path": "/blog/your-story-matters-the-power-of-authentic-brand-storytelling",
+      "page_title": "Why Your Story Matters | Brand Storytelling for Women Entrepreneurs",
+      "canonical_url": "https://chickzen.com/blog/your-story-matters-the-power-of-authentic-brand-storytelling",
+      "h1": "Your Story Matters",
+      "page_group": "journal_article"
+    },
+    {
+      "page_path": "/blog/a-case-for-strawberry-lemonade",
+      "page_title": "A Case for Strawberry Lemonade | chickzen™",
+      "canonical_url": "https://chickzen.com/blog/a-case-for-strawberry-lemonade",
+      "h1": "A Case for Strawberry Lemonade",
+      "page_group": "journal_article"
+    }
+  ],
+  "serviceCatalog": [
+    {
+      "service_id": "clarity-catalyst",
+      "service_name": "Discovery Catalyst™",
+      "service_category": "clarity",
+      "category_label": "Clarity",
+      "page_path": "/services"
+    },
+    {
+      "service_id": "brand-messaging-toolkit",
+      "service_name": "Brand Messaging Toolkit",
+      "service_category": "clarity",
+      "category_label": "Clarity",
+      "page_path": "/services"
+    },
+    {
+      "service_id": "voice-and-message-audit",
+      "service_name": "Clarity Audit™",
+      "service_category": "clarity",
+      "category_label": "Clarity",
+      "page_path": "/services"
+    },
+    {
+      "service_id": "brand-clarity-session",
+      "service_name": "Brand Impact Session",
+      "service_category": "clarity",
+      "category_label": "Clarity",
+      "page_path": "/services"
+    },
+    {
+      "service_id": "digital-brand-accelerator",
+      "service_name": "Brand Accelerator",
+      "service_category": "growth",
+      "category_label": "Growth",
+      "page_path": "/services"
+    },
+    {
+      "service_id": "brand-messaging-lab",
+      "service_name": "On Brand Lab",
+      "service_category": "growth",
+      "category_label": "Growth",
+      "page_path": "/services"
+    },
+    {
+      "service_id": "personal-brand-signature",
+      "service_name": "Personal Brand Signature™",
+      "service_category": "growth",
+      "category_label": "Growth",
+      "page_path": "/services"
+    },
+    {
+      "service_id": "strategic-brand-partner",
+      "service_name": "Strategic Brand Partner",
+      "service_category": "legacy",
+      "category_label": "Legacy",
+      "page_path": "/services"
+    },
+    {
+      "service_id": "website-voice-rebrand",
+      "service_name": "Website Voice Rebrand",
+      "service_category": "legacy",
+      "category_label": "Legacy",
+      "page_path": "/services"
+    },
+    {
+      "service_id": "vip-brand-strategy-day",
+      "service_name": "VIP Brand Strategy Day",
+      "service_category": "legacy",
+      "category_label": "Legacy",
+      "page_path": "/services"
+    },
+    {
+      "service_id": "brand-audit",
+      "service_name": "Brand Audit",
+      "service_category": "flair",
+      "category_label": "Flair",
+      "page_path": "/services"
+    },
+    {
+      "service_id": "email-nurture-sequence",
+      "service_name": "Email Nurture Sequence",
+      "service_category": "flair",
+      "category_label": "Flair",
+      "page_path": "/services"
+    },
+    {
+      "service_id": "custom-retreat-or-event-strategy",
+      "service_name": "Branded Experience Blueprint",
+      "service_category": "flair",
+      "category_label": "Flair",
+      "page_path": "/services"
+    }
+  ],
+  "specialRoutePolicy": {
+    "/success": {
+      "page_title": "Payment status | chickzen",
+      "page_group": "payment_status",
+      "indexable": false,
+      "purchaseOnPageView": false,
+      "canonicalCorrectionPending": true
+    },
+    "unknown": {
+      "page_title": "Page not found | chickzen",
+      "page_group": "not_found",
+      "indexable": false,
+      "doNotForwardRawPathOrQuery": true,
+      "canonicalCorrectionPending": true
+    }
+  },
+  "measurementStatus": "Whitelist export only. No instrumentation, event names, Google settings, or deployment changes applied."
+}

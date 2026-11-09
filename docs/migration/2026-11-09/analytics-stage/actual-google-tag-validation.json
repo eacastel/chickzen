@@ -1,0 +1,169 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-11-09T16:53:00.609Z",
+  "completed_utc": "2026-11-09T16:55:02.486Z",
+  "sourceCommit": "ccc3de7",
+  "containerId": "GTM-WDHMFN7J",
+  "measurementId": "G-6PCNC6QKXE",
+  "publishedVersion": "3",
+  "checks": [
+    {
+      "case": "No Google script or collector before analytics acceptance",
+      "pass": true
+    },
+    {
+      "case": "Exactly one consented initial pageview and original GA4 ID",
+      "pass": true,
+      "events": 1
+    },
+    {
+      "case": "Initial page context clean and synthetic UTM attribution retained",
+      "pass": true
+    },
+    {
+      "case": "Raw URL query and fragment removed before Google loads",
+      "pass": true
+    },
+    {
+      "case": "Single SPA pageview /about",
+      "pass": true
+    },
+    {
+      "case": "Single SPA pageview /",
+      "pass": true
+    },
+    {
+      "case": "Single goBack pageview",
+      "pass": true
+    },
+    {
+      "case": "Single goForward pageview",
+      "pass": true
+    },
+    {
+      "case": "Hash, same-path query and rerender do not duplicate pageviews",
+      "pass": true
+    },
+    {
+      "case": "Single public service click clarity-catalyst",
+      "pass": true
+    },
+    {
+      "case": "Single public service click brand-messaging-toolkit",
+      "pass": true
+    },
+    {
+      "case": "Single public service click voice-and-message-audit",
+      "pass": true
+    },
+    {
+      "case": "Single public service click brand-clarity-session",
+      "pass": true
+    },
+    {
+      "case": "Single public service click digital-brand-accelerator",
+      "pass": true
+    },
+    {
+      "case": "Single public service click brand-messaging-lab",
+      "pass": true
+    },
+    {
+      "case": "Single public service click personal-brand-signature",
+      "pass": true
+    },
+    {
+      "case": "Single public service click strategic-brand-partner",
+      "pass": true
+    },
+    {
+      "case": "Single public service click website-voice-rebrand",
+      "pass": true
+    },
+    {
+      "case": "Single public service click vip-brand-strategy-day",
+      "pass": true
+    },
+    {
+      "case": "Single public service click brand-audit",
+      "pass": true
+    },
+    {
+      "case": "Single public service click email-nurture-sequence",
+      "pass": true
+    },
+    {
+      "case": "Single public service click custom-retreat-or-event-strategy",
+      "pass": true
+    },
+    {
+      "case": "Single contact phone",
+      "pass": true
+    },
+    {
+      "case": "Single contact email",
+      "pass": true
+    },
+    {
+      "case": "Single contact whatsapp",
+      "pass": true
+    },
+    {
+      "case": "Single contact contact_page",
+      "pass": true
+    },
+    {
+      "case": "Guide request is one intent event",
+      "pass": true
+    },
+    {
+      "case": "Accepted inquiry deduplicates; invalid/unconfirmed responses send no goal",
+      "pass": true
+    },
+    {
+      "case": "No fake secret, ad ID, form identifier or referrer query in blocked collectors",
+      "pass": true
+    },
+    {
+      "case": "No automatic generic interactions or unverified commerce events",
+      "pass": true
+    },
+    {
+      "case": "Withdrawal reload stops collection and clears GA cookies",
+      "pass": true
+    },
+    {
+      "case": "Excluded host https://chickzen-preview.vercel.app",
+      "pass": true
+    },
+    {
+      "case": "Excluded host https://dashing-gaufre-cbbd48.netlify.app",
+      "pass": true
+    },
+    {
+      "case": "Excluded host http://localhost:3000",
+      "pass": true
+    },
+    {
+      "case": "Excluded host http://chickzen.com",
+      "pass": true
+    },
+    {
+      "case": "Wire source page survives immediate navigation for all13service clicks",
+      "pass": true
+    }
+  ],
+  "checkCount": 36,
+  "capturedEventCount": 26,
+  "actual_ga4_delivery": false,
+  "messages_or_payments_sent": 0,
+  "errors": [],
+  "legacyEnhancedMeasurementRestored": true,
+  "finalTemporaryWindow": {
+    "offConfirmed": "2026-11-09T16:53:00.368Z",
+    "restored": "2026-11-09T16:55:04.545Z",
+    "status": "PASS_RESTORED"
+  },
+  "rawEvidenceLocation": "/home/eacastel/Avanti/clients/analytics/2026-11-09-chickzen-gtm/data/actual-google-script-audit.json",
+  "note": "Actual published Google scripts with production origins mapped to the local application-module fixture. All collectors fulfilled locally. This proves dispatch, not receipt in GA4. Raw synthetic browser identifiers are omitted from this project copy."
+}

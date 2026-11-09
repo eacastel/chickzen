@@ -1,0 +1,107 @@
+CHICKZEN — GTM AND HISTORY PRESERVATION CONTRACT
+Prepared November 9, 2026. Analytics owns Google configuration/reporting;
+CHICKZEN owns app implementation and deployment. No domain/DNS cutover here.
+
+IDENTITY
+Keep existing GA4 account 335447764 / property 466008348 / stream 9908921216 and
+G-6PCNC6QKXE. Dedicated Chickzen GTM account 6403736773, US (matching GA4 account
+region), web container chickzen.com: GTM-WDHMFN7J (286002858). Management login emilio@avantiinteractive.com.
+No client container inside Avanti. Do not recreate or delete historical data.
+
+PAGEVIEWS
+App event ck_page_view -> GA4 page_view. Exactly one initial view after consent
+and per genuine Next.js pathname change, including Back/Forward; ignore same-path
+hash/query changes and rerenders. No pre-consent interaction replay. Google tag
+send_page_view=false. At public tracking cutover, Analytics disables automatic
+Enhanced Measurement extras/history for this stream. The old Netlify tag currently
+uses automatic history tracking, so no permanent stream switch before that cutover.
+Real-tag preflight may use a short logged configuration window with before/after
+settings saved and the old setup restored afterward. All test collectors blocked.
+
+SCOPE AND CHOICES
+Load one GTM container only after analytics acceptance, exact HTTPS production
+hosts chickzen.com/www.chickzen.com, and explicit application launch flag. Preview,
+Netlify review deployments and localhost create no production queues or collectors.
+Remove direct gtag loader/config when installing GTM; no dual tagging.
+Default Ads consent denied; no Ads, remarketing, Google Signals or user-provided
+data. Use Chickzen's palette for bottom Accept/Reject bar. Either choice hides
+it and leaves a small accessible settings/cookie control. Persist choice; stop
+measurement and clear GA cookies/session state on withdrawal. Reopening choices
+must work on mobile. Do not send consent choices as business events.
+
+SAFE PAGE CONTEXT
+Static canonical path/title catalog exported by the app owner from current
+published pages and 11 journal slugs. All 24 intended canonical content URLs retained;
+confirmation/error paths must be generic/nonindexed. Unknown paths map to /404
+without echoing arbitrary strings. page_location = fixed current production origin
+plus safe path only; no raw query/hash. Internal referrer = previous safe path,
+external referrer = origin only. Source page is captured at interaction time so
+fast navigation cannot reattribute a click to its destination.
+
+UTMs
+Capture safe campaign context before URL cleaning. Pass campaign_source,
+campaign_medium,campaign_name,campaign_id,campaign_term,campaign_content explicitly
+through approved config fields. Public campaign slugs only: lowercase alphanumeric,
+hyphen/underscore, at most 80 characters, no email/URL/long telephone-looking strings.
+Do not forward entire query strings or gclid/Stripe/client/payment/session secrets.
+Confirm blocked wire payload retains synthetic UTM attribution even though page
+URLs/referrers are clean. Campaign values must never contain visitor identifiers. Exact validation:
+^[a-z0-9][a-z0-9_-]{0,79}$ and reject digit runs of seven or more.
+Consent choice is versioned and lasts 180 days unless changed sooner.
+
+BUSINESS EVENTS
+ck_service_select: actual public service CTA click; service_id and service_category
+from the exact 13 service public whitelist; link_placement header/footer/hero/content.
+ck_contact_click: actual phone/email/WhatsApp/contact-page navigation; fixed
+contact_method phone/email/whatsapp/contact_page and link_placement. No form field
+values or selected inquiry topic/service are attached to contact events.
+ck_guide_request_click: request-by-email link for current guide; fixed
+resource_id=strawberry_lemonade and link_placement. This is intent, not a sent
+email, newsletter subscription or delivered guide.
+ck_inquiry_accepted: only after actual provider acknowledgment and API 202 with
+accepted:true AND analyticsEligible:true. Fixed form_id=contact_general only,
+clean page context and measurement_version=2026-11-09. No topic/service/user
+fields, name,email,phone,business,message,newsletter choice,submission/provider
+identifier. Client deduplicates retry/double-clicks; internal dedup IDs never go
+to Google. GA4 marks accepted inquiry once per session as the new key event;
+raw event count and inquiry-session count are distinct. Acceptance means provider
+accepted the notification, not inbox receipt, a client, sale or qualified lead.
+Validation/honeypot/throttle/partial/failed/mock-unconfirmed replies emit no goal.
+Newsletter warning after a successful inquiry does not become a signup goal.
+
+COMMON DATA
+All events carry safe page context and measurement_version=2026-11-09. Keep an
+explicit field allowlist per event so sticky service context cannot leak onto
+contact/inquiry events. One delegated click owner covers React/imported links,
+mouse/keyboard activation and remounts. Exactly one event per action.
+
+PAYMENTS
+Keep checkout disabled until separately validated by the website owner. Existing
+default purchase definition/history remains; do not send purchase from button
+clicks, page views or unverified API success. Payment/Stripe changes are separate
+from GTM setup. No checkout/cart/payment secrets or visitor identifiers in GA4.
+
+SEO PRESERVATION
+Inventory live content, full GA4 paths, all available Search Console landing URLs,
+CMS canonical routes and links. Preserve the homepage/About authority and all 11
+blog articles at equivalent canonical URLs/content. Restore useful legacy aliases
+with explicit permanent redirects to the closest actual replacement; no homepage
+catch-all. Map origin-story/good-vibes/lets-begin as well as home/journal/checkout.
+Canonical URLs and structured data must point to real final 200 pages. Sitemap only
+canonical indexable pages; no redirects, noindex confirmation pages or nonexistent
+routes. Preview stays noindex; production launch switch applies only to true hosts.
+Keep DNS Search Console verification and existing domain property; no change of
+address tool for this same-domain hosting migration. No sitemap submission before
+public live XML reflects actual new pages. Preserve mail DNS and old hosting for
+rollback. Incoming URLs keep marketing attribution; do not forward personal query
+fields through redirects or analytics indiscriminately.
+
+QA
+Use actual published Google scripts with all collectors fulfilled locally and all
+contact/payment/newsletter POSTs mocked or blocked. Test initial/SPA/back/forward,
+anchors/query/rerender, preview exclusions, all four channels of contact, all 13
+service IDs, guide intent, realistic successful and negative inquiry outcomes,
+UTMs, sensitive synthetic URL values, and mobile choices/withdrawal. No real
+emails/payments or fabricated goals. Browser dispatch proof and actual GA4 receipt
+are separate. After authorized public cutover, verify genuine consented traffic
+and annotate launch/measurement changes before interpreting trends.

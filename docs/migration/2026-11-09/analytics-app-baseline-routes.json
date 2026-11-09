@@ -1,0 +1,266 @@
+{
+  "capturedAt": "2026-11-09T16:12:05.086631+00:00",
+  "networkMode": "HTML requests only; scripts not executed, no Google events or payment/form submissions",
+  "routes": [
+    {
+      "url": "https://chickzen.com/",
+      "finalUrl": "https://chickzen.com/",
+      "status": 200,
+      "server": "Netlify",
+      "xRobotsTag": null,
+      "canonical": [
+        "https://chickzen.com"
+      ],
+      "robots": [],
+      "googleScripts": []
+    },
+    {
+      "url": "https://chickzen.com/about",
+      "finalUrl": "https://chickzen.com/about",
+      "status": 200,
+      "server": "Netlify",
+      "xRobotsTag": null,
+      "canonical": [
+        "https://chickzen.com/about"
+      ],
+      "robots": [],
+      "googleScripts": []
+    },
+    {
+      "url": "https://chickzen.com/services",
+      "finalUrl": "https://chickzen.com/services",
+      "status": 200,
+      "server": "Netlify",
+      "xRobotsTag": null,
+      "canonical": [
+        "https://chickzen.com/services"
+      ],
+      "robots": [],
+      "googleScripts": []
+    },
+    {
+      "url": "https://chickzen.com/blog",
+      "finalUrl": "https://chickzen.com/blog",
+      "status": 200,
+      "server": "Netlify",
+      "xRobotsTag": null,
+      "canonical": [],
+      "robots": [],
+      "googleScripts": []
+    },
+    {
+      "url": "https://chickzen.com/services/lets-begin",
+      "finalUrl": "https://chickzen.com/services/lets-begin",
+      "status": 200,
+      "server": "Netlify",
+      "xRobotsTag": null,
+      "canonical": [
+        "https://chickzen.com/services/checkout"
+      ],
+      "robots": [],
+      "googleScripts": []
+    },
+    {
+      "url": "https://chickzen.com/success",
+      "finalUrl": "https://chickzen.com/success",
+      "status": 404,
+      "server": "Netlify",
+      "xRobotsTag": null,
+      "canonical": [],
+      "robots": [
+        "noindex"
+      ],
+      "googleScripts": []
+    },
+    {
+      "url": "https://chickzen.com/chickzen-baseline-missing-page",
+      "finalUrl": "https://chickzen.com/chickzen-baseline-missing-page",
+      "status": 404,
+      "server": "Netlify",
+      "xRobotsTag": null,
+      "canonical": [],
+      "robots": [
+        "noindex"
+      ],
+      "googleScripts": []
+    },
+    {
+      "url": "https://chickzen-preview.vercel.app/",
+      "finalUrl": "https://chickzen-preview.vercel.app/",
+      "status": 200,
+      "server": "Vercel",
+      "xRobotsTag": "noindex, nofollow, noarchive",
+      "canonical": [
+        "https://chickzen.com"
+      ],
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": []
+    },
+    {
+      "url": "https://chickzen-preview.vercel.app/about",
+      "finalUrl": "https://chickzen-preview.vercel.app/about",
+      "status": 200,
+      "server": "Vercel",
+      "xRobotsTag": "noindex, nofollow, noarchive",
+      "canonical": [
+        "https://chickzen.com/about"
+      ],
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": []
+    },
+    {
+      "url": "https://chickzen-preview.vercel.app/services",
+      "finalUrl": "https://chickzen-preview.vercel.app/services",
+      "status": 200,
+      "server": "Vercel",
+      "xRobotsTag": "noindex, nofollow, noarchive",
+      "canonical": [
+        "https://chickzen.com/services"
+      ],
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": []
+    },
+    {
+      "url": "https://chickzen-preview.vercel.app/blog",
+      "finalUrl": "https://chickzen-preview.vercel.app/blog",
+      "status": 200,
+      "server": "Vercel",
+      "xRobotsTag": "noindex, nofollow, noarchive",
+      "canonical": [
+        "https://chickzen.com/blog"
+      ],
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": []
+    },
+    {
+      "url": "https://chickzen-preview.vercel.app/services/lets-begin",
+      "finalUrl": "https://chickzen-preview.vercel.app/services/lets-begin",
+      "status": 200,
+      "server": "Vercel",
+      "xRobotsTag": "noindex, nofollow, noarchive",
+      "canonical": [
+        "https://chickzen.com/services/lets-begin"
+      ],
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": []
+    },
+    {
+      "url": "https://chickzen-preview.vercel.app/success",
+      "finalUrl": "https://chickzen-preview.vercel.app/success",
+      "status": 200,
+      "server": "Vercel",
+      "xRobotsTag": "noindex, nofollow, noarchive",
+      "canonical": [
+        "https://chickzen.com"
+      ],
+      "robots": [
+        "noindex, nofollow"
+      ],
+      "googleScripts": []
+    },
+    {
+      "url": "https://chickzen-preview.vercel.app/chickzen-baseline-missing-page",
+      "finalUrl": "https://chickzen-preview.vercel.app/chickzen-baseline-missing-page",
+      "status": 404,
+      "server": "Vercel",
+      "xRobotsTag": "noindex, nofollow, noarchive",
+      "canonical": [
+        "https://chickzen.com"
+      ],
+      "robots": [
+        "noindex",
+        "noindex, nofollow"
+      ],
+      "googleScripts": []
+    }
+  ],
+  "sitemaps": {
+    "https://chickzen.com": {
+      "status": 404,
+      "urls": []
+    },
+    "https://chickzen-preview.vercel.app": {
+      "status": 200,
+      "urls": [
+        "https://chickzen.com",
+        "https://chickzen.com/blog",
+        "https://chickzen.com/contact",
+        "https://chickzen.com/services/lets-begin",
+        "https://chickzen.com/find-your-flavor",
+        "https://chickzen.com/the-strawberry-lemonade-effect",
+        "https://chickzen.com/services",
+        "https://chickzen.com/about",
+        "https://chickzen.com/disclaimer",
+        "https://chickzen.com/accessibility-statement",
+        "https://chickzen.com/cookie-policy",
+        "https://chickzen.com/terms-and-conditions",
+        "https://chickzen.com/privacy-policy",
+        "https://chickzen.com/blog/extraordinarily-hard-things",
+        "https://chickzen.com/blog/who-were-you-when-you-were-you",
+        "https://chickzen.com/blog/caring-for-your-self",
+        "https://chickzen.com/blog/how-to-choose-the-right-brand-service-for-where-you-are-now",
+        "https://chickzen.com/blog/the-fastest-way-to-take-your-brand-strategy-to-the-next-level",
+        "https://chickzen.com/blog/lightning-messaging",
+        "https://chickzen.com/blog/brand-clarity-session-get-unstuck",
+        "https://chickzen.com/blog/the-era-of-the-strong-voice",
+        "https://chickzen.com/blog/youre-leading-the-work-now-lets-get-the-buy-in",
+        "https://chickzen.com/blog/your-story-matters-the-power-of-authentic-brand-storytelling",
+        "https://chickzen.com/blog/a-case-for-strawberry-lemonade"
+      ]
+    }
+  },
+  "redirectAndRobotsChecks": [
+    {
+      "url": "https://chickzen.com/home",
+      "status": 200,
+      "location": null
+    },
+    {
+      "url": "https://chickzen.com/journal",
+      "status": 404,
+      "location": null
+    },
+    {
+      "url": "https://chickzen.com/services/checkout",
+      "status": 404,
+      "location": null
+    },
+    {
+      "url": "https://chickzen.com/robots.txt",
+      "status": 404,
+      "location": null,
+      "body": "<!DOCTYPE html><html id=\"__next_error__\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/chunks/webpack-029c07f0e29b8173.js\"/><script src=\"/_next/static/chunks/4bd1b696-21f374d1156f834a.js\" async=\"\"></script><script src=\"/_next/static/chunks/255-9b53a56013ec8136.js\" async=\"\"></script><script src=\"/_next/static/chunks/main-app-682b115844d0a6a0.js\" async=\"\"></script><meta name=\"robots\" content=\"noindex\"/><meta name=\"next-size-adjust\" content=\"\"/><script src=\"/_next/static/chunks/polyfills-42372ed130431b0a.js\" noModule=\"\"></script></head><body><div hidden=\"\"><!--$?--><template id=\"B:0\"></template><!--/$--></div><script>requestAnimationFrame(function(){$RT=performance.now()});</script><script src=\"/_next/static/chunks/webpack-029c07f0e29b8173.js\" id=\"_R_\" async=\"\"></script><link rel=\"icon\" href=\"/favicon.ico\" type=\"image/x-icon\" sizes=\"48x48\"/><script >document.querySelectorAll('body link[rel=\"icon\"], body link[rel=\"apple-touch-icon\"]').forEach(el => document.head.appendChild(el))</script><div hidden id=\"S:0\"></div><script>$RB=[];$RV=function(a){$RT=performance.now();for(var b=0;b<a.length;b+=2){var c=a[b],e=a[b+1];null!==e.parentNode&&e.parentNode.removeChild(e);var f=c.parentNode;if(f){var g=c.previousSibling,h=0;do{if(c&&8===c.nodeType){var d=c.data;if(\"/$\"===d||\"/&\"===d)if(0===h)break;else h--;else\"$\"!==d&&\"$?\"!==d&&\"$~\"!==d&&\"$!\"!==d&&\"&\"!==d||h++}d=c.nextSibling;f.removeChild(c);c=d}while(c);for(;e.firstChild;)f.insertBefore(e.firstChild,c);g.data=\"$\";g._reactRetry&&requestAnimationFrame(g._reactRetry)}}a.length=0};\n$RC=function(a,b){if(b=document.getElementById(b))(a=document.getElementById(a))?(a.previousSibling.data=\"$~\",$RB.push(a,b),2===$RB.length&&(\"number\"!==typeof $RT?requestAnimationFrame($RV.bind(null,$RB)):(a=performance.now(),setTimeout($RV.bind(null,$RB),2300>a&&2E3<a?2300-a:$RT+300-a)))):b.parentNode.removeChild(b)};$RC(\"B:0\",\"S:0"
+    },
+    {
+      "url": "https://chickzen-preview.vercel.app/home",
+      "status": 308,
+      "location": "/"
+    },
+    {
+      "url": "https://chickzen-preview.vercel.app/journal",
+      "status": 308,
+      "location": "/blog"
+    },
+    {
+      "url": "https://chickzen-preview.vercel.app/services/checkout",
+      "status": 308,
+      "location": "/services/lets-begin"
+    },
+    {
+      "url": "https://chickzen-preview.vercel.app/robots.txt",
+      "status": 200,
+      "location": null,
+      "body": "User-Agent: *\nDisallow: /\n\n"
+    }
+  ]
+}

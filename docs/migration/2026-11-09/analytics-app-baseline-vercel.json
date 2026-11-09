@@ -1,0 +1,80 @@
+{
+  "projectId": "prj_4dtRYBrYg4BD0313JA1SJZOUu4pr",
+  "name": "chickzen",
+  "domains": [
+    {
+      "name": "chickzen.vercel.app",
+      "verified": true,
+      "gitBranch": null,
+      "redirect": null
+    }
+  ],
+  "targets": {
+    "production": {
+      "id": "dpl_5TkbhJzmgbUYEnQHtaywGGCFLwV1",
+      "url": "chickzen-nyw79r06u-emilio-castellanos-projects.vercel.app",
+      "readyState": "ERROR"
+    },
+    "preview": {
+      "id": "dpl_CUZNBXaoTi8XfoPbJZUkBtQdxued",
+      "url": "chickzen-2q9aae8t4-emilio-castellanos-projects.vercel.app",
+      "readyState": "READY"
+    }
+  },
+  "gitLinked": false,
+  "previewAlias": {
+    "name": "chickzen-preview.vercel.app",
+    "deploymentId": "dpl_CUZNBXaoTi8XfoPbJZUkBtQdxued",
+    "public": true
+  },
+  "config": [
+    {
+      "key": "CHECKOUT_ENABLED",
+      "target": [
+        "production"
+      ],
+      "value": null,
+      "valueReadStatus": "not disclosed by this API response; do not infer unset"
+    },
+    {
+      "key": "EMAIL_DELIVERY_ENABLED",
+      "target": [
+        "production"
+      ],
+      "value": null,
+      "valueReadStatus": "not disclosed by this API response; do not infer unset"
+    },
+    {
+      "key": "SITE_LAUNCHED",
+      "target": [
+        "production"
+      ],
+      "value": null,
+      "valueReadStatus": "not disclosed by this API response; do not infer unset"
+    },
+    {
+      "key": "CHECKOUT_ENABLED",
+      "target": [
+        "preview"
+      ],
+      "value": null,
+      "valueReadStatus": "not disclosed by this API response; do not infer unset"
+    },
+    {
+      "key": "EMAIL_DELIVERY_ENABLED",
+      "target": [
+        "preview"
+      ],
+      "value": null,
+      "valueReadStatus": "not disclosed by this API response; do not infer unset"
+    },
+    {
+      "key": "SITE_LAUNCHED",
+      "target": [
+        "preview"
+      ],
+      "value": null,
+      "valueReadStatus": "not disclosed by this API response; do not infer unset"
+    }
+  ]
+}
