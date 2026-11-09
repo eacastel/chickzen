@@ -176,14 +176,16 @@ export default function CmsPage({
                 aria-label="Explore services"
                 key={key}
               >
-                {entries(f.serviceTypes).map((t) => (
-                  <Link
-                    key={entryId(t)}
-                    href={`#${text(fields(t).anchorId).replace(/^#/, "")}`}
-                  >
-                    {text(fields(t).title)} <span aria-hidden="true">↓</span>
-                  </Link>
-                ))}
+                {blocks
+                  .filter((block) => contentType(block) === "serviceType")
+                  .map((t) => (
+                    <Link
+                      key={entryId(t)}
+                      href={`#${text(fields(t).anchorId).replace(/^#/, "")}`}
+                    >
+                      {text(fields(t).title)} <span aria-hidden="true">↓</span>
+                    </Link>
+                  ))}
               </nav>
             );
           if (type === "serviceType")

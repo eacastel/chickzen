@@ -63,6 +63,37 @@ export default function TestimonialCarousel({
       document.removeEventListener("visibilitychange", update);
     };
   }, [api, paused, hovered, visible, reduced]);
+  useEffect(() => {
+    if (!api) return;
+    const viewportNode = api.rootNode();
+    const slides = api.slideNodes();
+    const fitVisibleReviews = () => {
+      const width =
+        slides[0]?.getBoundingClientRect().width || viewportNode.clientWidth;
+      const count = Math.max(1, Math.round(viewportNode.clientWidth / width));
+      const start = api.selectedScrollSnap();
+      const visibleSlides = Array.from(
+        { length: count },
+        (_, i) => slides[(start + i) % slides.length],
+      );
+      const height = Math.ceil(
+        Math.max(
+          ...visibleSlides.map(
+            (slide) => slide?.getBoundingClientRect().height || 0,
+          ),
+        ),
+      );
+      if (height > 0) viewportNode.style.height = `${height}px`;
+    };
+    const observer = new ResizeObserver(fitVisibleReviews);
+    slides.forEach((slide) => observer.observe(slide));
+    fitVisibleReviews();
+    api.on("select", fitVisibleReviews).on("reInit", fitVisibleReviews);
+    return () => {
+      observer.disconnect();
+      api.off("select", fitVisibleReviews).off("reInit", fitVisibleReviews);
+    };
+  }, [api]);
   const move = (direction: number) => {
     setPaused(true);
     autoplay.current.stop();

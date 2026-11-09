@@ -1800,3 +1800,21 @@
     }
   }
 }
+
+@layer components {
+  .reviews-track {
+    align-items: flex-start;
+  }
+  .reviews-viewport {
+    transition: height 0.25s ease;
+  }
+  .review-slide .review-card {
+    height: auto;
+    min-height: 220px;
+  }
+  @media (max-width: 700px) {
+    .review-slide .review-card {
+      min-height: 180px;
+    }
+  }
+}
