@@ -127,8 +127,8 @@ export const getAllBlogSlugs = cacheContentful(
   }
 );
 
-/** All blog posts, newest first. */
-export const getAllBlogPosts = cacheContentful(
+/** Cache the published posts in their existing date order. */
+const getBlogPostsByDate = cacheContentful(
   "all-blog-posts",
   async (): Promise<BlogPostEntry[]> => {
     const res = await client.getEntries<BlogPostSkeleton>({
@@ -139,21 +139,27 @@ export const getAllBlogPosts = cacheContentful(
   }
 );
 
-/**
- * Convenience: latest N blog posts (default = 3).
- * @param limit – how many posts to return
- */
-export const getLatestBlogPosts = cacheContentful(
-  "latest-blog-posts",
-  async (limit: number = 3): Promise<BlogPostEntry[]> => {
-    const res = await client.getEntries<BlogPostSkeleton>({
-      content_type: "blogPost",
-      order: ["-fields.publishDate"],
-      limit,
-    });
-    return res.items as BlogPostEntry[];
+function journalPriority(post: BlogPostEntry): number {
+  switch (post.fields.slug) {
+    case "a-case-for-strawberry-lemonade":
+      return -1;
+    case "the-fastest-way-to-take-your-brand-strategy-to-the-next-level":
+      return 1;
+    default:
+      return 0;
   }
-);
+}
+
+/** Jen's first/last selections, preserving the other posts' date order. */
+export async function getAllBlogPosts(): Promise<BlogPostEntry[]> {
+  const posts = await getBlogPostsByDate();
+  return [...posts].sort((a, b) => journalPriority(a) - journalPriority(b));
+}
+
+/** Homepage selections follow the same editorial order as the journal. */
+export async function getLatestBlogPosts(limit: number = 3): Promise<BlogPostEntry[]> {
+  return (await getAllBlogPosts()).slice(0, limit);
+}
 
 /* -------------------------------------------------------------------------- */
 /*  4. Hero helper                                                            */
