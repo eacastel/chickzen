@@ -5,8 +5,8 @@ Stable address: https://chickzen-preview.vercel.app
 Project: chickzen (prj_4dtRYBrYg4BD0313JA1SJZOUu4pr)
 Team: emilio-castellanos-projects
 Source branch: codex/chickzen-vercel-migration
-Current deployment: dpl_ABqSgiAPDK5K1CVPizMwSTLs89XM
-Current application commit: bb4e997
+Current deployment: dpl_2FUw51J7R3gis6qAvDmKi5oYZG7c
+Current application commit: c81ba31
 
 Use this same alias for all future review updates. After a new preview build is
 READY and verified, point this alias at it:
@@ -33,3 +33,6 @@ still requires authentication. Do not disable protection project-wide.
 Public-access verification: header-refinement/public-access-validation.json.
 The live https://chickzen.com site now runs on the approved Vercel production
 build. Preview remains separately noindex and excluded from analytics.
+
+10 November journal ordering update:
+../../journal/2026-11-10-article-order/README.txt

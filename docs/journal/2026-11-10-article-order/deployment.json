@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "c81ba31",
+  "production": {
+    "id": "dpl_Fy4CzBq3gcgGuJLsSUYshfZX9Nsp",
+    "url": "https://chickzen.com"
+  },
+  "preview": {
+    "id": "dpl_2FUw51J7R3gis6qAvDmKi5oYZG7c",
+    "url": "https://chickzen-preview.vercel.app"
+  },
+  "environmentSettingsChanged": false
+}

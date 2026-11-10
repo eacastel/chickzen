@@ -3,6 +3,12 @@ CHICKZEN PROJECT DOCUMENTS
 Project root:
 /home/eacastel/Avanti/webdev/chickzen
 
+LATEST JOURNAL UPDATE
+
+docs/journal/2026-11-10-article-order/README.txt
+  Jen's requested first/last article order, applied to the journal, homepage
+  feature and article navigation. Includes published order verification.
+
 NEXT.JS / VERCEL MIGRATION
 
 Stable public review: https://chickzen-preview.vercel.app
