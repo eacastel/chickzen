@@ -71,7 +71,7 @@ export default function ClientLogoCarousel({ title, logos }: { title: string; lo
       {scrollable && <div className="reviews-controls client-logos-controls">
         <span aria-live={paused || reduced ? "polite" : "off"}>{selected + 1} / {logos.length}</span>
         <div>
-          {!reduced && <button type="button" className="logos-pause" onClick={() => setPaused((value) => !value)} aria-label={paused ? "Play client logo slideshow" : "Pause client logo slideshow"}>{paused ? "Play" : "Pause"}</button>}
+          {!reduced && <button type="button" className="reviews-pause logos-pause" onClick={() => setPaused((value) => !value)} aria-label={paused ? "Play client logo slideshow" : "Pause client logo slideshow"}>{paused ? "Play" : "Pause"}</button>}
           <button type="button" onClick={() => move(-1)} aria-label="Previous client logo">←</button>
           <button type="button" onClick={() => move(1)} aria-label="Next client logo">→</button>
         </div>
