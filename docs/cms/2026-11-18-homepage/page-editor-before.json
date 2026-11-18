@@ -1,0 +1,76 @@
+{
+  "sys": {
+    "id": "default",
+    "type": "EditorInterface",
+    "space": {
+      "sys": {
+        "id": "w36tuy329a8r",
+        "type": "Link",
+        "linkType": "Space"
+      }
+    },
+    "version": 4,
+    "createdAt": "2025-05-09T20:24:30.318Z",
+    "createdBy": {
+      "sys": {
+        "id": "1GbEyXzbsxomatO7POOtFH",
+        "type": "Link",
+        "linkType": "User"
+      }
+    },
+    "updatedAt": "2025-05-14T09:10:37.420Z",
+    "updatedBy": {
+      "sys": {
+        "id": "1GbEyXzbsxomatO7POOtFH",
+        "type": "Link",
+        "linkType": "User"
+      }
+    },
+    "contentType": {
+      "sys": {
+        "id": "page",
+        "type": "Link",
+        "linkType": "ContentType"
+      }
+    },
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    }
+  },
+  "controls": [
+    {
+      "fieldId": "title",
+      "widgetId": "singleLine",
+      "widgetNamespace": "builtin"
+    },
+    {
+      "fieldId": "slug",
+      "widgetId": "slugEditor",
+      "widgetNamespace": "builtin"
+    },
+    {
+      "fieldId": "section",
+      "widgetId": "entryLinksEditor",
+      "widgetNamespace": "builtin"
+    },
+    {
+      "fieldId": "metaTitle",
+      "widgetId": "singleLine",
+      "widgetNamespace": "builtin"
+    },
+    {
+      "fieldId": "metaSummary",
+      "widgetId": "markdown",
+      "widgetNamespace": "builtin"
+    },
+    {
+      "fieldId": "previewImage",
+      "widgetId": "assetLinkEditor",
+      "widgetNamespace": "builtin"
+    }
+  ]
+}

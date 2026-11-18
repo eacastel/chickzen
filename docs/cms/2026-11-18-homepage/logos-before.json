@@ -1,0 +1,201 @@
+{
+  "metadata": {
+    "tags": [],
+    "concepts": []
+  },
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "w36tuy329a8r"
+      }
+    },
+    "id": "18KTHceIdEHdccjDio762d",
+    "type": "Entry",
+    "createdAt": "2025-05-12T09:12:54.372Z",
+    "updatedAt": "2025-06-03T04:57:56.504Z",
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "publishedVersion": 30,
+    "publishedAt": "2025-06-03T04:57:56.504Z",
+    "firstPublishedAt": "2025-05-12T09:16:58.009Z",
+    "createdBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "1GbEyXzbsxomatO7POOtFH"
+      }
+    },
+    "updatedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "1GbEyXzbsxomatO7POOtFH"
+      }
+    },
+    "publishedCounter": 5,
+    "version": 31,
+    "publishedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "1GbEyXzbsxomatO7POOtFH"
+      }
+    },
+    "fieldStatus": {
+      "*": {
+        "en-US": "published"
+      }
+    },
+    "automationTags": [],
+    "contentType": {
+      "sys": {
+        "type": "Link",
+        "linkType": "ContentType",
+        "id": "logoCarousel"
+      }
+    },
+    "urn": "crn:contentful:::content:spaces/w36tuy329a8r/environments/master/entries/18KTHceIdEHdccjDio762d"
+  },
+  "fields": {
+    "title": {
+      "en-US": "Our Clients"
+    },
+    "logos": {
+      "en-US": [
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "1jaSZdbYIcDHrT96hgQsQL"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "7MbTfWuKkVy3S4Hv7MFhgj"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "45Xp7PblBS2j3mLGkxEhwo"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "5DgV3sO08rXv2zqqEXJMQ1"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "2DsFJK3AuFzjC3rpOSm94o"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "7zbkfQZkfppfs598E5Qel3"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "5kDf0yE1Y0UHdYZECJufq"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "U5ZoFHi4t3kCKLvoPJV0K"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "1PgCQT6Gya7BZDm0ZXpc1C"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "33tYz4MEUHXoSXHarBJZnB"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "3c05vtLujCzA0di4zSP7yj"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "3qChiAwaQ3Fu6lyYrvV6It"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "25n86Aovks0uSZNRvMJZFd"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "5MHYRiyjvSlumynVUvmVOd"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "6rUEsTlbsW0R2XxJ5Oc5ZL"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "3Df46eBWWG3b57anxYCDpU"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "5mNElAiwaVkofbbWzOF8PY"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "2TQFDwbm6oe1it2gihQA3X"
+          }
+        }
+      ]
+    }
+  }
+}

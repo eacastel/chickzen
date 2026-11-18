@@ -1,3 +1,9 @@
+Latest update: 18 November 2026 — homepage Contentful editing, 20 client logos
+and automatic publishing refresh. See docs/cms/2026-11-18-homepage/README.txt.
+Current preview deployment: dpl_BCK2BNeHxAYmJDwUFbSDMxj3BdSu (b1e37db).
+
+Previous deployment history follows.
+
 CHICKZEN — STABLE REVIEW ADDRESS
 9 November 2026
 

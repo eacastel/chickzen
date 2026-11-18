@@ -1,0 +1,17 @@
+{
+  "sourceCommit": "b1e37db",
+  "production": {
+    "id": "dpl_4bjVnoXTsWQE6Rzan2MgdwKkyMn4",
+    "url": "https://chickzen.com"
+  },
+  "preview": {
+    "id": "dpl_BCK2BNeHxAYmJDwUFbSDMxj3BdSu",
+    "url": "https://chickzen-preview.vercel.app"
+  },
+  "contentfulHome": "3m54KNy4Au0MBD00EYMy8B",
+  "contentfulLogos": "18KTHceIdEHdccjDio762d",
+  "publicationHooks": [
+    "chickzen-vercel-publish",
+    "chickzen-preview-publish"
+  ]
+}

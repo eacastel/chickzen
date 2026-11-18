@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-11-18T15:17:06.179Z",
+  "candidate": "https://chickzen-oulyt4s95-emilio-castellanos-projects.vercel.app",
+  "checks": [
+    {
+      "label": "no-secret",
+      "status": 401,
+      "response": {
+        "error": "Unauthorized"
+      }
+    },
+    {
+      "label": "foreign-space",
+      "status": 400,
+      "response": {
+        "error": "Unexpected content source"
+      }
+    },
+    {
+      "label": "publication",
+      "status": 200,
+      "response": {
+        "revalidated": true
+      }
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "logos": 20,
+      "canonical": true,
+      "noindex": false
+    },
+    {
+      "path": "/about",
+      "status": 200,
+      "publishedEducationText": true
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "urls": 23
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200
+    }
+  ]
+}

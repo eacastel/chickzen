@@ -3,6 +3,16 @@ CHICKZEN PROJECT DOCUMENTS
 Project root:
 /home/eacastel/Avanti/webdev/chickzen
 
+HOMEPAGE EDITING AND CLIENT LOGOS — 18 NOVEMBER 2026
+
+docs/cms/2026-11-18-homepage/JEN-EDITING-GUIDE.txt
+  Jen’s Contentful instructions and direct editor links. Homepage words/photo
+  and client logos are now connected. Publishing refreshes live and preview.
+
+docs/cms/2026-11-18-homepage/README.txt
+  Release evidence, both new client logos, secured publishing hooks and the
+  resolved cache delay affecting Jen’s Origin Story edit.
+
 LATEST JOURNAL UPDATE
 
 docs/journal/2026-11-10-article-order/README.txt

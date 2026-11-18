@@ -1,0 +1,28 @@
+{
+  "publishedAt": "2026-11-18T15:05:01.700Z",
+  "space": "w36tuy329a8r",
+  "environment": "master",
+  "homeEntry": "3m54KNy4Au0MBD00EYMy8B",
+  "homepageBlocks": 19,
+  "logosEntry": "18KTHceIdEHdccjDio762d",
+  "logos": 20,
+  "assets": [
+    {
+      "id": "jen-studio-portrait-editorial",
+      "title": "Jennifer Castellanos — studio portrait",
+      "url": "//images.ctfassets.net/w36tuy329a8r/jen-studio-portrait-editorial/eea21bd46164be0d74e03b2956e6140f/jen-studio-headshot.png"
+    },
+    {
+      "id": "client-zoanne-clack",
+      "title": "Zoanne Clack",
+      "url": "//images.ctfassets.net/w36tuy329a8r/client-zoanne-clack/27bf3c3c95432540ece1d58d496d1c35/icon.svg"
+    },
+    {
+      "id": "client-beverly-hills-911-memorial",
+      "title": "Beverly Hills 9/11 Memorial Garden",
+      "url": "//images.ctfassets.net/w36tuy329a8r/client-beverly-hills-911-memorial/a39e6bbfdb0ea0d8233c145da3a7d04b/beverly-hills-911-memorial-logo.png"
+    }
+  ],
+  "oldSectionsPreserved": true,
+  "applicationDeployed": false
+}

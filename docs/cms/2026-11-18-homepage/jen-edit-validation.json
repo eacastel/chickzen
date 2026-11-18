@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-11-18T15:19:29.556Z",
+  "entry": "1qbeBkbNgHYTJjeqebOhmT",
+  "publishedAt": "2026-11-18T15:08:01.833Z",
+  "checks": [
+    {
+      "origin": "https://chickzen.com",
+      "exactCopy": true,
+      "expectedCharacters": 2468,
+      "actualCharacters": 2468
+    },
+    {
+      "origin": "https://chickzen-preview.vercel.app",
+      "exactCopy": true,
+      "expectedCharacters": 2468,
+      "actualCharacters": 2468
+    }
+  ]
+}

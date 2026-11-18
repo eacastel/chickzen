@@ -1,0 +1,88 @@
+{
+  "origin": "https://chickzen-preview.vercel.app",
+  "checkedAt": "2026-11-18T15:09:15.353Z",
+  "logos": [
+    {
+      "name": "Beverly Hills Chamber of Commerce",
+      "width": 148
+    },
+    {
+      "name": "Beverly Hills Fire Department",
+      "width": 111
+    },
+    {
+      "name": "Cedars Sinai",
+      "width": 166
+    },
+    {
+      "name": "City Hall Denver",
+      "width": 189
+    },
+    {
+      "name": "City of Beverly Hills Conference and Visitor's Bureau",
+      "width": 189
+    },
+    {
+      "name": "CoClubs Denver",
+      "width": 166
+    },
+    {
+      "name": "Cook Islands Finance",
+      "width": 166
+    },
+    {
+      "name": "Emerald Library",
+      "width": 189
+    },
+    {
+      "name": "GEARYS Beverly Hills",
+      "width": 139
+    },
+    {
+      "name": "Keany Associates Developmental Services",
+      "width": 176
+    },
+    {
+      "name": "Pat McGann Gallery",
+      "width": 189
+    },
+    {
+      "name": "Punch Bowl Social",
+      "width": 166
+    },
+    {
+      "name": "Hollywood Schoolhouse Garden",
+      "width": 172
+    },
+    {
+      "name": "Light My Today",
+      "width": 189
+    },
+    {
+      "name": "Xi'an Beverly Hills",
+      "width": 163
+    },
+    {
+      "name": "L'Oréal",
+      "width": 189
+    },
+    {
+      "name": "William Morris Endeavor",
+      "width": 189
+    },
+    {
+      "name": "Zoanne Clack",
+      "width": 150
+    },
+    {
+      "name": "Beverly Hills 9/11 Memorial Garden",
+      "width": 189
+    },
+    {
+      "name": "Nate 'n Al Delicatessen",
+      "width": 166
+    }
+  ],
+  "autoplay": true,
+  "pauseWorks": true
+}

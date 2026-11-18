@@ -1,0 +1,69 @@
+UPDATING CHICKZEN IN CONTENTFUL
+18 November 2026
+
+Use your existing Contentful login. No GitHub or Vercel login is needed to edit
+the connected content.
+
+Open the Home entry:
+https://app.contentful.com/spaces/w36tuy329a8r/entries/3m54KNy4Au0MBD00EYMy8B
+
+HOMEPAGE WORDS AND PHOTO
+1. Open Home, then the field "Homepage — current design".
+2. Open the block you want, such as "Home · Opening headline and buttons",
+   "Home · Meet Jen", or "Home · Jen’s photo and caption".
+3. Edit the populated fields and click Publish on that block.
+   Saving a draft alone does not change the published website.
+4. For a photo, upload/select the image in Photo, give it a useful image
+   description, publish the image, and publish the photo block.
+
+The heading field supports line breaks. The final italic line has its own field.
+A blank line in Body text starts a new paragraph. Button text and destinations
+are separate fields. Keep #begin for the homepage contact form and #work for
+the service section unless you intentionally want another destination.
+
+Each block has an editor label beginning "Home ·". That label is only for
+finding the block; it is not public text. Different blocks use different fields:
+edit the fields that are already populated for that section. The design,
+section positions, form behavior and navigation are maintained in the website.
+
+The older Home "Sections" content is retained as an archive of the previous
+homepage. It does not control the new homepage text. The existing "Our Clients"
+entry in that field DOES control the client-logo carousel.
+
+CLIENT LOGOS
+Open Our Clients:
+https://app.contentful.com/spaces/w36tuy329a8r/entries/18KTHceIdEHdccjDio762d
+
+Add, remove or drag the images into your preferred order in Logos, then Publish.
+Publish any newly uploaded image as well. Each asset’s Title is displayed below
+its logo, so use the client’s name. The current collection contains 20 logos,
+including Zoanne Clack and the original Beverly Hills 9/11 Memorial Garden logo.
+
+JOURNAL, SERVICES, REVIEWS AND OTHER PAGES
+Open all content:
+https://app.contentful.com/spaces/w36tuy329a8r/entries
+
+- Journal: choose Blog Post, edit the title/body/cover image, then Publish.
+  Keep an existing article’s URL slug unchanged. Strawberry Lemonade remains
+  first and Level Up Your Strategy last, following Jen’s earlier request.
+- Services: edit Service Product for an offer’s content; Service Type groups
+  the offers. Publish the entry you changed.
+- Reviews: edit the appropriate Review Block, then Publish. The homepage uses
+  the recommendations linked to About.
+- About and other pages: open the Page, then its linked Sections. Publish the
+  section you changed. Changing the homepage portrait does not replace the
+  separately maintained About-page portrait.
+- Homepage search title/description: use Meta Title and Meta Summary on Home.
+
+WHEN CHANGES APPEAR
+Publishing now sends a secure refresh request to both the live site and preview.
+After publishing, give it a few moments, then reload the page. An already-open
+browser tab does not update itself. No deployment is needed for these content
+edits. Saving a draft does not change either website. The one-hour cache remains
+as a fallback if Contentful cannot deliver a refresh notification.
+
+Live: https://chickzen.com
+Design preview: https://chickzen-preview.vercel.app
+
+If the Contentful link asks for access, use the account previously invited to
+the Chickzen space. This update does not change account memberships or passwords.

@@ -1,0 +1,135 @@
+{
+  "metadata": {
+    "tags": [],
+    "concepts": []
+  },
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "w36tuy329a8r"
+      }
+    },
+    "id": "3m54KNy4Au0MBD00EYMy8B",
+    "type": "Entry",
+    "createdAt": "2025-05-10T09:01:06.793Z",
+    "updatedAt": "2025-06-26T14:29:54.990Z",
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "publishedVersion": 73,
+    "publishedAt": "2025-06-26T14:29:54.990Z",
+    "firstPublishedAt": "2025-05-10T09:01:48.397Z",
+    "createdBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "1GbEyXzbsxomatO7POOtFH"
+      }
+    },
+    "updatedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "1GbEyXzbsxomatO7POOtFH"
+      }
+    },
+    "publishedCounter": 18,
+    "version": 74,
+    "publishedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "1GbEyXzbsxomatO7POOtFH"
+      }
+    },
+    "fieldStatus": {
+      "*": {
+        "en-US": "published"
+      }
+    },
+    "automationTags": [],
+    "contentType": {
+      "sys": {
+        "type": "Link",
+        "linkType": "ContentType",
+        "id": "page"
+      }
+    },
+    "urn": "crn:contentful:::content:spaces/w36tuy329a8r/environments/master/entries/3m54KNy4Au0MBD00EYMy8B"
+  },
+  "fields": {
+    "title": {
+      "en-US": "Home"
+    },
+    "slug": {
+      "en-US": "home"
+    },
+    "section": {
+      "en-US": [
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "6WctFQLszkxcVYLD78DNFn"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "3pxHji5vwNaZ9qE57MAgZM"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "2LBAEuYDPBLdot1miEWEKR"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "5rEDzF0nbmuGzSgWurOahH"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "hP9tSbV7JiQjXlblBc2ed"
+          }
+        },
+        {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "18KTHceIdEHdccjDio762d"
+          }
+        }
+      ]
+    },
+    "metaTitle": {
+      "en-US": "Strategic Brand & Marketing Consultancy for Women | chickzen™"
+    },
+    "metaSummary": {
+      "en-US": "chickzen™ helps women leaders grow with clarity and confidence through brand strategy, marketing, messaging, and business transformation services."
+    },
+    "previewImage": {
+      "en-US": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Asset",
+          "id": "6DJBh5jRNnEBrKJhDR6zk8"
+        }
+      }
+    }
+  }
+}

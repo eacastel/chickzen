@@ -1,0 +1,32 @@
+{
+  "checkedAt": "2026-11-18T15:20:03.699Z",
+  "trigger": "Republished homepage-experience without changing its content",
+  "hooks": [
+    {
+      "id": "chickzen-vercel-publish",
+      "calls": [
+        {
+          "id": "3bdWf9aTVYgW8ekUwECu2i",
+          "statusCode": 200,
+          "eventType": "publish",
+          "requestAt": "2026-11-18T15:18:24.589Z",
+          "responseAt": "2026-11-18T15:18:24.974Z",
+          "errorCount": 0
+        }
+      ]
+    },
+    {
+      "id": "chickzen-preview-publish",
+      "calls": [
+        {
+          "id": "2ACwutlvkMmQwyEUuOeSas",
+          "statusCode": 200,
+          "eventType": "publish",
+          "requestAt": "2026-11-18T15:18:24.569Z",
+          "responseAt": "2026-11-18T15:18:25.114Z",
+          "errorCount": 0
+        }
+      ]
+    }
+  ]
+}
