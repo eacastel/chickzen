@@ -1,10 +1,14 @@
+import { homeBlock, type HomeBlock } from "@/lib/homepage-content";
+import { HomeHeading, HomeParagraphs } from "./HomeText";
 import ContactLinks from "./ContactLinks";
 import InquiryForm from "./InquiryForm";
 import { emailDeliveryReady, newsletterReady } from "@/lib/inquiry";
 export default function ContactSection({
   standalone = false,
+  copy = homeBlock(null, "contact"),
 }: {
   standalone?: boolean;
+  copy?: HomeBlock;
 }) {
   const Heading = standalone ? "h1" : "h2";
   return (
@@ -14,18 +18,9 @@ export default function ContactSection({
       aria-labelledby="begin-title"
     >
       <div>
-        <span className="eyebrow">
-          Your next chapter starts with a conversation
-        </span>
-        <Heading id="begin-title">
-          Let’s find your
-          <br />
-          <em>next right step.</em>
-        </Heading>
-        <p>
-          Tell Jen a little about your business, what’s changing, and what you’d
-          like help with. We can start there.
-        </p>
+        <span className="eyebrow">{copy.eyebrow}</span>
+        <Heading id="begin-title"><HomeHeading block={copy} /></Heading>
+        <HomeParagraphs text={copy.body} />
         <ContactLinks />
       </div>
       <InquiryForm

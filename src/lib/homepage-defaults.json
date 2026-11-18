@@ -1,0 +1,130 @@
+{
+  "hero": {
+    "name": "Home · Opening headline and buttons",
+    "eyebrow": "Brand strategy & messaging · For women",
+    "heading": "A clearer brand.\nA voice that’s",
+    "emphasis": "entirely yours.",
+    "body": "Your work has evolved. Let’s make sure your brand reflects it. Work with Jen to clarify your positioning, shape your message, and find a confident direction for what comes next.",
+    "primaryLabel": "Let’s talk about your brand",
+    "primaryLink": "#begin",
+    "secondaryLabel": "Explore ways to work together",
+    "secondaryLink": "#work"
+  },
+  "portrait": {
+    "name": "Home · Jen’s photo and caption",
+    "heading": "Jennifer Castellanos",
+    "label": "Founder & brand strategist",
+    "body": "Strategy, with soul.",
+    "imageAlt": "Jennifer Castellanos, founder of chickzen"
+  },
+  "proof": {
+    "name": "Home · Recommendations heading",
+    "eyebrow": "Kind words · Client recommendations",
+    "heading": "What it’s like to work with Jen.",
+    "primaryLabel": "Read all recommendations",
+    "primaryLink": "/about#recommendations"
+  },
+  "experience": {
+    "name": "Home · Experience heading",
+    "eyebrow": "Experience that informs the work"
+  },
+  "credential-brand": {
+    "name": "Home · Experience — brand and marketing",
+    "heading": "20+ years",
+    "label": "Brand, marketing & business growth"
+  },
+  "credential-chamber": {
+    "name": "Home · Experience — Chamber of Commerce",
+    "heading": "Beverly Hills\nChamber of Commerce",
+    "label": "Vice President experience"
+  },
+  "credential-faculty": {
+    "name": "Home · Experience — faculty",
+    "heading": "Goldman Sachs\n10,000 Small Businesses",
+    "label": "Faculty experience"
+  },
+  "offers": {
+    "name": "Home · Ways to work together — heading",
+    "eyebrow": "Ways to work together",
+    "heading": "Where are you",
+    "emphasis": "ready to go?",
+    "body": "You don’t need to arrive with all the answers. Start with what feels familiar, and we’ll find the right shape for the work."
+  },
+  "offer-clarity": {
+    "name": "Home · Offer — clarify your direction",
+    "heading": "Clarify your direction",
+    "label": "Clarity & focused strategy",
+    "summary": "You have ideas, experience, and a lot in motion. You need to know what matters next.",
+    "body": "Explore a focused session or brand audit to understand where your message is getting lost and identify your next priorities. We’ll help you choose the right starting point from Jen’s existing clarity services.",
+    "primaryLabel": "Ask Jen about a clarity session",
+    "primaryLink": "#begin"
+  },
+  "offer-messaging": {
+    "name": "Home · Offer — shape your message",
+    "heading": "Shape your message",
+    "label": "Positioning, story & website voice",
+    "summary": "The work you do is strong. Your words need to make its value easier to see.",
+    "body": "Bring your positioning, signature story, bio or website language into alignment. Depending on what you need, explore a personal brand messaging project or a Website Voice Rebrand with Jen.",
+    "primaryLabel": "Discuss your messaging project",
+    "primaryLink": "#begin"
+  },
+  "offer-partner": {
+    "name": "Home · Offer — grow with a partner",
+    "heading": "Grow with a partner",
+    "label": "Ongoing strategic guidance",
+    "summary": "You’re building your next chapter and want a thoughtful partner alongside you.",
+    "body": "Explore an ongoing Strategic Brand Partner engagement for decisions about your positioning, messaging and growth. Start with a conversation about the support, scope and cadence your business needs.",
+    "primaryLabel": "Explore a strategic partnership",
+    "primaryLink": "#begin"
+  },
+  "offers-footer": {
+    "name": "Home · Invitation below the offers",
+    "body": "Not sure where to begin? That’s a good place to start.",
+    "primaryLabel": "Let’s work it out together",
+    "primaryLink": "#begin"
+  },
+  "approach": {
+    "name": "Home · Approach — heading",
+    "eyebrow": "The work behind the words",
+    "heading": "Clarity you can",
+    "emphasis": "actually put to work.",
+    "body": "A good brand strategy connects who you are, what your audience needs, and how you show up. Here’s where we begin."
+  },
+  "step-thread": {
+    "name": "Home · Approach — find the thread",
+    "heading": "Find the thread.",
+    "body": "Understand your strengths, your audience, and the difference you want your work to make."
+  },
+  "step-voice": {
+    "name": "Home · Approach — give it a voice",
+    "heading": "Give it a voice.",
+    "body": "Shape a clear position and language that sounds like you, from your story to your website."
+  },
+  "step-next": {
+    "name": "Home · Approach — know what comes next",
+    "heading": "Know what comes next.",
+    "body": "Connect the strategy to practical decisions and priorities you can move forward with."
+  },
+  "about": {
+    "name": "Home · Meet Jen",
+    "eyebrow": "Meet Jen",
+    "heading": "A thoughtful partner.",
+    "emphasis": "A wider perspective.",
+    "body": "Jen brings more than two decades of experience across branding, marketing, leadership and business growth to the work of helping women find their voice.\n\nFrom working with business leaders to teaching entrepreneurs, her work connects strategic thinking with a deep curiosity about people—and what makes their stories matter.",
+    "primaryLabel": "Get to know Jen",
+    "primaryLink": "/about"
+  },
+  "journal": {
+    "name": "Home · Journal introduction",
+    "heading": "A little clarity\nbefore you begin.",
+    "eyebrow": "From the chickzen journal",
+    "primaryLabel": "Read the article"
+  },
+  "contact": {
+    "name": "Home · Contact invitation",
+    "eyebrow": "Your next chapter starts with a conversation",
+    "heading": "Let’s find your",
+    "emphasis": "next right step.",
+    "body": "Tell Jen a little about your business, what’s changing, and what you’d like help with. We can start there."
+  }
+}

@@ -196,3 +196,9 @@ export const getAllServiceTypes = cacheContentful(
 /* -------------------------------------------------------------------------- */
 /*  6. TODO: add “latest pages” or other helpers here if needed.              */
 /* -------------------------------------------------------------------------- */
+
+/** The editable home content shares a single hourly-cached CMS response. */
+export const getHomepage = cacheContentful("editorial-homepage", async () => {
+  const res = await client.getEntries({ content_type: "page", "fields.slug": "home", include: 2 });
+  return res.items[0] || null;
+});
