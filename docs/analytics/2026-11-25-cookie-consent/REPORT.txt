@@ -1,0 +1,64 @@
+Chickzen cookie preferences release — 25 November 2026
+
+Application source: 773a210 (codex/chickzen-vercel-migration)
+Production: https://chickzen.com
+Deployment: dpl_CZLPcDM7ifPjD3D441bHB3wRXrTL
+Immutable URL: https://chickzen-o1abs20qb-emilio-castellanos-projects.vercel.app
+Public preview: https://chickzen-preview.vercel.app
+Preview deployment: dpl_9z5z6B7aPNAAUEred2KLs5G3WWvQ
+
+Change
+The bottom banner now offers Accept cookies, Reject, and Preferences. Accept uses
+Chickzen's existing slate primary color and editorial corner treatment. Preferences
+shows essential settings and an optional analytics checkbox, initially off for a
+new visitor. Save persists and closes; Cancel discards unsaved changes. The small
+sliders control reopens saved preferences. Keyboard focus follows opened settings
+and returns to the reopen control on closing; Escape cancels preferences.
+
+Existing consent records are retained with their original expiration. This release
+does not reset or extend choices just by loading or reopening the panel.
+
+Integration contract (unchanged)
+Component: src/components/editorial/AnalyticsConsent.tsx
+Client hook: src/lib/analytics/client.ts -> chooseAnalytics('accepted'|'rejected')
+Storage: chickzen.analytics-consent.v1; {version:1,choice,expires}; 180 days.
+Gate: enabled production deployment, valid GTM container, exact HTTPS chickzen.com
+or www.chickzen.com, active and accepted/unexpired consent. Preview/private hosts
+cannot collect. Explicit site opt-in is not vetoed by DNT/GPC in application code.
+Google Consent Mode grants analytics_storage only. ad_storage, ad_user_data,
+ad_personalization and personalization_storage remain denied.
+Withdrawal synchronously disables the GA ID, denies loaded consent, clears
+analytics cookies/session dedup/context and reloads to unload Google's handlers.
+GTM-WDHMFN7J and G-6PCNC6QKXE unchanged. CTA/service/campaign allowlists, inquiry
+eligibility and dedup, private-route policy, checkout and MailerLite holds unchanged.
+
+Verification
+Local lint and existing analytics/migration suites passed. Production and preview
+cloud builds passed compilation and TypeScript using the pinned Next.js 16.4.5.
+No local dependency install or build was performed.
+
+check-consent.mjs runs browser tests with Google scripts stubbed or deliberately
+blocked, all collector destinations blocked, and every non-GET/HEAD request
+blocked. It cannot submit a real inquiry/payment/provider mutation. This proves
+application consent and dispatch behavior, not receipt by Google.
+
+candidate.json: isolated production candidate served to simulated production
+browser origin, plus direct private-host exclusion; all 10 cases passed.
+live.json: actual https://chickzen.com, 9 cases passed at 07:33:27 UTC.
+preview.json: actual stable public preview, same UI cases with analytics disabled.
+
+Cases cover fresh desktop/mobile, all three first-layer controls, no initial
+analytics, default-off preferences, cancel without saving, acceptance/rejection,
+reload persistence, existing accepted/rejected expiry preservation, saved toggle
+state, withdrawal and cookie clearing, re-enable, DNT/GPC explicit opt-in, script
+failure and blocked storage. Zero real collector requests/provider mutations.
+Screenshots cover desktop/mobile banner and preferences; visually reviewed.
+deployments.json records public HTTP 200 on both hosts, production index/follow
+and preview noindex/nofollow. Production and preview remain separate deployments.
+
+Analytics handoff
+Exact hooks/readiness and live evidence delivered to the existing Analytics owner
+thread 01a108af-e0c0-79e0-aacb-10dc6f6c9b6a. That owner retains matched Google
+container/gate and actual-tag QA responsibility in the existing portfolio audit.
+No Google account settings changed in this release. Stubbed-browser evidence must
+not be represented as successful collection, lead conversion or GA4 reporting.

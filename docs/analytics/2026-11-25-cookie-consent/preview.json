@@ -1,0 +1,74 @@
+{
+  "checkedAt": "2026-11-25T07:34:30.338Z",
+  "sourceCommit": "773a210",
+  "stage": "preview",
+  "backend": "https://chickzen-preview.vercel.app",
+  "browserOrigin": "https://chickzen-preview.vercel.app",
+  "googleScripts": "stubbed or deliberately blocked; application dispatch evidence only",
+  "realCollectorRequests": 0,
+  "realProviderMutations": 0,
+  "blockedCollectors": 0,
+  "blockedMutations": 0,
+  "results": [
+    {
+      "case": "desktop consent lifecycle",
+      "noInitialCollection": true,
+      "threeActions": true,
+      "preferencesDefaultOff": true,
+      "cancelDiscards": true,
+      "reloadPreservesRecord": true,
+      "withdrawalClearsCookies": true,
+      "synchronousDenial": false,
+      "reEnable": true,
+      "noOverflow": true
+    },
+    {
+      "case": "mobile consent lifecycle",
+      "noInitialCollection": true,
+      "threeActions": true,
+      "preferencesDefaultOff": true,
+      "cancelDiscards": true,
+      "reloadPreservesRecord": true,
+      "withdrawalClearsCookies": true,
+      "synchronousDenial": false,
+      "reEnable": true,
+      "noOverflow": true
+    },
+    {
+      "case": "existing accepted",
+      "expiryUnchanged": true
+    },
+    {
+      "case": "existing rejected",
+      "expiryUnchanged": true
+    },
+    {
+      "case": "DNT/GPC explicit opt-in",
+      "closes": true,
+      "analyticsDispatch": false,
+      "adsRemainDenied": true
+    },
+    {
+      "case": "blocked Google script",
+      "closes": true,
+      "analyticsDispatch": false,
+      "adsRemainDenied": true
+    },
+    {
+      "case": "blocked storage",
+      "closes": true,
+      "analyticsDispatch": false,
+      "adsRemainDenied": true
+    },
+    {
+      "case": "one-click accept",
+      "closes": true,
+      "analyticsDispatch": false,
+      "adsRemainDenied": true
+    },
+    {
+      "case": "one-click reject",
+      "noGoogleRequests": true
+    }
+  ]
+}

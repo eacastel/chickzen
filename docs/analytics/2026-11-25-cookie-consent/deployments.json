@@ -1,0 +1,28 @@
+[
+  {
+    "host": "chickzen.com",
+    "deploymentId": "dpl_CZLPcDM7ifPjD3D441bHB3wRXrTL",
+    "deployment": {
+      "id": "dpl_CZLPcDM7ifPjD3D441bHB3wRXrTL",
+      "url": "chickzen-o1abs20qb-emilio-castellanos-projects.vercel.app"
+    },
+    "status": 200,
+    "xRobotsTag": null,
+    "robots": [
+      "index, follow"
+    ]
+  },
+  {
+    "host": "chickzen-preview.vercel.app",
+    "deploymentId": "dpl_9z5z6B7aPNAAUEred2KLs5G3WWvQ",
+    "deployment": {
+      "id": "dpl_9z5z6B7aPNAAUEred2KLs5G3WWvQ",
+      "url": "chickzen-33zed1bio-emilio-castellanos-projects.vercel.app"
+    },
+    "status": 200,
+    "xRobotsTag": "noindex, nofollow, noarchive",
+    "robots": [
+      "noindex, nofollow"
+    ]
+  }
+]
