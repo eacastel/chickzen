@@ -1832,12 +1832,20 @@
   .cookie-panel h2 {font-size: 24px; line-height: 1.25; margin-bottom: 6px;}
   .cookie-panel p {font-size: 12px; line-height: 1.6; max-width: 640px;}
   .cookie-panel p a {text-decoration: underline; text-underline-offset: 3px;}
-  .cookie-actions {display: flex; flex-wrap: wrap; gap: 8px; min-width: 290px;}
+  .cookie-actions {display: flex; flex-wrap: wrap; gap: 8px; min-width: 320px;}
   .cookie-choice {flex: 1; min-height: 44px; padding: 10px 12px; background: var(--paper); border: 1px solid var(--ink); color: var(--ink); font-size: 12px; cursor: pointer; white-space: nowrap;}
   .cookie-choice:hover {background: var(--lilac);}
-  .cookie-close {flex-basis: 100%; font-size: 11px; text-decoration: underline; cursor: pointer; min-height: 28px;}
+  .cookie-primary {background: var(--ink); color: var(--paper); border-radius: 2px 2px 14px 2px;}
+  .cookie-primary:hover {background: #344b57;}
+  .cookie-preferences {max-width: 680px; flex-direction: column; align-items: stretch; gap: 18px;}
+  .cookie-categories {border-block: 1px solid var(--line);}
+  .cookie-category {display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 14px;}
+  .cookie-category + .cookie-category {border-top: 1px solid var(--line); cursor: pointer;}
+  .cookie-category h3 {font-family: var(--sans); font-size: 14px; font-weight: 500; line-height: 1.5;}
+  .cookie-required {flex-shrink: 0; font-size: 12px;}
+  .cookie-category input {flex-shrink: 0; width: 22px; height: 22px; margin: 11px; accent-color: var(--ink); cursor: pointer;}
   .cookie-settings {position: fixed; bottom: 16px; left: 16px; z-index: 90; width: 44px; height: 44px; display: grid; place-items: center; background: var(--rose); color: var(--ink); border: 1px solid var(--line); border-radius: 50%; cursor: pointer;}
-  .cookie-choice:focus-visible, .cookie-settings:focus-visible, .cookie-close:focus-visible {outline: 2px solid var(--ink); outline-offset: 3px;}
+  .cookie-choice:focus-visible, .cookie-settings:focus-visible, .cookie-category input:focus-visible, .cookie-panel h2:focus-visible {outline: 2px solid var(--ink); outline-offset: 3px;}
   @media (max-width: 700px) {
     .cookie-panel {inset: auto 12px 12px; flex-direction: column; align-items: stretch; padding: 18px; gap: 14px;}
     .cookie-actions {min-width: 0;}
